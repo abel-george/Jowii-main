@@ -1,0 +1,618 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  CircleDollarSign,
+  FileText,
+  Globe2,
+  HeartPulse,
+  Landmark,
+  Network,
+  ShieldCheck,
+  Sparkles,
+  Waypoints,
+} from 'lucide-react';
+import { InstitutionalNewsletter } from '@/components/home/InstitutionalNewsletter';
+
+const pillars = [
+  {
+    number: '01',
+    title: 'Communities & essential services',
+    text: 'Community-led priorities across health, education, food systems, clean water, housing and local infrastructure.',
+    icon: HeartPulse,
+  },
+  {
+    number: '02',
+    title: 'Digital opportunity & youth',
+    text: 'Skills pathways, access to digital tools, scholarships, developer participation and opportunities for young people.',
+    icon: BookOpen,
+  },
+  {
+    number: '03',
+    title: 'Research & African innovation',
+    text: 'Applied research, knowledge exchange and African-led capacity in technology, health, energy, water and industry.',
+    icon: Sparkles,
+  },
+  {
+    number: '04',
+    title: 'Long-horizon capabilities',
+    text: 'A future-facing agenda spanning advanced manufacturing, resilient cities, AI, mobility and space capability.',
+    icon: Globe2,
+  },
+];
+
+const corridors = [
+  { number: '01', name: 'Transport', detail: 'Connect people, freight and logistics through interoperable transport systems.' },
+  { number: '02', name: 'Industry & manufacturing', detail: 'Grow production capability, industrial partnerships and technology transfer.' },
+  { number: '03', name: 'Energy', detail: 'Coordinate generation, storage, transmission and resilient local power.' },
+  { number: '04', name: 'Digital', detail: 'Connect services and infrastructure through shared digital rails.' },
+  { number: '05', name: 'Payments', detail: 'Support cross-border value movement through licensed payment partners.' },
+  { number: '06', name: 'Human services', detail: 'Strengthen health, education, skills and community development.' },
+  { number: '07', name: 'Space capability', detail: 'Build African participation in communications, observation and space industry.' },
+];
+
+const layers = [
+  ['Mission', 'The Jowih Foundation and its proposed constitutional framework'],
+  ['Protection', 'Purpose and Founder Family Trusts, with distinct proposed roles'],
+  ['Ownership', 'Jowih Holdings as the proposed commercial holding structure'],
+  ['Execution', 'Jowih Group and operating companies, subject to establishment'],
+  ['Continental framework', 'The Great African Grid and its seven corridors'],
+  ['Digital infrastructure', 'ASTA OS interoperability, APIs and partner integrations'],
+  ['State partnership', 'Voluntary, bilateral Accelerated Development Framework Agreements'],
+  ['Participation', 'Use, integrate and, later, regulated economic participation'],
+  ['Funding', 'Pre-launch donations now; separate proposed instruments later'],
+];
+
+const prelaunchSteps = [
+  ['Month 1', 'Public pre-launch', 'Present the architecture, invite donations, select independent legal firms and begin registrations.'],
+  ['Months 1–2', 'Parallel structural setup', 'The intended five-firm team coordinates legal work and oversight while donations remain held under the proposed trust arrangement.'],
+  ['Month 3', 'Full launch target', 'A public launch is planned after registrations, leadership appointments and compliance work are complete.'],
+];
+
+const visualProjects = [
+  {
+    title: 'A connected continental grid',
+    area: 'Great African Grid',
+    image: '/documents/sample%20images/The%20Great%20African%20Grid.png',
+    alt: 'Illustrative overview of proposed Great African Grid infrastructure concepts',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Mobility & logistics corridors',
+    area: 'Transport',
+    image: '/documents/sample%20images/airjowih2.png',
+    alt: 'AI-assisted concept illustration of proposed African air travel and airport logistics infrastructure',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Education & skills pathways',
+    area: 'Education',
+    image: '/documents/sample%20images/jowih%20education%20framework.png',
+    alt: 'Concept illustration of proposed education and skills infrastructure',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Community health access',
+    area: 'Health',
+    image: '/documents/sample%20images/jowih%20healthcare.png',
+    alt: 'Concept illustration of proposed mobile and community health services',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Digital infrastructure',
+    area: 'ASTA OS',
+    image: '/documents/sample%20images/digital%20corridor.png',
+    alt: 'Concept illustration of proposed digital connectivity infrastructure',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Energy systems',
+    area: 'Energy',
+    image: '/documents/sample%20images/energy%20corridor.png',
+    alt: 'Concept illustration of proposed renewable energy infrastructure',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Continental development vision',
+    area: 'Africa',
+    image: '/documents/sample%20images/africa.png',
+    alt: 'Illustrative Africa-focused development concept artwork',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Air Jowih concept',
+    area: 'Aviation',
+    image: '/documents/sample%20images/airjowih1.png',
+    alt: 'Concept artwork for a proposed African aviation service',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Integrated corridor concept',
+    area: 'Infrastructure',
+    image: '/documents/sample%20images/corridor%202.png',
+    alt: 'Concept illustration of proposed integrated infrastructure corridors',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Education framework',
+    area: 'Education',
+    image: '/documents/sample%20images/edujowih.png',
+    alt: 'Concept artwork for proposed Jowih education programs',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Environmental framework',
+    area: 'Environment',
+    image: '/documents/sample%20images/environmental%20framework.png',
+    alt: 'Concept artwork for proposed environmental and community systems',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Game development concept',
+    area: 'Creative economy',
+    image: '/documents/sample%20images/gameon.jpeg',
+    alt: 'Illustrative gaming and creative-economy artwork',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Gaming framework',
+    area: 'Creative economy',
+    image: '/documents/sample%20images/gaming.png',
+    alt: 'Concept artwork for proposed African gaming initiatives',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Animation & gaming hub',
+    area: 'Creative economy',
+    image: '/documents/sample%20images/gaminghub.png',
+    alt: 'Concept illustration of a proposed animation and gaming hub',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Africa Health Fund',
+    area: 'Health',
+    image: '/documents/sample%20images/jowih%20africa%20health%20fund.png',
+    alt: 'Concept artwork for the proposed Africa Health Fund',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Community Development Enterprises',
+    area: 'Community',
+    image: '/documents/sample%20images/jowihCDEs.png',
+    alt: 'Illustrative framework graphic for proposed Community Development Enterprises',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Capsule transit in Africa',
+    area: 'Transport',
+    image: '/documents/sample%20images/jowihcrtafrica.png',
+    alt: 'Concept rendering of a proposed Jowih capsule rapid transit system in Africa',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Capsule rapid transit program',
+    area: 'Transport',
+    image: '/documents/sample%20images/jowihcrtprogram.png',
+    alt: 'Concept graphic for the proposed Capsule Rapid Transit program',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Zairo creative concept',
+    area: 'Creative economy',
+    image: '/documents/sample%20images/jowihcrtzairo.png',
+    alt: 'Illustrative creative artwork associated with the proposed Zairo story concept',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Jowih identity mark',
+    area: 'Identity',
+    image: '/documents/sample%20images/jowihlogo.png',
+    alt: 'Jowih identity mark supplied with the source materials',
+    disclosure: 'Brand asset',
+  },
+  {
+    title: 'Robovan mobility concept',
+    area: 'Transport',
+    image: '/documents/sample%20images/jowihrobovan.png',
+    alt: 'Concept rendering of a proposed Jowih electric robovan',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'Powered by Jowih identity',
+    area: 'Identity',
+    image: '/documents/sample%20images/powered%20by%20jowih.png',
+    alt: 'Powered by Jowih identity graphic supplied with the source materials',
+    disclosure: 'Brand asset',
+  },
+  {
+    title: 'Transport corridor concept',
+    area: 'Transport',
+    image: '/documents/sample%20images/transportcoridor.png',
+    alt: 'Concept rendering of a proposed transport corridor',
+    disclosure: 'AI-assisted concept image',
+  },
+  {
+    title: 'African Sovereign Space Capability Blueprint',
+    area: 'Space capability',
+    image: '/documents/sample%20images/picture5.png',
+    alt: 'AI-assisted GAG source illustration describing a proposed African Sovereign Space Capability Blueprint',
+    disclosure: 'AI-assisted source-document concept board',
+  },
+  {
+    title: 'Jowih flag',
+    area: 'Foundation identity',
+    image: '/documents/sample%20images/jowih%20flag.png',
+    alt: 'Jowih flag supplied with the source materials',
+    disclosure: 'Brand asset',
+  },
+];
+
+const legalFirms = [
+  ['Mauritius', 'One firm', 'Foundation, VCC and licensing pathway'],
+  ['Singapore', 'One firm', 'IP vault and technology holding structure'],
+  ['Mainland Africa', 'Three firms', 'ADFA coordination and host-jurisdiction compliance'],
+];
+
+const structuralUses = [
+  'Jowih Foundation and constitutional registration',
+  'Purpose Trust, Founder Family Trust and Combined Trusts Board',
+  'Jowih Holdings Limited and Jowih Group setup',
+  'Proposed Master Ecosystem Fund / Mauritius VCC legal work',
+  'Core operating subsidiaries and Jowih Protective Services',
+  'New Dawn City and related project-entity structures',
+  'Legal, regulatory and registration fees across the relevant jurisdictions',
+  'Initial professional, compliance and structural setup costs',
+];
+
+export function InstitutionalHome() {
+  return (
+    <div className="institutional-home">
+      <section className="institutional-hero" aria-labelledby="institutional-title">
+        <Image
+          src={visualProjects[1].image}
+          alt="AI-assisted concept illustration of an African air travel and airport logistics hub"
+          fill
+          priority
+          sizes="100vw"
+          className="institutional-hero__image"
+        />
+        <div className="institutional-hero__shade" />
+        <div className="institutional-container institutional-hero__content">
+          <div className="institutional-eyebrow institutional-eyebrow--light">
+            <span className="institutional-status-dot" />
+            A continental development framework
+          </div>
+          <p className="institutional-hero__overline">JOWIH FOUNDATION · GREAT AFRICAN GRID · ASTA OS</p>
+          <h1 id="institutional-title">A connected foundation for Africa&apos;s next era of development.</h1>
+          <p className="institutional-hero__intro">
+            Jowih is designed to connect infrastructure, services, capital and technology through a mission-led,
+            sovereignty-respecting framework. It is a plan for cooperation and delivery, not a government or a single project.
+          </p>
+          <div className="institutional-hero__actions">
+            <Link className="institutional-button institutional-button--gold" href="/donate">
+              Pre-launch donations <ArrowUpRight aria-hidden="true" size={17} />
+            </Link>
+            <Link className="institutional-button institutional-button--outline" href="/documents">
+              Read source papers <FileText aria-hidden="true" size={17} />
+            </Link>
+            <Link className="institutional-button institutional-button--outline" href="/partner">
+              Partner / sponsor the launch <ArrowUpRight aria-hidden="true" size={17} />
+            </Link>
+          </div>
+          <p className="institutional-hero__note">Donations, not investments. No financial return or ownership is offered.</p>
+        </div>
+        <a className="institutional-hero__scroll" href="#prelaunch" aria-label="Scroll to pre-launch purpose">
+          <ArrowDown aria-hidden="true" size={16} />
+          <span>Explore the framework</span>
+        </a>
+        <p className="institutional-hero__image-note">Conceptual illustration · AI-assisted · Proposed infrastructure, not an existing asset</p>
+      </section>
+
+      <section className="institutional-principles" aria-label="Institutional principles">
+        <div className="institutional-container institutional-principles__grid">
+          <span><ShieldCheck aria-hidden="true" /> Sovereignty remains with participating states</span>
+          <span><Network aria-hidden="true" /> Integrate and enable existing systems</span>
+          <span><Landmark aria-hidden="true" /> Mission separated from commercial execution</span>
+          <span><Check aria-hidden="true" /> Plans and status stated transparently</span>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--paper" id="prelaunch">
+        <div className="institutional-container">
+          <div className="institutional-section-heading">
+            <p className="institutional-eyebrow">01 / THE PRE-LAUNCH</p>
+            <h2>Build the institution before inviting the public into it.</h2>
+            <p>
+              The pre-launch is a donation phase, not an investment offer. Its stated purpose is to present the architecture,
+              select legal counsel and fund the registration and setup work needed to establish the planned structures.
+            </p>
+          </div>
+
+          <div className="institutional-donation-banner">
+            <div className="institutional-donation-banner__icon"><CircleDollarSign aria-hidden="true" size={26} /></div>
+            <div>
+              <h3>Donations support structural setup. They do not buy a stake.</h3>
+              <p>
+                No return, interest, equity, voting rights or ownership is promised. The requested model is for contributions to
+                be held by one independent, publicly supported law trust, with public reporting and accountable administration,
+                until structures are registered. The arrangement remains subject to legal advice and execution.
+              </p>
+            </div>
+            <Link href="/donate" aria-label="Read about pre-launch donations"><ArrowRight aria-hidden="true" /></Link>
+          </div>
+
+          <div className="institutional-timeline">
+            {prelaunchSteps.map(([time, title, text], index) => (
+              <article className="institutional-timeline__step" key={time}>
+                <span className="institutional-timeline__number">0{index + 1}</span>
+                <p className="institutional-timeline__time">{time}</p>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="institutional-legal-grid">
+            <div className="institutional-legal-grid__intro">
+              <p className="institutional-eyebrow">PROPOSED LEGAL COORDINATION</p>
+              <h3>Five firms. Three jurisdictions. One coordinated setup.</h3>
+              <p>These are the intended appointments, not firms already selected or engaged.</p>
+            </div>
+            {legalFirms.map(([region, count, role]) => (
+              <div className="institutional-legal-grid__item" key={region}>
+                <Landmark aria-hidden="true" size={19} />
+                <span>{region}</span>
+                <strong>{count}</strong>
+                <p>{role}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="institutional-legal-note">
+            The five-firm structure and law-trust donation holding arrangement are proposed pre-launch plans. They are not
+            evidence of incorporation, appointment, licensing or an active trust account. Donation instructions will only be
+            published after the receiving structure and account are independently verified.
+          </p>
+
+          <div className="institutional-uses">
+            <div className="institutional-uses__heading">
+              <p className="institutional-eyebrow">INTENDED USE OF PRE-LAUNCH DONATIONS</p>
+              <h3>Register the structures before inviting investment.</h3>
+              <p>These are intended setup categories from the pre-launch plan, not proof of completed registration or an authorization to collect funds today.</p>
+            </div>
+            <ul>
+              {structuralUses.map((use, index) => (
+                <li key={use}><span>{String(index + 1).padStart(2, '0')}</span>{use}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--ink">
+        <div className="institutional-container institutional-architecture">
+          <div className="institutional-section-heading institutional-section-heading--light">
+            <p className="institutional-eyebrow institutional-eyebrow--gold">02 / INSTITUTIONAL ARCHITECTURE</p>
+            <h2>Distinct roles. A shared mission.</h2>
+            <p>
+              The constitutional draft separates mission stewardship, trust protection, company ownership, operations,
+              infrastructure, digital rails, state agreements, participation and funding.
+            </p>
+          </div>
+          <div className="institutional-layer-list">
+            {layers.map(([title, text], index) => (
+              <article className="institutional-layer" key={title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <ArrowUpRight aria-hidden="true" size={16} />
+              </article>
+            ))}
+          </div>
+          <div className="institutional-caveat institutional-caveat--dark">
+            <ShieldCheck aria-hidden="true" />
+            <p>Constitution, trusts, holding company, fund and leadership structures shown here are proposed and subject to legal establishment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--paper">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow">03 / DEVELOPMENT MANDATE</p>
+              <h2>Four pillars, planned to advance together.</h2>
+            </div>
+            <p>The Foundation draft organizes its development objectives around essential services, human capability, innovation and future readiness.</p>
+          </div>
+          <div className="institutional-pillar-grid">
+            {pillars.map(({ number, title, text, icon: Icon }) => (
+              <article className="institutional-pillar" key={number}>
+                <div className="institutional-pillar__top"><span>{number}</span><Icon aria-hidden="true" size={23} /></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--sage">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow">04 / THE GREAT AFRICAN GRID</p>
+              <h2>Seven corridors. One coordinating framework.</h2>
+            </div>
+            <p>
+              The GAG is a proposed infrastructure and economic coordination framework, not a supranational authority. Its
+              corridors are intended to operate in parallel and complement national systems and existing operators.
+            </p>
+          </div>
+          <div className="institutional-corridor-layout">
+            <div className="institutional-corridor-list">
+              {corridors.map((corridor) => (
+                <article className="institutional-corridor" key={corridor.number}>
+                  <span>{corridor.number}</span>
+                  <div><h3>{corridor.name}</h3><p>{corridor.detail}</p></div>
+                  <ArrowUpRight aria-hidden="true" size={17} />
+                </article>
+              ))}
+            </div>
+            <figure className="institutional-corridor-figure">
+              <Image
+                src="/documents/sample%20images/The%20Great%20African%20Grid.png"
+                alt="AI-assisted concept illustration showing proposed Great African Grid projects and corridors"
+                width={1200}
+                height={800}
+                sizes="(max-width: 800px) 100vw, 45vw"
+              />
+              <figcaption><span>Illustrative concept</span> AI-assisted visual; projects and facilities shown are proposed, not represented as built or operating.</figcaption>
+            </figure>
+          </div>
+          <div className="institutional-adfa-strip">
+            <div><Waypoints aria-hidden="true" /><h3>ADFA: a voluntary framework with participating states</h3></div>
+            <p>
+              The draft proposes bilateral agreements with states that choose to participate. Project delivery may be state-funded,
+              foundation-funded or jointly funded, with ownership and responsibilities defined in each agreement and under local law.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--paper">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow">05 / PEOPLE & LOCAL DELIVERY</p>
+              <h2>Community participation is part of the operating model.</h2>
+            </div>
+            <p>Country and community priorities are intended to shape project selection; implementation and funds remain subject to review, verification and applicable law.</p>
+          </div>
+          <div className="institutional-cde-grid">
+            {[
+              ['01', 'Education & scholarship', 'Local learning, training and access to opportunity.'],
+              ['02', 'Agriculture & food security', 'Productivity, food systems, storage and market access.'],
+              ['03', 'Health & wellness', 'Community health access and locally relevant services.'],
+              ['04', 'Infrastructure & energy', 'Essential local infrastructure and resilient energy.'],
+              ['05', 'Digital & innovation', 'Connectivity, digital skills and community innovation.'],
+            ].map(([number, title, text]) => (
+              <article className="institutional-cde" key={number}>
+                <span>{number}</span><h3>{title}</h3><p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="institutional-accountability">
+            <div><ShieldCheck aria-hidden="true" /><h3>Controls are part of the design.</h3></div>
+            <ul>
+              <li>Proposed direct, milestone-based disbursements to verified vendors and beneficiaries.</li>
+              <li>Community consultation, local adaptation and safeguarding obligations.</li>
+              <li>Independent audit and public reporting structures in the draft constitution.</li>
+              <li>Data minimization, consent, security and jurisdictional compliance for ASTA services.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--sage">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div><p className="institutional-eyebrow">06 / PROPOSED IMPLEMENTATION PORTFOLIO</p><h2>Programs connect the corridors to daily life.</h2></div>
+            <p>The source papers describe these as frameworks and long-term plans. Scope, sequencing and feasibility depend on funding, partners, jurisdiction and approval.</p>
+          </div>
+          <div className="institutional-program-grid">
+            {[
+              ['Mobility & logistics', 'Capsule Rapid Transit, urban and intercity corridors, air travel integration, airport zones and last-mile logistics.'],
+              ['Energy & resilience', 'Renewable generation, storage, micro-grids, connectivity to industrial and community services.'],
+              ['Education & workforce', 'STEM labs, schools in underserved areas, teaching support, training and exchange pathways.'],
+              ['Health access', 'Mobile clinics, proposed health-financing support, county facilities and referral pathways.'],
+              ['Housing & urbanization', 'Community consultation, modular housing concepts, local infrastructure and proposed New Dawn City planning.'],
+              ['Research & industry', 'Six proposed R&D areas: health; water and agriculture; energy; AI, technology and robotics; infrastructure; and mining.'],
+              ['Creative economy', 'Animation, gaming, African intellectual property, training and distribution opportunities.'],
+              ['Digital inclusion', 'ASTA interoperability, partner connectivity and essential digital services, subject to provider and regulatory readiness.'],
+              ['Space capability', 'Long-term African participation in Earth observation, communications, navigation and related industry.'],
+            ].map(([title, text], index) => (
+              <article className="institutional-program" key={title}>
+                <span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--ink">
+        <div className="institutional-container institutional-digital">
+          <div className="institutional-digital__copy">
+            <p className="institutional-eyebrow institutional-eyebrow--gold">07 / DIGITAL INFRASTRUCTURE</p>
+            <h2>ASTA OS is the infrastructure beneath the applications.</h2>
+            <p>
+              ASTA is designed as an interoperability layer for identity, trust, communication, commerce, payments, mobility,
+              logistics, data and developer services. The super app is one proposed interface, not the whole system.
+            </p>
+            <Link href="/ecosystem" className="institutional-text-link">Explore the digital architecture <ArrowRight aria-hidden="true" size={17} /></Link>
+          </div>
+          <div className="institutional-digital__diagram" aria-label="ASTA connects independent institutions and services through shared interfaces">
+            <div className="institutional-digital__node institutional-digital__node--center"><Network aria-hidden="true" /><span>ASTA OS</span><small>Proposed interoperability layer</small></div>
+            <span className="institutional-digital__satellite institutional-digital__satellite--one">Governments</span>
+            <span className="institutional-digital__satellite institutional-digital__satellite--two">Businesses</span>
+            <span className="institutional-digital__satellite institutional-digital__satellite--three">Developers</span>
+            <span className="institutional-digital__satellite institutional-digital__satellite--four">Service partners</span>
+            <span className="institutional-digital__satellite institutional-digital__satellite--five">People</span>
+          </div>
+        </div>
+        <div className="institutional-container institutional-finance-note">
+          <CircleDollarSign aria-hidden="true" />
+          <p><strong>Jowih Credits are not being offered here.</strong> The documents describe a proposed non-speculative bridge model requiring licensed partners and regulatory approvals. No wallet, conversion service or credit issuance is represented as currently available.</p>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--gallery">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div><p className="institutional-eyebrow">08 / PROJECT VISUALS</p><h2>Concepts under development.</h2></div>
+            <p>These visuals are supplied as illustrative material for the proposed frameworks. They are not evidence of completed projects or signed partnerships.</p>
+          </div>
+          <div className="institutional-gallery">
+            {visualProjects.map((project) => (
+              <figure className="institutional-gallery__item" key={project.title}>
+                <div className="institutional-gallery__image"><Image src={project.image} alt={project.alt} width={1200} height={800} sizes="(max-width: 700px) 100vw, 33vw" /></div>
+                <figcaption><span>{project.area}</span><strong>{project.title}</strong><small>{project.disclosure}</small></figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="institutional-image-disclosure"><Sparkles aria-hidden="true" size={15} /> Image disclosure: The supplied project renderings are AI-assisted conceptual illustrations. They depict proposals, not built or operational assets.</p>
+        </div>
+      </section>
+
+      <section className="institutional-founder">
+        <div className="institutional-container institutional-founder__inner">
+          <div><p className="institutional-eyebrow institutional-eyebrow--gold">A NOTE ON ORIGIN</p><h2>One founder&apos;s story. A larger institutional ambition.</h2></div>
+          <div>
+            <p>
+              Jowih began with Reuben Oduk&apos;s experience as a student, builder and researcher in Kenya. His story informs the
+              initiative&apos;s concern with access and opportunity; the work is intended to grow beyond any one biography through
+              governance, partnerships and community participation.
+            </p>
+            <Link href="/about" className="institutional-text-link">About the Foundation <ArrowRight aria-hidden="true" size={17} /></Link>
+          </div>
+        </div>
+      </section>
+
+      <InstitutionalNewsletter />
+
+      <section className="institutional-section institutional-section--cta">
+        <div className="institutional-container institutional-cta-row">
+          <div><p className="institutional-eyebrow">READ THE SOURCE MATERIAL</p><h2>Review the proposals in their original form.</h2></div>
+          <div className="institutional-cta-row__actions">
+            <Link className="institutional-button institutional-button--dark" href="/documents">Institutional archive <ArrowUpRight aria-hidden="true" size={17} /></Link>
+            <Link className="institutional-button institutional-button--light" href="/waitlist">Receive updates <ArrowRight aria-hidden="true" size={17} /></Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

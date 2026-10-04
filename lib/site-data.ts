@@ -1,0 +1,536 @@
+export interface NavItem {
+  label: string;
+  href: string;
+  isCta?: boolean;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+  detail?: string;
+}
+
+export interface Speaker {
+  name: string;
+  role: string;
+  status: string;
+  image?: string;
+  initials?: string;
+  tag?: string;
+}
+
+export interface AgendaItem {
+  time: string;
+  title: string;
+  detail: string;
+}
+
+export interface AgendaTrack {
+  name: string;
+  items: AgendaItem[];
+}
+
+export interface DocumentItem {
+  title: string;
+  file: string;
+  description: string;
+  highlights: string[];
+  category?: string;
+  pages: number;
+  status: string;
+}
+
+export interface PartnerItem {
+  name: string;
+  category: string;
+  src: string;
+  href: string;
+  role: string;
+  quote: string;
+}
+
+export const siteData = {
+  config: {
+    eventDate: '2026-10-29T20:00:00+03:00',
+    fallbackEmail: 'odukreubence56@gmail.com',
+    location: 'Kisii, Kenya',
+    venue: 'Kisii University Auditorium & Virtual Live Room',
+    time: '8:00 PM – 1:00 AM EAT',
+    hashtag: '#JOWIHKENYA',
+  },
+  nav: [
+    { label: 'About', href: '/about' },
+    { label: 'Great African Grid', href: '/gag' },
+    { label: 'ASTA OS', href: '/ecosystem' },
+    { label: 'Source papers', href: '/documents' },
+    { label: 'Updates', href: '/waitlist' },
+  ],
+  hero: {
+    eyebrow: 'Kisii, Kenya  ·  29 October 2026  ·  8:00 PM – 1:00 AM',
+    title: 'Jowih institutional pre-launch',
+    statementLine1: 'WE ARE BUILDING',
+    statementLine2: "AFRICA'S NEXT CHAPTER.",
+    copy: 'The launch room for the Jowih Foundation, the Great African Grid, ASTA OS, and a continental operating framework built to partner, integrate, empower, complement, accelerate, and enable.',
+    actions: [
+      { label: 'Join the Waitlist', href: '/waitlist', style: 'primary', icon: 'arrow' },
+      { label: 'Book a ticket', href: '/ticket', style: 'light', icon: 'ticket' },
+      { label: 'Become a partner', href: '/partner', style: 'outlined', icon: 'arrow' },
+      { label: 'Become investor', href: '/investor', style: 'ghost', icon: 'arrow' },
+    ],
+  },
+  stats: [
+    { value: '7', label: 'GAG Corridors', detail: 'Transport, Industry, Energy, Digital, Payments, Services, Space' },
+    { value: '90%', label: 'Mission-Aligned Flow', detail: 'Permanent asset-lock reinvestment into African development' },
+    { value: '54', label: 'African States', detail: 'Continental ADFA accelerated development framework' },
+    { value: '2045', label: 'First Horizon', detail: 'The milestone of a 20-year pan-African transformation' },
+  ],
+  manifesto: {
+    eyebrow: '01 / THE CONTINENTAL IMPERATIVE',
+    quoteLine1: "AFRICA DOESN'T NEED ANOTHER CONVERSATION.",
+    quoteLine2: 'IT NEEDS INFRASTRUCTURE.',
+    body: 'Africa is not poor. Africa is not lacking talent, youth, resources, or ambition. Africa is structurally disconnected. Jowih is designed so sovereign nations can accelerate development, trade freely, and integrate without surrendering control over their own destiny.',
+  },
+  about: {
+    kicker: 'Institution',
+    title: 'A mission-locked foundation for continental development.',
+    intro:
+      'The Jowih Foundation is a proposed mission-led development institution designed to support African progress through the Great African Grid. It is not a political union and is not intended to replace any national government, central bank or legal system.',
+    founder: {
+      name: 'Reuben Oduk',
+      role: 'Founder and Steward President',
+      location: 'Kisii University · BSc Computer Science',
+      portrait: '/assets/reuben-oduk.jpg',
+      lead: 'My story is one of 1.6 billion singular stories in Africa. It already served its purpose in the past. We have a future to build.',
+      paragraphs: [
+        'Reuben Oduk is the Founder and Steward President of Jowih. He designed the Foundation, the Great African Grid, and ASTA OS over two years as a Computer Science student at Kisii University, with the ecosystem pre-launch planned for October 2026 in Kisii.',
+        'The Steward President is the principal constitutional steward of the Jowih mission, exercising the strategic, protective, and reserved powers established by the Foundation constitution. On launch night the room is not asked to dwell on one biography. It is asked to share a common belief: a better Africa.',
+        'The Founder’s Council is the founder-era advisory structure. It is not a separate operating authority. Special Advisors may serve in development, partnerships, finance, technology, legal, diplomatic, and economic portfolios at the Steward President’s invitation.',
+      ],
+    },
+    foundation: {
+      title: 'The Foundation Engine',
+      paragraphs: [
+        'The Foundation exists to accelerate national and continental progress where technology, sustained capital, and long-term collaboration can amplify impact. It operates in full compliance with sovereign laws, in cooperative partnership with governments, and in alignment with national priorities where invited.',
+        'The draft describes a proposed commercial reinvestment model in which a defined share of distributable value from Jowih Holdings would support the Mission Fund. The organization and related structures must first be established, and the proposed percentages remain subject to governing documents, law and implementation.',
+        'Four strategic pillars guide the work: Empower Communities and Basic Needs; Digital Opportunity and Youth Advancement; African Research and Innovation Leadership; and The Future Civilization — the long-horizon African capability agenda.',
+        'Vision Horizon 2045 is not the end. It is the first milestone of a 20-year pan-African transformation strategy.',
+      ],
+      pillars: [
+        {
+          id: '01',
+          title: 'Empower Communities & Basic Needs',
+          description: 'Sovereign food security, clean industrial water, resilient rural micro-grids, and decentralized human healthcare access.',
+        },
+        {
+          id: '02',
+          title: 'Digital Opportunity & Youth Advancement',
+          description: 'ASTA OS open development access, software apprenticeships, comrade hubs, and continental employment rails.',
+        },
+        {
+          id: '03',
+          title: 'African Research & Innovation Leadership',
+          description: 'Direct university research endowments, technology transfer corridors, open patents, and domestic silicon/hardware labs.',
+        },
+        {
+          id: '04',
+          title: 'The Future Civilization Agenda',
+          description: 'High-speed continental mobility, clean orbital infrastructure, synthetic biology safeguards, and sovereign African AI.',
+        },
+      ],
+    },
+    structure: {
+      title: 'Nine-Layer Institutional Structure',
+      subtitle: 'Engineered for multi-generational mission preservation and sovereign non-interference.',
+      layers: [
+        { title: 'Jowih Foundation', body: 'Mission, stewardship, country development allocations, and the permanent non-profit control plane. Company limited by guarantee with a statutory asset lock.' },
+        { title: 'Jowih Purpose Trust', body: 'Protects the mission and the Foundation’s 90% economic interest in Jowih Holdings from commercial drift.' },
+        { title: 'Founder Family Trust', body: 'Protects original mission intent through restricted golden-vote architecture and holds the founder’s 10% economic interest.' },
+        { title: 'Jowih Holdings Limited', body: 'Holds 100% equity of commercial operating subsidiaries. Voting: 60% Purpose Trust / 40% Family Trust. Economic allocation: 90% Foundation / 10% Family Trust.' },
+        { title: 'Jowih Group', body: 'Executes and operates commercial subsidiaries and the seven GAG corridors. The Foundation does not duplicate Group operations.' },
+        { title: 'Great African Grid (GAG)', body: 'Continental infrastructure and economic coordination framework across transport, industry, energy, digital, payments, services, and space.' },
+        { title: 'ASTA OS', body: 'Continental digital-physical rails: identity, trust, payments, commerce, logistics, data, AI, and service interoperability.' },
+        { title: 'ADFA Framework', body: 'Accelerated Development Framework Agreements with African states that invite Foundation projects into their jurisdictions.' },
+        { title: 'Funding Architecture', body: 'Grid Bond as one-time activation capital, the Jowih Ecosystem Fund for regulated participation, and Mission Fund reinvestment.' },
+      ],
+    },
+    leadership: {
+      title: 'Leadership and Oversight Architecture',
+      groups: [
+        {
+          name: 'Stewardship',
+          items: ['Founder and Steward President', 'Founder’s Council (founder era)', 'Special Advisors to the Steward President', 'Foundation Advisory Council (successor era)'],
+        },
+        {
+          name: 'Board of Governors',
+          items: ['Principal governing body', 'Audit Committee', 'Ethics and Oversight Committee', 'Nominations Committee', 'Remuneration Committee'],
+        },
+        {
+          name: 'Independent Oversight',
+          items: ['Independent Auditor General', 'Independent Oversight Committee', 'Rotating external audit firm', 'Specialist professional firms as required'],
+        },
+        {
+          name: 'Foundation Executive',
+          items: ['Foundation CEO', 'Chief Finance and Allocation Officer', 'Chief Integrity and Compliance Officer', 'Secretary-General', 'Lead Program Director', 'Country Coordination Lead'],
+        },
+        {
+          name: 'Regional Coordination',
+          items: ['North Africa Directorate', 'West Africa Directorate', 'East Africa Directorate', 'Central Africa Directorate', 'Southern Africa Directorate'],
+        },
+        {
+          name: 'Participation Architecture',
+          items: ['PAN-Ambassadors', 'Country Executive Directors', 'Continental Development Assembly', 'Diaspora Representatives', 'County Development Assemblies', 'Comrade Hub structures'],
+        },
+      ],
+    },
+  },
+  gag: {
+    kicker: 'Great African Grid',
+    title: 'An infrastructure and economic coordination framework, not a government.',
+    lead: 'The Great African Grid does not seek to disrupt, replace, compete, extract, or control. It seeks to partner, integrate, empower, complement, accelerate, and enable.',
+    what: [
+      'The GAG is designed so sovereign nations can accelerate development, trade more freely, and integrate without surrendering control over their own affairs. It is meant to work with the African Union and accelerate frameworks such as AfCFTA.',
+      'Africa is not poor. Africa is not lacking talent, resources, or ambition. Africa is structurally disconnected. The Grid is the backbone that reconnects infrastructure, industry, energy, digital systems, finance, education, healthcare, mobility, and human capital.',
+    ],
+    principles: [
+      { title: 'Consultation & Shared Benefit', body: 'Projects are developed with host governments, communities, and regional bodies. Mission first.' },
+      { title: 'Sovereignty Preserved', body: 'No supranational authority. No replacement of national governments, central banks, or legal systems.' },
+      { title: 'Africa First, Global Best', body: 'African solutions and African ownership through asset lock. Global partners where local capacity is still building — never dependence.' },
+      { title: 'Partner, Do Not Capture', body: 'Existing operators keep their brands, mandates, and markets. Jowih supplies coordination, capital, and shared rails.' },
+    ],
+    corridors: [
+      { id: '01', title: 'Transport', body: 'Moving people and goods: CRT capsule transit, airport SEZs, high-speed rail, logistics corridors, and advanced road architecture.', icon: 'Move' },
+      { id: '02', title: 'Industrial', body: 'Building Africa’s production capacity through manufacturing platforms, industrial parks, and partnered technology production.', icon: 'Factory' },
+      { id: '03', title: 'Energy', body: 'Powering the Grid with generation, transmission, storage, and energy access designed for industrial and civic scale.', icon: 'Zap' },
+      { id: '04', title: 'Digital', body: 'Connecting everyone and powering the digital economy through ASTA OS, connectivity, compute, and data infrastructure.', icon: 'Cpu' },
+      { id: '05', title: 'Payments', body: 'Moving value across borders through Jowih Credits as a bridge layer, with licensed partners executing conversion.', icon: 'CreditCard' },
+      { id: '06', title: 'Services', body: 'Health, education, and human empowerment programmes that sit on top of the physical and digital corridors.', icon: 'HeartHandshake' },
+      { id: '07', title: 'Space', body: 'Securing African participation in orbital infrastructure, earth observation, communications, and space industry capability.', icon: 'Rocket' },
+    ],
+    parf: {
+      kicker: 'AU Partnership Framework (PARF)',
+      title: 'Observatory and coordination, not subordination.',
+      paragraphs: [
+        'The AU Partnership Framework establishes a strategic relationship between the Jowih Foundation and the African Union. JOWIH and the AU operate as partners within their respective mandates. Neither exercises control over the other.',
+        'The African Union provides visibility, recommended standards, and continental coordination. JOWIH provides execution, governance, and delivery through qualified partners. Execution remains decentralised.',
+        'A Joint Coordination Committee operationalises the relationship. Member states participate as sovereign partners. The Framework is an observatory layer: it watches, aligns, and recommends. It does not become a single point of political failure.',
+      ],
+    },
+  },
+  ecosystem: {
+    kicker: 'Architecture',
+    title: 'One ecosystem. Several coordinated layers.',
+    lead: 'Using Jowih does not make you an owner. Integrating with Jowih does not make you an owner. Investing in eligible commercial assets does not give you control of the Foundation.',
+    asta: {
+      title: 'ASTA OS',
+      subtitle: 'Accelerated Systemic Transformation Architecture',
+      body: 'ASTA is the continental operating system. It is not fundamentally a consumer app. It is the interoperability layer on which applications, institutions, and physical systems connect. Build once. Integrate once. Reach across the ecosystem.',
+      pillars: ['Identity & KYC Rail', 'Cross-Border Trust Layer', 'Micro-Payment Settlement', 'Decentralised Logistics Protocol', 'Open Sovereign AI Orchestration'],
+    },
+    layers: [
+      { id: '01', title: 'Physical infrastructure', body: 'Proposed connections to transport, energy, logistics, facilities, devices and other authorized real-world systems.' },
+      { id: '02', title: 'Connectivity, compute & edge', body: 'A distributed hosting and connectivity design intended to support low-latency service, redundancy and jurisdictional requirements.' },
+      { id: '03', title: 'Identity & accounts', body: 'A proposed identity and account layer for authentication, profiles, credentials, organizational identities and account linking.' },
+      { id: '04', title: 'Trust & credentials', body: 'Verification, permissions, signatures, fraud signals and dispute mechanisms, distinct from identity and authorization.' },
+      { id: '05', title: 'Continental digital rails', body: 'Interoperability interfaces for payments, commerce, communication, mobility, logistics and location.' },
+      { id: '06', title: 'Data & interoperability fabric', body: 'Authorized information exchange guided by consent, minimization, security, purpose limitation and applicable law.' },
+      { id: '07', title: 'Integration & developer layer', body: 'Proposed APIs, SDKs, webhooks, partner gateways, testing environments and technical documentation.' },
+      { id: '08', title: 'Applications & services', body: 'A super app and other first-party experiences alongside independently operated partner services.' },
+      { id: '09', title: 'Intelligence & agents', body: 'AI search, planning and orchestration concepts with explicit permissions and human confirmation controls.' },
+      { id: '10', title: 'Experience layer', body: 'Access through the super app, partner applications, websites, enterprise tools, government portals and machine interfaces.' },
+    ],
+    paths: [
+      {
+        name: 'Use',
+        kicker: 'Citizens & Builders',
+        badge: 'Utility',
+        description: 'Access Jowih and ASTA services as a user: communication, commerce, wallet interfaces, search, social, education, health, and community services.',
+        points: ['Zero ownership claim required', 'Instant platform utility & access', 'Consumer & student privacy guarantees', 'Local African currency conversion'],
+        cta: 'Request updates',
+        href: '/waitlist',
+      },
+      {
+        name: 'Integrate',
+        kicker: 'Partners & Institutions',
+        badge: 'Integration',
+        description: 'Connect existing services into ASTA OS or help deliver GAG projects through APIs, SDKs, framework agreements, and qualified delivery partnerships.',
+        points: ['Keep your sovereign brand & market', 'Commercial developer agreements', 'Partner-led local execution', 'Access continental interoperability'],
+        cta: 'Become a Partner',
+        href: '/partner',
+      },
+      {
+        name: 'Future participation',
+        kicker: 'For later consideration',
+        badge: 'Not available',
+        description: 'The investment papers describe a separate proposed fund architecture. It is not part of the pre-launch and is not currently an offer or subscription opportunity.',
+        points: ['No investment is being solicited here', 'No fund units or bonds are available', 'Any future offer requires legal and regulatory approvals', 'The pre-launch is donation-only'],
+        cta: 'Read the proposed architecture',
+        href: '/investor',
+      },
+    ],
+  },
+  partnersPage: {
+    kicker: 'Partnership framework',
+    title: 'Designed to work with partners, not instead of them.',
+    lead: 'The source papers describe a partner-led approach across public institutions, universities, operators, developers and communities. The materials do not establish that named organizations have signed or become active partners.',
+    importance: [
+      {
+        title: 'Delivery at Continental Speed',
+          body: 'The draft proposes a qualified delivery network for future projects. Any appointments would require transparent selection, due diligence, contracts, performance monitoring and applicable procurement compliance.',
+      },
+      {
+        title: 'Sovereignty & Local Capability',
+          body: 'The framework is intended to work with host governments and local communities. Project participation would depend on invitation, agreements, legal authority and local capacity.',
+      },
+      {
+        title: 'Universities as Talent & Review Engines',
+          body: 'The papers identify universities as potential research, review and talent-development collaborators. No academic partnership is represented as signed on this site.',
+      },
+      {
+        title: 'Rails, Not Capture',
+        body: 'Banks, PSPs, airlines, merchants, developers, and government services can access ASTA OS without becoming Jowih-owned services. The objective is connection, not absorption.',
+      },
+    ],
+  },
+  partners: [] as PartnerItem[],
+  speakers: [
+    {
+      name: 'Reuben Oduk',
+      role: 'Founder and Steward President, Jowih',
+      status: 'Founder Keynote & Vision Presentation',
+      image: '/assets/reuben-oduk.jpg',
+      tag: 'Keynote Speaker',
+    },
+    {
+      name: 'Kisii University Representative',
+      role: 'Dean, School of Information Science and Technology',
+      status: 'Academic Address & Research Alignment',
+      initials: 'KU',
+      tag: 'University Host',
+    },
+    {
+      name: 'Technical Review Panel',
+      role: 'Software Architecture, Cybersecurity, AI & Distributed Rails',
+      status: 'ASTA OS Protocol Verification',
+      initials: 'TR',
+      tag: 'Technology Panel',
+    },
+    {
+      name: 'Partner and Media Guests',
+      role: 'Ecosystem Builders, Creators, Investors & Institutions',
+      status: 'Invitations in Progress',
+      initials: 'PM',
+      tag: 'Ecosystem Voices',
+    },
+  ],
+  agenda: {
+    title: 'An evening launch from 8:00 PM to 1:00 AM.',
+    copy: 'Founder presentation first, investor briefing in the middle, partner room last, and a final Q&A after everything has been presented.',
+    tracks: [
+      {
+        name: 'Main Stage',
+        items: [
+          { time: '20:00', title: 'Arrival and auditorium check-in', detail: 'Guests, students, faculty, media, and invited partners arrive for the evening launch at Kisii University.' },
+          { time: '20:30', title: 'Opening and founder presentation', detail: 'Reuben Oduk presents Jowih Organization, the Great African Grid, ASTA OS, and the launch thesis.' },
+          { time: '21:25', title: 'What Jowih answers', detail: 'GAG answers physical and economic integration, ASTA OS answers digital interoperability, and Jowih Credits answer value movement.' },
+          { time: '21:50', title: 'Asta Super App MVP showcase', detail: 'A live look at the consumer doorway into the wider Jowih ecosystem.' },
+        ],
+      },
+      {
+        name: 'Investor Track',
+        items: [
+          { time: '22:20', title: 'Grid Bond and activation capital', detail: 'How initial development capital is separated from the Ecosystem Fund and mission fund.' },
+          { time: '22:45', title: 'Jowih 100 and regulated participation', detail: 'Use, integrate, invest, and the strict no-control constitutional principle.' },
+          { time: '23:10', title: 'Credits and partner execution', detail: 'Bridge-layer positioning, partner-only conversions, and liquidity treasury model.' },
+        ],
+      },
+      {
+        name: 'Partner Room',
+        items: [
+          { time: '23:35', title: 'University and research collaboration', detail: 'Talent pipeline, R&D centres, student opportunities, technical review, and future academic collaboration.' },
+          { time: '00:05', title: 'Media, creators, and ecosystem partners', detail: 'Clear public storylines for Jowih, GAG, ASTA OS, Credits, the Fund, and the Foundation.' },
+          { time: '00:30', title: 'Final Q&A and open floor', detail: 'University, media, investor, partner, technical, legal, and public questions come after the full presentation.' },
+          { time: '00:55', title: 'Closing and next steps', detail: 'Ticket holders, partners, and invited guests receive the next engagement and onboarding path.' },
+        ],
+      },
+    ],
+  },
+  documents: [
+    {
+      title: 'Jowih Foundation · Draft Constitution',
+      file: '/documents/JOWIH%20FOUNDATION.pdf',
+      description: 'A proposed governing instrument for the Foundation, its mission, governance safeguards and development mandate.',
+      highlights: [
+        'Four pillars: essential services, youth and digital opportunity, research and innovation, and long-horizon capability.',
+        'Proposed Foundation, Purpose Trust, Founder Family Trust, Holdings and operating-company roles.',
+        'Asset lock, donation policy, direct disbursement, community participation and independent audit provisions.',
+        'The document identifies itself as a draft; registration, enforceability and compliance require independent legal review.',
+      ],
+      category: 'Governance',
+      pages: 99,
+      status: 'Draft constitution',
+    },
+    {
+      title: 'Jowih Master Summary',
+      file: '/documents/JOWIH%20MASTER%20SUMMARY.pdf',
+      description: 'An organization-level overview connecting the proposed institutional, infrastructure, digital and funding architecture.',
+      highlights: [
+        'Nine-layer view spanning mission, trusts, Holdings, Group, GAG, ASTA, ADFA and funding.',
+        'Explains the distinction between donations, the proposed Grid Bond and the proposed Ecosystem Fund.',
+        'Summarizes the seven corridors, four mission pillars and community delivery model.',
+        'Contains future plans and financial examples; these should not be read as current operations or offers.',
+      ],
+      category: 'Architecture',
+      pages: 8,
+      status: 'Architecture overview',
+    },
+    {
+      title: 'Governance & Appointment Register',
+      file: '/documents/JOWIH%20GOVERNANCE.pdf',
+      description: 'A proposed governance and appointment architecture across stewardship, oversight, Foundation management, trusts and commercial execution.',
+      highlights: [
+        'Separates advisory, governing, executive, oversight and external professional roles.',
+        'Describes the proposed Board of Governors, committees, Independent Auditor General and external auditor.',
+        'Distinguishes Foundation administration from Holdings, Group and operating-company management.',
+        'Lists offices and appointment categories; it is not evidence those positions are filled.',
+      ],
+      category: 'Governance',
+      pages: 15,
+      status: 'Proposed register',
+    },
+    {
+      title: 'ASTA OS · System Architecture',
+      file: '/documents/ASTA%20OS.pdf',
+      description: 'A detailed design for a digital-physical interoperability layer that can connect independently operated services.',
+      highlights: [
+        'Ten proposed layers, from connectivity and identity to developer interfaces, applications and AI orchestration.',
+        'Shared identity, trust, payments, communication, commerce, mobility, logistics, data and service discovery rails.',
+        'Non-capture principle: partners may retain their brands, systems, customers and data.',
+        'Security, data sovereignty, API access, partner integration and phased implementation are described as requirements and plans.',
+      ],
+      category: 'Technology',
+      pages: 20,
+      status: 'Proposed technical architecture',
+    },
+    {
+      title: 'Jowih Credits · Operational Framework',
+      file: '/documents/JOWIH%20CREDITS.pdf',
+      description: 'A proposed partner-executed cross-border settlement bridge, distinct from domestic currency and speculative crypto-assets.',
+      highlights: [
+        'Three wallet roles and transaction modes, with auto-conversion described as the default and holding as optional.',
+        'Licensed partners are intended to handle conversions; the Foundation is not to provide fiat on-ramp or off-ramp services.',
+        'Reserve, compliance, data protection, API integration, audit and reporting requirements are outlined.',
+        'Licensing, reserves, partner agreements and payment services are proposed and are not represented as active.',
+      ],
+      category: 'Finance',
+      pages: 13,
+      status: 'Proposed operating model',
+    },
+    {
+      title: 'Ecosystem Investment Architecture',
+      file: '/documents/JOWIH%20ECOSYSTEM%20INVESTMENT%20ARCHITECTURE.pdf',
+      description: 'A proposed regulated investment and asset-vaulting blueprint, separate from the donation-led structural pre-launch.',
+      highlights: [
+        'Separates use, integration and investment as distinct participation paths.',
+        'Proposes a Mauritius Variable Capital Company, independent administration, valuation, custody, audit and licensing.',
+        'Outlines a Jowih 100 expanding toward 500, with a proposed 30% Core / 70% Partner commercial allocation.',
+        'Financial figures are expressly illustrative; there is no current investment offer, fund license or guaranteed return.',
+      ],
+      category: 'Investment',
+      pages: 29,
+      status: 'Proposed architecture · not an offer',
+    },
+    {
+      title: 'The GAG Initiative · Continental Framework',
+      file: '/documents/The%20GAG%20initiative%20.pdf',
+      description: 'A broad proposed development framework bringing together infrastructure, economic coordination, public services and community participation.',
+      highlights: [
+        'Seven corridors operate in parallel: transport, industry, energy, digital, payments, services and space capability.',
+        'Describes voluntary state-level ADFA agreements and state-funded, Foundation-funded or jointly funded project models.',
+        'Sets out CDEs, the Comrade Hub, country budgeting, health, education, housing, energy and infrastructure frameworks.',
+        'Includes long-range horizons, New Dawn City concepts, proposed acquisition plans and illustrative financial targets.',
+      ],
+      category: 'Continental development',
+      pages: 99,
+      status: 'Proposed framework',
+    },
+    {
+      title: 'The Mirror of Africa',
+      file: '/documents/THE%20MIRROR%20OF%20AFRICA.pdf',
+      description: 'A short narrative essay about collective change, persistence and the origin of the wider development ambition.',
+      highlights: [
+        'Uses a school-class turnaround as a story about shared effort and changed expectations.',
+        'Connects that experience to a broader refusal to treat present conditions as permanent.',
+        'Provides cultural context rather than institutional policy or a description of operating programs.',
+      ],
+      category: 'Essay',
+      pages: 2,
+      status: 'Narrative essay',
+    },
+    {
+      title: 'My Story',
+      file: '/documents/My%20story.pdf',
+      description: 'A founder-authored account of formative experiences, education, work and the development of the initial Jowih idea.',
+      highlights: [
+        'Describes the role of family, a grandmother, teachers and friends in continuing the founder’s education.',
+        'Connects student-built software and personal hardship to the evolution from a campus app idea toward continental infrastructure.',
+        'Includes personal experiences that are intentionally summarized here rather than made the focus of the institution’s website.',
+      ],
+      category: 'Founder account',
+      pages: 4,
+      status: 'Founder-authored narrative',
+    },
+  ],
+  forms: {
+    ticket: {
+      kicker: 'Public events',
+      title: 'Request event updates',
+      copy: 'Public event registration and ticketing are not open through this site. Submit an enquiry to receive information when a verified event and registration process are announced.',
+      interest: 'Event information request',
+    },
+    partner: {
+      kicker: 'Launch event · Partner & sponsor enquiries',
+      title: 'Partner with or sponsor the launch event',
+      copy: 'Tell us how your organization may support the Jowih launch event. Enquiries may cover sponsorship, in-kind contributions, venue or production support, academic participation, media collaboration, or technical services. This form records interest only: it does not accept payments or create a sponsorship agreement. Any arrangement requires due diligence, written terms and legal review.',
+      interest: 'Launch-event sponsorship',
+    },
+    investor: {
+      kicker: 'Capital & Allocation',
+      title: 'Future investment architecture',
+      copy: 'The source papers describe proposed future bond and regulated fund structures. No securities, bonds, units or investment opportunities are currently offered. The present pre-launch is donation-only.',
+      interest: 'Investor briefing',
+    },
+    donate: {
+      kicker: 'Pre-launch structural setup',
+      title: 'Make a donation',
+      copy: 'The pre-launch is for donations, not investment. No return, equity or ownership is offered. Online giving remains unavailable until the proposed receiving trust and payment provider are verified.',
+      interest: 'Donation',
+    },
+  },
+  contactInterests: [
+    'Launch-event sponsorship',
+    'Cash sponsorship enquiry',
+    'In-kind event support',
+    'Venue or production support',
+    'Academic participation',
+    'Media collaboration',
+    'Technical services',
+    'Media request',
+    'General enquiry',
+  ],
+  newsletter: {
+    title: 'Stay in the loop',
+    copy: 'Latest updates, documents, and launch notes. No spam — only material that is worth the inbox.',
+  },
+  footerLinks: [
+    { label: 'About', href: '/about' },
+    { label: 'Great African Grid', href: '/great-african-grid' },
+    { label: 'Ecosystem', href: '/ecosystem' },
+    { label: 'Partners', href: '/partners' },
+    { label: 'Documents', href: '/documents' },
+    { label: 'Waitlist', href: '/waitlist' },
+    { label: 'Book Ticket', href: '/ticket' },
+    { label: 'Become Partner', href: '/partner' },
+    { label: 'Investor Briefing', href: '/investor' },
+    { label: 'Donate', href: '/donate' },
+  ],
+};
