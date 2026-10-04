@@ -11,23 +11,24 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Header Banner */}
-      <div className="bg-black text-white pt-28 sm:pt-32 pb-16 sm:pb-24 border-b border-white/10">
+      <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 hover:text-white mb-6"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-6 hover:text-white transition-colors"
+            style={{ color: 'rgba(255, 254, 250, 0.7)' }}
           >
-            <ArrowLeft className="w-4 h-4 text-[#FF5000]" />
-            <span>Back to Ecosystem</span>
+            <ArrowLeft className="w-4 h-4" style={{ color: 'var(--brass)' }} />
+            <span>Back to Home</span>
           </Link>
 
-          <span className="text-xs font-mono font-bold text-[#FF5000] tracking-[0.2em] uppercase block mb-3">
+          <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase block mb-3" style={{ color: 'var(--brass)' }}>
             01 / INSTITUTION
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-[1.02] max-w-4xl">
+          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-[1.02] max-w-4xl" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
             {about.title}
           </h1>
-          <p className="text-base sm:text-xl text-neutral-300 max-w-3xl mt-6 leading-relaxed">
+          <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
             {about.intro}
           </p>
         </div>
@@ -46,7 +47,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="p-4 bg-neutral-100 border border-neutral-300 mt-4 space-y-1">
-              <span className="text-[10px] font-mono font-bold text-[#FF5000] uppercase tracking-wider block">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block" style={{ color: 'var(--green)' }}>
                 FOUNDER ERA
               </span>
               <p className="text-lg font-bold text-black">{about.founder.name}</p>
@@ -56,7 +57,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-8 space-y-6">
-            <div className="p-4 bg-neutral-900 text-white font-mono text-sm border-l-4 border-[#FF5000]">
+            <div className="p-4 bg-neutral-900 text-white font-mono text-sm border-l-4" style={{ borderColor: 'var(--green)' }}>
               &ldquo;{about.founder.lead}&rdquo;
             </div>
 
@@ -69,9 +70,9 @@ export default function AboutPage() {
         </section>
 
         {/* Foundation & 4 Strategic Pillars */}
-        <section className="space-y-10 border-b border-neutral-200 pb-16">
+        <section id="mission" className="space-y-10 border-b border-neutral-200 pb-16">
           <div>
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--green)' }}>
               THE REINVESTMENT ENGINE
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black mt-1 mb-4">
@@ -94,7 +95,7 @@ export default function AboutPage() {
                   key={pillar.id}
                   className="p-6 bg-neutral-50 border border-neutral-200 hover:border-black transition-colors"
                 >
-                  <span className="text-xs font-mono font-bold text-[#FF5000]">
+                  <span className="text-xs font-mono font-bold" style={{ color: 'var(--green)' }}>
                     PILLAR {pillar.id}
                   </span>
                   <h4 className="text-base font-bold text-black mt-2 mb-2">
@@ -110,9 +111,9 @@ export default function AboutPage() {
         </section>
 
         {/* 9-Layer Institutional Structure */}
-        <section className="space-y-8 border-b border-neutral-200 pb-16">
+        <section id="structure" className="space-y-8 border-b border-neutral-200 pb-16">
           <div>
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--green)' }}>
               GOVERNANCE ARCHITECTURE
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black mt-1 mb-2">
@@ -130,7 +131,7 @@ export default function AboutPage() {
                 className="p-6 bg-neutral-50 border border-neutral-200 flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest">
+                  <span className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--green)' }}>
                     LAYER 0{idx + 1}
                   </span>
                   <h3 className="text-lg font-bold text-black mt-1 mb-2">
@@ -146,9 +147,9 @@ export default function AboutPage() {
         </section>
 
         {/* Leadership & Oversight Groups */}
-        <section className="space-y-8">
+        <section id="leadership" className="space-y-8">
           <div>
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--green)' }}>
               OVERSIGHT
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black mt-1">
@@ -163,7 +164,7 @@ export default function AboutPage() {
                 className="p-6 bg-neutral-50 border border-neutral-200 space-y-4"
               >
                 <div className="flex items-center gap-2 border-b border-neutral-200 pb-3">
-                  <ShieldCheck className="w-4 h-4 text-[#FF5000]" />
+                  <ShieldCheck className="w-4 h-4" style={{ color: 'var(--green)' }} />
                   <h3 className="text-base font-bold uppercase tracking-tight text-black">
                     {group.name}
                   </h3>
@@ -174,13 +175,85 @@ export default function AboutPage() {
                       key={item}
                       className="text-xs text-neutral-700 flex items-start gap-2"
                     >
-                      <span className="text-[#FF5000] font-bold">—</span>
+                      <span style={{ color: 'var(--green)' }} className="font-bold">—</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Foundation Constitutional Locks */}
+        <section id="foundation-locks" className="space-y-8 border-b border-neutral-200 pb-16">
+          <div>
+            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+              CONSTITUTIONAL SAFEGUARDS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black mt-1">
+              Mission Lock & Asset Lock
+            </h2>
+            <p className="text-sm text-neutral-600 max-w-3xl mt-2">
+              The Foundation draft includes permanent constitutional locks designed to preserve mission integrity and ensure resources remain dedicated to African development.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-8 bg-neutral-50 border border-neutral-200">
+              <div className="flex items-center gap-3 mb-4">
+                <ShieldCheck className="w-6 h-6 text-[#FF5000]" />
+                <h3 className="text-xl font-bold text-black">Mission Lock</h3>
+              </div>
+              <p className="text-sm text-neutral-700 leading-relaxed mb-4">
+                The Foundation's constitutional purpose is permanently locked to accelerate development through the Great African Grid framework. This mission cannot be altered or diverted to unrelated purposes.
+              </p>
+              <ul className="space-y-2 text-xs text-neutral-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>Constitutional amendment requires supermajority approval</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>Mission statement cannot be changed without legal process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>Leadership appointments must uphold constitutional mission</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-8 bg-neutral-50 border border-neutral-200">
+              <div className="flex items-center gap-3 mb-4">
+                <Check className="w-6 h-6 text-[#FF5000]" />
+                <h3 className="text-xl font-bold text-black">Asset Lock</h3>
+              </div>
+              <p className="text-sm text-neutral-700 leading-relaxed mb-4">
+                A permanent asset lock ensures that distributable value from commercial operations cannot be extracted as private profit. Instead, it must be reinvested into the Foundation's development mission.
+              </p>
+              <ul className="space-y-2 text-xs text-neutral-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>90% of economic interest in Holdings locked to Foundation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>Dividend distributions flow to Mission Fund for reinvestment</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#FF5000] font-bold">—</span>
+                  <span>Asset lock cannot be removed or reduced by future leadership</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-6 bg-black text-white mt-8">
+            <p className="text-xs text-neutral-400 font-mono mb-2">CONSTITUTIONAL FRAMEWORK</p>
+            <p className="text-sm leading-relaxed">
+              These locks are proposed constitutional mechanisms in the Foundation draft. They would be established through legal registration and would be enforceable under applicable law. The specific legal implementation requires independent legal counsel and jurisdictional compliance.
+            </p>
           </div>
         </section>
 

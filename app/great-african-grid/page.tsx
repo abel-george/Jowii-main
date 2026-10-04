@@ -9,48 +9,48 @@ import {
   CreditCard,
   HeartHandshake,
   Rocket,
-  ShieldCheck,
-  Globe2,
 } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { Button } from '@/components/ui/Button';
+import { GagFrameworkIndex } from '@/components/pages/GagFrameworkIndex';
 
 export default function GreatAfricanGridPage() {
   const { gag } = siteData;
 
   const iconMap: Record<string, React.ReactNode> = {
-    Transport: <Move className="w-6 h-6 text-[#FF5000]" />,
-    Industrial: <Factory className="w-6 h-6 text-[#FF5000]" />,
-    Energy: <Zap className="w-6 h-6 text-[#FF5000]" />,
-    Digital: <Cpu className="w-6 h-6 text-[#FF5000]" />,
-    Payments: <CreditCard className="w-6 h-6 text-[#FF5000]" />,
-    Services: <HeartHandshake className="w-6 h-6 text-[#FF5000]" />,
-    Space: <Rocket className="w-6 h-6 text-[#FF5000]" />,
+    Transport: <Move className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Industrial: <Factory className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Energy: <Zap className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Digital: <Cpu className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Payments: <CreditCard className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Services: <HeartHandshake className="w-6 h-6" style={{ color: 'var(--green)' }} />,
+    Space: <Rocket className="w-6 h-6" style={{ color: 'var(--green)' }} />,
   };
 
   return (
-    <div className="bg-black text-white min-h-screen pt-28 sm:pt-32 pb-20">
+    <div className="min-h-screen pt-28 sm:pt-32 pb-20" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
       {/* Top Banner */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-b" style={{ borderColor: 'var(--line)' }}>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 hover:text-white mb-6"
+          className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-6"
+          style={{ color: 'var(--muted)' }}
         >
-          <ArrowLeft className="w-4 h-4 text-[#FF5000]" />
+          <ArrowLeft className="w-4 h-4" style={{ color: 'var(--green)' }} />
           <span>Back to Home</span>
         </Link>
 
-        <span className="text-xs font-mono font-bold text-[#FF5000] tracking-[0.2em] uppercase block mb-3">
+        <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase block mb-3" style={{ color: 'var(--green)' }}>
           02 / CONTINENTAL BACKBONE
         </span>
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.98] max-w-5xl">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.98] max-w-5xl" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
           {gag.title}
         </h1>
-        <p className="text-lg sm:text-2xl text-neutral-300 max-w-3xl mt-6 leading-relaxed font-sans">
+        <p className="text-lg sm:text-2xl max-w-3xl mt-6 leading-relaxed font-sans" style={{ color: 'var(--ink-soft)' }}>
           {gag.lead}
         </p>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-neutral-400 border-t border-white/10 pt-8">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm border-t pt-8" style={{ color: 'var(--muted)', borderColor: 'var(--line)' }}>
           {gag.what.map((p, idx) => (
             <p key={idx} className="leading-relaxed">
               {p}
@@ -60,13 +60,15 @@ export default function GreatAfricanGridPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+        <GagFrameworkIndex />
+
         {/* 4 Constitutional Principles */}
         <section className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
+          <div className="flex items-center justify-between border-b pb-4" style={{ borderColor: 'var(--line)' }}>
+            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               Guiding Principles
             </h2>
-            <span className="text-xs font-mono text-[#FF5000]">
+            <span className="text-xs font-mono" style={{ color: 'var(--green)' }}>
               FOUR CONSTITUTIONAL PILLARS
             </span>
           </div>
@@ -75,16 +77,17 @@ export default function GreatAfricanGridPage() {
             {gag.principles.map((principle, idx) => (
               <div
                 key={principle.title}
-                className="p-6 bg-neutral-950 border border-white/15 hover:border-[#FF5000] transition-colors flex flex-col justify-between"
+                className="p-6 border transition-colors flex flex-col justify-between"
+                style={{ background: 'var(--white)', borderColor: 'var(--line)' }}
               >
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#FF5000]">
+                  <span className="text-xs font-mono font-bold" style={{ color: 'var(--green)' }}>
                     PRINCIPLE 0{idx + 1}
                   </span>
-                  <h3 className="text-base font-bold uppercase tracking-tight text-white mt-2 mb-2">
+                  <h3 className="text-base font-bold uppercase tracking-tight mt-2 mb-2">
                     {principle.title}
                   </h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
                     {principle.body}
                   </p>
                 </div>
@@ -94,12 +97,12 @@ export default function GreatAfricanGridPage() {
         </section>
 
         {/* The 7 Corridors Detailed */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
+        <section id="gag-corridors" className="space-y-6">
+          <div className="flex items-center justify-between border-b pb-4" style={{ borderColor: 'var(--line)' }}>
+            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               The Seven Infrastructure Corridors
             </h2>
-            <span className="text-xs font-mono text-[#FF5000]">
+            <span className="text-xs font-mono" style={{ color: 'var(--green)' }}>
               CONTINENTAL ARTERIES
             </span>
           </div>
@@ -108,44 +111,45 @@ export default function GreatAfricanGridPage() {
             {gag.corridors.map((c) => (
               <div
                 key={c.id}
-                className="p-8 bg-neutral-950 border border-white/15 hover:border-[#FF5000] transition-all flex flex-col justify-between group"
+                className="p-8 border transition-all flex flex-col justify-between group"
+                style={{ background: 'var(--white)', borderColor: 'var(--line)' }}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest">
+                    <span className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--green)' }}>
                       CORRIDOR {c.id}
                     </span>
-                    <div className="p-2 bg-white/5 border border-white/10 group-hover:bg-[#FF5000]/20 transition-colors">
-                      {iconMap[c.title] || <Zap className="w-6 h-6 text-[#FF5000]" />}
+                    <div className="p-2 border transition-colors" style={{ background: 'var(--sage)', borderColor: 'var(--line)' }}>
+                      {iconMap[c.title] || <Zap className="w-6 h-6" style={{ color: 'var(--green)' }} />}
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-3 group-hover:text-[#FF5000] transition-colors">
+                  <h3 className="text-2xl font-black uppercase tracking-tight mb-3 group-hover:text-[var(--green)] transition-colors" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
                     {c.title}
                   </h3>
 
-                  <p className="text-sm text-neutral-400 leading-relaxed font-sans">
+                  <p className="text-sm leading-relaxed font-sans" style={{ color: 'var(--muted)' }}>
                     {c.body}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-500">
+                <div className="pt-6 mt-6 border-t flex items-center justify-between text-xs font-mono" style={{ borderColor: 'var(--line)', color: 'var(--muted)' }}>
                   <span>Pan-African Standard</span>
-                  <span className="text-neutral-400 font-bold">Corridor {c.id}</span>
+                  <span className="font-bold" style={{ color: 'var(--ink-soft)' }}>Corridor {c.id}</span>
                 </div>
               </div>
             ))}
 
             {/* Special Callout: ADFA */}
-            <div className="p-8 bg-gradient-to-br from-[#FF5000]/20 via-neutral-950 to-neutral-950 border border-[#FF5000]/40 flex flex-col justify-between">
+            <div id="adfa" className="p-8 border flex flex-col justify-between" style={{ background: 'var(--sage)', borderColor: 'var(--green)' }}>
               <div>
-                <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+                <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--green)' }}>
                   SOVEREIGN ACCELERATION
                 </span>
-                <h3 className="text-2xl font-black uppercase tracking-tight text-white mt-3 mb-3">
+                <h3 className="text-2xl font-black uppercase tracking-tight mt-3 mb-3" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
                   ADFA Agreements
                 </h3>
-                <p className="text-sm text-neutral-300 leading-relaxed">
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
                   Accelerated Development Framework Agreements allow member states to legally dock national transport, energy, and digital master plans into the GAG without compromising sovereign autonomy.
                 </p>
               </div>
@@ -160,22 +164,22 @@ export default function GreatAfricanGridPage() {
         </section>
 
         {/* African Union Partnership Framework (PARF) */}
-        <section className="p-8 sm:p-12 bg-neutral-950 border border-white/20 relative">
+        <section className="p-8 sm:p-12 border relative" style={{ background: 'var(--white)', borderColor: 'var(--line)' }}>
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-[0.2em] uppercase block">
+            <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase block" style={{ color: 'var(--green)' }}>
               {gag.parf.kicker}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               {gag.parf.title}
             </h2>
-            <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed pt-2">
+            <div className="space-y-4 text-sm sm:text-base leading-relaxed pt-2" style={{ color: 'var(--ink-soft)' }}>
               {gag.parf.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap gap-4">
+          <div className="mt-8 pt-8 border-t flex flex-wrap gap-4" style={{ borderColor: 'var(--line)' }}>
             <Button href="/partner" variant="light" icon="arrow">
               Institutional Partnership Request
             </Button>

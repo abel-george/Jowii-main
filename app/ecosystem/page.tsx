@@ -10,82 +10,82 @@ export default function EcosystemPage() {
   return (
     <div className="min-h-screen">
       {/* Top Banner */}
-      <div className="bg-black text-white pt-28 sm:pt-32 pb-16 sm:pb-24 border-b border-white/10">
+      <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 hover:text-white mb-6"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider mb-6"
+            style={{ color: 'rgba(255, 254, 250, 0.7)' }}
           >
-            <ArrowLeft className="w-4 h-4 text-[#FF5000]" />
+            <ArrowLeft className="w-4 h-4" style={{ color: 'var(--brass)' }} />
             <span>Back to Home</span>
           </Link>
 
-          <span className="text-xs font-mono font-bold text-[#FF5000] tracking-[0.2em] uppercase block mb-3">
+          <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase block mb-3" style={{ color: 'var(--brass)' }}>
             03 / PROPOSED OPERATING STACK
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-[1.02] max-w-4xl">
+          <h1 className="text-4xl sm:text-6xl uppercase tracking-tight leading-[1.02] max-w-4xl" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
             {ecosystem.title}
           </h1>
-          <p className="text-base sm:text-xl text-neutral-300 max-w-3xl mt-6 leading-relaxed">
+          <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
             {ecosystem.lead} These services and interfaces describe a proposed architecture; they are not represented as currently available.
           </p>
         </div>
       </div>
 
-      <div className="bg-white text-black py-16 pb-24">
+      <div className="py-16 pb-24" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         {/* ASTA OS Section */}
-        <section className="p-8 sm:p-12 bg-neutral-950 text-white border-2 border-black space-y-6 shadow-2xl relative">
+        <section id="asta-os" className="p-8 sm:p-12 space-y-6 shadow-2xl relative" style={{ background: 'var(--ink)', color: 'var(--white)', border: '2px solid var(--line-light)' }}>
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--brass)' }}>
               {ecosystem.asta.subtitle}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               {ecosystem.asta.title}
             </h2>
-            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed">
+            <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
               {ecosystem.asta.body}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-4 border-t border-white/15">
-            {ecosystem.asta.pillars.map((pillar, idx) => (
-              <div key={pillar} className="p-4 bg-black border border-white/10 space-y-1">
-                <span className="text-[10px] font-mono text-[#FF5000] font-bold">
-                  MOD 0{idx + 1}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-4" style={{ borderTop: '1px solid rgba(255, 254, 250, 0.15)' }}>
+            {ecosystem.asta.coreLayers.map((layer) => (
+              <div key={layer.id} className="p-4 space-y-2" style={{ background: 'var(--ink-soft)', border: '1px solid rgba(255, 254, 250, 0.1)' }}>
+                <span className="text-[10px] font-mono font-bold" style={{ color: 'var(--brass)' }}>
+                  LAYER {layer.id}
                 </span>
-                <p className="text-xs font-bold text-white uppercase">{pillar}</p>
+                <p className="text-xs font-bold uppercase">{layer.title}</p>
+                <p className="text-[10px] leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.6)' }}>{layer.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* The 5 Coordinated Layers */}
-        <section className="space-y-6 border-b border-neutral-200 pb-16">
-          <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-black">
-              Ten Proposed Architectural Layers
+        {/* Ecosystem Participants */}
+        <section className="space-y-6 pb-16" style={{ borderBottom: '1px solid var(--line-light)' }}>
+          <div className="flex items-center justify-between pb-4" style={{ borderBottom: '1px solid var(--line-light)' }}>
+            <h2 className="text-2xl sm:text-3xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+              Ecosystem Participants
             </h2>
-            <span className="text-xs font-mono text-neutral-500">
-              LAYER PROTOCOL
+            <span className="text-xs font-mono" style={{ color: 'var(--muted)' }}>
+              ASTA ARCHITECTURE
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ecosystem.layers.map((layer) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {ecosystem.asta.ecosystemParticipants.map((participant, idx) => (
               <div
-                key={layer.id}
-                className="p-6 bg-neutral-50 border border-neutral-200 hover:border-black transition-colors flex flex-col justify-between"
+                key={idx}
+                className="p-6 flex flex-col justify-between transition-colors"
+                style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}
               >
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest">
-                    LAYER {layer.id}
-                  </span>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-black mt-2 mb-2">
-                    {layer.title}
+                  <h3 className="text-lg uppercase tracking-tight mt-2 mb-2" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                    {participant.title}
                   </h3>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
-                    {layer.body}
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+                    {participant.body}
                   </p>
                 </div>
               </div>
@@ -93,16 +93,18 @@ export default function EcosystemPage() {
           </div>
         </section>
 
+
+
         {/* Three Ways In: Use, Integrate, Invest */}
-        <section className="space-y-8">
+        <section id="participation" className="space-y-8">
           <div>
-            <span className="text-xs font-mono font-bold text-[#FF5000] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--brass)' }}>
               ENGAGEMENT RULES
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black mt-1 mb-2">
+            <h2 className="text-3xl sm:text-4xl uppercase tracking-tight mt-1 mb-2" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               Three Ways In
             </h2>
-            <p className="text-sm text-neutral-600 max-w-2xl">
+            <p className="text-sm max-w-2xl" style={{ color: 'var(--muted)' }}>
               Clean separation of powers. Utility, technical integration, and capital allocation have strictly guarded interfaces.
             </p>
           </div>
@@ -111,30 +113,31 @@ export default function EcosystemPage() {
             {ecosystem.paths.map((path) => (
               <div
                 key={path.name}
-                className="p-8 bg-neutral-50 border border-neutral-200 flex flex-col justify-between hover:border-black transition-all group"
+                className="p-8 flex flex-col justify-between transition-all group"
+                style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 bg-black text-white font-bold">
+                    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 font-bold" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
                       {path.badge}
                     </span>
-                    <span className="text-xs font-mono text-neutral-500 font-bold uppercase">
+                    <span className="text-xs font-mono font-bold uppercase" style={{ color: 'var(--muted)' }}>
                       {path.kicker}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl font-black uppercase tracking-tight text-black mb-3 group-hover:text-[#FF5000] transition-colors">
+                  <h3 className="text-3xl uppercase tracking-tight mb-3" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
                     {path.name}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
                     {path.description}
                   </p>
 
-                  <ul className="space-y-2.5 border-t border-neutral-200 pt-4 mb-8">
+                  <ul className="space-y-2.5 pt-4 mb-8" style={{ borderTop: '1px solid var(--line-light)' }}>
                     {path.points.map((point) => (
-                      <li key={point} className="text-xs text-neutral-700 flex items-start gap-2">
-                        <span className="text-[#FF5000] font-bold">—</span>
+                      <li key={point} className="text-xs flex items-start gap-2" style={{ color: 'var(--ink-soft)' }}>
+                        <span style={{ color: 'var(--brass)' }} className="font-bold">—</span>
                         <span>{point}</span>
                       </li>
                     ))}

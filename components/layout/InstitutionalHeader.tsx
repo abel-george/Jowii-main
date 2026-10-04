@@ -47,6 +47,12 @@ export function InstitutionalHeader() {
             <Link className="institutional-header__donate" href="/donate">
               Donate <ArrowUpRight aria-hidden="true" size={15} />
             </Link>
+            <Link className="institutional-header__donate" href="/ticket" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
+              Book Ticket <ArrowUpRight aria-hidden="true" size={15} />
+            </Link>
+            <Link className="institutional-header__donate" href="/waitlist" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>
+              Join Waitlist <ArrowUpRight aria-hidden="true" size={15} />
+            </Link>
             <button
               className="institutional-header__menu-toggle"
               type="button"
@@ -71,6 +77,12 @@ export function InstitutionalHeader() {
           </nav>
           <Link className="institutional-mobile-menu__donate" href="/donate" onClick={() => setMobileMenuOpen(false)}>
             Pre-launch donations <ArrowUpRight aria-hidden="true" size={16} />
+          </Link>
+          <Link className="institutional-mobile-menu__donate" href="/ticket" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--ink)', color: 'var(--white)' }}>
+            Book Ticket <ArrowUpRight aria-hidden="true" size={16} />
+          </Link>
+          <Link className="institutional-mobile-menu__donate" href="/waitlist" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--brass)', color: 'var(--ink)' }}>
+            Join Waitlist <ArrowUpRight aria-hidden="true" size={16} />
           </Link>
           <p>Donations only. No investment return, equity or ownership is offered in the pre-launch.</p>
         </div>

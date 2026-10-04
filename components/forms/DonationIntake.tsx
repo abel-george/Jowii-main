@@ -82,6 +82,16 @@ export function DonationIntake() {
               <article><span>04</span><div><h3>No participation rights</h3><p>A donation is not a bond, fund unit, loan, equity or promise of repayment.</p></div></article>
             </div>
 
+            <div className="donation-page__rationale">
+              <h3>Why Pre-Launch Donations Matter</h3>
+              <p>
+                Pre-launch donations enable the organization's independence from any influence. The collective will that a better Africa is possible drives this model—allowing the Foundation to establish itself without owing anybody anything in return.
+              </p>
+              <p>
+                Once citizens have decided on the 5 law firms and the trust to handle donations, the formal giving process will be activated. Until then, this page provides information about the proposed arrangement.
+              </p>
+            </div>
+
             <div className="donation-page__legal-note">
               <LockKeyhole aria-hidden="true" />
               <p>Do not transfer funds to personal accounts or unverified payment details. No tax deductibility or charitable status is implied by this page.</p>

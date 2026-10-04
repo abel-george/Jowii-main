@@ -94,16 +94,17 @@ export default function WaitlistPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-24 pb-20 relative overflow-hidden">
+    <div className="min-h-screen pt-24 pb-20 relative overflow-hidden" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Breadcrumb / Back */}
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors"
+            style={{ color: 'rgba(255, 254, 250, 0.7)' }}
           >
-            <ArrowLeft className="w-4 h-4 text-[#FF5000]" />
-            <span>Back to Jowih Ecosystem</span>
+            <ArrowLeft className="w-4 h-4" style={{ color: 'var(--brass)' }} />
+            <span>Back to Home</span>
           </Link>
         </div>
 
@@ -118,11 +119,11 @@ export default function WaitlistPage() {
               transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
               className="max-w-3xl mx-auto bg-neutral-950 border border-neutral-800 p-8 sm:p-14 text-center shadow-2xl relative"
             >
-              <div className="w-14 h-14 rounded-full bg-[#FF5000]/15 border border-[#FF5000] text-[#FF5000] flex items-center justify-center mx-auto mb-6">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style={{ background: 'rgba(189, 147, 83, 0.15)', border: '1px solid var(--brass)', color: 'var(--brass)' }}>
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-xs font-mono font-bold uppercase tracking-widest text-[#FF5000] mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold uppercase tracking-widest mb-4" style={{ background: 'rgba(255, 254, 250, 0.1)', color: 'var(--brass)' }}>
                 <span>UPDATE REQUEST RECEIVED</span>
               </div>
 
@@ -141,9 +142,9 @@ export default function WaitlistPage() {
 
               {/* Reference Badge */}
               <div className="p-4 bg-black border border-white/15 inline-block text-left mb-8 max-w-md w-full">
-                <div className="flex justify-between items-center text-xs font-mono text-neutral-400 border-b border-white/10 pb-2 mb-2">
+                <div className="flex justify-between items-center text-xs font-mono border-b pb-2 mb-2" style={{ color: 'rgba(255, 254, 250, 0.4)', borderBottom: '1px solid rgba(255, 254, 250, 0.1)' }}>
                   <span>REQUEST REFERENCE</span>
-                  <span className="text-[#FF5000] font-bold">{referenceCode}</span>
+                  <span className="font-bold" style={{ color: 'var(--brass)' }}>{referenceCode}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <div>
@@ -161,7 +162,7 @@ export default function WaitlistPage() {
                 </div>
               </div>
 
-              <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#FF5000] font-mono mb-8">
+              <div className="text-2xl sm:text-3xl font-black tracking-tight font-mono mb-8" style={{ color: 'var(--brass)' }}>
                 #JOWIHKENYA
               </div>
 
@@ -191,57 +192,57 @@ export default function WaitlistPage() {
             >
               {/* Left Column: Dramatic Waitlist Manifesto Hero */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 text-neutral-200 text-xs font-mono font-bold tracking-widest uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF5000]" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase" style={{ background: 'rgba(255, 254, 250, 0.1)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'rgba(255, 254, 250, 0.8)' }}>
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--brass)' }} />
                   <span>OFFICIAL WAITLIST</span>
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm font-mono text-neutral-400 uppercase tracking-widest">
+                  <p className="text-sm font-mono uppercase tracking-widest" style={{ color: 'rgba(255, 254, 250, 0.4)' }}>
                     JOWIH ECOSYSTEM
                   </p>
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.95] text-white">
-                    THE NEXT CHAPTER <span className="text-[#FF5000]">STARTS HERE.</span>
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tighter leading-[0.95]" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                    THE NEXT CHAPTER <span style={{ color: 'var(--brass)' }}>STARTS HERE.</span>
                   </h1>
                 </div>
 
-                <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-sans">
+                <p className="text-base sm:text-lg leading-relaxed font-sans" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
                   Be among the first people to experience what we are building for Africa. Access the ASTA OS continental operating framework, corridor frameworks, and launch room credentials.
                 </p>
 
                 {/* Event Metadata card */}
-                <div className="p-6 bg-neutral-950 border border-white/15 space-y-4 font-mono text-xs">
-                  <div className="flex items-center gap-3 text-neutral-300">
-                    <MapPin className="w-4 h-4 text-[#FF5000] shrink-0" />
+                <div className="p-6 space-y-4 font-mono text-xs" style={{ background: 'var(--ink-soft)', border: '1px solid rgba(255, 254, 250, 0.15)' }}>
+                  <div className="flex items-center gap-3" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
+                    <MapPin className="w-4 h-4 shrink-0" style={{ color: 'var(--brass)' }} />
                     <span>Jowih Foundation · Institutional updates</span>
                   </div>
-                  <div className="flex items-center gap-3 text-neutral-300">
-                    <Calendar className="w-4 h-4 text-[#FF5000] shrink-0" />
+                  <div className="flex items-center gap-3" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
+                    <Calendar className="w-4 h-4 shrink-0" style={{ color: 'var(--brass)' }} />
                     <span>Pre-launch: donations for structural setup</span>
                   </div>
-                  <div className="flex items-center gap-3 text-neutral-300">
-                    <Shield className="w-4 h-4 text-[#FF5000] shrink-0" />
+                  <div className="flex items-center gap-3" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
+                    <Shield className="w-4 h-4 shrink-0" style={{ color: 'var(--brass)' }} />
                     <span>Proposed structures remain subject to registration and legal review</span>
                   </div>
                 </div>
 
-                <div className="p-4 border-l-2 border-[#FF5000] bg-neutral-950">
-                  <p className="text-xs text-neutral-400 italic font-sans">
+                <div className="p-4" style={{ borderLeft: '2px solid var(--brass)', background: 'var(--ink-soft)' }}>
+                  <p className="text-xs italic font-sans" style={{ color: 'rgba(255, 254, 250, 0.6)' }}>
                     The Great African Grid is intended to partner, integrate, empower, complement, accelerate and enable.
                   </p>
-                  <span className="text-[11px] font-mono text-neutral-500 block mt-1">
+                  <span className="text-[11px] font-mono block mt-1" style={{ color: 'rgba(255, 254, 250, 0.4)' }}>
                     A principle stated in the GAG source papers
                   </span>
                 </div>
               </div>
 
               {/* Right Column: Multi-Field Form */}
-              <div className="lg:col-span-7 bg-neutral-950 border border-white/15 p-6 sm:p-10 shadow-xl relative">
-                <div className="border-b border-white/10 pb-4 mb-6">
-                  <h2 className="text-2xl font-bold uppercase tracking-tight text-white">
+              <div className="lg:col-span-7 p-6 sm:p-10 shadow-xl relative" style={{ background: 'var(--ink-soft)', border: '1px solid rgba(255, 254, 250, 0.15)' }}>
+                <div className="pb-4 mb-6" style={{ borderBottom: '1px solid rgba(255, 254, 250, 0.1)' }}>
+                  <h2 className="text-2xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
                     Request institutional updates
                   </h2>
-                  <p className="text-xs text-neutral-400 font-mono mt-1">
+                  <p className="text-xs font-mono mt-1" style={{ color: 'rgba(255, 254, 250, 0.5)' }}>
                     Share how you would like to hear about the proposed architecture and pre-launch.
                   </p>
                 </div>
@@ -249,7 +250,7 @@ export default function WaitlistPage() {
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   {/* Name row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         First Name *
                       </span>
@@ -260,11 +261,12 @@ export default function WaitlistPage() {
                         value={formData.firstName}
                         onChange={handleChange}
                         placeholder="Reuben"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
 
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Last Name *
                       </span>
@@ -275,14 +277,15 @@ export default function WaitlistPage() {
                         value={formData.lastName}
                         onChange={handleChange}
                         placeholder="Oduk"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
                   </div>
 
                   {/* Email & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Email Address *
                       </span>
@@ -293,11 +296,12 @@ export default function WaitlistPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="oduk@university.ac.ke"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
 
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Phone Number (WhatsApp)
                       </span>
@@ -307,14 +311,15 @@ export default function WaitlistPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+254 700 000 000"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
                   </div>
 
                   {/* Organisation & Role */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Organisation / University *
                       </span>
@@ -325,11 +330,12 @@ export default function WaitlistPage() {
                         value={formData.organisation}
                         onChange={handleChange}
                         placeholder="e.g. Kisii University"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
 
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Role / Title
                       </span>
@@ -339,14 +345,15 @@ export default function WaitlistPage() {
                         value={formData.role}
                         onChange={handleChange}
                         placeholder="e.g. Lead Engineer / Founder"
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       />
                     </label>
                   </div>
 
                   {/* Country & What brings you to Jowih? */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         Country
                       </span>
@@ -354,17 +361,18 @@ export default function WaitlistPage() {
                         name="country"
                         value={formData.country}
                         onChange={handleChange}
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       >
                         {africanCountries.map((country) => (
-                          <option key={country} value={country} className="bg-neutral-900">
+                          <option key={country} value={country} style={{ background: 'var(--ink-soft)' }}>
                             {country}
                           </option>
                         ))}
                       </select>
                     </label>
 
-                    <label className="block text-xs font-mono font-bold text-neutral-300">
+                    <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                       <span className="block mb-1.5 uppercase tracking-wider">
                         What brings you to Jowih?
                       </span>
@@ -372,10 +380,11 @@ export default function WaitlistPage() {
                         name="interestCategory"
                         value={formData.interestCategory}
                         onChange={handleChange}
-                        className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#FF5000] transition-colors"
+                        className="w-full text-sm px-4 py-3 transition-colors"
+                        style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                       >
                         {INTEREST_OPTIONS.map((opt) => (
-                          <option key={opt} value={opt} className="bg-neutral-900">
+                          <option key={opt} value={opt} style={{ background: 'var(--ink-soft)' }}>
                             {opt}
                           </option>
                         ))}
@@ -384,7 +393,7 @@ export default function WaitlistPage() {
                   </div>
 
                   {/* Optional Notes */}
-                  <label className="block text-xs font-mono font-bold text-neutral-300">
+                  <label className="block text-xs font-mono font-bold" style={{ color: 'rgba(255, 254, 250, 0.7)' }}>
                     <span className="block mb-1.5 uppercase tracking-wider">
                       Brief Message or Collaboration Interest (Optional)
                     </span>
@@ -394,7 +403,8 @@ export default function WaitlistPage() {
                       value={formData.notes}
                       onChange={handleChange}
                       placeholder="Share any specific initiatives, projects, or questions you would like addressed..."
-                      className="w-full bg-black border border-white/20 text-white text-sm px-4 py-3 placeholder-neutral-600 focus:outline-none focus:border-[#FF5000] transition-colors"
+                      className="w-full text-sm px-4 py-3 transition-colors"
+                      style={{ background: 'var(--ink)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'var(--white)' }}
                     />
                   </label>
 
@@ -409,7 +419,8 @@ export default function WaitlistPage() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FF5000] hover:bg-[#E04600] active:scale-[0.97] text-white font-mono font-bold text-sm uppercase tracking-widest transition-all duration-150 shadow-lg disabled:opacity-50 select-none cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 font-mono font-bold text-sm uppercase tracking-widest transition-all duration-150 shadow-lg disabled:opacity-50 select-none cursor-pointer"
+                      style={{ background: 'var(--brass)', color: 'var(--white)' }}
                     >
                       {status === 'loading' ? (
                         <>
@@ -425,7 +436,7 @@ export default function WaitlistPage() {
                     </button>
                   </div>
 
-                  <p className="text-[11px] font-mono text-neutral-500 text-center pt-2">
+                  <p className="text-[11px] font-mono text-center pt-2" style={{ color: 'rgba(255, 254, 250, 0.4)' }}>
                     Guaranteed data confidentiality. Connected to Jowih Pre-Launch Dispatch Layer.
                   </p>
                 </form>

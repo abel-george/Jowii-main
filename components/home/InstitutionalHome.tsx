@@ -4,19 +4,29 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
+  Award,
   BookOpen,
+  Building2,
   Check,
   CircleDollarSign,
+  Code,
   FileText,
+  Globe,
   Globe2,
   HeartPulse,
+  HeartHandshake,
   Landmark,
   Network,
+  Newspaper,
+  Rocket,
   ShieldCheck,
   Sparkles,
+  Users,
+  Video,
   Waypoints,
 } from 'lucide-react';
 import { InstitutionalNewsletter } from '@/components/home/InstitutionalNewsletter';
+import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 const pillars = [
   {
@@ -56,15 +66,15 @@ const corridors = [
 ];
 
 const layers = [
-  ['Mission', 'The Jowih Foundation and its proposed constitutional framework'],
-  ['Protection', 'Purpose and Founder Family Trusts, with distinct proposed roles'],
-  ['Ownership', 'Jowih Holdings as the proposed commercial holding structure'],
-  ['Execution', 'Jowih Group and operating companies, subject to establishment'],
-  ['Continental framework', 'The Great African Grid and its seven corridors'],
-  ['Digital infrastructure', 'ASTA OS interoperability, APIs and partner integrations'],
-  ['State partnership', 'Voluntary, bilateral Accelerated Development Framework Agreements'],
-  ['Participation', 'Use, integrate and, later, regulated economic participation'],
-  ['Funding', 'Pre-launch donations now; separate proposed instruments later'],
+  ['Mission', 'The Jowih Foundation and its proposed constitutional framework', '/about#mission'],
+  ['Protection', 'Purpose and Founder Family Trusts, with distinct proposed roles', '/about#structure'],
+  ['Ownership', 'Jowih Holdings as the proposed commercial holding structure', '/about#structure'],
+  ['Execution', 'Jowih Group and operating companies, subject to establishment', '/about#leadership'],
+  ['Continental framework', 'The Great African Grid and its seven corridors', '/gag#gag-corridors'],
+  ['Digital infrastructure', 'ASTA OS interoperability, APIs and partner integrations', '/ecosystem#asta-os'],
+  ['State partnership', 'Voluntary, bilateral Accelerated Development Framework Agreements', '/gag#adfa'],
+  ['Participation', 'Use, integrate and, later, regulated economic participation', '/ecosystem#participation'],
+  ['Funding', 'Pre-launch donations now; separate proposed instruments later', '/documents#funding-architecture'],
 ];
 
 const prelaunchSteps = [
@@ -272,16 +282,23 @@ export function InstitutionalHome() {
   return (
     <div className="institutional-home">
       <section className="institutional-hero" aria-labelledby="institutional-title">
-        <Image
-          src={visualProjects[1].image}
-          alt="AI-assisted concept illustration of an African air travel and airport logistics hub"
-          fill
-          priority
-          sizes="100vw"
-          className="institutional-hero__image"
-        />
+        <div className="institutional-hero__image-wrapper">
+          <Image
+            src="/documents/sample images/HEROGAG.png.png"
+            alt="Great African Grid hero"
+            fill
+            priority
+            sizes="100vw"
+            className="institutional-hero__image"
+            style={{ objectFit: 'contain', objectPosition: 'center' }}
+          />
+        </div>
         <div className="institutional-hero__shade" />
-        <div className="institutional-container institutional-hero__content">
+        <p className="institutional-hero__image-note">Conceptual illustration · AI-assisted · Proposed infrastructure, not an existing asset</p>
+      </section>
+
+      <section className="institutional-hero-content" aria-labelledby="institutional-title">
+        <div className="institutional-container">
           <div className="institutional-eyebrow institutional-eyebrow--light">
             <span className="institutional-status-dot" />
             A continental development framework
@@ -305,11 +322,6 @@ export function InstitutionalHome() {
           </div>
           <p className="institutional-hero__note">Donations, not investments. No financial return or ownership is offered.</p>
         </div>
-        <a className="institutional-hero__scroll" href="#prelaunch" aria-label="Scroll to pre-launch purpose">
-          <ArrowDown aria-hidden="true" size={16} />
-          <span>Explore the framework</span>
-        </a>
-        <p className="institutional-hero__image-note">Conceptual illustration · AI-assisted · Proposed infrastructure, not an existing asset</p>
       </section>
 
       <section className="institutional-principles" aria-label="Institutional principles">
@@ -404,13 +416,13 @@ export function InstitutionalHome() {
             </p>
           </div>
           <div className="institutional-layer-list">
-            {layers.map(([title, text], index) => (
-              <article className="institutional-layer" key={title}>
+            {layers.map(([title, text, href], index) => (
+              <Link className="institutional-layer" href={href} key={title} aria-label={`Learn more about ${title}`}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>
                 <ArrowUpRight aria-hidden="true" size={16} />
-              </article>
+              </Link>
             ))}
           </div>
           <div className="institutional-caveat institutional-caveat--dark">
@@ -480,6 +492,119 @@ export function InstitutionalHome() {
               The draft proposes bilateral agreements with states that choose to participate. Project delivery may be state-funded,
               foundation-funded or jointly funded, with ownership and responsibilities defined in each agreement and under local law.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--ink">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow institutional-eyebrow--gold">PARTNERSHIP & COMMUNITY</p>
+              <h2>Build the ecosystem together.</h2>
+            </div>
+            <p>The Jowih ecosystem is built on partnership and community. Whether you want to sponsor an event, contribute your skills as a developer, or bring your organization into the ecosystem, there's a place for you.</p>
+          </div>
+          <div className="institutional-partnership-grid">
+            {[
+              {
+                title: 'Donate',
+                description: 'Support the pre-launch structural setup. Your donation helps fund legal registration, trust establishment, and initial organizational costs to build the Foundation\'s independent governance structure.',
+                type: 'Donation',
+                icon: CircleDollarSign,
+                href: '/donate'
+              },
+              {
+                title: 'Sponsor the Launch',
+                description: 'Support pre-launch and full launch events through financial sponsorship, in-kind contributions, venue provision, production support, or media collaboration. Sponsorship provides visibility and helps create impactful launch experiences.',
+                type: 'Sponsorship',
+                icon: Award,
+                href: '/partner/sponsor'
+              },
+              {
+                title: 'Founding Supporters',
+                description: 'Recognition for early donors who contribute during the pre-launch phase. Founding supporters are acknowledged for their role in establishing the independent governance structures and foundational systems.',
+                type: 'Donation',
+                icon: ShieldCheck,
+                href: '/donate'
+              },
+              {
+                title: 'Partner Community',
+                description: 'Join the ecosystem partnership community and submit your capabilities to help build Africa\'s next chapter. Whether you offer infrastructure, technology, financial services, research, or expertise—your contribution can accelerate continental development.',
+                type: 'Partnership',
+                icon: Users,
+                href: '/partner/community'
+              },
+              {
+                title: 'Developer Community',
+                description: 'Technical community for developers who want to build on ASTA OS, GAG infrastructure, and Jowih platforms. Contribute your skills to create APIs, applications, digital systems, and the technology infrastructure that will serve millions across Africa.',
+                type: 'Technical',
+                icon: Code,
+                href: '/partner/developer'
+              },
+              {
+                title: 'Diaspora Network',
+                description: 'African diaspora organizations and individuals looking to connect and contribute from abroad. Your global perspective, resources, and networks can help bridge continents and accelerate development in your home countries.',
+                type: 'Donation / Partnership',
+                icon: Globe,
+                href: '/partner/diaspora'
+              },
+              {
+                title: 'Institutional Partnership',
+                description: 'Universities, research institutions, ADFA states, and development organizations for collaboration and integration. Academic partnerships drive R&D, while state partnerships enable the Accelerated Development Framework Agreement.',
+                type: 'Partnership',
+                icon: Building2,
+                href: '/partner/institutional'
+              },
+              {
+                title: 'Investor Community (Future)',
+                description: 'Register interest in future bond and fund structures. The proposed Master Ecosystem Fund and Grid Bond are investment vehicles subject to legal establishment, regulatory approval, and market conditions. Interest registration begins the conversation.',
+                type: 'Future Investment',
+                icon: Rocket,
+                href: '/investor'
+              },
+              {
+                title: 'Volunteers',
+                description: 'Contribute your time and skills to help build the ecosystem. Whether you\'re a researcher, educator, professional, or student—your volunteer time can support various aspects of planning, outreach, and community engagement.',
+                type: 'Volunteer',
+                icon: HeartHandshake,
+                href: '/partner/volunteer'
+              },
+              {
+                title: 'CDE Participation',
+                description: 'Participate through Community Development Enterprises. CDEs are locally-led enterprises that deliver essential services—health, education, water, agriculture—while remaining accountable to their communities and the Foundation\'s mission.',
+                type: 'Community',
+                icon: Building2,
+                href: '/partner/cde'
+              },
+              {
+                title: 'Landowners',
+                description: 'Participate through the Land Acquisition & Settlement Facility. Landowners can contribute land for development projects in exchange for Master Fund Units or cash, enabling infrastructure while respecting property rights and sovereignty.',
+                type: 'Participation',
+                icon: Landmark,
+                href: '/partner/land'
+              },
+              {
+                title: 'Media',
+                description: 'Journalists, content creators, and media organizations can help tell the story of Africa\'s development. Accurate, thoughtful coverage builds public understanding and supports transparent communication about the ecosystem\'s progress.',
+                type: 'Media',
+                icon: Newspaper,
+                href: '/partner/media'
+              }
+            ].map(({ title, description, type, icon: Icon, href }) => (
+              <Link href={href} key={title} className="institutional-partnership-card">
+                <div className="institutional-partnership-card__icon"><Icon aria-hidden="true" size={24} /></div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className="institutional-partnership-card__type">{type}</span>
+                <ArrowUpRight aria-hidden="true" size={16} />
+              </Link>
+            ))}
+          </div>
+          <div className="institutional-partnership-cta">
+            <Link href="/partner" className="institutional-button institutional-button--gold">
+              Explore all partnership pathways <ArrowUpRight aria-hidden="true" size={17} />
+            </Link>
           </div>
         </div>
       </section>
@@ -579,7 +704,11 @@ export function InstitutionalHome() {
           <div className="institutional-gallery">
             {visualProjects.map((project) => (
               <figure className="institutional-gallery__item" key={project.title}>
-                <div className="institutional-gallery__image"><Image src={project.image} alt={project.alt} width={1200} height={800} sizes="(max-width: 700px) 100vw, 33vw" /></div>
+                <div className="institutional-gallery__image">
+                  <LightboxImage src={project.image} alt={project.alt} className="w-full h-full">
+                    <Image src={project.image} alt={project.alt} width={1200} height={800} sizes="(max-width: 700px) 100vw, 33vw" />
+                  </LightboxImage>
+                </div>
                 <figcaption><span>{project.area}</span><strong>{project.title}</strong><small>{project.disclosure}</small></figcaption>
               </figure>
             ))}

@@ -32,12 +32,19 @@ export interface AgendaTrack {
 
 export interface DocumentItem {
   title: string;
+  anchor?: string;
   file: string;
   description: string;
   highlights: string[];
   category?: string;
   pages: number;
   status: string;
+}
+
+export interface CoreLayer {
+  id: string;
+  title: string;
+  body: string;
 }
 
 export interface PartnerItem {
@@ -62,6 +69,10 @@ export const siteData = {
     { label: 'About', href: '/about' },
     { label: 'Great African Grid', href: '/gag' },
     { label: 'ASTA OS', href: '/ecosystem' },
+    { label: 'Funding', href: '/funding' },
+    { label: 'Credits', href: '/credits' },
+    { label: 'Governance', href: '/governance' },
+    { label: 'Partners', href: '/partners' },
     { label: 'Source papers', href: '/documents' },
     { label: 'Updates', href: '/waitlist' },
   ],
@@ -141,16 +152,16 @@ export const siteData = {
     structure: {
       title: 'Nine-Layer Institutional Structure',
       subtitle: 'Engineered for multi-generational mission preservation and sovereign non-interference.',
-      layers: [
-        { title: 'Jowih Foundation', body: 'Mission, stewardship, country development allocations, and the permanent non-profit control plane. Company limited by guarantee with a statutory asset lock.' },
-        { title: 'Jowih Purpose Trust', body: 'Protects the mission and the Foundation’s 90% economic interest in Jowih Holdings from commercial drift.' },
-        { title: 'Founder Family Trust', body: 'Protects original mission intent through restricted golden-vote architecture and holds the founder’s 10% economic interest.' },
-        { title: 'Jowih Holdings Limited', body: 'Holds 100% equity of commercial operating subsidiaries. Voting: 60% Purpose Trust / 40% Family Trust. Economic allocation: 90% Foundation / 10% Family Trust.' },
-        { title: 'Jowih Group', body: 'Executes and operates commercial subsidiaries and the seven GAG corridors. The Foundation does not duplicate Group operations.' },
-        { title: 'Great African Grid (GAG)', body: 'Continental infrastructure and economic coordination framework across transport, industry, energy, digital, payments, services, and space.' },
-        { title: 'ASTA OS', body: 'Continental digital-physical rails: identity, trust, payments, commerce, logistics, data, AI, and service interoperability.' },
-        { title: 'ADFA Framework', body: 'Accelerated Development Framework Agreements with African states that invite Foundation projects into their jurisdictions.' },
-        { title: 'Funding Architecture', body: 'Grid Bond as one-time activation capital, the Jowih Ecosystem Fund for regulated participation, and Mission Fund reinvestment.' },
+        layers: [
+          { id: 'jowih-foundation', title: 'Jowih Foundation', body: 'Mission, stewardship, country development allocations, and the permanent non-profit control plane. Company limited by guarantee with a statutory asset lock.' },
+          { id: 'jowih-purpose-trust', title: 'Jowih Purpose Trust', body: 'Protects the mission and the Foundation’s 90% economic interest in Jowih Holdings from commercial drift.' },
+          { id: 'founder-family-trust', title: 'Founder Family Trust', body: 'Protects original mission intent through restricted golden-vote architecture and holds the founder’s 10% economic interest.' },
+          { id: 'jowih-holdings', title: 'Jowih Holdings Limited', body: 'Holds 100% equity of commercial operating subsidiaries. Voting: 60% Purpose Trust / 40% Family Trust. Economic allocation: 90% Foundation / 10% Family Trust.' },
+          { id: 'jowih-group', title: 'Jowih Group', body: 'Executes and operates commercial subsidiaries and the seven GAG corridors. The Foundation does not duplicate Group operations.' },
+          { id: 'great-african-grid', title: 'Great African Grid (GAG)', body: 'Continental infrastructure and economic coordination framework across transport, industry, energy, digital, payments, services, and space.' },
+          { id: 'asta-os', title: 'ASTA OS', body: 'Continental digital-physical rails: identity, trust, payments, commerce, logistics, data, AI, and service interoperability.' },
+          { id: 'adfa-framework', title: 'ADFA Framework', body: 'Accelerated Development Framework Agreements with African states that invite Foundation projects into their jurisdictions.' },
+          { id: 'funding-architecture', title: 'Funding Architecture', body: 'Grid Bond as one-time activation capital, the Jowih Ecosystem Fund for regulated participation, and Mission Fund reinvestment.' },
       ],
     },
     leadership: {
@@ -206,6 +217,27 @@ export const siteData = {
       { id: '06', title: 'Services', body: 'Health, education, and human empowerment programmes that sit on top of the physical and digital corridors.', icon: 'HeartHandshake' },
       { id: '07', title: 'Space', body: 'Securing African participation in orbital infrastructure, earth observation, communications, and space industry capability.', icon: 'Rocket' },
     ],
+    frameworks: [
+      { id: 'adfa', group: 'State & continental coordination', title: 'Accelerated Development Framework Agreements (ADFA)', detail: 'Proposed voluntary bilateral agreements with African states. Project models include state-funded delivery, Foundation-funded projects and co-funded arrangements, with roles and ownership defined in each agreement.' },
+      { id: 'au-parf', group: 'State & continental coordination', title: 'AU Partnership Framework (PARF)', detail: 'A proposed observatory and coordination relationship with the African Union. The source describes recommendations as non-binding and operational authority as independent.' },
+      { id: 'horizons-multipliers', group: 'State & continental coordination', title: '20-year Horizons & six multipliers', detail: 'A long-range planning cycle paired with policy coordination, standards, government services, financing, cooperation and people-to-people ties.' },
+      { id: 'country-pots-cdes', group: 'Community & human development', title: 'Country Pots & Community Development Enterprises', detail: 'Proposed country-level planning and five local CDE areas: education, agriculture, health, infrastructure and energy, and digital innovation. The draft sets out a 70/30 project/business split and a Care Fund allocation.' },
+      { id: 'adn-assemblies', group: 'Community & human development', title: 'Africa Development Network & Development Assemblies', detail: 'Proposed country coordination and community-prioritization structures, with centralized direct disbursement, citizen input and public reporting.' },
+      { id: 'education-framework', group: 'Community & human development', title: 'Education Framework', detail: 'School and STEM-lab proposals, national-curriculum alignment, teacher support, devices, teaching hubs, scholarships and workforce pathways.' },
+      { id: 'health-ahf', group: 'Community & human development', title: 'Mobile Health Framework & Africa Health Fund', detail: 'A proposed layered health-access model combining community/mobile clinics, county facilities, referral care and a complementary financing stabilizer.' },
+      { id: 'housing-urbanization', group: 'Community & human development', title: 'Urban Housing & Rapid Urbanization', detail: 'Proposed community-led housing and settlement plans, including rental and ownership paths, no-displacement principles, local consultation and escrow safeguards.' },
+      { id: 'environmental-cleanliness', group: 'Community & human development', title: 'Environmental Cleanliness Framework', detail: 'Proposed CDE-led waste collection, public-space maintenance, local employment, coordination with local authorities and measurable cleanliness reporting.' },
+      { id: 'infrastructure-execution', group: 'Infrastructure & delivery', title: 'Infrastructure Execution Blueprint', detail: 'A proposed three-tier delivery model for continental, national and local projects, using qualified firms, milestones, local participation and oversight.' },
+      { id: 'crt', group: 'Infrastructure & delivery', title: 'Jowih Capsule Rapid Transit (CRT)', detail: 'A proposed modular, electric guided transit concept intended to complement public-service vehicles, connect urban corridors and support logistics.' },
+      { id: 'energy-framework', group: 'Infrastructure & delivery', title: 'Energy Corridor Framework', detail: 'Renewable generation, grid connections, storage, solar infrastructure and micro-grid concepts for civic and industrial service.' },
+      { id: 'new-dawn-city', group: 'Infrastructure & delivery', title: 'New Dawn City & Jowih Citadel', detail: 'A proposed integrated economic-zone and headquarters concept, dependent on host-state agreements, land arrangements, feasibility studies and approvals.' },
+      { id: 'asta-connect', group: 'Digital & technology', title: 'ASTA OS & Africa Connect Alliance', detail: 'Proposed interoperability, API and developer infrastructure alongside telecom and connectivity partnerships intended to extend essential digital access.' },
+      { id: 'credits', group: 'Digital & technology', title: 'Jowih Credits', detail: 'A proposed non-speculative cross-border bridge model requiring licensed payment partners and regulatory approval; it is not available through this site.' },
+      { id: 'animation-gaming', group: 'Digital & technology', title: 'African Animation & Gaming Framework', detail: 'Proposed anchor studios, independent creator participation, training, original African intellectual property, distribution and commercialization pathways.' },
+      { id: 'air-jowih', group: 'Infrastructure & delivery', title: 'Air Jowih Aviation Framework', detail: 'A proposed African aviation service concept designed to enhance continental mobility, support logistics corridors, and contribute to the transport infrastructure pillar.' },
+      { id: 'space-capability', group: 'Digital & technology', title: 'African Sovereign Space Capability', detail: 'A proposed long-term capability spanning Earth observation, communications, navigation, ground systems, launch infrastructure and African industry.' },
+      { id: 'grid-bond-mission-fund', group: 'Funding & capital', title: 'Grid Bond & Mission Fund sequencing', detail: 'The GAG papers describe a proposed one-time bond as later activation capital. It is separate from the donation-only structural pre-launch, and no bond is offered here.' },
+    ],
     parf: {
       kicker: 'AU Partnership Framework (PARF)',
       title: 'Observatory and coordination, not subordination.',
@@ -223,21 +255,31 @@ export const siteData = {
     asta: {
       title: 'ASTA OS',
       subtitle: 'Accelerated Systemic Transformation Architecture',
-      body: 'ASTA is the continental operating system. It is not fundamentally a consumer app. It is the interoperability layer on which applications, institutions, and physical systems connect. Build once. Integrate once. Reach across the ecosystem.',
+      body: 'Asta Continental OS (Asta) is a continental digital-physical infrastructure and orchestration layer designed to enable interoperable digital activity among people, businesses, governments, developers, financial institutions, technology platforms, service providers and physical infrastructure. It is not fundamentally a consumer application. It is an infrastructure environment upon which multiple applications, services, institutions and physical systems may operate and interoperate.',
       pillars: ['Identity & KYC Rail', 'Cross-Border Trust Layer', 'Micro-Payment Settlement', 'Decentralised Logistics Protocol', 'Open Sovereign AI Orchestration'],
+      coreLayers: [
+        { id: '01', title: 'Physical infrastructure', body: 'Proposed connections to transport, energy, logistics, facilities, devices and other authorized real-world systems.' },
+        { id: '02', title: 'Connectivity, compute & edge', body: 'A distributed hosting and connectivity design intended to support low-latency service, redundancy and jurisdictional requirements.' },
+        { id: '03', title: 'Identity & accounts', body: 'A proposed identity and account layer for authentication, profiles, credentials, organizational identities and account linking.' },
+        { id: '04', title: 'Trust & credentials', body: 'Verification, permissions, signatures, fraud signals and dispute mechanisms, distinct from identity and authorization.' },
+        { id: '05', title: 'Continental digital rails', body: 'Interoperability interfaces for payments, commerce, communication, mobility, logistics and location.' },
+        { id: '06', title: 'Data & interoperability fabric', body: 'Authorized information exchange guided by consent, minimization, security, purpose limitation and applicable law.' },
+        { id: '07', title: 'Integration & developer layer', body: 'Proposed APIs, SDKs, webhooks, partner gateways, testing environments and technical documentation.' },
+        { id: '08', title: 'Applications & services', body: 'A super app and other first-party experiences alongside independently operated partner services.' },
+        { id: '09', title: 'Intelligence & agents', body: 'AI search, planning and orchestration concepts with explicit permissions and human confirmation controls.' },
+        { id: '10', title: 'Experience layer', body: 'Access through the super app, partner applications, websites, enterprise tools, government portals and machine interfaces.' },
+      ],
+      ecosystemParticipants: [
+        { title: 'People', body: 'Citizens, consumers, and end-users who access services through the continental infrastructure.' },
+        { title: 'Businesses', body: 'African enterprises, startups, and commercial entities that integrate services and operate on ASTA.' },
+        { title: 'Governments', body: 'National and regional government services that connect through the interoperability layer.' },
+        { title: 'Developers', body: 'Independent developers who build applications and services using ASTA infrastructure.' },
+        { title: 'Financial Institutions', body: 'Banks, payment providers, and financial services that integrate through the digital rails.' },
+        { title: 'Technology Platforms', body: 'Existing tech platforms and services that connect to the continental ecosystem.' },
+        { title: 'Service Providers', body: 'Logistics, healthcare, education, and other service providers that operate through ASTA.' },
+        { title: 'Physical Infrastructure', body: 'Transport, energy, and physical systems that connect to the digital-physical layer.' },
+      ],
     },
-    layers: [
-      { id: '01', title: 'Physical infrastructure', body: 'Proposed connections to transport, energy, logistics, facilities, devices and other authorized real-world systems.' },
-      { id: '02', title: 'Connectivity, compute & edge', body: 'A distributed hosting and connectivity design intended to support low-latency service, redundancy and jurisdictional requirements.' },
-      { id: '03', title: 'Identity & accounts', body: 'A proposed identity and account layer for authentication, profiles, credentials, organizational identities and account linking.' },
-      { id: '04', title: 'Trust & credentials', body: 'Verification, permissions, signatures, fraud signals and dispute mechanisms, distinct from identity and authorization.' },
-      { id: '05', title: 'Continental digital rails', body: 'Interoperability interfaces for payments, commerce, communication, mobility, logistics and location.' },
-      { id: '06', title: 'Data & interoperability fabric', body: 'Authorized information exchange guided by consent, minimization, security, purpose limitation and applicable law.' },
-      { id: '07', title: 'Integration & developer layer', body: 'Proposed APIs, SDKs, webhooks, partner gateways, testing environments and technical documentation.' },
-      { id: '08', title: 'Applications & services', body: 'A super app and other first-party experiences alongside independently operated partner services.' },
-      { id: '09', title: 'Intelligence & agents', body: 'AI search, planning and orchestration concepts with explicit permissions and human confirmation controls.' },
-      { id: '10', title: 'Experience layer', body: 'Access through the super app, partner applications, websites, enterprise tools, government portals and machine interfaces.' },
-    ],
     paths: [
       {
         name: 'Use',
@@ -360,9 +402,11 @@ export const siteData = {
       file: '/documents/JOWIH%20FOUNDATION.pdf',
       description: 'A proposed governing instrument for the Foundation, its mission, governance safeguards and development mandate.',
       highlights: [
-        'Four pillars: essential services, youth and digital opportunity, research and innovation, and long-horizon capability.',
-        'Proposed Foundation, Purpose Trust, Founder Family Trust, Holdings and operating-company roles.',
-        'Asset lock, donation policy, direct disbursement, community participation and independent audit provisions.',
+        'Mission: accelerate development through the Great African Grid; the document explicitly says GAG is not a political union or supranational authority.',
+        'Four pillars: communities and basic needs; digital opportunity and youth; African research and innovation; and future capabilities.',
+        'Proposed division between the Foundation, Purpose Trust, Founder Family Trust, Holdings, Group and operating companies.',
+        'Controls proposed for donations, direct milestone disbursement, donor due diligence, audit, transparency and community participation.',
+        'ADFA project models, CDE delivery, data protection, political neutrality, safeguarding and asset-lock provisions.',
         'The document identifies itself as a draft; registration, enforceability and compliance require independent legal review.',
       ],
       category: 'Governance',
@@ -374,9 +418,10 @@ export const siteData = {
       file: '/documents/JOWIH%20MASTER%20SUMMARY.pdf',
       description: 'An organization-level overview connecting the proposed institutional, infrastructure, digital and funding architecture.',
       highlights: [
-        'Nine-layer view spanning mission, trusts, Holdings, Group, GAG, ASTA, ADFA and funding.',
-        'Explains the distinction between donations, the proposed Grid Bond and the proposed Ecosystem Fund.',
-        'Summarizes the seven corridors, four mission pillars and community delivery model.',
+        'Explains the institutional layers from Foundation and trusts through Holdings, Group, GAG, ASTA OS, ADFA and funding.',
+        'Summarizes the seven GAG corridors, four Foundation pillars, community CDE model and long-horizon planning.',
+        'Distinguishes pre-launch donations from the proposed Grid Bond and the later proposed regulated Ecosystem Fund.',
+        'Connects transport, industry, energy, digital systems, payments, human services and space capability.',
         'Contains future plans and financial examples; these should not be read as current operations or offers.',
       ],
       category: 'Architecture',
@@ -389,8 +434,9 @@ export const siteData = {
       description: 'A proposed governance and appointment architecture across stewardship, oversight, Foundation management, trusts and commercial execution.',
       highlights: [
         'Separates advisory, governing, executive, oversight and external professional roles.',
-        'Describes the proposed Board of Governors, committees, Independent Auditor General and external auditor.',
-        'Distinguishes Foundation administration from Holdings, Group and operating-company management.',
+        'Describes proposed stewardship, Board of Governors committees, Independent Auditor General, external auditor and Combined Trusts Board.',
+        'Separates Foundation administration from Holdings, Group and operating-company management, including distinct New Dawn City governance.',
+        'Defines regional coordination, country representation and participation structures.',
         'Lists offices and appointment categories; it is not evidence those positions are filled.',
       ],
       category: 'Governance',
@@ -402,10 +448,11 @@ export const siteData = {
       file: '/documents/ASTA%20OS.pdf',
       description: 'A detailed design for a digital-physical interoperability layer that can connect independently operated services.',
       highlights: [
-        'Ten proposed layers, from connectivity and identity to developer interfaces, applications and AI orchestration.',
-        'Shared identity, trust, payments, communication, commerce, mobility, logistics, data and service discovery rails.',
+        'Ten proposed layers, from physical infrastructure, connectivity and identity through APIs, applications, AI and user experience.',
+        'Details identity, accounts, credentials, permissions, trust, payment, commerce, messaging, mobility, logistics and data rails.',
         'Non-capture principle: partners may retain their brands, systems, customers and data.',
-        'Security, data sovereignty, API access, partner integration and phased implementation are described as requirements and plans.',
+        'Describes API/SDK and partner gateway models, developer tooling, security controls and phased implementation.',
+        'Security, data sovereignty, consent and jurisdictional compliance are design requirements, not claims of live certification.',
       ],
       category: 'Technology',
       pages: 20,
@@ -416,9 +463,10 @@ export const siteData = {
       file: '/documents/JOWIH%20CREDITS.pdf',
       description: 'A proposed partner-executed cross-border settlement bridge, distinct from domestic currency and speculative crypto-assets.',
       highlights: [
-        'Three wallet roles and transaction modes, with auto-conversion described as the default and holding as optional.',
-        'Licensed partners are intended to handle conversions; the Foundation is not to provide fiat on-ramp or off-ramp services.',
-        'Reserve, compliance, data protection, API integration, audit and reporting requirements are outlined.',
+        'Defines user, partner and Foundation treasury wallets, plus auto-conversion, optional holding, credit-routed FX and wallet-transfer modes.',
+        'The proposed principle is bridge-only use: domestic spending converts to local currency rather than introducing a parallel currency.',
+        'Licensed PSPs, banks and other approved partners are intended to handle conversion; the Foundation is not to provide fiat on/off-ramp services.',
+        'Covers reserve backing, fees, liquidity, holding periods, AML/KYC, data protection, API integration, dispute handling and audit reporting.',
         'Licensing, reserves, partner agreements and payment services are proposed and are not represented as active.',
       ],
       category: 'Finance',
@@ -427,12 +475,16 @@ export const siteData = {
     },
     {
       title: 'Ecosystem Investment Architecture',
+      anchor: 'funding-architecture',
       file: '/documents/JOWIH%20ECOSYSTEM%20INVESTMENT%20ARCHITECTURE.pdf',
       description: 'A proposed regulated investment and asset-vaulting blueprint, separate from the donation-led structural pre-launch.',
       highlights: [
         'Separates use, integration and investment as distinct participation paths.',
-        'Proposes a Mauritius Variable Capital Company, independent administration, valuation, custody, audit and licensing.',
-        'Outlines a Jowih 100 expanding toward 500, with a proposed 30% Core / 70% Partner commercial allocation.',
+        'Proposes a Mauritius VCC with independent administration, valuation, custody, audit, licensing and segregated sub-funds.',
+        'Describes the Jowih 100 expanding toward 500 and a proposed 30% Core / 70% Partner commercial allocation.',
+        'Explains non-voting units, asset eligibility, valuation-weighted participation, Treasury capacity and a separate neutral reserve.',
+        'Includes a proposed land acquisition/settlement facility with cash, independent valuation, community consultation and legal safeguards.',
+        'The standalone Master Ecosystem Fund blueprint is contained in this investment-architecture paper; no separate Master Fund PDF was supplied.',
         'Financial figures are expressly illustrative; there is no current investment offer, fund license or guaranteed return.',
       ],
       category: 'Investment',
@@ -441,6 +493,7 @@ export const siteData = {
     },
     {
       title: 'The GAG Initiative · Continental Framework',
+      anchor: 'gag-initiative',
       file: '/documents/The%20GAG%20initiative%20.pdf',
       description: 'A broad proposed development framework bringing together infrastructure, economic coordination, public services and community participation.',
       highlights: [
@@ -459,7 +512,7 @@ export const siteData = {
       description: 'A short narrative essay about collective change, persistence and the origin of the wider development ambition.',
       highlights: [
         'Uses a school-class turnaround as a story about shared effort and changed expectations.',
-        'Connects that experience to a broader refusal to treat present conditions as permanent.',
+        'Introduces the founder-authored "Reverse Response Technique": combining adversity with a refusal to accept it as the future.',
         'Provides cultural context rather than institutional policy or a description of operating programs.',
       ],
       category: 'Essay',
@@ -471,8 +524,10 @@ export const siteData = {
       file: '/documents/My%20story.pdf',
       description: 'A founder-authored account of formative experiences, education, work and the development of the initial Jowih idea.',
       highlights: [
-        'Describes the role of family, a grandmother, teachers and friends in continuing the founder’s education.',
-        'Connects student-built software and personal hardship to the evolution from a campus app idea toward continental infrastructure.',
+        'Recounts childhood loss, family care, scholarship-supported education and the role of teachers and friends.',
+        'Describes financial hardship during university and early work building software and researching African development challenges.',
+        'Traces the evolution from a campus-focused app idea toward ASTA OS and the Great African Grid concept.',
+        'The biography is context for the institution, not its operating record or a substitute for the governance papers.',
         'Includes personal experiences that are intentionally summarized here rather than made the focus of the institution’s website.',
       ],
       category: 'Founder account',

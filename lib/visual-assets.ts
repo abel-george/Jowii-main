@@ -182,4 +182,11 @@ export const visualAssets: VisualAsset[] = [
     alt: 'Jowih flag supplied with the source materials',
     disclosure: 'Brand asset',
   },
+  {
+    title: 'Jowih Foundation logo',
+    area: 'Foundation identity',
+    image: '/assets/logo.png',
+    alt: 'Jowih logo asset supplied with the website',
+    disclosure: 'Brand asset',
+  },
 ];

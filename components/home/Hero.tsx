@@ -10,22 +10,16 @@ import { Button } from '@/components/ui/Button';
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-end justify-start overflow-hidden bg-black text-white pt-24 pb-12 sm:pb-16 lg:pb-20">
-      {/* Background Video with Clean Architectural Overlays */}
+      {/* Background Image with Clean Architectural Overlays */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/assets/jowih-hero.png"
-          className="w-full h-full object-cover object-center"
-        >
-          <source src="/assets/hero.mp4" type="video/mp4" />
-        </video>
+        <div
+          className="w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: 'url(/assets/jowih-flag.jpg)' }}
+        />
 
         {/* Clean dual-tone gradient without synthetic noise or dots */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-transparent" />
       </div>
 
       {/* Hero Content */}
