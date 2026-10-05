@@ -689,6 +689,71 @@ export function InstitutionalHome() {
             <span className="institutional-digital__satellite institutional-digital__satellite--five">People</span>
           </div>
         </div>
+
+        {/* Asta Super App / Dotkom Showcase Banner */}
+        <div className="institutional-container" style={{ marginTop: '50px' }}>
+          <div className="shadow-2xl relative overflow-hidden" style={{ borderRadius: '0', background: '#060b08', border: '1px solid rgba(255, 254, 250, 0.15)' }}>
+            {/* Hero Image Banner with Background Blending */}
+            <div
+              className="relative w-full overflow-hidden flex items-center justify-center"
+              style={{ position: 'relative', width: '100%', height: '480px', background: '#060b08' }}
+            >
+              <Image
+                src="/assets/asta-super-app.jpg"
+                alt="Dotkom — Flagship Consumer Interface for Asta OS"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                style={{ objectFit: 'contain', objectPosition: 'center' }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  pointerEvents: 'none',
+                  background:
+                    'radial-gradient(ellipse at center, transparent 35%, rgba(6, 11, 8, 0.5) 70%, #060b08 96%), linear-gradient(to bottom, #060b08 0%, transparent 10%, transparent 90%, #060b08 100%), linear-gradient(to right, #060b08 0%, transparent 8%, transparent 92%, #060b08 100%)',
+                }}
+              />
+              <p className="absolute bottom-3 right-6 text-[10px] font-mono tracking-wider uppercase text-white/50 z-10 pointer-events-none hidden sm:block">
+                Dotkom interface concept board · Proposed first-party consumer super app
+              </p>
+            </div>
+
+            {/* Content & User Message */}
+            <div className="p-6 sm:p-10 relative z-10 space-y-6" style={{ borderTop: '1px solid rgba(255, 254, 250, 0.1)' }}>
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="superapp-hero-showcase__brand-pill">
+                    BRAND · DOTKOM
+                  </span>
+                  <span className="text-xs font-mono font-bold tracking-widest uppercase text-white/60">
+                    CONSUMER INTERFACE · FIRST-PARTY ENTRY POINT
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-4xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                  Asta Super App
+                </h3>
+              </div>
+
+              <div className="p-5 sm:p-6 border border-emerald-500/20 bg-emerald-950/20">
+                <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
+                  The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point. Through the Super App, users access the principal first-party services: Asta Messenger for communication and business interaction, Asta Marketplace for commerce and logistics, Asta Wallet for partnered financial access and payments, Asta Social Media for content and community, Asta Store for application and service distribution, and Asta Search for information and service discovery. These services operate on Asta OS infrastructure, the same infrastructure made available to authorized external applications. The Super App is one expression of Asta OS, not the whole of it, because Asta OS also functions through wider digital and physical ecosystem . Within the Super App&apos;s internal ecosystem, the consumer-facing brand is Dotkom from back golden days .
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-white/60">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>One expression of ASTA OS · Wider digital and physical ecosystem</span>
+                </div>
+                <Link href="/ecosystem#super-app" className="institutional-text-link">
+                  View Super App Architecture <ArrowRight aria-hidden="true" size={15} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="institutional-container institutional-finance-note">
           <CircleDollarSign aria-hidden="true" />
           <p><strong>Jowih Credits are not being offered here.</strong> The documents describe a proposed non-speculative bridge model requiring licensed partners and regulatory approvals. No wallet, conversion service or credit issuance is represented as currently available.</p>

@@ -277,8 +277,25 @@ export const siteData = {
         { title: 'Financial Institutions', body: 'Banks, payment providers, and financial services that integrate through the digital rails.' },
         { title: 'Technology Platforms', body: 'Existing tech platforms and services that connect to the continental ecosystem.' },
         { title: 'Service Providers', body: 'Logistics, healthcare, education, and other service providers that operate through ASTA.' },
-        { title: 'Physical Infrastructure', body: 'Transport, energy, and physical systems that connect to the digital-physical layer.' },
       ],
+      superApp: {
+        title: 'Asta Super App',
+        brand: 'Dotkom',
+        tagline: 'The Flagship Consumer Interface to Asta OS',
+        eyebrow: 'CONSUMER INTERFACE · FIRST-PARTY ENTRY POINT',
+        image: '/assets/asta-super-app.jpg',
+        imageNote: 'Dotkom interface concept board · Proposed first-party consumer super app',
+        lead: 'The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point.',
+        message: "The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point. Through the Super App, users access the principal first-party services: Asta Messenger for communication and business interaction, Asta Marketplace for commerce and logistics, Asta Wallet for partnered financial access and payments, Asta Social Media for content and community, Asta Store for application and service distribution, and Asta Search for information and service discovery. These services operate on Asta OS infrastructure, the same infrastructure made available to authorized external applications. The Super App is one expression of Asta OS, not the whole of it, because Asta OS also functions through wider digital and physical ecosystem . Within the Super App's internal ecosystem, the consumer-facing brand is Dotkom from back golden days .",
+        services: [
+          { name: 'Asta Messenger', role: 'Communication & business interaction', detail: 'High-speed encrypted messaging, voice/video channels, and verified business rails.' },
+          { name: 'Asta Marketplace', role: 'Commerce & logistics', detail: 'Integrated merchant storefronts, unified cart, order tracking, and freight coordination.' },
+          { name: 'Asta Wallet', role: 'Partnered financial access & payments', detail: 'Partner-routed settlement bridge, multi-currency balances, and direct checkout.' },
+          { name: 'Asta Social Media', role: 'Content & community', detail: 'Feeds, threads, creator tipping, and community coordination spaces.' },
+          { name: 'Asta Store', role: 'Application & service distribution', detail: 'Unified ecosystem app store for certified first-party and partner applications.' },
+          { name: 'Asta Search', role: 'Information & service discovery', detail: 'AI-assisted continental search, service cataloging, and local knowledge discovery.' },
+        ],
+      },
     },
     paths: [
       {
@@ -440,7 +457,7 @@ export const siteData = {
         'Lists offices and appointment categories; it is not evidence those positions are filled.',
       ],
       category: 'Governance',
-      pages: 15,
+      pages: 9,
       status: 'Proposed register',
     },
     {
@@ -488,7 +505,7 @@ export const siteData = {
         'Financial figures are expressly illustrative; there is no current investment offer, fund license or guaranteed return.',
       ],
       category: 'Investment',
-      pages: 29,
+      pages: 28,
       status: 'Proposed architecture · not an offer',
     },
     {
@@ -531,7 +548,7 @@ export const siteData = {
         'Includes personal experiences that are intentionally summarized here rather than made the focus of the institution’s website.',
       ],
       category: 'Founder account',
-      pages: 4,
+      pages: 5,
       status: 'Founder-authored narrative',
     },
   ],

@@ -806,3 +806,64 @@ button, input, select, textarea { font: inherit; }
   .gag-framework-entry { grid-template-columns: 24px 1fr auto; gap: 6px; }
   .gag-document-framework-list > div { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Asta Super App & Dotkom Hero Showcase
+   ========================================================================== */
+.superapp-hero-showcase {
+  position: relative;
+  background: #060b08;
+  color: var(--white);
+  border: 1px solid rgba(255, 254, 250, 0.15);
+  overflow: hidden;
+}
+
+.superapp-hero-showcase__ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+}
+
+.superapp-hero-showcase__media {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  height: clamp(360px, 48vw, 560px);
+  background: #060b08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.superapp-hero-showcase__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.superapp-hero-showcase__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(6, 11, 8, 0.45) 75%, #060b08 98%),
+    linear-gradient(to bottom, #060b08 0%, transparent 12%, transparent 88%, #060b08 100%),
+    linear-gradient(to right, #060b08 0%, transparent 10%, transparent 90%, #060b08 100%);
+}
+
+.superapp-hero-showcase__brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(211, 174, 117, 0.12);
+  border: 1px solid rgba(211, 174, 117, 0.4);
+  color: #d3ae75;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
