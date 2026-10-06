@@ -58,7 +58,7 @@ button, input, select, textarea { font: inherit; }
 .institutional-hero {
   position: relative;
   display: flex;
-  min-height: min(900px, 100svh);
+  min-height: min(720px, 80svh);
   align-items: center;
   overflow: hidden;
   background: #12251e;
@@ -73,7 +73,7 @@ button, input, select, textarea { font: inherit; }
   height: 100%;
 }
 
-.institutional-hero__image { object-fit: cover; object-position: center top; opacity: 1; }
+.institutional-hero__image { object-fit: cover; object-position: center center; opacity: 1; }
 .institutional-hero__shade { position: absolute; inset: 0; background: transparent; }
 .institutional-hero__content { position: relative; z-index: 1; padding-block: 150px 128px; animation: institutional-reveal 700ms var(--ease-out) both; }
 
@@ -624,6 +624,7 @@ button, input, select, textarea { font: inherit; }
   .institutional-cta-row { align-items: flex-start; flex-direction: column; }
   .institutional-uses { grid-template-columns: 1fr; gap: 20px; }
   .institutional-program-grid { grid-template-columns: repeat(2, 1fr); }
+  .institutional-hero { min-height: 480px; height: 58svh; }
 }
 
 @media (max-width: 700px) {
@@ -648,9 +649,20 @@ button, input, select, textarea { font: inherit; }
   .institutional-subscribe__form { grid-template-columns: 1fr; }
   .institutional-subscribe__name-row { grid-template-columns: 1fr; }
   .institutional-container { width: min(var(--site-max), calc(100% - 36px)); }
-  .institutional-hero { min-height: 760px; min-height: min(800px, 94svh); align-items: flex-end; }
-  .institutional-hero__image { object-position: 57% center; }
-  .institutional-hero__shade { background: linear-gradient(0deg, rgba(13, 31, 25, 0.97) 0%, rgba(13, 31, 25, 0.8) 51%, rgba(13, 31, 25, 0.27) 100%); }
+  .institutional-hero {
+    min-height: unset;
+    height: clamp(240px, 62vw, 440px);
+    aspect-ratio: 16 / 10;
+    align-items: center;
+    margin-top: 68px;
+  }
+  .institutional-hero__image {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  .institutional-hero__shade {
+    background: linear-gradient(180deg, transparent 65%, rgba(13, 31, 25, 0.75) 100%);
+  }
   .institutional-hero__content { padding-block: 150px 125px; }
   .institutional-hero__overline { max-width: 300px; font-size: 9px; line-height: 1.6; }
   .institutional-hero h1 { max-width: 580px; font-size: clamp(46px, 13vw, 67px); }

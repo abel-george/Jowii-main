@@ -47,7 +47,7 @@ export const visualAssets: VisualAsset[] = [
     area: 'ASTA OS',
     image: '/assets/asta-super-app.jpg',
     alt: 'Dotkom interface for the Asta Super App showing feeds, threads, and first-party service rails',
-    disclosure: 'Flagship consumer interface concept board',
+    disclosure: 'ASTA SUPER APP EXISTING MINIMUM VIABLE PRODUCT',
   },
   {
     title: 'Energy systems',

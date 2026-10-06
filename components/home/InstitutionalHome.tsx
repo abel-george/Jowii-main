@@ -290,7 +290,7 @@ export function InstitutionalHome() {
             priority
             sizes="100vw"
             className="institutional-hero__image"
-            style={{ objectFit: 'contain', objectPosition: 'center' }}
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
           />
         </div>
         <div className="institutional-hero__shade" />
@@ -695,8 +695,8 @@ export function InstitutionalHome() {
           <div className="shadow-2xl relative overflow-hidden" style={{ borderRadius: '0', background: '#060b08', border: '1px solid rgba(255, 254, 250, 0.15)' }}>
             {/* Hero Image Banner with Background Blending */}
             <div
-              className="relative w-full overflow-hidden flex items-center justify-center"
-              style={{ position: 'relative', width: '100%', height: '480px', background: '#060b08' }}
+              className="relative w-full overflow-hidden flex items-center justify-center h-[260px] sm:h-[380px] md:h-[460px] lg:h-[500px]"
+              style={{ background: '#060b08' }}
             >
               <Image
                 src="/assets/asta-super-app.jpg"
@@ -714,8 +714,8 @@ export function InstitutionalHome() {
                     'radial-gradient(ellipse at center, transparent 35%, rgba(6, 11, 8, 0.5) 70%, #060b08 96%), linear-gradient(to bottom, #060b08 0%, transparent 10%, transparent 90%, #060b08 100%), linear-gradient(to right, #060b08 0%, transparent 8%, transparent 92%, #060b08 100%)',
                 }}
               />
-              <p className="absolute bottom-3 right-6 text-[10px] font-mono tracking-wider uppercase text-white/50 z-10 pointer-events-none hidden sm:block">
-                Dotkom interface concept board · Proposed first-party consumer super app
+              <p className="absolute bottom-2.5 sm:bottom-3 right-4 sm:right-6 text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-white/70 z-10 pointer-events-none block">
+                ASTA SUPER APP EXISTING MINIMUM VIABLE PRODUCT
               </p>
             </div>
 
@@ -735,9 +735,16 @@ export function InstitutionalHome() {
                 </h3>
               </div>
 
-              <div className="p-5 sm:p-6 border border-emerald-500/20 bg-emerald-950/20">
+              <div className="p-5 sm:p-6 border border-emerald-500/20 bg-emerald-950/20 space-y-3">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Status: Minimum Viable Product (MVP) Already Exists
+                </div>
                 <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
-                  The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point. Through the Super App, users access the principal first-party services: Asta Messenger for communication and business interaction, Asta Marketplace for commerce and logistics, Asta Wallet for partnered financial access and payments, Asta Social Media for content and community, Asta Store for application and service distribution, and Asta Search for information and service discovery. These services operate on Asta OS infrastructure, the same infrastructure made available to authorized external applications. The Super App is one expression of Asta OS, not the whole of it, because Asta OS also functions through wider digital and physical ecosystem . Within the Super App&apos;s internal ecosystem, the consumer-facing brand is Dotkom from back golden days .
+                  The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point. The Super App Minimum Viable Product (MVP) already exists. Through the Super App, users access the principal first-party services: Dotkom Messenger for communication and business interaction, Dotkom Marketplace for commerce and logistics, Asta Wallet for partnered financial access and payments, Dotkom Social Media for content and community, Asta Store for application and service distribution, and Asta Search for information and service discovery. These services operate on Asta OS infrastructure, the same infrastructure made available to authorized external applications. The Super App is one expression of Asta OS, not the whole of it, because Asta OS also functions through wider digital and physical ecosystem . Within the Super App&apos;s internal ecosystem, the consumer-facing brand is Dotkom from back golden days .
+                </p>
+                <p className="text-xs sm:text-sm font-mono text-emerald-300/90 pt-2 border-t border-emerald-500/20">
+                  The Super App MVP already exists as an operational build of the Dotkom interface.
                 </p>
               </div>
 

@@ -23,13 +23,13 @@ export default function EcosystemPage() {
           </Link>
 
           <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase block mb-3" style={{ color: 'var(--brass)' }}>
-            03 / PROPOSED OPERATING STACK
+            03 / TECHNICAL OPERATING STACK
           </span>
           <h1 className="text-4xl sm:text-6xl uppercase tracking-tight leading-[1.02] max-w-4xl" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
             {ecosystem.title}
           </h1>
           <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
-            {ecosystem.lead} These services and interfaces describe a proposed architecture; they are not represented as currently available.
+            {ecosystem.lead} These services and interfaces describe the technical architecture and operating rails.
           </p>
         </div>
       </div>
@@ -67,8 +67,8 @@ export default function EcosystemPage() {
         <section id="super-app" className="shadow-2xl relative overflow-hidden" style={{ background: '#060b08', color: 'var(--white)', border: '2px solid var(--line-light)' }}>
           {/* Hero Image Banner with Background Blending */}
           <div
-            className="relative w-full overflow-hidden flex items-center justify-center"
-            style={{ position: 'relative', width: '100%', height: '520px', background: '#060b08' }}
+            className="relative w-full overflow-hidden flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[520px]"
+            style={{ background: '#060b08' }}
           >
             <Image
               src={ecosystem.asta.superApp.image}
@@ -88,7 +88,7 @@ export default function EcosystemPage() {
                   'radial-gradient(ellipse at center, transparent 35%, rgba(6, 11, 8, 0.5) 70%, #060b08 96%), linear-gradient(to bottom, #060b08 0%, transparent 10%, transparent 90%, #060b08 100%), linear-gradient(to right, #060b08 0%, transparent 8%, transparent 92%, #060b08 100%)',
               }}
             />
-            <p className="absolute bottom-3 right-6 text-[10px] font-mono tracking-wider uppercase text-white/50 z-10 pointer-events-none hidden sm:block">
+            <p className="absolute bottom-2.5 sm:bottom-3 right-4 sm:right-6 text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-white/70 z-10 pointer-events-none block">
               {ecosystem.asta.superApp.imageNote}
             </p>
           </div>
@@ -111,8 +111,15 @@ export default function EcosystemPage() {
 
               {/* Exact user-requested message */}
               <div className="p-6 sm:p-8 rounded-none border border-emerald-500/25 bg-emerald-950/20 space-y-3">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Status: Minimum Viable Product (MVP) Already Exists
+                </div>
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 font-sans">
                   {ecosystem.asta.superApp.message}
+                </p>
+                <p className="text-xs sm:text-sm font-mono text-emerald-300/90 pt-2 border-t border-emerald-500/20">
+                  The Super App MVP already exists as an operational build of the Dotkom interface.
                 </p>
               </div>
             </div>
