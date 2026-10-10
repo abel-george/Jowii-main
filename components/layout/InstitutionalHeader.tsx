@@ -61,13 +61,13 @@ export function InstitutionalHeader() {
                 {item.children && hoveredItem === item.href && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 shadow-lg z-50">
                     <div className="p-4">
-                      <p className="text-xs text-gray-600 mb-3">{item.description}</p>
+                      <p className="text-xs text-gray-900 mb-3 font-semibold">{item.description}</p>
                       <div className="space-y-1">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-3 py-2 text-sm hover:bg-gray-100 transition-colors"
+                            className="block px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 transition-colors"
                             onClick={() => setHoveredItem(null)}
                           >
                             {child.label}

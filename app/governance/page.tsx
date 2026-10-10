@@ -30,74 +30,77 @@ export default function GovernancePage() {
       </div>
 
       <div className="py-16 pb-24" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 leading-relaxed">
-          
-          <p className="text-sm italic" style={{ color: 'var(--muted)' }}>
-            Dd JOWIH GOVERNANCE & APPOINTMENT MASTER REGISTER
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Left Column - Main Content */}
+            <div className="lg:col-span-8 space-y-8 leading-relaxed">
+              
+              <p className="text-sm italic" style={{ color: 'var(--muted)' }}>
+                Dd JOWIH GOVERNANCE & APPOINTMENT MASTER REGISTER
+              </p>
 
-          <h2 className="text-2xl uppercase tracking-tight">I. STEWARDSHIP & FOUNDER-ERA ADVISORY STRUCTURE</h2>
+              <h2 className="text-2xl uppercase tracking-tight">I. STEWARDSHIP & FOUNDER-ERA ADVISORY STRUCTURE</h2>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">1. Founder & Steward President</h3>
-          <p>The Founder & Steward President serves as the principal constitutional steward of the JOWIH Mission, exercising the strategic, protective, and reserved powers established by the Constitution.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">1. Founder & Steward President</h3>
+              <p>The Founder & Steward President serves as the principal constitutional steward of the JOWIH Mission, exercising the strategic, protective, and reserved powers established by the Constitution.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">2. Founder's Council - Founder Era</h3>
-          <p>The Founder's Council is the Founder-era advisory structure chaired by the Founder & Steward President.</p>
-          <p>It consists of the Founder and persons invited by the Founder like special advisers to provide strategic counsel.</p>
-          <p>The Council is not a separate operating or executive authority and does not exercise independent management powers.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">2. Founder's Council - Founder Era</h3>
+              <p>The Founder's Council is the Founder-era advisory structure chaired by the Founder & Steward President.</p>
+              <p>It consists of the Founder and persons invited by the Founder like special advisers to provide strategic counsel.</p>
+              <p>The Council is not a separate operating or executive authority and does not exercise independent management powers.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">3. Special Advisors to the Steward President</h3>
-          <p>Special Advisors are individual appointments serving directly at the discretion of the Steward President. They may participate in the Founder's Council when invited by the Founder.</p>
-          <p>The initial advisory portfolio may include:</p>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Special Advisor -- Development & Infrastructure</li>
-            <li>Special Advisor -- Strategic Partnerships & Acquisitions</li>
-            <li>Special Advisor -- Finance & Jowih Credits</li>
-            <li>Special Advisor -- Technology & Innovation</li>
-            <li>Special Advisor -- Legal & Compliance</li>
-            <li>Special Advisor -- Diplomatic & Public Relations</li>
-            <li>Special Advisor -- Economics</li>
-            <li>Additional Special Advisors as required.</li>
-          </ul>
+              <h3 className="text-lg uppercase tracking-tight mt-6">3. Special Advisors to the Steward President</h3>
+              <p>Special Advisors are individual appointments serving directly at the discretion of the Steward President. They may participate in the Founder's Council when invited by the Founder.</p>
+              <p>The initial advisory portfolio may include:</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Special Advisor -- Development & Infrastructure</li>
+                <li>Special Advisor -- Strategic Partnerships & Acquisitions</li>
+                <li>Special Advisor -- Finance & Jowih Credits</li>
+                <li>Special Advisor -- Technology & Innovation</li>
+                <li>Special Advisor -- Legal & Compliance</li>
+                <li>Special Advisor -- Diplomatic & Public Relations</li>
+                <li>Special Advisor -- Economics</li>
+                <li>Additional Special Advisors as required.</li>
+              </ul>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">4. Foundation Advisory Council — Successor Era</h3>
-          <p>Upon transition from the Founder era, the Founder's Council shall transition into the Foundation Advisory Council in accordance with the Constitution.</p>
-          <p>The Foundation Advisory Council shall serve as the successor Steward President's advisory structure.</p>
-          <p>The Founder's Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">4. Foundation Advisory Council — Successor Era</h3>
+              <p>Upon transition from the Founder era, the Founder's Council shall transition into the Foundation Advisory Council in accordance with the Constitution.</p>
+              <p>The Foundation Advisory Council shall serve as the successor Steward President's advisory structure.</p>
+              <p>The Founder's Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
+              <h2 className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">5. Board of Governors</h3>
-          <p>The Board of Governors constitutes the principal governing body of the Jowih Foundation and exercises the governance, fiduciary, oversight, and strategic responsibilities assigned to it by the Constitution.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">5. Board of Governors</h3>
+              <p>The Board of Governors constitutes the principal governing body of the Jowih Foundation and exercises the governance, fiduciary, oversight, and strategic responsibilities assigned to it by the Constitution.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">6. Permanent Board Committees</h3>
-          <p>The permanent Foundation Board committee structure includes:</p>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Audit Committee</li>
-            <li>Ethics & Oversight Committee</li>
-            <li>Nominations Committee</li>
-            <li>Remuneration Committee</li>
-          </ul>
-          <p>These committees perform governance and oversight functions and do not constitute executive management departments.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">6. Permanent Board Committees</h3>
+              <p>The permanent Foundation Board committee structure includes:</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Audit Committee</li>
+                <li>Ethics & Oversight Committee</li>
+                <li>Nominations Committee</li>
+                <li>Remuneration Committee</li>
+              </ul>
+              <p>These committees perform governance and oversight functions and do not constitute executive management departments.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
+              <h2 className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">7. Independent Auditor General</h3>
-          <p>The Independent Auditor General serves as the Foundation's , profit and non-profit independent audit authority.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">7. Independent Auditor General</h3>
+              <p>The Independent Auditor General serves as the Foundation's , profit and non-profit independent audit authority.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">8. Independent Oversight Committee</h3>
-          <p>An independent oversight mechanism responsible for designated governance and accountability functions.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">8. Independent Oversight Committee</h3>
+              <p>An independent oversight mechanism responsible for designated governance and accountability functions.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">9. External Audit Firm</h3>
-          <p>An independent rotating professional audit firm appointed in accordance with the Constitution.</p>
-          <p>The External Audit Firm is an external professional service provider and is not a permanent JOWIH executive appointment.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">9. External Audit Firm</h3>
+              <p>An independent rotating professional audit firm appointed in accordance with the Constitution.</p>
+              <p>The External Audit Firm is an external professional service provider and is not a permanent JOWIH executive appointment.</p>
 
-          <h3 className="text-lg uppercase tracking-tight mt-6">10. Specialist External Professional Firms</h3>
-          <p>Where required, the Foundation may retain:</p>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>external legal counsel;</li>
-            <li>specialist arbitration counsel;</li>
-            <li>forensic auditors;</li>
+              <h3 className="text-lg uppercase tracking-tight mt-6">10. Specialist External Professional Firms</h3>
+              <p>Where required, the Foundation may retain:</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>external legal counsel;</li>
+                <li>specialist arbitration counsel;</li>
+                <li>forensic auditors;</li>
             <li>specialist governance advisers;</li>
             <li>tax and corporate advisers;</li>
             <li>other professional firms authorized under the applicable governance framework.</li>
@@ -1079,7 +1082,110 @@ export default function GovernancePage() {
             <div>        ├── Neutral Reserve Sub-Fund</div>
             <div>        └── Specialized Sub-Funds</div>
           </div>
+          </div>
 
+            {/* Right Column - Sidebar */}
+            <div className="lg:col-span-4 space-y-8">
+              {/* Quick Navigation */}
+              <div className="sticky top-24 p-6 bg-neutral-50 border border-neutral-200">
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4" style={{ color: 'var(--green)' }}>
+                  On This Page
+                </h3>
+                <nav className="space-y-2 text-sm">
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Stewardship Structure
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Foundation Governance
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Independent Oversight
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Executive Management
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Regional Coordination
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Jowih Holdings
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Jowih Group
+                  </a>
+                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                    Master Ecosystem Fund
+                  </a>
+                </nav>
+              </div>
+
+              {/* Quick Links */}
+              <div className="p-6 bg-neutral-50 border border-neutral-200">
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4" style={{ color: 'var(--green)' }}>
+                  Quick Links
+                </h3>
+                <nav className="space-y-2">
+                  <Link href="/about" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
+                    Foundation Overview
+                  </Link>
+                  <Link href="/documents" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
+                    Source Documents
+                  </Link>
+                  <Link href="/gag" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
+                    Great African Grid
+                  </Link>
+                  <Link href="/ecosystem" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
+                    ASTA OS
+                  </Link>
+                </nav>
+              </div>
+
+              {/* Key Documents */}
+              <div className="p-6 bg-neutral-50 border border-neutral-200">
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4" style={{ color: 'var(--green)' }}>
+                  Key Documents
+                </h3>
+                <div className="space-y-3">
+                  <Link href="/documents" className="block text-sm text-neutral-700 hover:text-black transition-colors py-2 border-b border-neutral-200">
+                    Governance & Appointment Master Register
+                  </Link>
+                  <Link href="/documents" className="block text-sm text-neutral-700 hover:text-black transition-colors py-2 border-b border-neutral-200">
+                    Foundation Constitution
+                  </Link>
+                  <Link href="/documents" className="block text-sm text-neutral-700 hover:text-black transition-colors py-2 border-b border-neutral-200">
+                    Trust Structure Documents
+                  </Link>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="p-6 bg-black text-white">
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4">
+                  Get Involved
+                </h3>
+                <div className="space-y-3">
+                  <Link
+                    href="/partner"
+                    className="block w-full py-2 px-4 text-center text-sm font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-neutral-200 transition-colors"
+                  >
+                    Become Partner
+                  </Link>
+                  <Link
+                    href="/waitlist"
+                    className="block w-full py-2 px-4 text-center text-sm font-mono font-bold uppercase tracking-wider border border-white hover:bg-white hover:text-black transition-colors"
+                  >
+                    Join Waitlist
+                  </Link>
+                  <Link
+                    href="/donate"
+                    className="block w-full py-2 px-4 text-center text-sm font-mono font-bold uppercase tracking-wider bg-[#FF5000] text-white hover:bg-[#e64000] transition-colors"
+                  >
+                    Support Pre-Launch
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
