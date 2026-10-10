@@ -195,6 +195,7 @@ export default function EcosystemPage() {
                 '/assets/super app/Screenshot from 2026-10-09 18-39-48.png',
                 '/assets/super app/Screenshot from 2026-10-09 18-40-21.png',
                 '/assets/super app/Screenshot from 2026-10-09 18-40-37.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-41-00.png',
               ].map((src, index) => (
                 <div key={index} className="relative aspect-[9/16] overflow-hidden bg-white border border-neutral-200 hover:border-neutral-400 transition-colors">
                   <LightboxImage src={src} alt={`Super App Screenshot ${index + 1}`} className="w-full h-full cursor-pointer">
