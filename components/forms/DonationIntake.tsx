@@ -57,7 +57,7 @@ export function DonationIntake() {
             and it does not offer a financial return, ownership or governance rights.
           </p>
           <div className="donation-page__classification">
-            <span><CircleDollarSign aria-hidden="true" /> Donation</span>
+            <span><CircleDollarSign aria-hidden="true" /> Support</span>
             <span><ShieldCheck aria-hidden="true" /> No return</span>
             <span><Landmark aria-hidden="true" /> Structure-first</span>
           </div>
@@ -83,12 +83,12 @@ export function DonationIntake() {
             </div>
 
             <div className="donation-page__rationale">
-              <h3>Why Pre-Launch Donations Matter</h3>
+              <h3>Why Pre-Launch Support Matters</h3>
               <p>
-                Pre-launch donations enable the organization's independence from any influence. The collective will that a better Africa is possible drives this model—allowing the Foundation to establish itself without owing anybody anything in return.
+                Pre-launch support enables the organization's independence from any influence. The collective will that a better Africa is possible drives this model—allowing the Foundation to establish itself without owing anybody anything in return.
               </p>
               <p>
-                Once citizens have decided on the 5 law firms and the trust to handle donations, the formal giving process will be activated. Until then, this page provides information about the proposed arrangement.
+                Once citizens have decided on the 5 law firms and the trust to handle contributions, the formal giving process will be activated. Until then, this page provides information about the proposed arrangement.
               </p>
             </div>
 
@@ -113,7 +113,7 @@ export function DonationIntake() {
                 <p className="institutional-eyebrow">ONLINE GIVING NOT OPEN</p>
                 <h2>No payment will be taken.</h2>
                 <p>
-                  The donation trust and payment-provider endpoint have not been configured for this website. Contribution
+                  The contribution trust and payment-provider endpoint have not been configured for this website. Contribution
                   instructions will be published only after the receiving structure and account are independently verified.
                 </p>
                 <Link href="/waitlist" className="institutional-text-link">Request a launch update <ArrowRight aria-hidden="true" size={17} /></Link>

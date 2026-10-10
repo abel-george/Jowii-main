@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Share2, MessageCircle, Play, Camera } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="bg-black text-white border-t border-white/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-16 border-b border-white/10">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 inline-flex">
@@ -113,10 +113,37 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/donate" className="hover:text-white transition-colors">
-                  Donate to Mission Fund
+                  Support Mission Fund
                 </Link>
               </li>
             </ul>
+          </div>
+
+          {/* Social Media */}
+          <div className="space-y-3">
+            <p className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF5000] uppercase">
+              Connect With Us
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {siteData.socialMedia.map((social) => {
+                const Icon = social.icon === 'facebook' ? Share2 : 
+                           social.icon === 'linkedin' ? Share2 :
+                           social.icon === 'youtube' ? Play :
+                           social.icon === 'instagram' ? Camera : ArrowUpRight;
+                return (
+                  <a
+                    key={social.platform}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
           {/* Event Details */}

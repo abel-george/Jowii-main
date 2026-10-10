@@ -7,6 +7,18 @@ import { ArrowLeft, Users, Building2, Code, Globe, Award, CheckCircle2, Loader2,
 export default function PartnerCommunityPage() {
   const [step, setStep] = useState<'welcome' | 'details' | 'confirmation'>('welcome');
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    type: '',
+    country: '',
+    email: '',
+    phone: '',
+    website: '',
+    partnershipAreas: [] as string[],
+    contributionType: '',
+    message: '',
+    additionalInfo: '',
+  });
 
   const partnershipAreas = [
     {
@@ -97,12 +109,40 @@ export default function PartnerCommunityPage() {
     'Other (please specify)'
   ];
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setLoading(false);
-    setStep('confirmation');
+    
+    try {
+      const response = await fetch('/api/partners', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          partnerType: formData.type,
+          name: formData.name,
+          email: formData.email,
+          country: formData.country,
+          phone: formData.phone,
+          website: formData.website,
+          partnershipAreas: formData.partnershipAreas.join(', '),
+          contributionType: formData.contributionType,
+          message: formData.message,
+          additionalInfo: formData.additionalInfo,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStep('confirmation');
+      } else {
+        alert('Failed to submit: ' + result.message);
+      }
+    } catch (error) {
+      alert('Failed to submit. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -214,6 +254,8 @@ export default function PartnerCommunityPage() {
                 <input
                   type="text"
                   placeholder="Your name or organization name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 />
@@ -224,6 +266,8 @@ export default function PartnerCommunityPage() {
                   Type *
                 </label>
                 <select
+                  value={formData.type}
+                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 >
@@ -245,6 +289,8 @@ export default function PartnerCommunityPage() {
                 <input
                   type="text"
                   placeholder="Your country"
+                  value={formData.country}
+                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 />
@@ -257,6 +303,8 @@ export default function PartnerCommunityPage() {
                 <input
                   type="email"
                   placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 />
@@ -269,6 +317,8 @@ export default function PartnerCommunityPage() {
                 <input
                   type="tel"
                   placeholder="+254 XXX XXX XXX"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 />
@@ -281,6 +331,8 @@ export default function PartnerCommunityPage() {
                 <input
                   type="url"
                   placeholder="https://your-site.com"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                   className="w-full px-4 py-3 border focus:outline-none"
                   style={{ borderColor: 'var(--line-light)' }}
                 />
@@ -294,7 +346,18 @@ export default function PartnerCommunityPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {partnershipAreas.map((area) => (
                   <label key={area.id} className="flex items-start gap-3 cursor-pointer p-3 hover:bg-gray-50 transition-colors" style={{ background: 'var(--sage)' }}>
-                    <input type="checkbox" className="w-4 h-4 mt-1 shrink-0" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 mt-1 shrink-0"
+                      checked={formData.partnershipAreas.includes(area.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setFormData({ ...formData, partnershipAreas: [...formData.partnershipAreas, area.id] });
+                        } else {
+                          setFormData({ ...formData, partnershipAreas: formData.partnershipAreas.filter((id: string) => id !== area.id) });
+                        }
+                      }}
+                    />
                     <div>
                       <span className="text-sm font-bold block">{area.icon} {area.name}</span>
                       <span className="text-xs block mt-1" style={{ color: 'var(--ink-soft)' }}>{area.description}</span>
@@ -311,7 +374,14 @@ export default function PartnerCommunityPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {contributionTypes.map((type) => (
                   <label key={type} className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4"
+                      checked={formData.contributionType === type}
+                      onChange={(e) => {
+                        setFormData({ ...formData, contributionType: e.target.checked ? type : '' });
+                      }}
+                    />
                     <span className="text-sm">{type}</span>
                   </label>
                 ))}
@@ -325,6 +395,8 @@ export default function PartnerCommunityPage() {
               <textarea
                 rows={6}
                 placeholder="Please describe in detail what you can offer to help build the Jowih ecosystem. Include specific capabilities, resources, expertise, scale, timeline, and any other relevant information. The more detail you provide, the better we can understand how to integrate your contribution."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full px-4 py-3 border focus:outline-none"
                 style={{ borderColor: 'var(--line-light)' }}
               />
@@ -337,29 +409,33 @@ export default function PartnerCommunityPage() {
               <textarea
                 rows={3}
                 placeholder="Any other information you'd like to share about your organization, background, or partnership vision"
+                value={formData.additionalInfo}
+                onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
                 className="w-full px-4 py-3 border focus:outline-none"
                 style={{ borderColor: 'var(--line-light)' }}
               />
             </div>
 
-            <button
-              onClick={handleSubmit}
-              disabled={loading}
-              className="w-full py-4 text-white font-mono font-bold text-sm uppercase tracking-wider transition-colors disabled:opacity-50"
-              style={{ background: 'var(--brass)' }}
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin inline mr-2" />
-                  Processing Application...
-                </>
-              ) : (
-                <>
-                  Submit Partnership Contribution
-                  <ArrowRight className="w-5 h-5 inline ml-2" />
-                </>
-              )}
-            </button>
+            <form onSubmit={handleSubmit}>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-4 text-white font-mono font-bold text-sm uppercase tracking-wider transition-colors disabled:opacity-50"
+                style={{ background: 'var(--brass)' }}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin inline mr-2" />
+                    Processing Application...
+                  </>
+                ) : (
+                  <>
+                    Submit Partnership Contribution
+                    <ArrowRight className="w-5 h-5 inline ml-2" />
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         )}
 

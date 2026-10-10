@@ -2,6 +2,8 @@ export interface NavItem {
   label: string;
   href: string;
   isCta?: boolean;
+  children?: NavItem[];
+  description?: string;
 }
 
 export interface StatItem {
@@ -65,16 +67,128 @@ export const siteData = {
     time: '8:00 PM – 1:00 AM EAT',
     hashtag: '#JOWIHKENYA',
   },
+  languages: [
+    { code: 'en', label: 'English', native: 'English' },
+    { code: 'fr', label: 'French', native: 'Français' },
+    { code: 'sw', label: 'Swahili', native: 'Kiswahili' },
+  ],
+  news: [
+    {
+      id: 1,
+      title: 'Jowih Foundation Announces Pre-Launch Initiative',
+      date: '2026-10-09',
+      category: 'Foundation',
+      excerpt: 'The Jowih Foundation is proud to announce its pre-launch initiative to establish continental infrastructure for African development.',
+      href: '/news/jowih-foundation-announces-pre-launch',
+    },
+    {
+      id: 2,
+      title: 'Great African Grid Framework Released',
+      date: '2026-10-07',
+      category: 'Infrastructure',
+      excerpt: 'The 7-corridor infrastructure framework is now available for review by potential partners and stakeholders.',
+      href: '/news/great-african-grid-framework-released',
+    },
+    {
+      id: 3,
+      title: 'ASTA OS Technical Architecture Published',
+      date: '2026-10-05',
+      category: 'Technology',
+      excerpt: 'Technical documentation for ASTA OS layers and integration specifications has been published in the source papers.',
+      href: '/news/asta-os-technical-architecture-published',
+    },
+  ],
   nav: [
-    { label: 'About', href: '/about' },
-    { label: 'Great African Grid', href: '/gag' },
-    { label: 'ASTA OS', href: '/ecosystem' },
-    { label: 'Funding', href: '/funding' },
-    { label: 'Credits', href: '/credits' },
-    { label: 'Governance', href: '/governance' },
-    { label: 'Partners', href: '/partners' },
-    { label: 'Source papers', href: '/documents' },
-    { label: 'Updates', href: '/waitlist' },
+    { 
+      label: 'About', 
+      href: '/about',
+      description: 'Learn about the Jowih Foundation mission and vision',
+      children: [
+        { label: 'Overview', href: '/about' },
+        { label: 'Mission & Vision', href: '/about#mission' },
+        { label: 'Structure', href: '/about#structure' },
+      ]
+    },
+    { 
+      label: 'Great African Grid', 
+      href: '/gag',
+      description: '7 infrastructure corridors powering continental development',
+      children: [
+        { label: 'Overview', href: '/gag' },
+        { label: 'Transport Corridor', href: '/gag#transport' },
+        { label: 'Industrial Corridor', href: '/gag#industrial' },
+        { label: 'Energy Corridor', href: '/gag#energy' },
+        { label: 'Digital Corridor', href: '/gag#digital' },
+        { label: 'Payments Corridor', href: '/gag#payments' },
+        { label: 'Services Corridor', href: '/gag#services' },
+      ]
+    },
+    { 
+      label: 'ASTA OS', 
+      href: '/ecosystem',
+      description: 'Technical operating stack and infrastructure framework',
+      children: [
+        { label: 'Overview', href: '/ecosystem' },
+        { label: 'Core Layers', href: '/ecosystem#asta-os' },
+        { label: 'Super App', href: '/ecosystem#super-app' },
+        { label: 'Ecosystem Participants', href: '/ecosystem#participants' },
+      ]
+    },
+    { 
+      label: 'Funding', 
+      href: '/funding',
+      description: 'Financial architecture and resource mobilization',
+      children: [
+        { label: 'Overview', href: '/funding' },
+        { label: 'Master Ecosystem Fund', href: '/funding#master-fund' },
+        { label: 'Grid Bond', href: '/funding#grid-bond' },
+        { label: 'Pre-Launch Support', href: '/donate' },
+      ]
+    },
+    { 
+      label: 'Governance', 
+      href: '/governance',
+      description: 'Leadership structure and institutional framework',
+      children: [
+        { label: 'Overview', href: '/governance' },
+        { label: 'Leadership', href: '/governance#leadership' },
+        { label: 'Policies', href: '/governance#policies' },
+      ]
+    },
+    { 
+      label: 'Partners', 
+      href: '/partners',
+      description: 'Join the ecosystem partnership community',
+      children: [
+        { label: 'Partner Community', href: '/partner/community' },
+        { label: 'Developer Community', href: '/partner/developer' },
+        { label: 'Diaspora Network', href: '/partner/diaspora' },
+        { label: 'Institutional Partnership', href: '/partner/institutional' },
+        { label: 'Volunteers', href: '/partner/volunteer' },
+      ]
+    },
+    { 
+      label: 'Source Papers', 
+      href: '/documents',
+      description: '9 foundational documents outlining the framework',
+      children: [
+        { label: 'All Documents', href: '/documents' },
+        { label: 'Foundation', href: '/documents#foundation' },
+        { label: 'Governance', href: '/documents#governance' },
+        { label: 'Infrastructure', href: '/documents#infrastructure' },
+        { label: 'Financial', href: '/documents#financial' },
+      ]
+    },
+    { 
+      label: 'Updates', 
+      href: '/waitlist',
+      description: 'Stay informed about launch progress and developments',
+      children: [
+        { label: 'Join Waitlist', href: '/waitlist' },
+        { label: 'Newsletter', href: '/waitlist#newsletter' },
+        { label: 'Contact', href: '/documents#contact' },
+      ]
+    },
   ],
   hero: {
     eyebrow: 'Kisii, Kenya  ·  29 October 2026  ·  8:00 PM – 1:00 AM',
@@ -573,9 +687,9 @@ export const siteData = {
     },
     donate: {
       kicker: 'Pre-launch structural setup',
-      title: 'Make a donation',
-      copy: 'The pre-launch is for donations, not investment. No return, equity or ownership is offered. Online giving remains unavailable until the proposed receiving trust and payment provider are verified.',
-      interest: 'Donation',
+      title: 'Support Pre-Launch',
+      copy: 'The pre-launch is for support contributions, not investment. No return, equity or ownership is offered. Online giving remains unavailable until the proposed receiving trust and payment provider are verified.',
+      interest: 'Support',
     },
   },
   contactInterests: [
@@ -603,6 +717,52 @@ export const siteData = {
     { label: 'Book Ticket', href: '/ticket' },
     { label: 'Become Partner', href: '/partner' },
     { label: 'Investor Briefing', href: '/investor' },
-    { label: 'Donate', href: '/donate' },
+    { label: 'Support', href: '/donate' },
+  ],
+  socialMedia: [
+    { platform: 'X', label: 'X (Twitter)', href: 'https://x.com/jowihfoundation', icon: 'twitter' },
+    { platform: 'Facebook', label: 'Facebook', href: 'https://facebook.com/jowihfoundation', icon: 'facebook' },
+    { platform: 'LinkedIn', label: 'LinkedIn', href: 'https://linkedin.com/company/jowihfoundation', icon: 'linkedin' },
+    { platform: 'YouTube', label: 'YouTube', href: 'https://youtube.com/@jowihfoundation', icon: 'youtube' },
+    { platform: 'Instagram', label: 'Instagram', href: 'https://instagram.com/jowihfoundation', icon: 'instagram' },
+  ],
+  resources: {
+    keyDocuments: [
+      { title: 'Foundation Charter', href: '/documents#foundation' },
+      { title: 'Governance Framework', href: '/documents#governance' },
+      { title: 'Financial Architecture', href: '/documents#financial' },
+      { title: 'Infrastructure Plans', href: '/documents#infrastructure' },
+    ],
+    publications: [
+      { title: 'Jowih Foundation Overview', href: '/documents' },
+      { title: 'GAG Implementation Guide', href: '/documents' },
+      { title: 'ASTA OS Technical Specs', href: '/documents' },
+    ],
+  },
+  workWithUs: [
+    {
+      title: 'Join Partnership Community',
+      description: 'Submit your capabilities to help build Africa\'s next chapter',
+      href: '/partner/community',
+      icon: 'users',
+    },
+    {
+      title: 'Developer Opportunities',
+      description: 'Build on ASTA OS and contribute to the technology infrastructure',
+      href: '/partner/developer',
+      icon: 'code',
+    },
+    {
+      title: 'Institutional Collaboration',
+      description: 'Partner with universities, research institutions, and governments',
+      href: '/partner/institutional',
+      icon: 'building',
+    },
+    {
+      title: 'Volunteer Your Skills',
+      description: 'Contribute your time and expertise to the foundation',
+      href: '/partner/volunteer',
+      icon: 'heart',
+    },
   ],
 };

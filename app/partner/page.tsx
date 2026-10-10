@@ -8,9 +8,9 @@ export default function PartnerPage() {
   const partnershipOptions = [
     {
       id: 'donate',
-      title: 'Donate',
-      description: 'Support the pre-launch structural setup. Your donation helps fund legal registration, trust establishment, and initial organizational costs to build the Foundation\'s independent governance structure.',
-      type: 'Donation',
+      title: 'Support Pre-Launch',
+      description: 'Support the pre-launch structural setup. Your contribution helps fund legal registration, trust establishment, and initial organizational costs to build the Foundation\'s independent governance structure.',
+      type: 'Contribution',
       icon: CircleDollarSign,
       href: '/donate',
       color: 'var(--brass)'

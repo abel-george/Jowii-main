@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { Button } from '@/components/ui/Button';
+import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 export default function EcosystemPage() {
   const { ecosystem } = siteData;
@@ -166,6 +167,60 @@ export default function EcosystemPage() {
               <div className="text-white/50">
                 Consumer-facing brand: <strong className="text-white/90">Dotkom from back golden days</strong>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Super App Sample Screenshots */}
+        <section className="shadow-2xl relative" style={{ background: 'var(--ink)', color: 'var(--white)', border: '2px solid var(--line-light)' }}>
+          <div className="p-8 sm:p-12 space-y-6">
+            <div className="max-w-3xl space-y-3">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--brass)' }}>
+                VISUAL PROOF
+              </span>
+              <h2 className="text-3xl sm:text-4xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                Super App Sample Screenshots
+              </h2>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
+                Live screenshots from the operational Dotkom interface demonstrating the Super App MVP functionality across all integrated services.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-4">
+              {[
+                '/assets/super app/Screenshot from 2026-10-09 18-31-54.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-32-30.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-32-53.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-33-16.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-33-26.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-33-50.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-34-29.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-35-04.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-35-54.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-36-39.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-37-38.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-38-05.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-38-14.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-38-54.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-39-09.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-39-22.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-39-33.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-39-48.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-40-21.png',
+                '/assets/super app/Screenshot from 2026-10-09 18-40-37.png',
+              ].map((src, index) => (
+                <div key={index} className="relative aspect-[9/16] sm:aspect-[3/4] overflow-hidden" style={{ background: 'var(--ink-soft)', border: '1px solid rgba(255, 254, 250, 0.1)' }}>
+                  <LightboxImage src={src} alt={`Super App Screenshot ${index + 1}`} className="w-full h-full cursor-pointer">
+                    <Image
+                      src={src}
+                      alt={`Super App Screenshot ${index + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform hover:scale-105"
+                    />
+                  </LightboxImage>
+                </div>
+              ))}
             </div>
           </div>
         </section>

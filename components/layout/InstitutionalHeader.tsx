@@ -4,11 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function InstitutionalHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const pathname = usePathname();
 
   return (
@@ -32,20 +34,48 @@ export function InstitutionalHeader() {
 
           <nav className="institutional-nav" aria-label="Primary navigation">
             {siteData.nav.map((item) => (
-              <Link
+              <div
                 key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? 'page' : undefined}
-                className={pathname === item.href ? 'is-active' : undefined}
+                className="relative"
+                onMouseEnter={() => setHoveredItem(item.href)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
-                {item.label}
-              </Link>
+                <Link
+                  href={item.href}
+                  aria-current={pathname === item.href ? 'page' : undefined}
+                  className={pathname === item.href ? 'is-active' : undefined}
+                >
+                  {item.label}
+                  {item.children && <ChevronDown className="w-3 h-3 ml-1 inline" />}
+                </Link>
+                
+                {item.children && hoveredItem === item.href && (
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 shadow-lg z-50">
+                    <div className="p-4">
+                      <p className="text-xs text-gray-600 mb-3">{item.description}</p>
+                      <div className="space-y-1">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-3 py-2 text-sm hover:bg-gray-100 transition-colors"
+                            onClick={() => setHoveredItem(null)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
           <div className="institutional-header__actions">
+            <LanguageSwitcher />
             <Link className="institutional-header__donate" href="/donate">
-              Donate <ArrowUpRight aria-hidden="true" size={15} />
+              Support <ArrowUpRight aria-hidden="true" size={15} />
             </Link>
             <Link className="institutional-header__donate" href="/ticket" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
               Book Ticket <ArrowUpRight aria-hidden="true" size={15} />
@@ -76,7 +106,7 @@ export function InstitutionalHeader() {
             ))}
           </nav>
           <Link className="institutional-mobile-menu__donate" href="/donate" onClick={() => setMobileMenuOpen(false)}>
-            Pre-launch donations <ArrowUpRight aria-hidden="true" size={16} />
+            Support Pre-Launch <ArrowUpRight aria-hidden="true" size={16} />
           </Link>
           <Link className="institutional-mobile-menu__donate" href="/ticket" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--ink)', color: 'var(--white)' }}>
             Book Ticket <ArrowUpRight aria-hidden="true" size={16} />
@@ -84,7 +114,7 @@ export function InstitutionalHeader() {
           <Link className="institutional-mobile-menu__donate" href="/waitlist" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--brass)', color: 'var(--ink)' }}>
             Join Waitlist <ArrowUpRight aria-hidden="true" size={16} />
           </Link>
-          <p>Donations only. No investment return, equity or ownership is offered in the pre-launch.</p>
+          <p>Support is for pre-launch setup only. No investment return, equity or ownership is offered.</p>
         </div>
       )}
     </>

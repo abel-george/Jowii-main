@@ -1,4 +1,4 @@
-export type IntegrationName = 'waitlist' | 'newsletter' | 'contact' | 'donations';
+export type IntegrationName = 'waitlist' | 'newsletter' | 'contact' | 'donations' | 'partners';
 
 export interface IntegrationReceipt {
   referenceId?: string;
@@ -28,6 +28,10 @@ const integrationConfig: Record<IntegrationName, { url: string | undefined; key:
   contact: {
     url: process.env.CONTACT_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
     key: process.env.CONTACT_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
+  },
+  partners: {
+    url: process.env.PARTNERS_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
+    key: process.env.PARTNERS_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
   },
   donations: {
     url: process.env.DONATION_API_URL,
