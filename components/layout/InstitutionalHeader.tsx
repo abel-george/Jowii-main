@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X, ChevronDown, Share2, MessageCircle, Play, Camera } from 'lucide-react';
+import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -83,29 +83,6 @@ export function InstitutionalHeader() {
 
           <div className="institutional-header__actions">
             <LanguageSwitcher />
-            
-            {/* Social Media Icons */}
-            <div className="hidden md:flex items-center gap-2">
-              {siteData.socialMedia.map((social) => {
-                const Icon = social.icon === 'facebook' ? Share2 : 
-                           social.icon === 'linkedin' ? Share2 :
-                           social.icon === 'youtube' ? Play :
-                           social.icon === 'instagram' ? Camera : ArrowUpRight;
-                return (
-                  <a
-                    key={social.platform}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
-            </div>
-
             <Link className="institutional-header__donate" href="/donate">
               Support <ArrowUpRight aria-hidden="true" size={15} />
             </Link>

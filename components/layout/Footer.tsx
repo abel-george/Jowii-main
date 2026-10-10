@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Mail, MapPin, Share2, MessageCircle, Play, Camera } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 
 export function Footer() {
@@ -124,25 +124,20 @@ export function Footer() {
             <p className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF5000] uppercase">
               Connect With Us
             </p>
-            <div className="flex flex-wrap gap-3">
-              {siteData.socialMedia.map((social) => {
-                const Icon = social.icon === 'facebook' ? Share2 : 
-                           social.icon === 'linkedin' ? Share2 :
-                           social.icon === 'youtube' ? Play :
-                           social.icon === 'instagram' ? Camera : ArrowUpRight;
-                return (
-                  <a
-                    key={social.platform}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
+            <div className="flex flex-col gap-2">
+              {siteData.socialMedia.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
+                  aria-label={social.label}
+                >
+                  <ArrowUpRight className="w-4 h-4 text-[#FF5000]" />
+                  <span>{social.platform}</span>
+                </a>
+              ))}
             </div>
           </div>
 
