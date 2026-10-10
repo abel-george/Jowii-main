@@ -63,7 +63,7 @@ button, input, select, textarea { font: inherit; }
   overflow: hidden;
   background: #12251e;
   color: var(--white);
-  margin-top: 76px;
+  margin-top: 184px;
 }
 
 .institutional-hero__image-wrapper {
@@ -655,7 +655,7 @@ button, input, select, textarea { font: inherit; }
     height: clamp(240px, 62vw, 440px);
     aspect-ratio: 16 / 10;
     align-items: center;
-    margin-top: 68px;
+    margin-top: 176px;
   }
   .institutional-hero__image {
     object-fit: cover !important;

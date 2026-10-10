@@ -15,8 +15,8 @@ export function InstitutionalHeader() {
 
   return (
     <>
-      {/* Top Announcement Strip */}
-      <div className="bg-[#FF5000] text-white py-2 text-center">
+      {/* Top Announcement Strip - Separate */}
+      <div className="bg-[#FF5000] text-white py-3 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-mono font-bold uppercase tracking-wider">
             Discuss · Improve · Pre-Launch the Initiative Together
@@ -24,76 +24,96 @@ export function InstitutionalHeader() {
         </div>
       </div>
 
-      <header className="institutional-header">
-        <div className="institutional-header__inner">
-          <Link href="/" className="institutional-brand" aria-label="Jowih Foundation home">
-            <Image
-              className="institutional-brand__flag"
-              src="/documents/sample%20images/jowih%20flag.png"
-              alt="Jowih Foundation flag"
-              width={120}
-              height={80}
-              priority
-            />
-            <span className="institutional-brand__text">
-              <strong className="text-2xl sm:text-3xl">Jowih Foundation</strong>
-              <small className="text-base sm:text-lg">The Crossing</small>
-            </span>
-          </Link>
+      {/* Logo and Brand Area - Separate Section with Breathing Room */}
+      <div className="bg-white border-b border-neutral-200 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-8">
+            <Link href="/" className="flex items-center gap-4" aria-label="Jowih Foundation home">
+              <Image
+                src="/documents/sample%20images/jowih%20flag.png"
+                alt="Jowih Foundation flag"
+                width={100}
+                height={67}
+                priority
+                className="border border-neutral-300"
+              />
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                  Jowih Foundation
+                </span>
+                <span className="text-sm font-semibold text-neutral-600 tracking-wider uppercase">
+                  The Crossing
+                </span>
+              </div>
+            </Link>
 
-          <nav className="institutional-nav" aria-label="Primary navigation">
-            {siteData.nav.map((item) => (
-              <div
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => setHoveredItem(item.href)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <Link
-                  href={item.href}
-                  aria-current={pathname === item.href ? 'page' : undefined}
-                  className={pathname === item.href ? 'is-active' : undefined}
+            {/* Right side space for future promotional banner */}
+            <div className="flex-1"></div>
+
+            {/* Language Switcher and Actions */}
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+              <Link className="px-4 py-2 bg-[#FF5000] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#e64000] transition-colors" href="/donate">
+                Support
+              </Link>
+              <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/ticket">
+                Book Ticket
+              </Link>
+              <Link className="px-4 py-2 bg-[#FF5000] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#e64000] transition-colors" href="/waitlist">
+                Join Waitlist
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Bar - Separate Dark Green Bar */}
+      <nav className="bg-[#1a4d2e] sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center h-16">
+            <div className="hidden md:flex items-center gap-8">
+              {siteData.nav.map((item) => (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setHoveredItem(item.href)}
+                  onMouseLeave={() => setHoveredItem(null)}
                 >
-                  {item.label}
-                  {item.children && <ChevronDown className="w-3 h-3 ml-1 inline" />}
-                </Link>
-                
-                {item.children && hoveredItem === item.href && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 shadow-lg z-50">
-                    <div className="p-4">
-                      <p className="text-xs text-gray-900 mb-3 font-semibold">{item.description}</p>
-                      <div className="space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 transition-colors"
-                            onClick={() => setHoveredItem(null)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? 'page' : undefined}
+                    className={`text-sm font-bold uppercase tracking-wider text-white hover:text-[#2dd4bf] transition-colors py-5 ${pathname === item.href ? 'text-[#2dd4bf]' : ''}`}
+                  >
+                    {item.label}
+                    {item.children && <ChevronDown className="w-3 h-3 ml-1 inline" />}
+                  </Link>
+                  
+                  {item.children && hoveredItem === item.href && (
+                    <div className="absolute top-full left-0 mt-0 w-80 bg-white border border-gray-200 shadow-lg z-50">
+                      <div className="p-4">
+                        <p className="text-xs text-gray-900 mb-3 font-semibold">{item.description}</p>
+                        <div className="space-y-1">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="block px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 transition-colors"
+                              onClick={() => setHoveredItem(null)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          <div className="institutional-header__actions">
-            <LanguageSwitcher />
-            <Link className="institutional-header__donate" href="/donate">
-              Support <ArrowUpRight aria-hidden="true" size={15} />
-            </Link>
-            <Link className="institutional-header__donate" href="/ticket" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
-              Book Ticket <ArrowUpRight aria-hidden="true" size={15} />
-            </Link>
-            <Link className="institutional-header__donate" href="/waitlist" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>
-              Join Waitlist <ArrowUpRight aria-hidden="true" size={15} />
-            </Link>
+            {/* Mobile Menu Toggle */}
             <button
-              className="institutional-header__menu-toggle"
+              className="ml-auto md:hidden w-10 h-10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
               type="button"
               onClick={() => setMobileMenuOpen((open) => !open)}
               aria-expanded={mobileMenuOpen}
@@ -103,27 +123,34 @@ export function InstitutionalHeader() {
             </button>
           </div>
         </div>
-      </header>
+      </nav>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="institutional-mobile-menu">
-          <nav aria-label="Mobile navigation">
+        <div className="md:hidden bg-white border-b border-neutral-200">
+          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             {siteData.nav.map((item, index) => (
-              <Link key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)}>
-                <span>{String(index + 1).padStart(2, '0')}</span>{item.label}<ArrowUpRight aria-hidden="true" size={18} />
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-3 text-base font-bold text-black border-b border-neutral-100 last:border-0"
+              >
+                {item.label}
               </Link>
             ))}
+            <div className="mt-4 space-y-2">
+              <Link href="/donate" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-[#FF5000] text-white text-xs font-mono font-bold uppercase">
+                Support
+              </Link>
+              <Link href="/ticket" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
+                Book Ticket
+              </Link>
+              <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-[#FF5000] text-white text-xs font-mono font-bold uppercase">
+                Join Waitlist
+              </Link>
+            </div>
           </nav>
-          <Link className="institutional-mobile-menu__donate" href="/donate" onClick={() => setMobileMenuOpen(false)}>
-            Support Pre-Launch <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
-          <Link className="institutional-mobile-menu__donate" href="/ticket" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--ink)', color: 'var(--white)' }}>
-            Book Ticket <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
-          <Link className="institutional-mobile-menu__donate" href="/waitlist" onClick={() => setMobileMenuOpen(false)} style={{ background: 'var(--brass)', color: 'var(--ink)' }}>
-            Join Waitlist <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
-          <p>Support is for pre-launch setup only. No investment return, equity or ownership is offered.</p>
         </div>
       )}
     </>

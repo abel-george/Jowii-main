@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Header Banner */}
-      <div className="pt-36 sm:pt-40 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
+      <div className="pt-44 sm:pt-48 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
