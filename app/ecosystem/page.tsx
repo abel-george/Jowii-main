@@ -38,9 +38,9 @@ export default function EcosystemPage() {
       <div className="py-16 pb-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         {/* ASTA OS Section */}
-        <section id="asta-os" className="p-8 sm:p-12 space-y-6 shadow-2xl relative bg-neutral-50 border-2 border-neutral-200">
+        <section id="asta-os" className="p-8 sm:p-12 space-y-6 bg-white border-2 border-neutral-200">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#FF5000]">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
               {ecosystem.asta.subtitle}
             </span>
             <h2 className="text-3xl sm:text-4xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
@@ -54,7 +54,7 @@ export default function EcosystemPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-4 border-t border-neutral-300">
             {ecosystem.asta.coreLayers.map((layer) => (
               <div key={layer.id} className="p-4 space-y-2 bg-white border border-neutral-200 hover:border-neutral-400 transition-colors">
-                <span className="text-[10px] font-mono font-bold text-[#FF5000]">
+                <span className="text-[10px] font-mono font-bold text-black">
                   LAYER {layer.id}
                 </span>
                 <p className="text-xs font-bold uppercase text-black">{layer.title}</p>
@@ -65,7 +65,7 @@ export default function EcosystemPage() {
         </section>
 
         {/* Asta Super App Hero Section (Dotkom Interface) */}
-        <section id="super-app" className="shadow-2xl relative overflow-hidden bg-white border-2 border-neutral-200">
+        <section id="super-app" className="bg-white border-2 border-neutral-200 overflow-hidden">
           {/* Hero Image Banner with Background Blending */}
           <div
             className="relative w-full overflow-hidden flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[520px] bg-neutral-100"
@@ -87,7 +87,7 @@ export default function EcosystemPage() {
           <div className="p-8 sm:p-12 relative z-10 space-y-8 border-t border-neutral-200">
             <div className="max-w-4xl space-y-4">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="px-3 py-1 bg-[#FF5000] text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
+                <span className="px-3 py-1 bg-black text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
                   BRAND · {ecosystem.asta.superApp.brand}
                 </span>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-neutral-500">
@@ -99,16 +99,16 @@ export default function EcosystemPage() {
                 {ecosystem.asta.superApp.title}
               </h2>
 
-              {/* Exact user-requested message */}
-              <div className="p-6 sm:p-8 rounded-none border-2 border-emerald-500 bg-emerald-50 space-y-3">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-emerald-500 text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
+              {/* MVP Status Box */}
+              <div className="p-6 sm:p-8 border-2 border-black bg-neutral-50 space-y-3">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   Status: Minimum Viable Product (MVP) Already Exists
                 </div>
-                <p className="text-base sm:text-lg leading-relaxed text-emerald-900 font-sans">
+                <p className="text-base sm:text-lg leading-relaxed text-black font-sans">
                   {ecosystem.asta.superApp.message}
                 </p>
-                <p className="text-xs sm:text-sm font-mono text-emerald-700 pt-2 border-t border-emerald-300">
+                <p className="text-xs sm:text-sm font-mono text-neutral-700 pt-2 border-t border-neutral-300">
                   The Super App MVP already exists as an operational build of the Dotkom interface.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function EcosystemPage() {
             {/* Principal First-Party Services Grid */}
             <div className="space-y-4 pt-2">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF5000]">
+                <h3 className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-black">
                   Principal First-Party Services on ASTA OS
                 </h3>
                 <span className="text-[11px] font-mono text-neutral-500">
@@ -129,16 +129,16 @@ export default function EcosystemPage() {
                 {ecosystem.asta.superApp.services.map((svc) => (
                   <div
                     key={svc.name}
-                    className="p-5 flex flex-col justify-between space-y-3 bg-neutral-50 border border-neutral-200 hover:border-neutral-400 transition-colors"
+                    className="p-5 flex flex-col justify-between space-y-3 bg-white border border-neutral-200 hover:border-neutral-400 transition-colors"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-1.5">
                         <h4 className="text-xs font-bold uppercase tracking-wide text-black">{svc.name}</h4>
-                        <span className="text-[9px] font-mono px-2 py-0.5 bg-emerald-100 text-emerald-700 font-semibold uppercase">
+                        <span className="text-[9px] font-mono px-2 py-0.5 bg-neutral-100 text-black font-semibold uppercase">
                           First-Party
                         </span>
                       </div>
-                      <p className="text-xs font-semibold mb-2 text-[#FF5000]">{svc.role}</p>
+                      <p className="text-xs font-semibold mb-2 text-black">{svc.role}</p>
                       <p className="text-[11px] leading-relaxed text-neutral-600">{svc.detail}</p>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export default function EcosystemPage() {
             {/* Note & Brand Callout */}
             <div className="pt-6 border-t border-neutral-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-neutral-600">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="w-2 h-2 rounded-full bg-black" />
                 <span>Super App is one expression of ASTA OS · Functions alongside wider physical & digital systems</span>
               </div>
               <div className="text-neutral-500">
@@ -160,10 +160,10 @@ export default function EcosystemPage() {
         </section>
 
         {/* Super App Sample Screenshots */}
-        <section className="shadow-2xl relative bg-white border-2 border-neutral-200">
+        <section className="bg-white border-2 border-neutral-200">
           <div className="p-8 sm:p-12 space-y-6">
             <div className="max-w-3xl space-y-3">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#FF5000]">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
                 VISUAL PROOF
               </span>
               <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
@@ -197,7 +197,7 @@ export default function EcosystemPage() {
                 '/assets/super app/Screenshot from 2026-10-09 18-40-21.png',
                 '/assets/super app/Screenshot from 2026-10-09 18-40-37.png',
               ].map((src, index) => (
-                <div key={index} className="relative aspect-[9/16] overflow-hidden bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-colors">
+                <div key={index} className="relative aspect-[9/16] overflow-hidden bg-white border border-neutral-200 hover:border-neutral-400 transition-colors">
                   <LightboxImage src={src} alt={`Super App Screenshot ${index + 1}`} className="w-full h-full cursor-pointer">
                     <Image
                       src={src}
@@ -228,7 +228,7 @@ export default function EcosystemPage() {
             {ecosystem.asta.ecosystemParticipants.map((participant, idx) => (
               <div
                 key={idx}
-                className="p-6 flex flex-col justify-between transition-colors bg-neutral-50 border border-neutral-200 hover:border-neutral-400"
+                className="p-6 flex flex-col justify-between transition-colors bg-white border border-neutral-200 hover:border-neutral-400"
               >
                 <div>
                   <h3 className="text-lg uppercase tracking-tight mt-2 mb-2 text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
