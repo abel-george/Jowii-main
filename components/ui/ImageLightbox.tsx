@@ -59,10 +59,10 @@ export function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightboxProps)
         }}
         aria-label="Close lightbox"
       >
-        <X className="w-6 h-6 text-white" />
+        <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
       </button>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 md:px-4 py-2">
         <button
           className="p-2 hover:bg-white/10 rounded-full transition-colors"
           onClick={(e) => {
@@ -72,9 +72,9 @@ export function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightboxProps)
           aria-label="Zoom out"
           disabled={scale <= 0.5}
         >
-          <ZoomOut className="w-5 h-5 text-white" />
+          <ZoomOut className="w-4 h-4 md:w-5 md:h-5 text-white" />
         </button>
-        <span className="text-white text-sm font-mono min-w-[3rem] text-center">
+        <span className="text-white text-xs md:text-sm font-mono min-w-[2.5rem] md:min-w-[3rem] text-center">
           {Math.round(scale * 100)}%
         </span>
         <button
@@ -86,9 +86,9 @@ export function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightboxProps)
           aria-label="Zoom in"
           disabled={scale >= 3}
         >
-          <ZoomIn className="w-5 h-5 text-white" />
+          <ZoomIn className="w-4 h-4 md:w-5 md:h-5 text-white" />
         </button>
-        <div className="w-px h-6 bg-white/20 mx-2" />
+        <div className="w-px h-4 md:h-6 bg-white/20 mx-2" />
         <button
           className="p-2 hover:bg-white/10 rounded-full transition-colors"
           onClick={(e) => {
@@ -97,12 +97,12 @@ export function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightboxProps)
           }}
           aria-label="Rotate image"
         >
-          <RotateCw className="w-5 h-5 text-white" />
+          <RotateCw className="w-4 h-4 md:w-5 md:h-5 text-white" />
         </button>
       </div>
 
       <div
-        className="w-full h-full overflow-auto flex items-center justify-center p-8"
+        className="w-full h-full overflow-auto flex items-center justify-center p-4 md:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -111,8 +111,8 @@ export function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightboxProps)
           style={{
             transform: `scale(${scale}) rotate(${rotation}deg)`,
             transition: 'transform 0.2s ease-out',
-            maxWidth: 'none',
-            maxHeight: 'none',
+            maxWidth: '100%',
+            maxHeight: '100%',
           }}
           className="object-contain"
         />

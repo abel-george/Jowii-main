@@ -50,8 +50,8 @@ export function InstitutionalHeader() {
             {/* Right side space for future promotional banner */}
             <div className="flex-1"></div>
 
-            {/* Language Switcher and Actions */}
-            <div className="flex items-center gap-4">
+            {/* Language Switcher and Actions - Hidden on Mobile */}
+            <div className="hidden md:flex items-center gap-4">
               <LanguageSwitcher />
               <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/donate">
                 Support
@@ -129,6 +129,9 @@ export function InstitutionalHeader() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-neutral-200 fixed top-[184px] left-0 right-0 z-30 overflow-y-auto max-h-[calc(100vh-184px)]">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="mb-4">
+              <LanguageSwitcher />
+            </div>
             {siteData.nav.map((item, index) => (
               <Link
                 key={item.href}
