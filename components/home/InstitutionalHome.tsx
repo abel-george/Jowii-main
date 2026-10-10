@@ -74,12 +74,12 @@ const layers = [
   ['Digital infrastructure', 'ASTA OS interoperability, APIs and partner integrations', '/ecosystem#asta-os'],
   ['State partnership', 'Voluntary, bilateral Accelerated Development Framework Agreements', '/gag#adfa'],
   ['Participation', 'Use, integrate and, later, regulated economic participation', '/ecosystem#participation'],
-  ['Funding', 'Pre-launch donations now; separate proposed instruments later', '/documents#funding-architecture'],
+  ['Funding', 'Pre-launch support now; separate proposed instruments later', '/documents#funding-architecture'],
 ];
 
 const prelaunchSteps = [
-  ['Month 1', 'Public pre-launch', 'Present the architecture, invite donations, select independent legal firms and begin registrations.'],
-  ['Months 1–2', 'Parallel structural setup', 'The intended five-firm team coordinates legal work and oversight while donations remain held under the proposed trust arrangement.'],
+  ['Month 1', 'Public pre-launch', 'Present the architecture, invite support contributions, select independent legal firms and begin registrations.'],
+  ['Months 1–2', 'Parallel structural setup', 'The intended five-firm team coordinates legal work and oversight while support contributions remain held under the proposed trust arrangement.'],
   ['Month 3', 'Full launch target', 'A public launch is planned after registrations, leadership appointments and compliance work are complete.'],
 ];
 
@@ -311,7 +311,7 @@ export function InstitutionalHome() {
           </p>
           <div className="institutional-hero__actions">
             <Link className="institutional-button institutional-button--gold" href="/donate">
-              Pre-launch donations <ArrowUpRight aria-hidden="true" size={17} />
+              Pre-launch support <ArrowUpRight aria-hidden="true" size={17} />
             </Link>
             <Link className="institutional-button institutional-button--outline" href="/documents">
               Read source papers <FileText aria-hidden="true" size={17} />
@@ -320,7 +320,7 @@ export function InstitutionalHome() {
               Partner / sponsor the launch <ArrowUpRight aria-hidden="true" size={17} />
             </Link>
           </div>
-          <p className="institutional-hero__note">Donations, not investments. No financial return or ownership is offered.</p>
+          <p className="institutional-hero__note">Support contributions, not investments. No financial return or ownership is offered.</p>
         </div>
       </section>
 
@@ -336,25 +336,110 @@ export function InstitutionalHome() {
       <section className="institutional-section institutional-section--paper" id="prelaunch">
         <div className="institutional-container">
           <div className="institutional-section-heading">
-            <p className="institutional-eyebrow">01 / THE PRE-LAUNCH</p>
+            <p className="institutional-eyebrow">001 / PRE-LAUNCH PHASE</p>
             <h2>Build the institution before inviting the public into it.</h2>
-            <p>
-              The pre-launch is a donation phase, not an investment offer. Its stated purpose is to present the architecture,
-              select legal counsel and fund the registration and setup work needed to establish the planned structures.
-            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold uppercase tracking-tight mb-4">What Jowih Is</h3>
+              <p className="text-lg leading-relaxed mb-4">
+                Jowih is a development organization — an infrastructure and economic coordination initiative designed to enable sovereign African nations to accelerate development more efficiently, trade more freely across borders, and develop more rapidly, without surrendering control over their own affairs.
+              </p>
+              <p className="text-base leading-relaxed mb-4" style={{ color: 'var(--ink-soft)' }}>
+                Jowih is not a political organization. It does not seek political power, partisan influence, or governance authority over any state. Its mandate is development: infrastructure, industry, digital systems, financial rails, human capital, and continental coordination.
+              </p>
+              <p className="text-base leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
+                It is designed to work hand in hand with the African Union to accelerate the African Union's AfCFTA framework and other continental development priorities.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4">Three Interconnected Institutional Components</h3>
+              <div className="space-y-4">
+                <div className="p-4" style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}>
+                  <p className="font-bold mb-1">The Great African Grid (GAG)</p>
+                  <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>
+                    The continental development and infrastructure framework, operating across seven strategic corridors: Transport, Industrial & Manufacturing, Energy, Digital, Payment, Service, and Space Capability.
+                  </p>
+                </div>
+                <div className="p-4" style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}>
+                  <p className="font-bold mb-1">Jowih Continental OS (Asta)</p>
+                  <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>
+                    The continental digital infrastructure and orchestration layer designed to enable interoperable digital activity among people, businesses, governments, developers, financial institutions, technology platforms, service providers, and physical infrastructure.
+                  </p>
+                </div>
+                <div className="p-4" style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}>
+                  <p className="font-bold mb-1">The JOWIH Foundation</p>
+                  <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>
+                    The mission-locked institutional foundation, structured to protect the long-term development mandate and coordinate the wider ecosystem.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4">Supporting Components</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span style={{ color: 'var(--brass)' }}>•</span>
+                  <span><strong>Jowih Credits</strong> — the settlement layer for cross-border exchange.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: 'var(--brass)' }}>•</span>
+                  <span><strong>ADFA (Accelerated Development Framework Agreement)</strong> — the framework for structured cooperation with 54 African states.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: 'var(--brass)' }}>•</span>
+                  <span><strong>The Jowih Ecosystem Fund</strong> — the regulated investment vehicle for citizens and the diaspora.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: 'var(--brass)' }}>•</span>
+                  <span><strong>The Mission Fund</strong> — where 90% of designated ecosystem revenue flows, financing development across the continent. Not debt. Development budgets.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6" style={{ background: 'var(--ink)', color: 'var(--white)', border: '2px solid var(--line-light)' }}>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4">The Pre-Launch Phase</h3>
+              <p className="text-base leading-relaxed mb-4">
+                The pre-launch phase is defined as a donation-only period. It is not an investment offer, and it does not constitute a solicitation of capital in exchange for equity, ownership, or financial return.
+              </p>
+              <p className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--brass)' }}>
+                Its stated purpose is fourfold:
+              </p>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>1</span>
+                  <span>To present the proposed architecture publicly</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>2</span>
+                  <span>To invite scrutiny, debate, and challenge</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>3</span>
+                  <span>To select legal counsel across the relevant jurisdictions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--brass)', color: 'var(--ink)' }}>4</span>
+                  <span>To fund the registration and structural setup work required to establish the planned entities</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div className="institutional-donation-banner">
             <div className="institutional-donation-banner__icon"><CircleDollarSign aria-hidden="true" size={26} /></div>
             <div>
-              <h3>Donations support structural setup. They do not buy a stake.</h3>
+              <h3>Support contributions fund structural setup. They do not buy a stake.</h3>
               <p>
                 No return, interest, equity, voting rights or ownership is promised. The requested model is for contributions to
                 be held by one independent, publicly supported law trust, with public reporting and accountable administration,
                 until structures are registered. The arrangement remains subject to legal advice and execution.
               </p>
             </div>
-            <Link href="/donate" aria-label="Read about pre-launch donations"><ArrowRight aria-hidden="true" /></Link>
+            <Link href="/donate" aria-label="Read about pre-launch support"><ArrowRight aria-hidden="true" /></Link>
           </div>
 
           <div className="institutional-timeline">
@@ -385,14 +470,14 @@ export function InstitutionalHome() {
           </div>
 
           <p className="institutional-legal-note">
-            The five-firm structure and law-trust donation holding arrangement are proposed pre-launch plans. They are not
-            evidence of incorporation, appointment, licensing or an active trust account. Donation instructions will only be
+            The five-firm structure and law-trust support holding arrangement are proposed pre-launch plans. They are not
+            evidence of incorporation, appointment, licensing or an active trust account. Support instructions will only be
             published after the receiving structure and account are independently verified.
           </p>
 
           <div className="institutional-uses">
             <div className="institutional-uses__heading">
-              <p className="institutional-eyebrow">INTENDED USE OF PRE-LAUNCH DONATIONS</p>
+              <p className="institutional-eyebrow">INTENDED USE OF PRE-LAUNCH SUPPORT</p>
               <h3>Register the structures before inviting investment.</h3>
               <p>These are intended setup categories from the pre-launch plan, not proof of completed registration or an authorization to collect funds today.</p>
             </div>
@@ -508,9 +593,9 @@ export function InstitutionalHome() {
           <div className="institutional-partnership-grid">
             {[
               {
-                title: 'Donate',
-                description: 'Support the pre-launch structural setup. Your donation helps fund legal registration, trust establishment, and initial organizational costs to build the Foundation\'s independent governance structure.',
-                type: 'Donation',
+                title: 'Support Pre-Launch',
+                description: 'Support the pre-launch structural setup. Your contribution helps fund legal registration, trust establishment, and initial organizational costs to build the Foundation\'s independent governance structure.',
+                type: 'Contribution',
                 icon: CircleDollarSign,
                 href: '/donate'
               },
@@ -523,8 +608,8 @@ export function InstitutionalHome() {
               },
               {
                 title: 'Founding Supporters',
-                description: 'Recognition for early donors who contribute during the pre-launch phase. Founding supporters are acknowledged for their role in establishing the independent governance structures and foundational systems.',
-                type: 'Donation',
+                description: 'Recognition for early supporters who contribute during the pre-launch phase. Founding supporters are acknowledged for their role in establishing the independent governance structures and foundational systems.',
+                type: 'Recognition',
                 icon: ShieldCheck,
                 href: '/donate'
               },
@@ -545,7 +630,7 @@ export function InstitutionalHome() {
               {
                 title: 'Diaspora Network',
                 description: 'African diaspora organizations and individuals looking to connect and contribute from abroad. Your global perspective, resources, and networks can help bridge continents and accelerate development in your home countries.',
-                type: 'Donation / Partnership',
+                type: 'Engagement',
                 icon: Globe,
                 href: '/partner/diaspora'
               },

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Menu, X, ChevronDown, Share2, MessageCircle, Play, Camera } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -15,6 +15,15 @@ export function InstitutionalHeader() {
 
   return (
     <>
+      {/* Top Announcement Strip */}
+      <div className="bg-[#FF5000] text-white py-2 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-mono font-bold uppercase tracking-wider">
+            Discuss · Improve · Pre-Launch the Initiative Together
+          </p>
+        </div>
+      </div>
+
       <header className="institutional-header">
         <div className="institutional-header__inner">
           <Link href="/" className="institutional-brand" aria-label="Jowih Foundation home">
@@ -74,6 +83,29 @@ export function InstitutionalHeader() {
 
           <div className="institutional-header__actions">
             <LanguageSwitcher />
+            
+            {/* Social Media Icons */}
+            <div className="hidden md:flex items-center gap-2">
+              {siteData.socialMedia.map((social) => {
+                const Icon = social.icon === 'facebook' ? Share2 : 
+                           social.icon === 'linkedin' ? Share2 :
+                           social.icon === 'youtube' ? Play :
+                           social.icon === 'instagram' ? Camera : ArrowUpRight;
+                return (
+                  <a
+                    key={social.platform}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
+            </div>
+
             <Link className="institutional-header__donate" href="/donate">
               Support <ArrowUpRight aria-hidden="true" size={15} />
             </Link>
