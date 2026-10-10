@@ -31,13 +31,13 @@ export function InstitutionalHeader() {
               className="institutional-brand__flag"
               src="/documents/sample%20images/jowih%20flag.png"
               alt="Jowih Foundation flag"
-              width={90}
-              height={60}
+              width={120}
+              height={80}
               priority
             />
             <span className="institutional-brand__text">
-              <strong>Jowih</strong>
-              <small>Foundation · Continental Framework</small>
+              <strong className="text-2xl sm:text-3xl">Jowih Foundation</strong>
+              <small className="text-base sm:text-lg">The Crossing</small>
             </span>
           </Link>
 
