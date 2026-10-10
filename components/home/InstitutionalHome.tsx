@@ -337,7 +337,7 @@ export function InstitutionalHome() {
         <div className="institutional-container">
           <div className="institutional-section-heading">
             <p className="institutional-eyebrow">001 / PRE-LAUNCH PHASE</p>
-            <h2>Build the institution before inviting the public into it.</h2>
+            <h2>Building the Institution alone</h2>
           </div>
 
           <div className="space-y-8">
