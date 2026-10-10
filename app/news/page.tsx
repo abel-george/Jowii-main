@@ -7,7 +7,7 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Header */}
-      <div className="pt-44 sm:pt-48 pb-6 border-b border-neutral-300">
+      <div className="pt-28 sm:pt-32 pb-6 border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"

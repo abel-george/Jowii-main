@@ -12,7 +12,7 @@ export default function EcosystemPage() {
   return (
     <div className="min-h-screen">
       {/* Top Banner */}
-      <div className="pt-44 sm:pt-48 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
+      <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -38,7 +38,7 @@ export default function EcosystemPage() {
       <div className="py-16 pb-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         {/* ASTA OS Section */}
-        <section id="asta-os" className="p-8 sm:p-12 space-y-6 bg-white border-2 border-neutral-200">
+        <section id="asta-os" className="space-y-6">
           <div className="max-w-3xl space-y-3">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
               {ecosystem.asta.subtitle}
@@ -65,17 +65,17 @@ export default function EcosystemPage() {
         </section>
 
         {/* Asta Super App Hero Section (Dotkom Interface) */}
-        <section id="super-app" className="bg-white border-2 border-neutral-200 overflow-hidden">
-          {/* Hero Image Banner with Background Blending */}
+        <section id="super-app" className="space-y-8">
+          {/* Hero Image Banner - Full Width */}
           <div
-            className="relative w-full overflow-hidden flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[520px] bg-neutral-100"
+            className="relative w-full overflow-hidden flex items-center justify-center h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-neutral-100 mx-0"
           >
             <Image
               src={ecosystem.asta.superApp.image}
               alt="Dotkom — Flagship Consumer Interface for Asta OS"
               fill
               priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
+              sizes="100vw"
               style={{ objectFit: 'contain', objectPosition: 'center' }}
             />
             <p className="absolute bottom-2.5 sm:bottom-3 right-4 sm:right-6 text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-neutral-500 z-10 pointer-events-none block">
@@ -84,7 +84,7 @@ export default function EcosystemPage() {
           </div>
 
           {/* Super App Narrative & Services Content */}
-          <div className="p-8 sm:p-12 relative z-10 space-y-8 border-t border-neutral-200">
+          <div className="space-y-8">
             <div className="max-w-4xl space-y-4">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="px-3 py-1 bg-black text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
@@ -160,19 +160,18 @@ export default function EcosystemPage() {
         </section>
 
         {/* Super App Sample Screenshots */}
-        <section className="bg-white border-2 border-neutral-200">
-          <div className="p-8 sm:p-12 space-y-6">
-            <div className="max-w-3xl space-y-3">
-              <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
-                VISUAL PROOF
-              </span>
-              <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-                Super App Sample Screenshots
-              </h2>
-              <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
-                Live screenshots from the operational Dotkom interface demonstrating the Super App MVP functionality across all integrated services.
-              </p>
-            </div>
+        <section className="space-y-6">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
+              VISUAL PROOF
+            </span>
+            <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+              Super App Sample Screenshots
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
+              Live screenshots from the operational Dotkom interface demonstrating the Super App MVP functionality across all integrated services.
+            </p>
+          </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 pt-4">
               {[
@@ -210,7 +209,6 @@ export default function EcosystemPage() {
                 </div>
               ))}
             </div>
-          </div>
         </section>
 
         {/* Ecosystem Participants */}
@@ -248,13 +246,13 @@ export default function EcosystemPage() {
         {/* Three Ways In: Use, Integrate, Invest */}
         <section id="participation" className="space-y-8">
           <div>
-            <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: 'var(--brass)' }}>
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
               ENGAGEMENT RULES
             </span>
             <h2 className="text-3xl sm:text-4xl uppercase tracking-tight mt-1 mb-2" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               Three Ways In
             </h2>
-            <p className="text-sm max-w-2xl" style={{ color: 'var(--muted)' }}>
+            <p className="text-sm max-w-2xl text-neutral-600">
               Clean separation of powers. Utility, technical integration, and capital allocation have strictly guarded interfaces.
             </p>
           </div>
@@ -263,15 +261,14 @@ export default function EcosystemPage() {
             {ecosystem.paths.map((path) => (
               <div
                 key={path.name}
-                className="p-8 flex flex-col justify-between transition-all group"
-                style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}
+                className="p-8 flex flex-col justify-between transition-all group bg-white border border-neutral-200 hover:border-neutral-400"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 font-bold" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
+                    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 font-bold bg-black text-white">
                       {path.badge}
                     </span>
-                    <span className="text-xs font-mono font-bold uppercase" style={{ color: 'var(--muted)' }}>
+                    <span className="text-xs font-mono font-bold uppercase text-neutral-500">
                       {path.kicker}
                     </span>
                   </div>
@@ -280,14 +277,14 @@ export default function EcosystemPage() {
                     {path.name}
                   </h3>
 
-                  <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
+                  <p className="text-xs sm:text-sm leading-relaxed mb-6 text-neutral-600">
                     {path.description}
                   </p>
 
-                  <ul className="space-y-2.5 pt-4 mb-8" style={{ borderTop: '1px solid var(--line-light)' }}>
+                  <ul className="space-y-2.5 pt-4 mb-8 border-t border-neutral-300">
                     {path.points.map((point) => (
-                      <li key={point} className="text-xs flex items-start gap-2" style={{ color: 'var(--ink-soft)' }}>
-                        <span style={{ color: 'var(--brass)' }} className="font-bold">—</span>
+                      <li key={point} className="text-xs flex items-start gap-2 text-neutral-600">
+                        <span className="font-bold text-black">—</span>
                         <span>{point}</span>
                       </li>
                     ))}

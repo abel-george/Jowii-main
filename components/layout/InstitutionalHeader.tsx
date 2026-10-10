@@ -16,7 +16,7 @@ export function InstitutionalHeader() {
   return (
     <>
       {/* Top Announcement Strip - Separate */}
-      <div className="bg-[#FF5000] text-white py-3 text-center">
+      <div className="bg-black text-white py-3 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-mono font-bold uppercase tracking-wider">
             Discuss · Improve · Pre-Launch the Initiative Together
@@ -53,13 +53,13 @@ export function InstitutionalHeader() {
             {/* Language Switcher and Actions */}
             <div className="flex items-center gap-4">
               <LanguageSwitcher />
-              <Link className="px-4 py-2 bg-[#FF5000] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#e64000] transition-colors" href="/donate">
+              <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/donate">
                 Support
               </Link>
               <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/ticket">
                 Book Ticket
               </Link>
-              <Link className="px-4 py-2 bg-[#FF5000] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#e64000] transition-colors" href="/waitlist">
+              <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/waitlist">
                 Join Waitlist
               </Link>
             </div>
@@ -127,7 +127,7 @@ export function InstitutionalHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-neutral-200">
+        <div className="md:hidden bg-white border-b border-neutral-200 fixed top-[184px] left-0 right-0 z-30 overflow-y-auto max-h-[calc(100vh-184px)]">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             {siteData.nav.map((item, index) => (
               <Link
@@ -140,13 +140,13 @@ export function InstitutionalHeader() {
               </Link>
             ))}
             <div className="mt-4 space-y-2">
-              <Link href="/donate" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-[#FF5000] text-white text-xs font-mono font-bold uppercase">
+              <Link href="/donate" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
                 Support
               </Link>
               <Link href="/ticket" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
                 Book Ticket
               </Link>
-              <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-[#FF5000] text-white text-xs font-mono font-bold uppercase">
+              <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
                 Join Waitlist
               </Link>
             </div>
