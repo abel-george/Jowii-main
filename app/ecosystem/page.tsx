@@ -173,7 +173,7 @@ export default function EcosystemPage() {
             </p>
           </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 pt-4">
               {[
                 '/assets/super app/Screenshot from 2026-10-09 18-31-54.png',
                 '/assets/super app/Screenshot from 2026-10-09 18-32-30.png',
@@ -197,14 +197,14 @@ export default function EcosystemPage() {
                 '/assets/super app/Screenshot from 2026-10-09 18-40-37.png',
                 '/assets/super app/Screenshot from 2026-10-09 18-41-00.png',
               ].map((src, index) => (
-                <div key={index} className="relative aspect-[9/16] overflow-hidden bg-white border border-neutral-200 hover:border-neutral-400 transition-colors">
+                <div key={index} className="relative aspect-[3/2] overflow-hidden bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-colors">
                   <LightboxImage src={src} alt={`Super App Screenshot ${index + 1}`} className="w-full h-full cursor-pointer">
                     <Image
                       src={src}
                       alt={`Super App Screenshot ${index + 1}`}
                       fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                      className="object-cover transition-transform hover:scale-105"
+                      sizes="(max-width: 700px) 100vw, 33vw"
+                      className="object-cover transition-transform hover:scale-[1.025]"
                     />
                   </LightboxImage>
                 </div>
