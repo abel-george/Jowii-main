@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { SocialIcon } from '@/components/icons/SocialIcons';
 import { siteData } from '@/lib/site-data';
 
 export function Footer() {
@@ -134,7 +135,7 @@ export function Footer() {
                   className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"
                   aria-label={social.label}
                 >
-                  <ArrowUpRight className="w-4 h-4 text-[#FF5000]" />
+                  <SocialIcon name={social.icon} size={15} className="text-[#FF5000]" />
                   <span>{social.platform}</span>
                 </a>
               ))}

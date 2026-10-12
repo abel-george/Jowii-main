@@ -61,7 +61,7 @@ export interface PartnerItem {
 export const siteData = {
   config: {
     eventDate: '2026-10-29T20:00:00+03:00',
-    fallbackEmail: 'odukreubence56@gmail.com',
+    fallbackEmail: 'jowihfoundationorg@gmail.com',
     location: 'Kisii, Kenya',
     venue: 'Kisii University Auditorium & Virtual Live Room',
     time: '8:00 PM – 1:00 AM EAT',
@@ -720,11 +720,11 @@ export const siteData = {
     { label: 'Support', href: '/donate' },
   ],
   socialMedia: [
-    { platform: 'X', label: 'X (Twitter)', href: 'https://x.com/jowihfoundation', icon: 'twitter' },
-    { platform: 'Facebook', label: 'Facebook', href: 'https://facebook.com/jowihfoundation', icon: 'facebook' },
-    { platform: 'LinkedIn', label: 'LinkedIn', href: 'https://linkedin.com/company/jowihfoundation', icon: 'linkedin' },
-    { platform: 'YouTube', label: 'YouTube', href: 'https://youtube.com/@jowihfoundation', icon: 'youtube' },
-    { platform: 'Instagram', label: 'Instagram', href: 'https://instagram.com/jowihfoundation', icon: 'instagram' },
+    { platform: 'X', label: 'X (Twitter)', href: 'https://x.com/jowihafrica', icon: 'twitter' },
+    { platform: 'Facebook', label: 'Facebook', href: 'https://facebook.com/jowihafrica', icon: 'facebook' },
+    { platform: 'LinkedIn', label: 'LinkedIn', href: 'https://linkedin.com/company/jowihafrica', icon: 'linkedin' },
+    { platform: 'YouTube', label: 'YouTube', href: 'https://youtube.com/@jowihafrica', icon: 'youtube' },
+    { platform: 'Instagram', label: 'Instagram', href: 'https://instagram.com/jowihafrica', icon: 'instagram' },
   ],
   resources: {
     keyDocuments: [

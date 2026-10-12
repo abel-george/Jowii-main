@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Mail } from 'lucide-react';
+import { SocialIcon } from '@/components/icons/SocialIcons';
 import { siteData } from '@/lib/site-data';
 
 export function InstitutionalFooter() {
@@ -23,7 +24,7 @@ export function InstitutionalFooter() {
           <div className="institutional-footer__social" aria-label="Social media">
             {siteData.socialMedia.map((social) => (
               <a key={social.platform} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}>
-                <span>{social.platform}</span>
+                <SocialIcon name={social.icon} size={15} />
               </a>
             ))}
           </div>
