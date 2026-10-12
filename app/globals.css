@@ -223,6 +223,27 @@ button, input, select, textarea { font: inherit; }
 .institutional-legal-grid__item p { grid-column: 2; margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .institutional-legal-note { margin: 32px 0 0; padding: 16px 18px; border-left: 3px solid var(--brass); background: #edebe1; color: #59635b; font-size: 12px; line-height: 1.65; }
 .institutional-counsel-note { margin: 32px 0 0; padding: 22px 24px; border: 1px solid var(--line); border-top: 3px solid var(--green); background: var(--white); }
+.institutional-expandable { border-top: 1px solid var(--line); }
+.institutional-expandable__item { border-bottom: 1px solid var(--line); }
+.institutional-expandable__trigger { display: grid; grid-template-columns: 44px 1fr 28px; align-items: start; gap: 16px; width: 100%; padding: 22px 4px; text-align: left; background: none; border: none; cursor: pointer; transition: background 0.2s; }
+.institutional-expandable__trigger:hover { background: rgba(40, 88, 68, 0.04); }
+.institutional-expandable__number { color: var(--brass); font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; padding-top: 3px; }
+.institutional-expandable__heading { display: flex; flex-direction: column; gap: 4px; }
+.institutional-expandable__heading strong { color: var(--ink); font-family: var(--font-serif); font-size: 22px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
+.institutional-expandable__heading span { color: var(--muted); font-size: 14px; line-height: 1.55; }
+.institutional-expandable__icon { color: var(--green); transition: transform 0.25s ease; margin-top: 4px; }
+.institutional-expandable__item.is-open .institutional-expandable__icon { transform: rotate(45deg); }
+.institutional-expandable__panel[hidden] { display: none; }
+.institutional-expandable__content { padding: 0 4px 28px 60px; max-width: 780px; }
+.institutional-expandable__content p { margin: 0 0 14px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
+.institutional-expandable__content p:last-child { margin-bottom: 0; }
+.institutional-expandable__content ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
+.institutional-expandable__content li { margin-bottom: 8px; }
+@media (max-width: 640px) {
+  .institutional-expandable__trigger { grid-template-columns: 32px 1fr 24px; gap: 10px; }
+  .institutional-expandable__heading strong { font-size: 19px; }
+  .institutional-expandable__content { padding-left: 42px; }
+}
 h2[id] { scroll-margin-top: 110px; }
 .institutional-counsel-note h3 { margin: 0 0 12px; font-family: var(--font-serif); font-size: 21px; font-weight: 400; letter-spacing: -0.01em; }
 .institutional-counsel-note p { margin: 0 0 12px; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }

@@ -26,6 +26,7 @@ import {
   Waypoints,
 } from 'lucide-react';
 import { InstitutionalNewsletter } from '@/components/home/InstitutionalNewsletter';
+import { InstitutionalExpandable, type ExpandableItem } from '@/components/ui/InstitutionalExpandable';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 const pillars = [
@@ -278,6 +279,102 @@ const structuralUses = [
   'Initial professional, compliance and structural setup costs',
 ];
 
+// Priority areas, presented AU/UN-style as click-to-open expandable columns.
+const priorityAreas: ExpandableItem[] = [
+  {
+    number: '01',
+    title: 'Institutional & Legal Architecture',
+    summary: 'Constitution, trusts, holdings and the proposed Mauritius VCC — registered before any invitation to invest.',
+    body: (
+      <>
+        <p>
+          The pre-launch work establishes the constitutional, trust and corporate layers that hold the ecosystem
+          together: the Foundation and its governance, a Purpose Trust and Founder Family Trust, Jowih Holdings
+          Limited and its operating Group, and the proposed Master Ecosystem Fund structured as a Mauritius Variable
+          Capital Company (VCC).
+        </p>
+        <p>
+          These instruments are drafted to separate stewardship from economic interest, so that mission control and
+          commercial return never blur into one another. Registration is completed across the relevant jurisdictions
+          before investment is invited.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '02',
+    title: 'Infrastructure & the Great African Grid',
+    summary: 'A proposed coordination framework for energy, logistics and digital corridors across the continent.',
+    body: (
+      <>
+        <p>
+          The Great African Grid (GAG) is a proposed infrastructure and economic coordination framework — not a
+          supranational authority. Its seven corridors are intended to run in parallel with national systems and
+          existing operators, connecting energy, logistics, data and settlement.
+        </p>
+        <ul>
+          <li>Voluntary participation by states through bilateral agreements</li>
+          <li>Delivery may be state-funded, foundation-funded or jointly funded</li>
+          <li>Ownership and responsibilities defined per agreement under local law</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    number: '03',
+    title: 'Digital Public Infrastructure (ASTA OS)',
+    summary: 'The operating layer underneath first-party services and authorised external applications.',
+    body: (
+      <>
+        <p>
+          ASTA OS is the shared technical infrastructure on which the first-party services operate — Dotkom
+          Messenger, Dotkom Marketplace, Asta Wallet, Dotkom Social, Asta Store and Asta Search — and the same
+          infrastructure made available to authorised external developers.
+        </p>
+        <p>
+          The Super App is one expression of ASTA OS, not the whole of it. It functions alongside a wider digital and
+          physical ecosystem, and remains optional rather than the only entry point.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '04',
+    title: 'Capital Formation & the Master Ecosystem Fund',
+    summary: 'A proposed VCC fund separating downstream economic rights from upstream control rights.',
+    body: (
+      <>
+        <p>
+          The proposed Master Ecosystem Fund holds vaulted shares through VCC sub-fund compartments. The Fund, as legal
+          owner, holds the attached voting rights; unit holders carry economic exposure only, with no direct voting or
+          governance rights over the underlying companies or the Foundation.
+        </p>
+        <p>
+          Cross-border settlement is designed to remain compliant with exchange-control regulations in each host
+          jurisdiction. All structures remain proposals until registered and independently verified.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '05',
+    title: 'Continental Coordination & Participation',
+    summary: 'Regional foundation coordination and a voluntary participation framework for participating states.',
+    body: (
+      <>
+        <p>
+          Regional coordination is planned through Foundation offices and a voluntary framework — ADFA — under which
+          participating states engage by agreement rather than by delegated authority.
+        </p>
+        <p>
+          Participation is intended to complement, not displace, national institutions and existing regional bodies,
+          keeping the Foundation&apos;s role coordinating rather than governing.
+        </p>
+      </>
+    ),
+  },
+];
+
 export function InstitutionalHome() {
   return (
     <div className="institutional-home">
@@ -330,6 +427,22 @@ export function InstitutionalHome() {
           <span><Network aria-hidden="true" /> Integrate and enable existing systems</span>
           <span><Landmark aria-hidden="true" /> Mission separated from commercial execution</span>
           <span><Check aria-hidden="true" /> Plans and status stated transparently</span>
+        </div>
+      </section>
+
+      <section className="institutional-section institutional-section--paper" id="priorities" aria-label="Priority areas">
+        <div className="institutional-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow">01 / PRIORITY AREAS</p>
+              <h2>Five interconnected workstreams.</h2>
+            </div>
+            <p>
+              The Foundation&apos;s work is organised into five priority areas that advance together. Select any area to
+              read how it is structured and how it relates to the wider mission.
+            </p>
+          </div>
+          <InstitutionalExpandable items={priorityAreas} />
         </div>
       </section>
 
