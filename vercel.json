@@ -3,9 +3,14 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "installCommand": "npm install",
-  "nodeVersion": "20.x",
-  "buildTimeout": 600,
+  "nodeVersion": "20.11.1",
+  "buildTimeout": 1800,
   "env": {
     "NEXT_TELEMETRY_DISABLED": "1"
+  },
+  "functions": {
+    "app/**/*": {
+      "maxDuration": 60
+    }
   }
 }
