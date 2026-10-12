@@ -212,6 +212,61 @@ export default function EcosystemPage() {
             </div>
         </section>
 
+        {/* Super App Mobile Screenshots (mobile-first portrait captures) */}
+        <section id="super-app-mobile" className="space-y-6">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
+              MOBILE-FIRST INTERFACE
+            </span>
+            <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+              Super App on Mobile
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
+              Portrait captures from the mobile-first build of the Dotkom interface, showing the Super App MVP as it runs
+              on a phone across messaging, marketplace, wallet and social surfaces.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
+            {[
+              '/assets/screenshots/Screenshot from 2026-10-12 09-57-08.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-34-29.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-34-37.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-35-05.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-35-53.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-36-03.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-36-23.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-36-33.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-36-55.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-37-05.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-37-19.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-38-06.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-38-20.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-38-40.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-38-52.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-39-08.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-39-20.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-39-41.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-40-29.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-40-42.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-41-01.png',
+              '/assets/screenshots/Screenshot from 2026-10-12 10-41-26.png',
+            ].map((src, index) => (
+              <div key={index} className="relative aspect-[9/16] overflow-hidden bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-colors">
+                <LightboxImage src={src} alt={`Super App Mobile Screenshot ${index + 1}`} className="w-full h-full cursor-pointer">
+                  <Image
+                    src={src}
+                    alt={`Super App Mobile Screenshot ${index + 1}`}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
+                    className="object-cover transition-transform hover:scale-[1.025]"
+                  />
+                </LightboxImage>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Ecosystem Participants */}
         <section className="space-y-6 pb-16 border-b border-neutral-300">
           <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
