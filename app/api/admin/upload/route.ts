@@ -1,0 +1,164 @@
+import { put, del, list } from '@vercel/blob';
+import { randomUUID } from 'crypto';
+
+// Admin-only media upload endpoint, backed by Vercel Blob.
+//
+// Access control: the caller must send `Authorization: Bearer <ADMIN_UPLOAD_TOKEN>`.
+// The token is read from an environment variable (set in the Vercel dashboard), so
+// the admin identity is NOT hardcoded in source and can be rotated without a deploy.
+// See .env.example for the required variable.
+
+const ADMIN_TOKEN = process.env.ADMIN_UPLOAD_TOKEN;
+const MAX_BYTES = 15 * 1024 * 1024; // 15MB
+const ALLOWED_TYPES = new Set([
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/avif',
+  'image/gif',
+]);
+
+function isAuthorized(request: Request): boolean {
+  if (!ADMIN_TOKEN) return false; // no token configured => deny all
+  const header = request.headers.get('authorization') || '';
+  const [scheme, token] = header.split(' ');
+  if (scheme?.toLowerCase() !== 'bearer') return false;
+  // Constant-time comparison to avoid timing attacks.
+  const expected = Buffer.from(ADMIN_TOKEN);
+  const provided = Buffer.from(token || '');
+  if (expected.length !== provided.length) return false;
+  return Buffer.compare(expected, provided) === 0;
+}
+
+export async function POST(request: Request) {
+  if (!isAuthorized(request)) {
+    return Response.json(
+      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
+      { status: 401, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return Response.json(
+      { success: false, message: 'Blob storage is not configured.', code: 'not_configured' },
+      { status: 503, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return Response.json(
+      { success: false, message: 'Submit the file as multipart form data.', code: 'invalid_request' },
+      { status: 400, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+
+  const file = form.get('file');
+  if (!(file instanceof File)) {
+    return Response.json(
+      { success: false, message: 'No file provided.', code: 'invalid_fields' },
+      { status: 400, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  if (!ALLOWED_TYPES.has(file.type)) {
+    return Response.json(
+      { success: false, message: 'Only PNG, JPEG, WebP, AVIF or GIF images are allowed.', code: 'invalid_type' },
+      { status: 415, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  if (file.size > MAX_BYTES) {
+    return Response.json(
+      { success: false, message: 'File exceeds the 15MB limit.', code: 'too_large' },
+      { status: 413, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+
+  const ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const pathname = `uploads/${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
+
+  try {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const blob = await put(pathname, buffer, {
+      access: 'public',
+      contentType: file.type,
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    });
+    return Response.json(
+      { success: true, url: blob.url, pathname: blob.pathname, size: file.size },
+      { headers: { 'cache-control': 'no-store' } },
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Upload failed.';
+    return Response.json(
+      { success: false, message, code: 'upload_failed' },
+      { status: 500, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+}
+
+// List uploaded blobs (admin only) — used by the admin gallery.
+export async function GET(request: Request) {
+  if (!isAuthorized(request)) {
+    return Response.json(
+      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
+      { status: 401, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return Response.json(
+      { success: false, message: 'Blob storage is not configured.', code: 'not_configured' },
+      { status: 503, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  try {
+    const { blobs } = await list({ prefix: 'uploads/', token: process.env.BLOB_READ_WRITE_TOKEN });
+    return Response.json(
+      { success: true, blobs: blobs.map((b) => ({ url: b.url, pathname: b.pathname, size: b.size })) },
+      { headers: { 'cache-control': 'no-store' } },
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'List failed.';
+    return Response.json(
+      { success: false, message, code: 'list_failed' },
+      { status: 500, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+}
+
+// Delete an uploaded blob (admin only).
+export async function DELETE(request: Request) {
+  if (!isAuthorized(request)) {
+    return Response.json(
+      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
+      { status: 401, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  const { searchParams } = new URL(request.url);
+  const pathname = searchParams.get('pathname');
+  if (!pathname || !pathname.startsWith('uploads/')) {
+    return Response.json(
+      { success: false, message: 'Invalid pathname.', code: 'invalid_fields' },
+      { status: 400, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return Response.json(
+      { success: false, message: 'Blob storage is not configured.', code: 'not_configured' },
+      { status: 503, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+  try {
+    await del(pathname, { token: process.env.BLOB_READ_WRITE_TOKEN });
+    return Response.json(
+      { success: true },
+      { headers: { 'cache-control': 'no-store' } },
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Delete failed.';
+    return Response.json(
+      { success: false, message, code: 'delete_failed' },
+      { status: 500, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+}
