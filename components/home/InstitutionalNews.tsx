@@ -31,14 +31,16 @@ interface FeedItem {
   body?: string;
 }
 
-const DEPARTMENTS: { name: string; href: string }[] = [
-  { name: 'Cabinet of the President', href: '/governance' },
-  { name: 'Infrastructure & Energy — Great African Grid (GAG)', href: '/gag' },
-  { name: 'Education, Science & Technology — ASTA OS', href: '/ecosystem' },
-  { name: 'Health, Humanitarian & Social Development', href: '/ecosystem' },
-  { name: 'Women, Gender & Youth', href: '/partners' },
-  { name: 'Civil Society & Diaspora', href: '/partner/diaspora' },
-  { name: 'Trade, Industry & Digital Economy', href: '/ecosystem' },
+// Sidebar for the Latest section. "Frameworks" mirrors the institutional source
+// papers (Foundation Charter, Governance Framework, GAG, ASTA OS, Financial
+// Architecture) rather than AU-style department names.
+const FRAMEWORKS: { name: string; href: string }[] = [
+  { name: 'Foundation Charter & Mission', href: '/about' },
+  { name: 'Governance Framework', href: '/governance' },
+  { name: 'Great African Grid — Infrastructure Plans', href: '/gag' },
+  { name: 'ASTA OS Technical Architecture', href: '/ecosystem' },
+  { name: 'Financial Architecture', href: '/funding' },
+  { name: 'Institutional Archive & Source Papers', href: '/documents' },
 ];
 
 const FLAGSHIP_PROJECTS = [
@@ -190,11 +192,11 @@ export function InstitutionalNews() {
 
             <aside className="institutional-news__sidebar" aria-label="Institutional directories">
               <div className="institutional-news__panel">
-                <h3>Departments</h3>
+                <h3>Frameworks</h3>
                 <ul>
-                  {DEPARTMENTS.map((department) => (
-                    <li key={department.name}>
-                      <Link href={department.href}>{department.name}</Link>
+                  {FRAMEWORKS.map((framework) => (
+                    <li key={framework.name}>
+                      <Link href={framework.href}>{framework.name}</Link>
                     </li>
                   ))}
                 </ul>
