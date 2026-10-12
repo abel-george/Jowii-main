@@ -38,6 +38,7 @@ yarn-error.log*
 
 # other repositories
 jowihsuperapp
+jowih-ecosystem-website
 
 # typescript
 *.tsbuildinfo
