@@ -947,8 +947,8 @@ h2[id] { scroll-margin-top: 110px; }
 .institutional-news__panel li { border-bottom: 1px solid var(--line); }
 .institutional-news__panel li a, .institutional-news__panel--maroon li { display: block; padding: 10px 0; color: #536158; font-size: 12px; line-height: 1.45; }
 .institutional-news__panel li a:hover { color: var(--green); }
-.institutional-news__panel--maroon h3 { border-bottom-color: #7a1f2b; color: #7a1f2b; }
-.institutional-news__panel--maroon li { padding: 11px 14px; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: #7a1f2b; color: rgba(255, 254, 250, 0.92); font-family: var(--font-mono); font-size: 18px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.institutional-news__panel--maroon h3 { border-bottom-color: #800000; color: #800000; }
+.institutional-news__panel--maroon li { padding: 11px 14px; border: none; border-bottom: 1px solid rgba(128, 0, 0, 0.1); background: #8b0000; color: rgba(255, 254, 250, 0.95); font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
 .institutional-news__panel--maroon li:first-child { margin-top: 10px; }
 
 @media (max-width: 1080px) {

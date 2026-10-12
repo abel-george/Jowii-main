@@ -31,16 +31,18 @@ interface FeedItem {
   body?: string;
 }
 
-// Sidebar for the Latest section. "Frameworks" mirrors the institutional source
-// papers (Foundation Charter, Governance Framework, GAG, ASTA OS, Financial
-// Architecture) rather than AU-style department names.
+// Sidebar for the Latest section - Using Jowih's actual frameworks
 const FRAMEWORKS: { name: string; href: string }[] = [
   { name: 'Foundation Charter & Mission', href: '/about' },
   { name: 'Governance Framework', href: '/governance' },
-  { name: 'Great African Grid — Infrastructure Plans', href: '/gag' },
+  { name: 'Great African Grid — 7 Corridors', href: '/gag' },
   { name: 'ASTA OS Technical Architecture', href: '/ecosystem' },
-  { name: 'Financial Architecture', href: '/funding' },
-  { name: 'Institutional Archive & Source Papers', href: '/documents' },
+  { name: 'ADFA — Accelerated Development Framework Agreement', href: '/gag#adfa' },
+  { name: 'Mission Lock — Constitutional Protection', href: '/documents' },
+  { name: 'Jowih Credits — Settlement Layer', href: '/funding' },
+  { name: 'Ecosystem Fund — Investment Vehicle', href: '/funding' },
+  { name: 'Jowih Continental OS (Asta)', href: '/ecosystem' },
+  { name: 'Institutional Source Papers', href: '/documents' },
 ];
 
 const FLAGSHIP_PROJECTS = [
