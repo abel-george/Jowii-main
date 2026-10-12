@@ -24,6 +24,7 @@ export default function AdminUploadPage() {
   const [lastUrl, setLastUrl] = useState('');
   const [blobs, setBlobs] = useState<UploadedBlob[]>([]);
   const [loadingList, setLoadingList] = useState(false);
+  const [setupNotice, setSetupNotice] = useState(false);
   const [mounted, setMounted] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -48,7 +49,11 @@ export default function AdminUploadPage() {
     try {
       const res = await fetch('/api/admin/upload', { headers: authHeaders() });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Failed to load uploads.');
+      if (!res.ok) {
+        setSetupNotice(data.code === 'token_not_set');
+        throw new Error(data.message || 'Failed to load uploads.');
+      }
+      setSetupNotice(false);
       setBlobs(data.blobs || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load uploads.');
@@ -214,9 +219,22 @@ export default function AdminUploadPage() {
         <p className="text-xs font-mono font-bold tracking-[0.2em] uppercase mb-2" style={{ color: 'var(--brass)' }}>
           RESTRICTED · ADMINISTRATOR
         </p>
-        <h1 className="text-4xl uppercase tracking-tight mb-8" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+        <h1 className="text-4xl uppercase tracking-tight mb-4" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
           Media Upload
         </h1>
+        <div className="flex items-center gap-4 mb-8 text-xs font-mono font-bold uppercase tracking-wider">
+          <span style={{ color: 'var(--green)' }}>Media uploads</span>
+          <Link href="/admin/news" style={{ color: 'var(--muted)' }}>Publish news</Link>
+        </div>
+
+        {setupNotice ? (
+          <div className="mb-8 p-4 border text-sm" style={{ borderColor: '#b45309', background: '#fef3c7', color: '#78350f' }}>
+            <strong>Admin token not configured on the server.</strong> Go to your Vercel dashboard → your site →
+            Settings → Environment Variables. Add <code>ADMIN_UPLOAD_TOKEN</code> with any long random value you
+            invent (for example a 40-character random string), then redeploy. Enter that same value here — it is
+            your token; nothing generates one for you.
+          </div>
+        ) : null}
 
         <form onSubmit={handleUpload} className="p-6 border mb-8" style={{ background: 'var(--white)', borderColor: 'var(--line)' }}>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">

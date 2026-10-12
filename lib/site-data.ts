@@ -99,6 +99,16 @@ export const siteData = {
     },
   ],
   nav: [
+    {
+      label: 'Home',
+      href: '/',
+      description: 'Return to the institutional home',
+      children: [
+        { label: 'Home', href: '/' },
+        { label: 'Latest news', href: '/#news' },
+        { label: 'Priority areas', href: '/#priorities' },
+      ]
+    },
     { 
       label: 'About', 
       href: '/about',

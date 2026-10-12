@@ -1,5 +1,6 @@
 import { put, del, list } from '@vercel/blob';
 import { randomUUID } from 'crypto';
+import { adminTokenConfigured, isAuthorized } from '@/lib/admin-auth';
 
 // Admin-only media upload endpoint, backed by Vercel Blob.
 //
@@ -8,7 +9,6 @@ import { randomUUID } from 'crypto';
 // the admin identity is NOT hardcoded in source and can be rotated without a deploy.
 // See .env.example for the required variable.
 
-const ADMIN_TOKEN = process.env.ADMIN_UPLOAD_TOKEN;
 const MAX_BYTES = 15 * 1024 * 1024; // 15MB
 const ALLOWED_TYPES = new Set([
   'image/png',
@@ -18,25 +18,28 @@ const ALLOWED_TYPES = new Set([
   'image/gif',
 ]);
 
-function isAuthorized(request: Request): boolean {
-  if (!ADMIN_TOKEN) return false; // no token configured => deny all
-  const header = request.headers.get('authorization') || '';
-  const [scheme, token] = header.split(' ');
-  if (scheme?.toLowerCase() !== 'bearer') return false;
-  // Constant-time comparison to avoid timing attacks.
-  const expected = Buffer.from(ADMIN_TOKEN);
-  const provided = Buffer.from(token || '');
-  if (expected.length !== provided.length) return false;
-  return Buffer.compare(expected, provided) === 0;
+function denyNotConfigured() {
+  return Response.json(
+    {
+      success: false,
+      message:
+        'Admin token not configured. Set ADMIN_UPLOAD_TOKEN in the Vercel dashboard (Settings → Environment Variables) to any long random string, redeploy, and enter that same string on the admin page.',
+      code: 'token_not_set',
+    },
+    { status: 401, headers: { 'cache-control': 'no-store' } },
+  );
+}
+
+function denyUnauthorized() {
+  return Response.json(
+    { success: false, message: 'Unauthorized.', code: 'unauthorized' },
+    { status: 401, headers: { 'cache-control': 'no-store' } },
+  );
 }
 
 export async function POST(request: Request) {
-  if (!isAuthorized(request)) {
-    return Response.json(
-      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
-      { status: 401, headers: { 'cache-control': 'no-store' } },
-    );
-  }
+  if (!adminTokenConfigured()) return denyNotConfigured();
+  if (!isAuthorized(request)) return denyUnauthorized();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return Response.json(
       { success: false, message: 'Blob storage is not configured.', code: 'not_configured' },
@@ -99,12 +102,8 @@ export async function POST(request: Request) {
 
 // List uploaded blobs (admin only) — used by the admin gallery.
 export async function GET(request: Request) {
-  if (!isAuthorized(request)) {
-    return Response.json(
-      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
-      { status: 401, headers: { 'cache-control': 'no-store' } },
-    );
-  }
+  if (!adminTokenConfigured()) return denyNotConfigured();
+  if (!isAuthorized(request)) return denyUnauthorized();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return Response.json(
       { success: false, message: 'Blob storage is not configured.', code: 'not_configured' },
@@ -128,12 +127,8 @@ export async function GET(request: Request) {
 
 // Delete an uploaded blob (admin only).
 export async function DELETE(request: Request) {
-  if (!isAuthorized(request)) {
-    return Response.json(
-      { success: false, message: 'Unauthorized.', code: 'unauthorized' },
-      { status: 401, headers: { 'cache-control': 'no-store' } },
-    );
-  }
+  if (!adminTokenConfigured()) return denyNotConfigured();
+  if (!isAuthorized(request)) return denyUnauthorized();
   const { searchParams } = new URL(request.url);
   const pathname = searchParams.get('pathname');
   if (!pathname || !pathname.startsWith('uploads/')) {

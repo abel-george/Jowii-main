@@ -26,6 +26,7 @@ import {
   Waypoints,
 } from 'lucide-react';
 import { InstitutionalNewsletter } from '@/components/home/InstitutionalNewsletter';
+import { InstitutionalNews } from '@/components/home/InstitutionalNews';
 import { InstitutionalExpandable, type ExpandableItem } from '@/components/ui/InstitutionalExpandable';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
 
@@ -429,6 +430,8 @@ export function InstitutionalHome() {
           <span><Check aria-hidden="true" /> Plans and status stated transparently</span>
         </div>
       </section>
+
+      <InstitutionalNews />
 
       <section className="institutional-section institutional-section--paper" id="priorities" aria-label="Priority areas">
         <div className="institutional-container">
