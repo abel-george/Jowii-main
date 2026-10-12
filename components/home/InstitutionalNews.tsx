@@ -31,28 +31,6 @@ interface FeedItem {
   body?: string;
 }
 
-// Sidebar for the Latest section - Using Jowih's actual frameworks
-const FRAMEWORKS: { name: string; href: string }[] = [
-  { name: 'Foundation Charter & Mission', href: '/about' },
-  { name: 'Governance Framework', href: '/governance' },
-  { name: 'Great African Grid — 7 Corridors', href: '/gag' },
-  { name: 'ASTA OS Technical Architecture', href: '/ecosystem' },
-  { name: 'ADFA — Accelerated Development Framework Agreement', href: '/gag#adfa' },
-  { name: 'Mission Lock — Constitutional Protection', href: '/documents' },
-  { name: 'Jowih Credits — Settlement Layer', href: '/funding' },
-  { name: 'Ecosystem Fund — Investment Vehicle', href: '/funding' },
-  { name: 'Jowih Continental OS (Asta)', href: '/ecosystem' },
-  { name: 'Institutional Source Papers', href: '/documents' },
-];
-
-const FLAGSHIP_PROJECTS = [
-  'Great African Grid — Seven Corridors',
-  'ASTA OS Continental Digital Layer',
-  'Asta Super App — Dotkom Services',
-  'Jowih Source Papers & Charter',
-  'Institutional Pre-Launch · October 2026',
-];
-
 function formatDate(value: string): string {
   const parsed = new Date(value);
   if (Number.isNaN(parsed.getTime())) return value;
@@ -191,27 +169,6 @@ export function InstitutionalNews() {
                 </article>
               ))}
             </div>
-
-            <aside className="institutional-news__sidebar" aria-label="Institutional directories">
-              <div className="institutional-news__panel">
-                <h3>Frameworks</h3>
-                <ul>
-                  {FRAMEWORKS.map((framework) => (
-                    <li key={framework.name}>
-                      <Link href={framework.href}>{framework.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="institutional-news__panel institutional-news__panel--maroon">
-                <h3>Flagship Projects</h3>
-                <ul>
-                  {FLAGSHIP_PROJECTS.map((project) => (
-                    <li key={project}>{project}</li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
           </div>
         )}
       </div>
