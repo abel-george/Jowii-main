@@ -20,6 +20,13 @@ export function InstitutionalFooter() {
           </Link>
           <p>A proposed mission-led framework for connecting African infrastructure, services, capital and technology.</p>
           <a href={`mailto:${siteData.config.fallbackEmail}`}><Mail aria-hidden="true" size={15} />{siteData.config.fallbackEmail}</a>
+          <div className="institutional-footer__social" aria-label="Social media">
+            {siteData.socialMedia.map((social) => (
+              <a key={social.platform} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}>
+                <span>{social.platform}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="institutional-footer__column">

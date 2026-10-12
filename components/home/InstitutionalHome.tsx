@@ -469,6 +469,28 @@ export function InstitutionalHome() {
             ))}
           </div>
 
+          <div className="institutional-counsel-note">
+            <p className="institutional-eyebrow">COUNSEL SELECTION · MAURITIUS OUTREACH</p>
+            <h3>Written approach to Mauritius counsel</h3>
+            <p>
+              In furtherance of the pre-launch mandate to establish the proposed structures before any invitation to
+              support, the Foundation has dispatched written correspondence to the three principal law firms in the
+              Republic of Mauritius. The correspondence sets out the Foundation&apos;s interest in each firm&apos;s
+              capabilities and invites them to advise on the Mauritius pathway — specifically the foundation vehicle,
+              the Variable Capital Company (VCC) sub-fund architecture, and the associated licensing considerations.
+            </p>
+            <p>
+              Such correspondence constitutes an expression of interest only. It is not, and shall not be construed as,
+              an instruction to proceed. No firm has been formally retained, engaged or appointed, and no retainer,
+              engagement letter or mandate has been executed. Any appointment remains conditional upon competitive
+              evaluation, conflicts clearance, due diligence, and the execution of formal engagement terms on
+              mutually agreed instructions.
+            </p>
+            <p className="institutional-counsel-note__meta">
+              Status: Expression of interest dispatched · No engagement executed · Subject to contract
+            </p>
+          </div>
+
           <p className="institutional-legal-note">
             The five-firm structure and law-trust support holding arrangement are proposed pre-launch plans. They are not
             evidence of incorporation, appointment, licensing or an active trust account. Support instructions will only be
@@ -830,6 +852,38 @@ export function InstitutionalHome() {
                 </p>
                 <p className="text-xs sm:text-sm font-mono text-emerald-300/90 pt-2 border-t border-emerald-500/20">
                   The Super App MVP already exists as an operational build of the Dotkom interface.
+                </p>
+              </div>
+
+              <div className="p-5 sm:p-6 border border-amber-500/20 bg-amber-950/20 space-y-3">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-amber-500/20 text-amber-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  Live Demonstration · Availability Notice
+                </div>
+                <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
+                  Because the Super App MVP is built on a large containerised architecture — dozens of independent
+                  services including the API gateway, authentication, messaging, marketplace, wallet, feeds, media
+                  processing, search, moderation and the supporting data layer — it is too resource-intensive to run
+                  continuously on free-tier hosting. It is therefore demonstrated through a live link generated on an
+                  occasional, on-demand basis rather than hosted as a permanent public deployment.
+                </p>
+                <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
+                  This is a working MVP shown to evidence that the architecture is achievable. It is not the finished
+                  product. Certain areas remain incomplete or under active development, and full production hardening,
+                  security review, load testing and completion of the wider feature set are reserved for the engineering
+                  team to be appointed at full launch. Viewing is by demonstration link; refresh access is provided
+                  while a session is live.
+                </p>
+                <p className="text-xs sm:text-sm font-mono text-amber-300/90 pt-2 border-t border-amber-500/20">
+                  Demonstration link (valid while the session is hosted):{" "}
+                  <a
+                    href="https://craig-raised-potatoes-favorite.trycloudflare.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-amber-200 break-all"
+                  >
+                    craig-raised-potatoes-favorite.trycloudflare.com
+                  </a>
                 </p>
               </div>
 

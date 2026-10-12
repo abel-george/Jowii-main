@@ -39,7 +39,7 @@ export default function GovernancePage() {
                 Dd JOWIH GOVERNANCE & APPOINTMENT MASTER REGISTER
               </p>
 
-              <h2 className="text-2xl uppercase tracking-tight">I. STEWARDSHIP & FOUNDER-ERA ADVISORY STRUCTURE</h2>
+              <h2 id="stewardship" className="text-2xl uppercase tracking-tight">I. STEWARDSHIP & FOUNDER-ERA ADVISORY STRUCTURE</h2>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">1. Founder & Steward President</h3>
               <p>The Founder & Steward President serves as the principal constitutional steward of the JOWIH Mission, exercising the strategic, protective, and reserved powers established by the Constitution.</p>
@@ -68,7 +68,7 @@ export default function GovernancePage() {
               <p>The Foundation Advisory Council shall serve as the successor Steward President's advisory structure.</p>
               <p>The Founder's Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
 
-              <h2 className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
+              <h2 id="foundation-governance" className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">5. Board of Governors</h3>
               <p>The Board of Governors constitutes the principal governing body of the Jowih Foundation and exercises the governance, fiduciary, oversight, and strategic responsibilities assigned to it by the Constitution.</p>
@@ -83,7 +83,7 @@ export default function GovernancePage() {
               </ul>
               <p>These committees perform governance and oversight functions and do not constitute executive management departments.</p>
 
-              <h2 className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
+              <h2 id="oversight" className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">7. Independent Auditor General</h3>
               <p>The Independent Auditor General serves as the Foundation's , profit and non-profit independent audit authority.</p>
@@ -107,7 +107,7 @@ export default function GovernancePage() {
           </ul>
           <p>These are professional service engagements and are not permanent institutional offices.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">IV. FOUNDATION EXECUTIVE MANAGEMENT</h2>
+          <h2 id="executive" className="text-2xl uppercase tracking-tight mt-12">IV. FOUNDATION EXECUTIVE MANAGEMENT</h2>
 
           <p>The Foundation shall maintain a lean executive structure focused on mission governance, continental coordination, funding, integrity, programs, and institutional administration.</p>
           <p>The Foundation shall not duplicate the operational management of Jowih Holdings Limited, Jowih Group, or the Operating Companies.</p>
@@ -153,7 +153,7 @@ export default function GovernancePage() {
           <h3 className="text-lg uppercase tracking-tight mt-6">16. Country Coordination Lead</h3>
           <p>Responsible for coordinating the Foundation's country-level implementation and support structures.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">V. REGIONAL FOUNDATION COORDINATION</h2>
+          <h2 id="regional" className="text-2xl uppercase tracking-tight mt-12">V. REGIONAL FOUNDATION COORDINATION</h2>
 
           <p>The Foundation shall maintain five Regional Executive positions:</p>
 
@@ -237,7 +237,7 @@ export default function GovernancePage() {
           <p>The Committee performs trustee oversight and related accountability functions established by the Constitution.</p>
           <p>It is an independent oversight mechanism and not an executive management department.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XI. JOWIH HOLDINGS LIMITED</h2>
+          <h2 id="holdings" className="text-2xl uppercase tracking-tight mt-12">XI. JOWIH HOLDINGS LIMITED</h2>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">32. Holding Company Board</h3>
           <p>The Holding Company Board shall comprise the constitutionally established directors, including:</p>
@@ -249,7 +249,7 @@ export default function GovernancePage() {
           <p>Total: 9 Directors.</p>
           <p>The Holding Company Board governs Jowih Holdings Limited and provides corporate governance over the Group and its Operating Companies.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XII. JOWIH GROUP EXECUTIVE STRUCTURE</h2>
+          <h2 id="group" className="text-2xl uppercase tracking-tight mt-12">XII. JOWIH GROUP EXECUTIVE STRUCTURE</h2>
 
           <p>Jowih Group constitutes the principal operational and commercial execution structure under Jowih Holdings Limited.</p>
 
@@ -456,7 +456,7 @@ export default function GovernancePage() {
 
           <p className="mt-4">This structure prevents duplication of executive authority while preserving the constitutional separation between mission stewardship, ownership, governance, commercial execution, and New Dawn City administration.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">JOWIH MASTER ECOSYSTEM FUND — VCC SECTION</h2>
+          <h2 id="ecosystem-fund" className="text-2xl uppercase tracking-tight mt-12">JOWIH MASTER ECOSYSTEM FUND — VCC SECTION</h2>
 
           <p className="text-sm italic">For Inclusion in the JOWIH Governance & Appointment Master Register</p>
 
@@ -1092,28 +1092,28 @@ export default function GovernancePage() {
                   On This Page
                 </h3>
                 <nav className="space-y-2 text-sm">
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#stewardship" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Stewardship Structure
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#foundation-governance" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Foundation Governance
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#oversight" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Independent Oversight
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#executive" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Executive Management
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#regional" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Regional Coordination
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#holdings" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Jowih Holdings
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#group" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Jowih Group
                   </a>
-                  <a href="#" className="block text-neutral-700 hover:text-black transition-colors py-1">
+                  <a href="#ecosystem-fund" className="block text-neutral-700 hover:text-black transition-colors py-1">
                     Master Ecosystem Fund
                   </a>
                 </nav>
