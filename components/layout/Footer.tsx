@@ -98,6 +98,17 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href={siteData.config.whatsappCommunity}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1"
+                >
+                  <span>Join WhatsApp Community</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#FF5000]" />
+                </Link>
+              </li>
+              <li>
                 <Link href="/ticket" className="hover:text-white transition-colors">
                   Launch Tickets
                 </Link>

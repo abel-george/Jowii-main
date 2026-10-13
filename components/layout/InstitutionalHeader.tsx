@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
+import { SocialIcon } from '@/components/icons/SocialIcons';
 import { siteData } from '@/lib/site-data';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -61,6 +62,14 @@ export function InstitutionalHeader() {
               </Link>
               <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/waitlist">
                 Join Waitlist
+              </Link>
+              <Link
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-black text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#1eb257] transition-colors"
+                href={siteData.config.whatsappCommunity}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SocialIcon name="whatsapp" size={14} /> Join WhatsApp Community
               </Link>
             </div>
           </div>
@@ -151,6 +160,15 @@ export function InstitutionalHeader() {
               </Link>
               <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
                 Join Waitlist
+              </Link>
+              <Link
+                href={siteData.config.whatsappCommunity}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full py-2 text-center bg-[#25D366] text-black text-xs font-mono font-bold uppercase"
+              >
+                <SocialIcon name="whatsapp" size={13} /> Join WhatsApp Community
               </Link>
             </div>
           </nav>

@@ -62,6 +62,7 @@ export const siteData = {
   config: {
     eventDate: '2026-10-29T20:00:00+03:00',
     fallbackEmail: 'jowihfoundationorg@gmail.com',
+    whatsappCommunity: 'https://chat.whatsapp.com/HgadK4W3gBvD7x4Mq90Z4m?s=acl&p=a&mlu=4&ilr=4',
     location: 'Kisii, Kenya',
     venue: 'Kisii University Auditorium & Virtual Live Room',
     time: '8:00 PM – 1:00 AM EAT',
@@ -195,6 +196,7 @@ export const siteData = {
       description: 'Stay informed about launch progress and developments',
       children: [
         { label: 'Join Waitlist', href: '/waitlist' },
+        { label: 'Join WhatsApp Community', href: 'https://chat.whatsapp.com/HgadK4W3gBvD7x4Mq90Z4m?s=acl&p=a&mlu=4&ilr=4' },
         { label: 'Newsletter', href: '/waitlist#newsletter' },
         { label: 'Contact', href: '/documents#contact' },
       ]

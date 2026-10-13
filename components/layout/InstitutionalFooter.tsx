@@ -42,6 +42,7 @@ export function InstitutionalFooter() {
           <h2>Engage</h2>
           <Link href="/donate">Pre-launch donations <ArrowUpRight aria-hidden="true" size={13} /></Link>
           <Link href="/waitlist">Receive updates</Link>
+          <Link href={siteData.config.whatsappCommunity} target="_blank" rel="noopener noreferrer">Join WhatsApp community <ArrowUpRight aria-hidden="true" size={13} /></Link>
           <Link href="/partner">Launch-event sponsorship</Link>
         </div>
 
