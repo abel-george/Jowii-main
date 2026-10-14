@@ -376,6 +376,394 @@ const priorityAreas: ExpandableItem[] = [
   },
 ];
 
+/**
+ * Small table renderer for the "What Jowih Is" content, matching the table
+ * markup used elsewhere in the site (see app/governance/page.tsx).
+ */
+function WhatJowihTable({
+  headers,
+  rows,
+  boldFirstColumn = false,
+}: {
+  headers: string[];
+  rows: string[][];
+  boldFirstColumn?: boolean;
+}) {
+  return (
+    <div className="overflow-x-auto mb-4">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ borderBottom: '2px solid var(--line-light)' }}>
+            {headers.map((header, headerIndex) => (
+              <th key={headerIndex} className="text-left p-3 uppercase tracking-tight">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex} style={{ borderBottom: '1px solid var(--line-light)' }}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className={`p-3${boldFirstColumn && cellIndex === 0 ? ' font-bold' : ''}`}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/**
+ * "What Jowih Is" — content extracted verbatim from the document
+ * "What Jowih Is.docx" (Documents). One collapsed item per heading so the
+ * section stays compact on the home page until a heading is opened.
+ */
+const whatJowihIs: ExpandableItem[] = [
+  {
+    number: '01',
+    title: 'What Jowih Is',
+    summary: 'A development-focused organization complementing the African Union and national governments with execution capacity.',
+    body: (
+      <>
+        <p>
+          Jowih is a development-focused organization designed to complement the African Union and national governments
+          by providing execution capacity in areas where frameworks and policies already exist but require structured
+          implementation support.
+        </p>
+        <p>
+          The African Union operates primarily as a political,development and policy body. It sets frameworks,
+          coordinates member states, and represents the continent on the global stage. These are essential functions.
+          They provide the direction and legitimacy that continental development requires.
+        </p>
+        <p>
+          What Africa has often needed alongside these frameworks is a partner dedicated specifically to execution — an
+          organization that can work with the AU, national governments, and the private sector to help translate
+          continental frameworks like AfCFTA and Agenda 2063 into tangible projects and measurable outcomes. It does
+          this by reinvesting 90% of its revenue to developments and 54 country pots yearly.
+        </p>
+        <p>
+          Jowih is designed to serve that complementary role. It does not replace the AU. It does not replace national
+          governments. It works alongside them — mobilizing capital, coordinating delivery partners, and building the
+          infrastructure and systems through which shared development goals can be realized.
+        </p>
+        <p>That is what Jowih is. Not a competitor. A partner in execution.</p>
+      </>
+    ),
+  },
+  {
+    number: '02',
+    title: 'How Jowih Works With the AU',
+    summary: 'Shares the goals of the AU — complementing rather than competing with or replacing it.',
+    body: (
+      <>
+        <p>
+          Jowih shares the AU&apos;s goals. It does not compete with the AU. It does not replace the AU. It complements
+          the AU.
+        </p>
+        <WhatJowihTable
+          headers={['The AU Provides', 'Jowih Provides']}
+          rows={[
+            ['Political, development coordination', 'Execution capacity'],
+            ['Policy frameworks', 'Project delivery'],
+            ['Continental representation', 'Capital mobilization'],
+            ['Agenda 2063', 'Implementation alongside The GAG initiative'],
+            ['AfCFTA', 'Trade infrastructure'],
+          ]}
+        />
+        <p>
+          Jowih is designed to work hand in hand with the African Union — accelerating AfCFTA, supporting Agenda 2063,
+          and turning frameworks into physical and economic reality.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '03',
+    title: 'How Jowih Works With National Governments',
+    summary: 'Sovereign partnership through the Accelerated Development Framework Agreement (ADFA).',
+    body: (
+      <>
+        <p>Jowih works with sovereign African states through the Accelerated Development Framework Agreement (ADFA).</p>
+        <p>
+          ADFA is a bilateral or multilateral agreement with the State as a perpetual legal entity — not with any
+          particular government, administration, ministry, or official. It endures beyond elections, coups, revolutions,
+          and constitutional reforms. The Foundation invests in nations, not administrations.
+        </p>
+        <p>
+          ADFA is structured for 20-year cycles, renewed automatically on agreements, aligned with the Jowih 2045
+          Horizon.
+        </p>
+        <p>
+          <strong>ADFA provides three execution models:</strong>
+        </p>
+        <WhatJowihTable
+          headers={['Model', 'Who Funds', 'Who Owns']}
+          rows={[
+            ['Model A — State-Funded', 'The participating state', 'The state'],
+            ['Model B — Foundation-Funded', 'The Jowih Foundation', 'The Foundation under Asset Lock'],
+            ['Model C — Joint-Funded', 'State and Foundation jointly', 'Per agreed structure'],
+          ]}
+          boldFirstColumn
+        />
+        <p>Each country participates according to its own priorities, fiscal capacity, and legal requirements.</p>
+      </>
+    ),
+  },
+  {
+    number: '04',
+    title: 'How Jowih Is Structured',
+    summary: 'Three layers: governance, execution and financial.',
+    body: (
+      <>
+        <p>Jowih operates through three layers:</p>
+        <WhatJowihTable
+          headers={['Layer', 'Function']}
+          rows={[
+            [
+              'Governance Layer',
+              'The JOWIH Foundation, Purpose Trust, Founder Family Trust, Jowih Holdings and the Asset Lock. Mission protection.',
+            ],
+            [
+              'Execution Layer',
+              'Jowih Group, the Great African Grid, the seven corridors, and the Pool of Companies. Project delivery.',
+            ],
+            [
+              'Financial Layer',
+              'The Grid Bond, the Mission Fund,Jowih Credits and the Jowih Ecosystem Fund. Capital mobilization.',
+            ],
+          ]}
+          boldFirstColumn
+        />
+      </>
+    ),
+  },
+  {
+    number: '05',
+    title: 'Project Execution',
+    summary: 'Jowih Group, the commercial execution arm, across the seven corridors of the Great African Grid.',
+    body: (
+      <>
+        <p>
+          Project execution is delivered through Jowih Group, the commercial execution arm of the Jowih ecosystem,
+          operating under the strategic direction of Jowih Holdings.
+        </p>
+        <p>
+          Jowih Group builds, operates, and manages the commercial subsidiaries across the Great African Grid&apos;s
+          seven corridors:
+        </p>
+        <WhatJowihTable
+          headers={['#', 'Corridor', 'Function']}
+          rows={[
+            ['1', 'Transport', 'Moving people and goods'],
+            ['2', 'Industrial & Manufacturing', "Building Africa's production capacity"],
+            ['3', 'Energy', 'Powering everything'],
+            ['4', 'Digital', 'Connecting everyone and powering the digital economy'],
+            ['5', 'Payment', 'Moving value'],
+            ['6', 'Service', 'Health, education, and empowerment'],
+            ['7', 'Space Capability', 'Building African capability in space innovation'],
+          ]}
+        />
+      </>
+    ),
+  },
+  {
+    number: '06',
+    title: 'How Jowih Is Funded',
+    summary: 'Initial capital from the African diaspora through the one-time Grid Bond activation instrument.',
+    body: (
+      <>
+        <p>The initial capital comes from the African diaspora and Africans at large.</p>
+        <p>
+          The African diaspora represents a combined net worth of approximately US$1 trillion. This is one of the
+          largest pools of African capital in the world. It is also one of the least structured when it comes to
+          long-term continental development.
+        </p>
+        <p>
+          The diaspora also sends over US$100 billion in remittances to Africa every year. Most of it is consumed. Some
+          of it is invested. But none of it is structured as long-term development capital.
+        </p>
+        <p>
+          Jowih&apos;s proposition is simple: if the diaspora can be shown a credible, well-governed, long-term
+          development architecture, they may be willing to invest roughly US$100 billion into the Grid Bond.
+        </p>
+        <p>
+          <strong>The Grid Bond is a one-time activation capital instrument. It is designed to fund:</strong>
+        </p>
+        <ul>
+          <li>Strategic acquisitions</li>
+          <li>Strategic stakes in global companies per corridor</li>
+          <li>Technology transfer and licenses.</li>
+          <li>Exchange programs and workforce training</li>
+          <li>Research and Development Centers</li>
+          <li>Major STEM university</li>
+          <li>Initial Phase of Propose New Dawn City. The economic powerhouse of Africa. Shenzhen capabilities.</li>
+          <li>The initial phase of the Great African Grid</li>
+          <li>Initial Country Pot allocations for development</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    number: '07',
+    title: 'The Grid Bond',
+    summary: 'Interest deferred for the first four-five years while the ecosystem is built and revenue created.',
+    body: (
+      <>
+        <p>The Grid Bond is structured with interest payments (5.0 - 5.4 )deferred for the first four-five years.</p>
+        <p>During those five years, Jowih focuses on building and revenue creation.</p>
+        <p>
+          Meanwhile, the Mission Fund continues to receive revenue from acquisitions, stakes, new companies, and
+          ecosystem activity. By Year 5, the Mission Fund is projected to receive approximately US$44 billion per year
+          across its ecosystem in the continent and globally.
+        </p>
+        <p>That is more than enough to cover the first interest payments on the Grid Bond by a wide margin.</p>
+      </>
+    ),
+  },
+  {
+    number: '08',
+    title: 'Project Execution',
+    summary: 'The Pool of Companies — pre-qualified private sector developers across three project tiers.',
+    body: (
+      <>
+        <p>
+          Most project execution is delivered through the Pool of Companies — a pre-qualified, pre-vetted pool of
+          private sector developers across the continent.
+        </p>
+        <p>
+          <strong>The Pool of Companies operates across three tiers:</strong>
+        </p>
+        <WhatJowihTable
+          headers={['Tier', 'Scope']}
+          rows={[
+            ['Tier 1', 'Continental Defining Projects'],
+            ['Tier 2', 'National Strategic Projects'],
+            ['Tier 3', 'Local / CDE Projects'],
+          ]}
+          boldFirstColumn
+        />
+        <p>
+          Pre-qualification eliminates tendering delays. Competition is maintained with pools. Market balance is
+          preserved — Foundation projects are additional, not substitutional.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '09',
+    title: 'The Jowih Ecosystem Fund',
+    summary: 'The regulated investment vehicle through which citizens and the diaspora participate in the commercial ecosystem.',
+    body: (
+      <>
+        <p>
+          The Grid Bond builds the foundation. The Jowih Ecosystem Fund is participation in the commercial ecosystem
+          that follows.
+        </p>
+        <p>
+          The Jowih Ecosystem Fund is the regulated investment vehicle through which African citizens and the diaspora
+          participate economically in eligible Jowih commercial enterprises. It is organized around the Jowih 100 → 500
+          Index — the definitive index of the top eligible companies in Africa, including Jowih&apos;s own operating
+          companies and qualified ecosystem partners.
+        </p>
+        <WhatJowihTable
+          headers={['Bucket', 'Weight', 'Composition']}
+          rows={[
+            ['Jowih Core', '30%', 'Qualified Jowih Group companies and Jowih-origin commercial enterprises'],
+            [
+              'Ecosystem Partners',
+              '70%',
+              'Qualified third-party African enterprises across logistics, energy, fintech, agritech, utilities, infrastructure, manufacturing, healthcare, and education',
+            ],
+          ]}
+          boldFirstColumn
+        />
+        <p>
+          The Fund vaults qualifying assets, issues regulated non-voting investment units, and provides NAV exposure to
+          the Index.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '10',
+    title: 'What the Ecosystem Fund Is Not',
+    summary: 'Using, integrating or investing does not grant ownership or constitutional authority over the Foundation.',
+    body: (
+      <>
+        <p>
+          Using a Jowih service does not make you an owner of the Foundation. Integrating a business with Jowih does
+          not give that business control of the Foundation. Investing in eligible commercial assets does not grant
+          constitutional authority over the mission.
+        </p>
+        <p>The mission layer is protected. The commercial layer is investable. The two are separated by design.</p>
+      </>
+    ),
+  },
+  {
+    number: '11',
+    title: 'How the Fund Works',
+    summary: 'Allocation follows the value of qualifying assets vaulted, with a separately capped Neutral Reserve.',
+    body: (
+      <>
+        <p>
+          Capital allocation follows the independently established dollar value of qualifying assets vaulted — not the
+          nominal equity percentage deposited. A 5% stake in a US$1B company may receive more allocation than a 49%
+          stake in a US$20M company.
+        </p>
+        <p>
+          The Fund also includes a separately capped Neutral Reserve — up to 10% of total Fund NAV — for qualifying
+          neutral assets such as land. Land in the Neutral Reserve appreciates when development happens around it.
+          Because no new units are minted, the appreciation flows directly to NAV per unit. Unit holders&apos; units
+          appreciate without dilution.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '12',
+    title: 'The Difference Between the Two',
+    summary: 'The Grid Bond and the Ecosystem Fund compared side by side.',
+    body: (
+      <>
+        <WhatJowihTable
+          headers={['', 'Grid Bond', 'Ecosystem Fund']}
+          rows={[
+            ['Purpose', 'Activation capital', 'Ongoing economic participation'],
+            ['Type', 'One-time instrument', 'Regulated investment vehicle'],
+            ['When', 'Before the ecosystem is built', 'After the ecosystem is operational'],
+            ['Who', 'Citizens, diaspora, global participants', 'Citizens, diaspora, permitted investors'],
+            ['Return', 'Defined bond return (5.0–5.6%)', 'NAV exposure and distributions'],
+            ['Governance', 'None', 'None'],
+          ]}
+          boldFirstColumn
+        />
+        <p>
+          The Grid Bond activates the system. The Ecosystem Fund is how citizens and the diaspora participate in its
+          long-term economic performance.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '13',
+    title: 'The Horizon',
+    summary: 'From Year 5 onward — scaling infrastructure and moving toward First World Africa by 2045.',
+    body: (
+      <>
+        <p>
+          From Year 5 onward, Jowih moves into the next phase of the 2045 Horizon — scaling infrastructure, expanding
+          the corridors, deepening continental integration, and moving toward First World Africa.
+        </p>
+        <p>The vision extends beyond 2045. But the first milestone is 2045.</p>
+      </>
+    ),
+  },
+];
+
 export function InstitutionalHome() {
   return (
     <div className="institutional-home">
@@ -457,18 +845,7 @@ export function InstitutionalHome() {
           </div>
 
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold uppercase tracking-tight mb-4">What Jowih Is</h3>
-              <p className="text-lg leading-relaxed mb-4">
-                Jowih is a development organization — an infrastructure and economic coordination initiative designed to enable sovereign African nations to accelerate development more efficiently, trade more freely across borders, and develop more rapidly, without surrendering control over their own affairs.
-              </p>
-              <p className="text-base leading-relaxed mb-4" style={{ color: 'var(--ink-soft)' }}>
-                Jowih is not a political organization. It does not seek political power, partisan influence, or governance authority over any state. Its mandate is development: infrastructure, industry, digital systems, financial rails, human capital, and continental coordination.
-              </p>
-              <p className="text-base leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
-                It is designed to work hand in hand with the African Union to accelerate the African Union's AfCFTA framework and other continental development priorities.
-              </p>
-            </div>
+            <InstitutionalExpandable items={whatJowihIs} />
 
             <div>
               <h3 className="text-xl font-bold uppercase tracking-tight mb-4">Three Interconnected Institutional Components</h3>
