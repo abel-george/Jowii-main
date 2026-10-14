@@ -179,7 +179,7 @@ export const siteData = {
       ]
     },
     { 
-      label: 'Source Papers', 
+      label: 'Documents', 
       href: '/documents',
       description: '9 foundational documents outlining the framework',
       children: [

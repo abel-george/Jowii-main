@@ -28,6 +28,7 @@ import {
 import { InstitutionalNewsletter } from '@/components/home/InstitutionalNewsletter';
 import { InstitutionalNews } from '@/components/home/InstitutionalNews';
 import { InstitutionalExpandable, type ExpandableItem } from '@/components/ui/InstitutionalExpandable';
+import { InstitutionalHeroSlideshow } from '@/components/home/InstitutionalHeroSlideshow';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 const pillars = [
@@ -768,19 +769,7 @@ export function InstitutionalHome() {
   return (
     <div className="institutional-home">
       <section className="institutional-hero" aria-labelledby="institutional-title">
-        <div className="institutional-hero__image-wrapper">
-          <Image
-            src="/documents/sample images/HEROGAG.png.png"
-            alt="Great African Grid hero"
-            fill
-            priority
-            sizes="100vw"
-            className="institutional-hero__image"
-            style={{ objectFit: 'cover', objectPosition: 'center center' }}
-          />
-        </div>
-        <div className="institutional-hero__shade" />
-        <p className="institutional-hero__image-note">Conceptual illustration · AI-assisted · Proposed infrastructure, not an existing asset</p>
+        <InstitutionalHeroSlideshow />
       </section>
 
       <section className="institutional-hero-content" aria-labelledby="institutional-title">
@@ -841,7 +830,7 @@ export function InstitutionalHome() {
         <div className="institutional-container">
           <div className="institutional-section-heading">
             <p className="institutional-eyebrow">001 / PRE-LAUNCH PHASE</p>
-            <h2>Building the Institution alone</h2>
+            <h2>Building the Institution</h2>
           </div>
 
           <div className="space-y-8">

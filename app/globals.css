@@ -106,6 +106,33 @@ button, input, select, textarea { font: inherit; }
 .institutional-hero__scroll { position: absolute; z-index: 2; bottom: 28px; left: max(32px, calc((100% - var(--site-max)) / 2)); display: inline-flex; align-items: center; gap: 10px; color: rgba(255, 254, 250, 0.82); font-size: 11px; text-decoration: none; }
 .institutional-hero__image-note { position: absolute; z-index: 2; right: max(32px, calc((100% - var(--site-max)) / 2)); bottom: 28px; max-width: 46%; margin: 0; color: rgba(255, 254, 250, 0.66); font-size: 10px; text-align: right; }
 
+/* Rotating grid hero (AU.int-style): cover image crossfades into a five-image mosaic. */
+.institutional-hero__image-wrapper { transition: opacity 1.2s ease; }
+.institutional-hero__image-wrapper.is-faded { opacity: 0; }
+.institutional-hero__grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1.05fr) minmax(0, 0.8fr);
+  gap: 8px;
+  padding: 8px;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+.institutional-hero__grid.is-active { opacity: 1; }
+.institutional-hero__grid-cell { position: relative; overflow: hidden; background: #0d1b16; }
+.institutional-hero__grid-cell img { object-fit: cover; object-position: center center; }
+.institutional-hero__grid-cell--portrait img { object-position: top center; }
+.institutional-hero__grid-stack { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; min-height: 0; }
+@media (max-width: 767px) {
+  .institutional-hero__grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)); }
+  .institutional-hero__grid-cell--lead { grid-column: 1 / -1; }
+  .institutional-hero__grid-stack { grid-column: 1; grid-row: 2 / -1; grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .institutional-hero__grid-stack > :nth-child(3) { display: none; }
+  .institutional-hero__grid-cell--portrait { grid-column: 2; grid-row: 2 / -1; }
+}
+
 .institutional-hero-content {
   padding-block: 120px 100px;
   background: var(--ink);
