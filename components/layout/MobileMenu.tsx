@@ -44,9 +44,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="flex items-center gap-3 group"
             >
               <img
-                src="/assets/logo.png"
-                alt="Jowih emblem"
-                className="w-9 h-9 object-contain bg-white p-0.5 rounded-none"
+                src="/assets/foundation%20logo.png"
+                alt="Jowih Foundation emblem"
+                className="w-9 h-9 object-contain"
               />
               <div className="flex flex-col leading-none">
                 <span className="font-extrabold text-lg tracking-tight text-white">

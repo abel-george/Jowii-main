@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     'Continental Infrastructure',
   ],
   icons: {
-    icon: '/assets/logo.png',
-    apple: '/assets/logo.png',
+    icon: '/assets/foundation%20logo.png',
+    apple: '/assets/foundation%20logo.png',
   },
   openGraph: {
     title: 'Jowih Foundation | A Continental Development Framework',
     description:
       'A proposed mission-led framework connecting infrastructure, services, capital and technology across Africa.',
-    images: ['/assets/jowih-hero.png'],
+    images: ['/documents/sample%20images/HEROGAG.png.png'],
   },
 };
 

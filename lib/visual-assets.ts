@@ -148,10 +148,10 @@ export const visualAssets: VisualAsset[] = [
     disclosure: 'AI-assisted concept image',
   },
   {
-    title: 'Jowih logo',
-    area: 'Identity',
-    image: '/documents/sample%20images/jowihlogo.png',
-    alt: 'Jowih logo supplied with the source materials',
+    title: 'Jowih Foundation logo',
+    area: 'Foundation identity',
+    image: '/assets/foundation%20logo.png',
+    alt: 'Jowih Foundation logo — Africa cradled by hands beneath three stars',
     disclosure: 'Brand asset',
   },
   {
@@ -187,13 +187,6 @@ export const visualAssets: VisualAsset[] = [
     area: 'Foundation identity',
     image: '/documents/sample%20images/jowih%20flag.png',
     alt: 'Jowih flag supplied with the source materials',
-    disclosure: 'Brand asset',
-  },
-  {
-    title: 'Jowih Foundation logo',
-    area: 'Foundation identity',
-    image: '/assets/logo.png',
-    alt: 'Jowih logo asset supplied with the website',
     disclosure: 'Brand asset',
   },
 ];

@@ -12,10 +12,10 @@ export function InstitutionalFooter() {
           <Link className="institutional-brand institutional-brand--footer" href="/">
             <Image
               className="institutional-brand__flag"
-              src="/documents/sample%20images/jowih%20flag.png"
-              alt="Jowih Foundation flag"
-              width={90}
-              height={60}
+              src="/assets/foundation%20logo.png"
+              alt="Jowih Foundation logo"
+              width={72}
+              height={72}
             />
             <span className="institutional-brand__text"><strong>Jowih</strong><small>Foundation</small></span>
           </Link>

@@ -31,7 +31,7 @@ const LANDSCAPE_IMAGES: GridImage[] = [
   { src: '/documents/sample%20images/gaminghub.png', alt: 'Concept illustration of the proposed gaming hub' },
   { src: '/documents/sample%20images/africa.png', alt: 'Illustration of the African continent' },
   { src: '/documents/sample%20images/environmental%20framework.png', alt: 'Concept illustration of the environmental framework' },
-  { src: '/assets/jowih-hero.png', alt: 'Jowih ecosystem illustration' },
+  { src: '/documents/sample%20images/airjowih1.png', alt: 'Concept illustration of proposed African aviation infrastructure' },
   { src: '/assets/asta-super-app.jpg', alt: 'Asta Super App interface concept' },
 ];
 

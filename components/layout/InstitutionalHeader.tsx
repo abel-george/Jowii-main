@@ -31,15 +31,14 @@ export function InstitutionalHeader() {
           <div className="flex items-center justify-between gap-8">
             <Link href="/" className="flex items-center gap-4" aria-label="Jowih Foundation home">
               <Image
-                src="/documents/sample%20images/jowih%20flag.png"
-                alt="Jowih Foundation flag"
-                width={100}
-                height={67}
+                src="/assets/foundation%20logo.png"
+                alt="Jowih Foundation logo"
+                width={76}
+                height={76}
                 priority
-                className="border border-neutral-300"
               />
               <div className="flex flex-col">
-                <span className="text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
+                <span className="text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#6e0b23' }}>
                   Jowih Foundation
                 </span>
                 <span className="text-sm font-semibold text-neutral-600 tracking-wider uppercase">
@@ -48,8 +47,16 @@ export function InstitutionalHeader() {
               </div>
             </Link>
 
-            {/* Right side space for future promotional banner */}
-            <div className="flex-1"></div>
+            {/* Second identity mark — sits between the name and the language switcher */}
+            <div className="flex-1 hidden md:flex items-center justify-center">
+              <Image
+                src="/assets/buffalo.png"
+                alt="Jowih buffalo mark"
+                width={64}
+                height={64}
+                className="h-16 w-16 object-contain"
+              />
+            </div>
 
             {/* Language Switcher and Actions - Hidden on Mobile */}
             <div className="hidden md:flex items-center gap-4">

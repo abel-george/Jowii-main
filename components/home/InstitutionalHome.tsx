@@ -223,8 +223,8 @@ const visualProjects = [
   {
     title: 'Jowih identity mark',
     area: 'Identity',
-    image: '/documents/sample%20images/jowihlogo.png',
-    alt: 'Jowih identity mark supplied with the source materials',
+    image: '/assets/foundation%20logo.png',
+    alt: 'Jowih Foundation identity mark — Africa cradled by hands beneath three stars',
     disclosure: 'Brand asset',
   },
   {

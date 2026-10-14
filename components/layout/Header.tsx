@@ -39,9 +39,9 @@ export function Header() {
           >
             <div className="relative">
               <img
-                src="/assets/logo.png"
-                alt="Jowih emblem"
-                className="w-8 h-8 sm:w-9 sm:h-9 object-contain bg-white p-0.5 transition-transform duration-150 [transition-timing-function:var(--ease-out)] group-hover:scale-105"
+                src="/assets/foundation%20logo.png"
+                alt="Jowih Foundation emblem"
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain transition-transform duration-150 [transition-timing-function:var(--ease-out)] group-hover:scale-105"
               />
               <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-[#FF5000] rounded-full" />
             </div>
