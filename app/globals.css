@@ -121,7 +121,7 @@ button, input, select, textarea { font: inherit; }
   pointer-events: none;
 }
 .institutional-hero__grid.is-active { opacity: 1; }
-.institutional-hero__grid-cell { position: relative; overflow: hidden; background: #0d1b16; box-shadow: inset 0 0 0 1px rgba(255, 254, 250, 0.18); }
+.institutional-hero__grid-cell { position: relative; overflow: hidden; background: #0d1b16; box-shadow: inset 0 0 0 1px #ffffff; }
 .institutional-hero__grid-cell img { object-fit: cover; object-position: center center; }
 .institutional-hero__grid-cell--portrait img { object-position: top center; }
 .institutional-hero__grid-stack { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 10px; min-height: 0; }

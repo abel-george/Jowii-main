@@ -28,17 +28,18 @@ export function InstitutionalHeader() {
       {/* Logo and Brand Area - Separate Section with Breathing Room */}
       <div className="bg-white border-b border-neutral-200 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8">
-            <Link href="/" className="flex items-center gap-4" aria-label="Jowih Foundation home">
+          <div className="flex items-center justify-between gap-4 sm:gap-8">
+            <Link href="/" className="flex items-center gap-3 sm:gap-4" aria-label="Jowih Foundation home">
               <Image
                 src="/assets/foundation%20logo.png"
                 alt="Jowih Foundation logo"
                 width={76}
                 height={76}
                 priority
+                className="h-12 w-12 sm:h-[76px] sm:w-[76px] object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#6e0b23' }}>
+                <span className="text-2xl sm:text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#6e0b23' }}>
                   Jowih Foundation
                 </span>
                 <span className="text-sm font-semibold text-neutral-600 tracking-wider uppercase">
@@ -48,13 +49,13 @@ export function InstitutionalHeader() {
             </Link>
 
             {/* Second identity mark — sits between the name and the language switcher */}
-            <div className="flex-1 hidden md:flex items-center justify-center">
+            <div className="flex-1 flex items-center justify-center">
               <Image
                 src="/assets/buffalo.png"
                 alt="Jowih buffalo mark"
-                width={64}
-                height={64}
-                className="h-16 w-16 object-contain"
+                width={112}
+                height={112}
+                className="h-12 w-12 sm:h-20 sm:w-20 md:h-28 md:w-28 object-contain"
               />
             </div>
 
