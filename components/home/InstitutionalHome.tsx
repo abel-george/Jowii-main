@@ -800,7 +800,7 @@ export function InstitutionalHome() {
               Pre-launch support <ArrowUpRight aria-hidden="true" size={17} />
             </Link>
             <Link className="institutional-button institutional-button--outline" href="/documents">
-              Read source papers <FileText aria-hidden="true" size={17} />
+              Read the documents <FileText aria-hidden="true" size={17} />
             </Link>
             <Link className="institutional-button institutional-button--outline" href="/partner">
               Partner / sponsor the launch <ArrowUpRight aria-hidden="true" size={17} />
@@ -846,6 +846,18 @@ export function InstitutionalHome() {
 
           <div className="space-y-8">
             <InstitutionalExpandable items={whatJowihIs} />
+
+            <div className="p-6" style={{ background: 'var(--ink)', color: 'var(--white)', border: '2px solid var(--line-light)' }}>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-3">See Jowih from its documents</h3>
+              <p className="text-base leading-relaxed mb-4" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
+                What is summarised above is set out in full in the Jowih documents — the Foundation, the Great African
+                Grid, ADFA, the Grid Bond and the Jowih Ecosystem Fund. To understand Jowih properly, read it at its
+                source.
+              </p>
+              <Link href="/documents" className="institutional-button institutional-button--gold">
+                Open the documents <FileText aria-hidden="true" size={17} />
+              </Link>
+            </div>
 
             <div>
               <h3 className="text-xl font-bold uppercase tracking-tight mb-4">Three Interconnected Institutional Components</h3>

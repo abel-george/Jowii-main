@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { CollapsibleAccordion, CollapsibleAccordionItem } from '@/components/ui/CollapsibleAccordion';
 
 export default function GovernancePage() {
   return (
@@ -39,7 +40,13 @@ export default function GovernancePage() {
                 Dd JOWIH GOVERNANCE & APPOINTMENT MASTER REGISTER
               </p>
 
-              <h2 id="stewardship" className="text-2xl uppercase tracking-tight">I. STEWARDSHIP & FOUNDER-ERA ADVISORY STRUCTURE</h2>
+              <CollapsibleAccordion defaultOpenId="stewardship">
+              <CollapsibleAccordionItem
+                id="stewardship"
+                number="I"
+                title="Stewardship & Founder-Era Advisory Structure"
+                summary="Sections 1–4 · Steward President, advisory councils and special advisors"
+              >
 
               <h3 className="text-lg uppercase tracking-tight mt-6">1. Founder & Steward President</h3>
               <p>The Founder & Steward President serves as the principal constitutional steward of the JOWIH Mission, exercising the strategic, protective, and reserved powers established by the Constitution.</p>
@@ -68,7 +75,14 @@ export default function GovernancePage() {
               <p>The Foundation Advisory Council shall serve as the successor Steward President&apos;s advisory structure.</p>
               <p>The Founder&apos;s Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
 
-              <h2 id="foundation-governance" className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
+              </CollapsibleAccordionItem>
+
+              <CollapsibleAccordionItem
+                id="foundation-governance"
+                number="II"
+                title="Jowih Foundation Governance"
+                summary="Sections 5–6 · Board of Governors and permanent board committees"
+              >
 
               <h3 className="text-lg uppercase tracking-tight mt-6">5. Board of Governors</h3>
               <p>The Board of Governors constitutes the principal governing body of the Jowih Foundation and exercises the governance, fiduciary, oversight, and strategic responsibilities assigned to it by the Constitution.</p>
@@ -83,7 +97,14 @@ export default function GovernancePage() {
               </ul>
               <p>These committees perform governance and oversight functions and do not constitute executive management departments.</p>
 
-              <h2 id="oversight" className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
+              </CollapsibleAccordionItem>
+
+              <CollapsibleAccordionItem
+                id="oversight"
+                number="III"
+                title="Independent Foundation Oversight"
+                summary="Sections 7–10 · Auditor General, oversight committee, external audit and specialist firms"
+              >
 
               <h3 className="text-lg uppercase tracking-tight mt-6">7. Independent Auditor General</h3>
               <p>The Independent Auditor General serves as the Foundation&apos;s , profit and non-profit independent audit authority.</p>
@@ -107,7 +128,14 @@ export default function GovernancePage() {
           </ul>
           <p>These are professional service engagements and are not permanent institutional offices.</p>
 
-          <h2 id="executive" className="text-2xl uppercase tracking-tight mt-12">IV. FOUNDATION EXECUTIVE MANAGEMENT</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="executive"
+            number="IV"
+            title="Foundation Executive Management"
+            summary="Sections 11–16 · Foundation executive offices and coordination leads"
+          >
 
           <p>The Foundation shall maintain a lean executive structure focused on mission governance, continental coordination, funding, integrity, programs, and institutional administration.</p>
           <p>The Foundation shall not duplicate the operational management of Jowih Holdings Limited, Jowih Group, or the Operating Companies.</p>
@@ -153,7 +181,14 @@ export default function GovernancePage() {
           <h3 className="text-lg uppercase tracking-tight mt-6">16. Country Coordination Lead</h3>
           <p>Responsible for coordinating the Foundation&apos;s country-level implementation and support structures.</p>
 
-          <h2 id="regional" className="text-2xl uppercase tracking-tight mt-12">V. REGIONAL FOUNDATION COORDINATION</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="regional"
+            number="V"
+            title="Regional Foundation Coordination"
+            summary="Sections 17–21 · Regional executives across the five African regions"
+          >
 
           <p>The Foundation shall maintain five Regional Executive positions:</p>
 
@@ -166,7 +201,14 @@ export default function GovernancePage() {
           <p className="mt-4">Regional Executives coordinate Foundation mission implementation within their respective regions and support the continental and country coordination framework.</p>
           <p>They do not exercise operational command over Jowih Group or its Operating Companies.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">VI. CONTINENTAL AND COUNTRY PARTICIPATION STRUCTURE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="continental-participation"
+            number="VI"
+            title="Continental and Country Participation Structure"
+            summary="Sections 22–27 · Ambassadors, country directors, assemblies and community structures"
+          >
 
           <p>The following structures form part of the Foundation&apos;s continental development and participation architecture:</p>
 
@@ -195,7 +237,14 @@ export default function GovernancePage() {
           </ul>
           <p>These bodies are participation and development structures and are not Foundation corporate executive positions.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">VII. JOWIH PURPOSE TRUST</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="purpose-trust"
+            number="VII"
+            title="Jowih Purpose Trust"
+            summary="Section 28 · Purpose Trust trustee structure"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">28. Purpose Trust Trustees</h3>
           <p>The Purpose Trust shall maintain its constitutionally established trustee structure.</p>
@@ -209,7 +258,14 @@ export default function GovernancePage() {
           </ul>
           <p>The Purpose Trust is an ownership and mission-protection institution and does not conduct the day-to-day operations of the Foundation or Jowih Group.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">VIII. FOUNDER FAMILY TRUST</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="founder-family-trust"
+            number="VIII"
+            title="Founder Family Trust"
+            summary="Section 29 · Founder Family Trust trustee structure"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">29. Founder Family Trust Trustees</h3>
           <p>The Founder Family Trust shall maintain its constitutionally established trustee structure, including:</p>
@@ -221,12 +277,26 @@ export default function GovernancePage() {
             <li>Family Trainee / Observer</li>
           </ul>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">IX. COMBINED TRUSTS GOVERNANCE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="combined-trusts"
+            number="IX"
+            title="Combined Trusts Governance"
+            summary="Section 30 · Joint governance of the combined trusts"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">30. Combined Trusts Board</h3>
           <p>The Combined Trusts Board provides the joint governance mechanism through which the Purpose Trust and Founder Family Trust exercise their constitutionally assigned powers.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">X. TRUSTEE OVERSIGHT</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="trustee-oversight"
+            number="X"
+            title="Trustee Oversight"
+            summary="Section 31 · Trustees Oversight Committee and enforcement"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">31. Trustees Oversight Committee / Enforcer</h3>
           <p>The Trustees Oversight Committee shall comprise:</p>
@@ -237,7 +307,14 @@ export default function GovernancePage() {
           <p>The Committee performs trustee oversight and related accountability functions established by the Constitution.</p>
           <p>It is an independent oversight mechanism and not an executive management department.</p>
 
-          <h2 id="holdings" className="text-2xl uppercase tracking-tight mt-12">XI. JOWIH HOLDINGS LIMITED</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="holdings"
+            number="XI"
+            title="Jowih Holdings Limited"
+            summary="Section 32 · Holding Company Board and corporate governance"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">32. Holding Company Board</h3>
           <p>The Holding Company Board shall comprise the constitutionally established directors, including:</p>
@@ -249,7 +326,14 @@ export default function GovernancePage() {
           <p>Total: 9 Directors.</p>
           <p>The Holding Company Board governs Jowih Holdings Limited and provides corporate governance over the Group and its Operating Companies.</p>
 
-          <h2 id="group" className="text-2xl uppercase tracking-tight mt-12">XII. JOWIH GROUP EXECUTIVE STRUCTURE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="group"
+            number="XII"
+            title="Jowih Group Executive Structure"
+            summary="Sections 33–40 · Group CEO, COO, CFO and executive functions"
+          >
 
           <p>Jowih Group constitutes the principal operational and commercial execution structure under Jowih Holdings Limited.</p>
 
@@ -292,7 +376,14 @@ export default function GovernancePage() {
           <p>The Group Executive Structure shall remain distinct from the leadership of individual Operating Companies.</p>
           <p>Group executives provide Group-wide leadership and integration; Operating Company CEOs manage their respective businesses.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XIII. CORE OPERATING SUBSIDIARIES</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="operating-subsidiaries"
+            number="XIII"
+            title="Core Operating Subsidiaries"
+            summary="One subsidiary, one CEO, multiple related businesses"
+          >
 
           <p>The Group shall establish and operate a limited number of Core Operating Subsidiaries corresponding to the actual corporate businesses approved under the Group structure.</p>
 
@@ -311,7 +402,14 @@ export default function GovernancePage() {
           </ul>
           <p>Where appropriate, such activities shall operate as divisions, business units, projects, or subsidiaries under the relevant Core Operating Company.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XIV. JOWIH PROTECTIVE SERVICES</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="protective-services"
+            number="XIV"
+            title="Jowih Protective Services"
+            summary="Section 41 · Separate protective services operating company"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">41. Jowih Protective Services Chief Executive Officer</h3>
           <p>The Jowih Protective Services CEO is a distinct operating-company leadership position.</p>
@@ -328,7 +426,14 @@ export default function GovernancePage() {
           </ul>
           <p>The JPS CEO shall operate within the governance and reporting framework established by the Constitution.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XV. NEW DAWN CITY TND CITY</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="new-dawn-city"
+            number="XV"
+            title="New Dawn City TND City"
+            summary="Section 42 · New Dawn City administration"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">42. New Dawn City Administrator</h3>
           <p>New Dawn City is a distinct governance domain.</p>
@@ -350,7 +455,14 @@ export default function GovernancePage() {
           </ul>
           <p>New Dawn City is governed through its own constitutional administrative structure.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XVI. R&D CENTER STRUCTURE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="rnd-centers"
+            number="XVI"
+            title="R&D Center Structure"
+            summary="Section 43 · Continental R&D centers"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">43. Continental R&D Centers</h3>
           <p>The R&D Centers shall operate under the Jowih Group&apos;s Research & Innovation structure.</p>
@@ -362,7 +474,14 @@ export default function GovernancePage() {
           </ul>
           <p>R&D Center Directors are operational/research leadership positions and are not separate subsidiary CEOs.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XVII. OPERATING COMPANY GOVERNANCE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="operating-company-governance"
+            number="XVII"
+            title="Operating Company Governance"
+            summary="Sections 44–46 · Operating company boards, CEOs and mission compliance"
+          >
 
           <h3 className="text-lg uppercase tracking-tight mt-6">44. Operating Company Boards</h3>
           <p>Each incorporated Operating Company shall maintain its applicable Board or governing body.</p>
@@ -375,7 +494,14 @@ export default function GovernancePage() {
           <p>Each Operating Company shall maintain the required Mission Compliance function in accordance with the Constitution.</p>
           <p>Mission Compliance Officers do not constitute additional corporate CEOs.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XVIII. AD-HOC AND ACTIVATED BODIES</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="ad-hoc-bodies"
+            number="XVIII"
+            title="Ad-Hoc and Activated Bodies"
+            summary="Sections 47–51 · Panels and councils activated as required"
+          >
 
           <p>The following shall not form part of the permanent appointment roster:</p>
 
@@ -396,7 +522,14 @@ export default function GovernancePage() {
 
           <p className="mt-4">These bodies remain constitutionally available where required but do not constitute permanent executive positions.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XIX. APPOINTMENT CATEGORIES</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="appointment-categories"
+            number="XIX"
+            title="Appointment Categories"
+            summary="Categories A–H · Constitutional, governance, executive, operating, advisory, oversight, ad-hoc and external"
+          >
 
           <p>For purposes of the JOWIH appointment process, every position shall be classified into one of the following categories:</p>
 
@@ -424,7 +557,14 @@ export default function GovernancePage() {
           <h3 className="text-lg uppercase tracking-tight mt-6">H. External Professional Engagement</h3>
           <p>Law firms, auditors, consultants, specialist advisers, and other contracted professional providers.</p>
 
-          <h2 className="text-2xl uppercase tracking-tight mt-12">XX. STRUCTURAL SEPARATION PRINCIPLE</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="structural-separation"
+            number="XX"
+            title="Structural Separation Principle"
+            summary="Constitutional separation of stewardship, foundation, trusts, holdings, group and operations"
+          >
 
           <p>The JOWIH institutional architecture shall maintain the following separation:</p>
 
@@ -456,11 +596,16 @@ export default function GovernancePage() {
 
           <p className="mt-4">This structure prevents duplication of executive authority while preserving the constitutional separation between mission stewardship, ownership, governance, commercial execution, and New Dawn City administration.</p>
 
-          <h2 id="ecosystem-fund" className="text-2xl uppercase tracking-tight mt-12">JOWIH MASTER ECOSYSTEM FUND — VCC SECTION</h2>
+          </CollapsibleAccordionItem>
+
+          <CollapsibleAccordionItem
+            id="ecosystem-fund"
+            number="XXI"
+            title="Jowih Master Ecosystem Fund — VCC Governance"
+            summary="Sections 52–60 · Master Fund as a distinct governance domain and VCC governance"
+          >
 
           <p className="text-sm italic">For Inclusion in the JOWIH Governance & Appointment Master Register</p>
-
-          <h2 className="text-2xl uppercase tracking-tight mt-8">XXI. JOWIH MASTER ECOSYSTEM FUND — VCC GOVERNANCE</h2>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">52. The Fund as a Distinct Governance Domain</h3>
           <p>The Jowih Master Ecosystem Fund (&quot;Master Fund&quot;) is a Foundation-established investment vehicle structured as a Mauritius Variable Capital Company (VCC).</p>
@@ -1082,6 +1227,8 @@ export default function GovernancePage() {
             <div>        ├── Neutral Reserve Sub-Fund</div>
             <div>        └── Specialized Sub-Funds</div>
           </div>
+          </CollapsibleAccordionItem>
+          </CollapsibleAccordion>
           </div>
 
             {/* Right Column - Sidebar */}
@@ -1129,7 +1276,7 @@ export default function GovernancePage() {
                     Foundation Overview
                   </Link>
                   <Link href="/documents" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
-                    Source Documents
+                    Documents
                   </Link>
                   <Link href="/gag" className="block text-sm text-neutral-700 hover:text-black transition-colors py-1">
                     Great African Grid

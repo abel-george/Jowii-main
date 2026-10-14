@@ -227,7 +227,7 @@ button, input, select, textarea { font: inherit; }
 .institutional-expandable__item { border-bottom: 1px solid var(--line); }
 .institutional-expandable__trigger { display: grid; grid-template-columns: 44px 1fr 28px; align-items: start; gap: 16px; width: 100%; padding: 22px 4px; text-align: left; background: none; border: none; cursor: pointer; transition: background 0.2s; }
 .institutional-expandable__trigger:hover { background: rgba(40, 88, 68, 0.04); }
-.institutional-expandable__number { color: var(--brass); font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; padding-top: 3px; }
+.institutional-expandable__number { color: var(--brass); font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; padding-top: 3px; white-space: nowrap; }
 .institutional-expandable__heading { display: flex; flex-direction: column; gap: 4px; }
 .institutional-expandable__heading strong { color: var(--ink); font-family: var(--font-serif); font-size: 22px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
 .institutional-expandable__heading span { color: var(--muted); font-size: 14px; line-height: 1.55; }

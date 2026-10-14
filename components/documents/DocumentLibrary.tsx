@@ -10,7 +10,7 @@ export function DocumentLibrary() {
     <main className="document-library">
       <section className="document-library__hero">
         <div className="document-container">
-          <p className="institutional-eyebrow institutional-eyebrow--gold">SOURCE PAPERS · PUBLIC ARCHIVE</p>
+          <p className="institutional-eyebrow institutional-eyebrow--gold">DOCUMENTS · PUBLIC ARCHIVE</p>
           <h1>Read the proposals at their source.</h1>
           <p>
             Nine PDFs set out the proposed Foundation, governance, infrastructure, technology and financial architecture.
