@@ -85,7 +85,7 @@ export function DonationIntake() {
             <div className="donation-page__rationale">
               <h3>Why Pre-Launch Support Matters</h3>
               <p>
-                Pre-launch support enables the organization's independence from any influence. The collective will that a better Africa is possible drives this model—allowing the Foundation to establish itself without owing anybody anything in return.
+                Pre-launch support enables the organization&apos;s independence from any influence. The collective will that a better Africa is possible drives this model—allowing the Foundation to establish itself without owing anybody anything in return.
               </p>
               <p>
                 Once citizens have decided on the 5 law firms and the trust to handle contributions, the formal giving process will be activated. Until then, this page provides information about the proposed arrangement.

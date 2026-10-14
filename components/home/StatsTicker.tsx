@@ -15,7 +15,7 @@ export function StatsTicker() {
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-[10px] font-mono text-[#FF5000] tracking-widest uppercase">
-                0{idx + 1} // METRIC
+                0{idx + 1}{' // METRIC'}
               </span>
             </div>
 

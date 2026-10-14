@@ -149,9 +149,9 @@ export default function PartnerPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Introduction */}
         <div className="max-w-3xl mb-12">
-          <h2 className="text-2xl uppercase tracking-tight mb-4">Build Africa's Next Chapter Together</h2>
+          <h2 className="text-2xl uppercase tracking-tight mb-4">Build Africa&apos;s Next Chapter Together</h2>
           <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--ink-soft)' }}>
-            The Jowih ecosystem is built on partnership and community. Whether you want to sponsor an event, contribute your skills as a developer, or bring your organization into the ecosystem, there's a place for you.
+            The Jowih ecosystem is built on partnership and community. Whether you want to sponsor an event, contribute your skills as a developer, or bring your organization into the ecosystem, there&apos;s a place for you.
           </p>
           <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
             Select a partnership pathway below to get started.
@@ -200,7 +200,7 @@ export default function PartnerPage() {
             <div>
               <h3 className="font-bold uppercase tracking-tight mb-2">Mission-Aligned Partnership</h3>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
-                All partnerships are guided by the Jowih Foundation's mission to accelerate African development. We seek partners who share our vision of a self-sustaining, continent-integrated ecosystem built on cooperation, mutual benefit, and long-term value creation.
+                All partnerships are guided by the Jowih Foundation&apos;s mission to accelerate African development. We seek partners who share our vision of a self-sustaining, continent-integrated ecosystem built on cooperation, mutual benefit, and long-term value creation.
               </p>
             </div>
           </div>

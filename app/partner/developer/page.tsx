@@ -136,10 +136,10 @@ export default function DeveloperCommunityPage() {
             <div className="max-w-3xl">
               <h2 className="text-2xl uppercase tracking-tight mb-4">Build the Future of African Infrastructure</h2>
               <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--ink-soft)' }}>
-                The Jowih ecosystem is a continental digital-physical infrastructure project spanning ASTA OS, GAG corridors, and development programs across 54 African states. We're building a community of developers who can contribute their technical expertise to build platforms, APIs, applications, and systems that will serve millions.
+                The Jowih ecosystem is a continental digital-physical infrastructure project spanning ASTA OS, GAG corridors, and development programs across 54 African states. We&apos;re building a community of developers who can contribute their technical expertise to build platforms, APIs, applications, and systems that will serve millions.
               </p>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-                Whether you're interested in building APIs for ASTA OS, developing applications on the platform, working on GAG digital infrastructure, or contributing to fintech and AI systems—there's a place for you.
+                Whether you&apos;re interested in building APIs for ASTA OS, developing applications on the platform, working on GAG digital infrastructure, or contributing to fintech and AI systems—there&apos;s a place for you.
               </p>
             </div>
 
@@ -413,7 +413,7 @@ export default function DeveloperCommunityPage() {
                   </div>
                   <div>
                     <p className="font-bold">Onboarding & Access</p>
-                    <p style={{ color: 'var(--ink-soft)' }}>You'll receive access to developer documentation, APIs, and community channels.</p>
+                    <p style={{ color: 'var(--ink-soft)' }}>You&apos;ll receive access to developer documentation, APIs, and community channels.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -422,14 +422,14 @@ export default function DeveloperCommunityPage() {
                   </div>
                   <div>
                     <p className="font-bold">Project Assignment</p>
-                    <p style={{ color: 'var(--ink-soft)' }}>We'll match you with projects aligned with your skills and interests.</p>
+                    <p style={{ color: 'var(--ink-soft)' }}>We&apos;ll match you with projects aligned with your skills and interests.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="p-4 text-xs text-center" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
-              This is a developer community application. All contributions follow open-source principles and are governed by the Jowih Foundation's mission and technical standards.
+              This is a developer community application. All contributions follow open-source principles and are governed by the Jowih Foundation&apos;s mission and technical standards.
             </div>
 
             <button

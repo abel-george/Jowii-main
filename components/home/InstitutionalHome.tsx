@@ -1103,7 +1103,7 @@ export function InstitutionalHome() {
               <p className="institutional-eyebrow institutional-eyebrow--gold">PARTNERSHIP & COMMUNITY</p>
               <h2>Build the ecosystem together.</h2>
             </div>
-            <p>The Jowih ecosystem is built on partnership and community. Whether you want to sponsor an event, contribute your skills as a developer, or bring your organization into the ecosystem, there's a place for you.</p>
+            <p>The Jowih ecosystem is built on partnership and community. Whether you want to sponsor an event, contribute your skills as a developer, or bring your organization into the ecosystem, there&apos;s a place for you.</p>
           </div>
           <div className="institutional-partnership-grid">
             {[

@@ -44,13 +44,13 @@ export default function GovernancePage() {
               <h3 className="text-lg uppercase tracking-tight mt-6">1. Founder & Steward President</h3>
               <p>The Founder & Steward President serves as the principal constitutional steward of the JOWIH Mission, exercising the strategic, protective, and reserved powers established by the Constitution.</p>
 
-              <h3 className="text-lg uppercase tracking-tight mt-6">2. Founder's Council - Founder Era</h3>
-              <p>The Founder's Council is the Founder-era advisory structure chaired by the Founder & Steward President.</p>
+              <h3 className="text-lg uppercase tracking-tight mt-6">2. Founder&apos;s Council - Founder Era</h3>
+              <p>The Founder&apos;s Council is the Founder-era advisory structure chaired by the Founder & Steward President.</p>
               <p>It consists of the Founder and persons invited by the Founder like special advisers to provide strategic counsel.</p>
               <p>The Council is not a separate operating or executive authority and does not exercise independent management powers.</p>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">3. Special Advisors to the Steward President</h3>
-              <p>Special Advisors are individual appointments serving directly at the discretion of the Steward President. They may participate in the Founder's Council when invited by the Founder.</p>
+              <p>Special Advisors are individual appointments serving directly at the discretion of the Steward President. They may participate in the Founder&apos;s Council when invited by the Founder.</p>
               <p>The initial advisory portfolio may include:</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>Special Advisor -- Development & Infrastructure</li>
@@ -64,9 +64,9 @@ export default function GovernancePage() {
               </ul>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">4. Foundation Advisory Council — Successor Era</h3>
-              <p>Upon transition from the Founder era, the Founder's Council shall transition into the Foundation Advisory Council in accordance with the Constitution.</p>
-              <p>The Foundation Advisory Council shall serve as the successor Steward President's advisory structure.</p>
-              <p>The Founder's Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
+              <p>Upon transition from the Founder era, the Founder&apos;s Council shall transition into the Foundation Advisory Council in accordance with the Constitution.</p>
+              <p>The Foundation Advisory Council shall serve as the successor Steward President&apos;s advisory structure.</p>
+              <p>The Founder&apos;s Council and Foundation Advisory Council are therefore successive forms of the same constitutional advisory architecture and shall not operate concurrently as separate councils.</p>
 
               <h2 id="foundation-governance" className="text-2xl uppercase tracking-tight mt-12">II. JOWIH FOUNDATION GOVERNANCE</h2>
 
@@ -86,7 +86,7 @@ export default function GovernancePage() {
               <h2 id="oversight" className="text-2xl uppercase tracking-tight mt-12">III. INDEPENDENT FOUNDATION OVERSIGHT</h2>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">7. Independent Auditor General</h3>
-              <p>The Independent Auditor General serves as the Foundation's , profit and non-profit independent audit authority.</p>
+              <p>The Independent Auditor General serves as the Foundation&apos;s , profit and non-profit independent audit authority.</p>
 
               <h3 className="text-lg uppercase tracking-tight mt-6">8. Independent Oversight Committee</h3>
               <p>An independent oversight mechanism responsible for designated governance and accountability functions.</p>
@@ -151,7 +151,7 @@ export default function GovernancePage() {
           <p>Responsible for Foundation mission programs, program implementation, monitoring, and coordination.</p>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">16. Country Coordination Lead</h3>
-          <p>Responsible for coordinating the Foundation's country-level implementation and support structures.</p>
+          <p>Responsible for coordinating the Foundation&apos;s country-level implementation and support structures.</p>
 
           <h2 id="regional" className="text-2xl uppercase tracking-tight mt-12">V. REGIONAL FOUNDATION COORDINATION</h2>
 
@@ -168,7 +168,7 @@ export default function GovernancePage() {
 
           <h2 className="text-2xl uppercase tracking-tight mt-12">VI. CONTINENTAL AND COUNTRY PARTICIPATION STRUCTURE</h2>
 
-          <p>The following structures form part of the Foundation's continental development and participation architecture:</p>
+          <p>The following structures form part of the Foundation&apos;s continental development and participation architecture:</p>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">22. PAN-Ambassadors</h3>
           <p>Country-level representatives within the continental Foundation network.</p>
@@ -336,7 +336,7 @@ export default function GovernancePage() {
           <p>The Administrator:</p>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>reports directly to the Steward President;</li>
-            <li>is not part of the Foundation CEO's executive team;</li>
+            <li>is not part of the Foundation CEO&apos;s executive team;</li>
             <li>is not subordinate to the Jowih Group CEO; and</li>
             <li>operates under the special constitutional governance framework applicable to New Dawn City.</li>
           </ul>
@@ -353,7 +353,7 @@ export default function GovernancePage() {
           <h2 className="text-2xl uppercase tracking-tight mt-12">XVI. R&D CENTER STRUCTURE</h2>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">43. Continental R&D Centers</h3>
-          <p>The R&D Centers shall operate under the Jowih Group's Research & Innovation structure.</p>
+          <p>The R&D Centers shall operate under the Jowih Group&apos;s Research & Innovation structure.</p>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Group Chief Research & Innovation Officer</li>
             <li>Continental R&D Centers</li>
@@ -430,7 +430,7 @@ export default function GovernancePage() {
 
           <div className="p-6 mt-4" style={{ background: 'var(--sage)', border: '1px solid var(--line-light)' }}>
             <p className="font-bold">STEWARDSHIP</p>
-            <p>Founder & Steward PresidentFounder's Council / Successor Foundation Advisory Council- Special Advisers</p>
+            <p>Founder & Steward PresidentFounder&apos;s Council / Successor Foundation Advisory Council- Special Advisers</p>
 
             <p className="font-bold mt-4">FOUNDATION</p>
             <p>Mission → Governance → Funding → Standards → Continental Coordination → Program Oversight</p>
@@ -463,7 +463,7 @@ export default function GovernancePage() {
           <h2 className="text-2xl uppercase tracking-tight mt-8">XXI. JOWIH MASTER ECOSYSTEM FUND — VCC GOVERNANCE</h2>
 
           <h3 className="text-lg uppercase tracking-tight mt-6">52. The Fund as a Distinct Governance Domain</h3>
-          <p>The Jowih Master Ecosystem Fund ("Master Fund") is a Foundation-established investment vehicle structured as a Mauritius Variable Capital Company (VCC).</p>
+          <p>The Jowih Master Ecosystem Fund (&quot;Master Fund&quot;) is a Foundation-established investment vehicle structured as a Mauritius Variable Capital Company (VCC).</p>
           <p>The Master Fund:</p>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>is established by the Jowih Foundation;</li>
@@ -647,7 +647,7 @@ export default function GovernancePage() {
           <h4 className="text-base uppercase tracking-tight mt-4">58.1 The Fund as Legal Owner of Vaulted Shares</h4>
           <p>The Fund, through its applicable VCC sub-fund compartments, is the legal owner of the vaulted shares deposited by partners.</p>
           <p>As legal owner, the Fund holds the voting rights attached to those shares.</p>
-          <p>Unit holders have economic exposure to the Fund's NAV and distributable performance. Unit holders do not have direct voting rights over the vaulted shares. Unit holders do not have governance rights over the underlying companies or over the Jowih Foundation.</p>
+          <p>Unit holders have economic exposure to the Fund&apos;s NAV and distributable performance. Unit holders do not have direct voting rights over the vaulted shares. Unit holders do not have governance rights over the underlying companies or over the Jowih Foundation.</p>
           <p>This structure preserves the absolute decoupling of downstream economic rights from upstream control rights.</p>
           <div className="overflow-x-auto mt-4">
             <table className="w-full text-sm">
@@ -671,7 +671,7 @@ export default function GovernancePage() {
                   <td className="p-3">Economic exposure only; no direct voting rights</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
-                  <td className="p-3 font-bold">Fund's Exercise of Voting Rights</td>
+                  <td className="p-3 font-bold">Fund&apos;s Exercise of Voting Rights</td>
                   <td className="p-3">In the best interest of the Fund and its unit holders</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
@@ -1010,7 +1010,7 @@ export default function GovernancePage() {
             <div className="mt-4">Governance Flow</div>
             <div>STEWARD PRESIDENT</div>
             <div>│</div>
-            <div>├── Steward's Council/</div>
+            <div>├── Steward&apos;s Council/</div>
             <div>├── Special Advisers</div>
             <div>│</div>
             <div>├── JOWIH FOUNDATION</div>

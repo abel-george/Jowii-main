@@ -181,10 +181,10 @@ export default function PartnerCommunityPage() {
             <div className="max-w-3xl">
               <h2 className="text-2xl uppercase tracking-tight mb-4">Build the Ecosystem Together</h2>
               <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--ink-soft)' }}>
-                The Jowih ecosystem is a continental infrastructure project spanning 7 GAG corridors, ASTA OS layers, and development programs across 54 African states. We're building a community of partners who can contribute their expertise, resources, and capabilities to help make this vision a reality.
+                The Jowih ecosystem is a continental infrastructure project spanning 7 GAG corridors, ASTA OS layers, and development programs across 54 African states. We&apos;re building a community of partners who can contribute their expertise, resources, and capabilities to help make this vision a reality.
               </p>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-                Tell us what you can offer—whether it's infrastructure development, technology, financial services, research, education, or any other capability that can accelerate African development.
+                Tell us what you can offer—whether it&apos;s infrastructure development, technology, financial services, research, education, or any other capability that can accelerate African development.
               </p>
             </div>
 
@@ -468,7 +468,7 @@ export default function PartnerCommunityPage() {
                   </div>
                   <div>
                     <p className="font-bold">Initial Discussion</p>
-                    <p style={{ color: 'var(--ink-soft)' }}>We'll reach out to discuss your contribution in detail and explore integration pathways.</p>
+                    <p style={{ color: 'var(--ink-soft)' }}>We&apos;ll reach out to discuss your contribution in detail and explore integration pathways.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -477,7 +477,7 @@ export default function PartnerCommunityPage() {
                   </div>
                   <div>
                     <p className="font-bold">Partnership Agreement</p>
-                    <p style={{ color: 'var(--ink-soft)' }}>If mutually aligned, we'll formalize the partnership with clear terms, roles, and integration mechanisms.</p>
+                    <p style={{ color: 'var(--ink-soft)' }}>If mutually aligned, we&apos;ll formalize the partnership with clear terms, roles, and integration mechanisms.</p>
                   </div>
                 </div>
               </div>

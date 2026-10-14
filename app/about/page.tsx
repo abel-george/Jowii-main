@@ -211,7 +211,7 @@ export default function AboutPage() {
                       <h3 className="text-xl font-bold text-black">Mission Lock</h3>
                     </div>
                     <p className="text-sm text-neutral-700 leading-relaxed mb-4">
-                      The Foundation's constitutional purpose is permanently locked to accelerate development through the Great African Grid framework. This mission cannot be altered or diverted to unrelated purposes.
+                      The Foundation&apos;s constitutional purpose is permanently locked to accelerate development through the Great African Grid framework. This mission cannot be altered or diverted to unrelated purposes.
                     </p>
                     <ul className="space-y-2 text-xs text-neutral-600">
                       <li className="flex items-start gap-2">
@@ -235,7 +235,7 @@ export default function AboutPage() {
                       <h3 className="text-xl font-bold text-black">Asset Lock</h3>
                     </div>
                     <p className="text-sm text-neutral-700 leading-relaxed mb-4">
-                      A permanent asset lock ensures that distributable value from commercial operations cannot be extracted as private profit. Instead, it must be reinvested into the Foundation's development mission.
+                      A permanent asset lock ensures that distributable value from commercial operations cannot be extracted as private profit. Instead, it must be reinvested into the Foundation&apos;s development mission.
                     </p>
                     <ul className="space-y-2 text-xs text-neutral-600">
                       <li className="flex items-start gap-2">

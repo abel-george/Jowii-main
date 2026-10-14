@@ -38,7 +38,7 @@ export default function SponsorPage() {
         <div className="p-6 mb-8" style={{ background: 'var(--white)', border: '1px solid var(--line-light)' }}>
           <div className="flex items-center justify-center gap-3 mb-4">
             <Clock className="w-5 h-5" style={{ color: 'var(--brass)' }} />
-            <span className="font-bold uppercase tracking-tight">What's Coming</span>
+            <span className="font-bold uppercase tracking-tight">What&apos;s Coming</span>
           </div>
           <p className="text-sm" style={{ color: 'var(--ink-soft)' }}>
             Dedicated sponsorship tiers, sponsorship packages, in-kind contribution tracking, and sponsor recognition features will be available soon.
