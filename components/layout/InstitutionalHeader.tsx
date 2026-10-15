@@ -106,7 +106,7 @@ export function InstitutionalHeader() {
                   </Link>
                   
                   {item.children && hoveredItem === item.href && (
-                    <div className="absolute top-full left-0 mt-0 w-80 bg-white border-2 border-neutral-300 shadow-xl z-50">
+                    <div className="absolute top-full left-0 mt-0 w-80 max-h-[75vh] overflow-y-auto bg-white border-2 border-neutral-300 shadow-xl z-50">
                       <div className="p-4">
                         <p className="text-sm text-black mb-3 font-semibold">{item.description}</p>
                         <div className="space-y-1">

@@ -178,8 +178,8 @@ export const siteData = {
         { label: 'Volunteers', href: '/partner/volunteer' },
       ]
     },
-    { 
-      label: 'Documents', 
+    {
+      label: 'Documents',
       href: '/documents',
       description: '9 foundational documents outlining the framework',
       children: [
@@ -188,6 +188,40 @@ export const siteData = {
         { label: 'Governance', href: '/documents#governance' },
         { label: 'Infrastructure', href: '/documents#infrastructure' },
         { label: 'Financial', href: '/documents#financial' },
+      ]
+    },
+    {
+      label: 'Framework',
+      href: '/framework',
+      description: '16 implementation frameworks from The GAG Initiative',
+      children: [
+        { label: 'Accelerated Development Framework Agreement (ADFA)', href: '/framework#fw-01' },
+        { label: 'AU Partnership Framework', href: '/framework#fw-02' },
+        { label: 'New Dawn City Blueprint', href: '/framework#fw-03' },
+        { label: 'Country Pots Scale Allocation', href: '/framework#fw-04' },
+        { label: 'Exchange Programs & Co-Development', href: '/framework#fw-05' },
+        { label: 'Urban Housing & Urbanization', href: '/framework#fw-06' },
+        { label: 'Jowih Africa Health Fund', href: '/framework#fw-07' },
+        { label: 'Infrastructure Execution', href: '/framework#fw-08' },
+        { label: 'Africa Sovereign Space Capability', href: '/framework#fw-09' },
+        { label: 'Jowih Education Framework', href: '/framework#fw-10' },
+        { label: 'Capsule Rapid Transit & HSR', href: '/framework#fw-11' },
+        { label: 'Jowih Mobile Health', href: '/framework#fw-12' },
+        { label: 'Air Jowih & Airport SEZs', href: '/framework#fw-13' },
+        { label: 'Africa Connect Alliance', href: '/framework#fw-14' },
+        { label: 'Environmental Cleanliness', href: '/framework#fw-15' },
+        { label: 'Creative, Animation & Gaming', href: '/framework#fw-16' },
+      ]
+    },
+    {
+      label: 'Horizon 2045',
+      href: '/horizon-2045',
+      description: 'The complete 20-year transformation arc to 2045',
+      children: [
+        { label: 'Overview', href: '/horizon-2045' },
+        { label: 'Phase 1: Ecosystem Launch', href: '/horizon-2045#phase-1' },
+        { label: 'Phase 2: Heavy Execution & Scaling', href: '/horizon-2045#phase-2' },
+        { label: 'Phase 3: First World Africa', href: '/horizon-2045#phase-3' },
       ]
     },
     { 

@@ -19,6 +19,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { label: 'Ecosystem & ASTA OS', href: '/ecosystem' },
     { label: '2026 Partners', href: '/partners' },
     { label: 'Documents & Briefings', href: '/documents' },
+    { label: 'Frameworks', href: '/framework' },
+    { label: 'Horizon 2045', href: '/horizon-2045' },
     { label: 'Join the Waitlist', href: '/waitlist', highlight: true },
     { label: 'Launch Tickets', href: '/ticket' },
     { label: 'Become a Partner', href: '/partner' },
