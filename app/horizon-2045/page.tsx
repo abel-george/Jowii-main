@@ -30,7 +30,7 @@ export default function Horizon2045Page() {
       </div>
 
       <div className="py-16 pb-24" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 leading-relaxed">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 leading-relaxed">
             <h2 id="phase-1" className="text-2xl sm:text-3xl uppercase tracking-tight mt-14 first:mt-0" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
               PHASE 1 (YEARS 1-5): THE BOND-FUNDEDEcosystem LAUNCH
             </h2>

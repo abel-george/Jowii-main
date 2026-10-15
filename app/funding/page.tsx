@@ -61,7 +61,7 @@ export default function FundingPage() {
       </div>
 
       <div className="py-16 pb-24" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           {/* Phase 1: Donations for Pre-Launch */}
           <section className="space-y-6">

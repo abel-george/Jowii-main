@@ -21,6 +21,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { label: 'Documents & Briefings', href: '/documents' },
     { label: 'Frameworks', href: '/framework' },
     { label: 'Horizon 2045', href: '/horizon-2045' },
+    { label: 'Jowih Credits', href: '/credits' },
     { label: 'Join the Waitlist', href: '/waitlist', highlight: true },
     { label: 'Launch Tickets', href: '/ticket' },
     { label: 'Become a Partner', href: '/partner' },

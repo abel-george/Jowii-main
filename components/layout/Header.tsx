@@ -30,7 +30,7 @@ export function Header() {
             : 'bg-gradient-to-b from-black/95 via-black/60 to-transparent border-b border-transparent py-4 sm:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Brand Left */}
           <Link
             href="/"
@@ -56,7 +56,7 @@ export function Header() {
           </Link>
 
           {/* Center Location Indicator (Desktop) - Clean solid dot, no flickering */}
-          <div className="hidden lg:flex items-center gap-2.5 px-3 py-1.5 rounded-none border border-white/15 bg-white/5 text-xs font-mono text-neutral-300">
+          <div className="hidden 2xl:flex items-center gap-2.5 px-3 py-1.5 rounded-none border border-white/15 bg-white/5 text-xs font-mono text-neutral-300">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5000]" />
             <span className="text-white font-semibold">Kisii</span>
             <span className="text-neutral-500">·</span>
@@ -66,8 +66,8 @@ export function Header() {
           </div>
 
           {/* Right Navigation & CTAs */}
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-5 text-xs font-bold uppercase tracking-wider font-mono">
+          <div className="hidden md:flex items-center gap-4 xl:gap-6 min-w-0 flex-1 justify-end">
+            <nav className="flex items-center gap-3 xl:gap-4 2xl:gap-5 text-xs font-bold uppercase tracking-wider font-mono whitespace-nowrap overflow-x-auto min-w-0">
               {siteData.nav.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -89,7 +89,7 @@ export function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-2.5 pl-2 border-l border-white/10">
+            <div className="flex items-center gap-2.5 pl-2 border-l border-white/10 shrink-0">
               <Button
                 href="/waitlist"
                 variant="primary"

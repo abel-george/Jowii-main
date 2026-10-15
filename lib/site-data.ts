@@ -224,6 +224,21 @@ export const siteData = {
         { label: 'Phase 3: First World Africa', href: '/horizon-2045#phase-3' },
       ]
     },
+    {
+      label: 'Jowih Credits',
+      href: '/credits',
+      description: 'The asset-backed bridge token for African settlement',
+      children: [
+        { label: 'Article LIX (Constitution)', href: '/credits#cb-01' },
+        { label: 'Core Principle & Positioning', href: '/credits#cb-02' },
+        { label: 'Partner-Only Execution', href: '/credits#cb-05' },
+        { label: 'Fee Schedule', href: '/credits#cb-06' },
+        { label: 'Partner Margins', href: '/credits#cb-07' },
+        { label: 'Reserves & Liquidity', href: '/credits#cb-09' },
+        { label: 'User Procedures', href: '/credits#cb-12' },
+        { label: 'Compliance & Reporting', href: '/credits#cb-13' },
+      ]
+    },
     { 
       label: 'Updates', 
       href: '/waitlist',
