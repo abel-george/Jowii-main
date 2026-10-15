@@ -30,7 +30,7 @@ export function Header() {
             : 'bg-gradient-to-b from-black/95 via-black/60 to-transparent border-b border-transparent py-4 sm:py-5'
         }`}
       >
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Brand Left */}
           <Link
             href="/"
@@ -67,7 +67,7 @@ export function Header() {
 
           {/* Right Navigation & CTAs */}
           <div className="hidden md:flex items-center gap-4 xl:gap-6 min-w-0 flex-1 justify-end">
-            <nav className="flex items-center gap-3 xl:gap-4 2xl:gap-5 text-xs font-bold uppercase tracking-wider font-mono whitespace-nowrap overflow-x-auto min-w-0">
+            <nav className="flex items-center gap-3 xl:gap-4 2xl:gap-5 text-xs font-bold uppercase tracking-wider font-mono whitespace-nowrap">
               {siteData.nav.map((item) => {
                 const isActive = pathname === item.href;
                 return (

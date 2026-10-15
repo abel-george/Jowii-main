@@ -18,7 +18,7 @@ export function InstitutionalHeader() {
     <>
       {/* Top Announcement Strip - Separate */}
       <div className="bg-black text-white py-3 text-center">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-mono font-bold uppercase tracking-wider">
             Discuss · Improve · Pre-Launch the Initiative Together
           </p>
@@ -27,7 +27,7 @@ export function InstitutionalHeader() {
 
       {/* Logo and Brand Area - Separate Section with Breathing Room */}
       <div className="bg-white border-b border-neutral-200 py-6">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 sm:gap-8">
             <Link href="/" className="flex items-center gap-3 sm:gap-4" aria-label="Jowih Foundation home">
               <Image
@@ -86,9 +86,9 @@ export function InstitutionalHeader() {
 
       {/* Navigation Bar - Separate Dark Green Bar */}
       <nav className="bg-[#1a4d2e] sticky top-0 z-40">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16 min-w-0">
-            <div className="hidden md:flex items-center gap-5 xl:gap-6 min-w-0 flex-1 overflow-x-auto whitespace-nowrap">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center h-16">
+            <div className="hidden md:flex items-center gap-5 xl:gap-6 whitespace-nowrap">
               {siteData.nav.map((item) => (
                 <div
                   key={item.href}
@@ -106,7 +106,7 @@ export function InstitutionalHeader() {
                   </Link>
                   
                   {item.children && hoveredItem === item.href && (
-                    <div className="absolute top-full left-0 mt-0 w-80 max-h-[75vh] overflow-y-auto bg-white border-2 border-neutral-300 shadow-xl z-50">
+                    <div className="absolute top-full left-0 mt-0 w-80 bg-white border-2 border-neutral-300 shadow-xl z-50">
                       <div className="p-4">
                         <p className="text-sm text-black mb-3 font-semibold">{item.description}</p>
                         <div className="space-y-1">
@@ -145,7 +145,7 @@ export function InstitutionalHeader() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-neutral-200 fixed top-[184px] left-0 right-0 z-30 overflow-y-auto max-h-[calc(100vh-184px)]">
-          <nav className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <nav className="w-full px-4 sm:px-6 lg:px-8 py-4">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
