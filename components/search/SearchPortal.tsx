@@ -9,7 +9,23 @@ export interface SearchEntry {
   type: string;
   href: string;
   text: string;
+  body?: string;
   source?: string;
+}
+
+function tokenize(value: string) { return value.toLowerCase().match(/[a-z0-9]{2,}/g) || []; }
+
+function editDistance(left: string, right: string) {
+  const row = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let i = 1; i <= left.length; i += 1) {
+    let diagonal = row[0]; row[0] = i;
+    for (let j = 1; j <= right.length; j += 1) {
+      const above = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, diagonal + (left[i - 1] === right[j - 1] ? 0 : 1));
+      diagonal = above;
+    }
+  }
+  return row[right.length];
 }
 
 export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
@@ -18,7 +34,13 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
     if (!normalized) return [];
-    return entries.filter((entry) => `${entry.title} ${entry.type} ${entry.text}`.toLowerCase().includes(normalized)).slice(0, 40);
+    const terms = tokenize(normalized);
+    return entries.map((entry) => {
+      const title = entry.title.toLowerCase();
+      const haystack = `${title} ${entry.type} ${entry.text} ${entry.body || ''}`.toLowerCase();
+      const score = (title === normalized ? 2000 : 0) + (title.includes(normalized) ? 900 : 0) + (haystack.includes(normalized) ? 250 : 0) + terms.reduce((total, term) => total + (title.includes(term) ? 120 : haystack.includes(term) ? 20 : 0), 0);
+      return { entry, score, matchesAll: terms.every((term) => haystack.includes(term)) };
+    }).filter((result) => result.score > 0 && result.matchesAll).sort((left, right) => right.score - left.score).map((result) => result.entry).slice(0, 40);
   }, [entries, normalized]);
   const selected = matches.find((entry) => `${entry.type}-${entry.href}-${entry.title}` === selectedKey) || matches[0];
   const suggestions = useMemo(() => {
@@ -27,6 +49,15 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     const terms = new Set(words);
     return entries.filter((entry) => entry !== selected && [...terms].some((term) => `${entry.title} ${entry.text}`.toLowerCase().includes(term))).slice(0, 4);
   }, [entries, selected]);
+  const closeMatches = useMemo(() => {
+    if (!normalized || matches.length) return [];
+    const terms = tokenize(normalized);
+    return entries.map((entry) => {
+      const words = tokenize(entry.title);
+      const score = terms.reduce((total, term) => total + Math.max(...words.map((word) => word.startsWith(term) || term.startsWith(word) ? 2 : editDistance(term, word) <= Math.max(1, Math.floor(word.length * .35)) ? 1 : 0), 0), 0);
+      return { entry, score };
+    }).filter((result) => result.score > 0).sort((left, right) => right.score - left.score).slice(0, 3).map((result) => result.entry);
+  }, [entries, matches.length, normalized]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -46,6 +77,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     setSelectedKey(key);
     window.history.replaceState(null, '', `/search?q=${encodeURIComponent(query)}&entry=${encodeURIComponent(key)}`);
   };
+  const searchFor = (entry: SearchEntry) => { setQuery(entry.title); setSelectedKey(''); window.history.replaceState(null, '', `/search?q=${encodeURIComponent(entry.title)}`); };
   const sourceHref = (href: string) => {
     const [path, hash] = href.split('#');
     return `${path}?from=search&q=${encodeURIComponent(query)}&entry=${encodeURIComponent(selectedKey)}${hash ? `#${hash}` : ''}`;
@@ -68,8 +100,8 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       <div className="search-portal__landing-heading"><div><p className="document-page__eyebrow">Explore the archive</p><h2>Start with a subject</h2></div><span>{entries.length} indexed pages and source sections</span></div>
       <div className="search-portal__browse">{entries.filter((entry) => entry.type !== 'Source section').slice(0, 12).map((entry) => <Link className="search-browse-card" href={entry.href} key={`${entry.type}-${entry.href}`}><span>{entry.type}</span><strong>{entry.title}</strong><ArrowUpRight size={15} /></Link>)}</div>
     </section> : <section className="search-portal__workspace">
-      <aside className="search-portal__results-list"><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <p className="search-portal__empty">No matching pages or source sections found.</p>}</aside>
-      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p><div className="search-portal__article-rule" /><Link className="search-portal__read" href={sourceHref(selected.href)}>Read this entry <ArrowUpRight size={16} /></Link></> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
+      <aside className="search-portal__results-list"><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <div className="search-portal__empty"><p>No exact result found.</p>{closeMatches.length ? <><strong>Did you mean:</strong>{closeMatches.map((entry) => <button type="button" className="search-portal__did-you-mean" onClick={() => searchFor(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}>{entry.title}</button>)}</> : <p>Try a broader keyword or a document name.</p>}</div>}</aside>
+      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <div className="search-portal__article-body">{selected.body.split(/\r?\n/).filter(Boolean).map((line, index) => <p key={`${index}-${line}`}>{line}</p>)}</div> : null}<div className="search-portal__article-rule" /><Link className="search-portal__read" href={sourceHref(selected.href)}>Open source context <ArrowUpRight size={16} /></Link></> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
       <aside className="search-portal__context"><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><Link href={sourceHref(selected.href)}><ArrowLeft size={15} /> Open source page</Link><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
     </section>}
   </main>;
