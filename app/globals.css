@@ -1027,3 +1027,95 @@ button:active, [role="button"]:active, .institutional-button:active { transform:
 [class*="text-[#FF5000]"] { color: var(--brass) !important; }
 [class*="bg-[#FF5000]"] { background-color: var(--brass) !important; }
 [class*="border-[#FF5000]"] { border-color: var(--brass) !important; }
+
+/* The institutional header is in normal document flow. Older page banners
+   carried fixed-header offsets, which created a blank band under the nav. */
+main > div > div:first-child[class*="pt-28"],
+main > div > div:first-child[class*="pt-32"] {
+  padding-top: 48px !important;
+}
+
+.document-page > div:first-child {
+  padding-bottom: 64px !important;
+}
+
+.document-page > div:nth-child(2) {
+  padding-block: 68px 84px !important;
+}
+
+.document-page h1 {
+  max-width: 920px;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.document-page h2 {
+  max-width: 900px;
+  margin-top: 52px;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.document-page h2:first-child { margin-top: 0; }
+.document-page h3 { color: var(--ink-soft); text-transform: none; }
+.document-page p, .document-page li { max-width: 850px; }
+.document-page .institutional-expandable { margin-top: 28px; }
+.document-page .institutional-expandable__content { max-width: 900px; }
+.document-page .institutional-expandable__trigger { padding-block: 24px; }
+
+.horizon-page h3 {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.horizon-page ul {
+  margin-block: 12px 30px;
+  padding: 18px 24px 18px 38px;
+  border-left: 2px solid var(--brass);
+  background: rgba(230, 236, 228, 0.55);
+}
+
+.governance-page .institutional-expandable { background: rgba(255, 254, 250, 0.42); }
+.governance-page .institutional-expandable__content { padding-bottom: 34px; }
+.governance-page .sticky { top: 24px; }
+
+.updates-page {
+  padding-top: 42px !important;
+  overflow: visible;
+}
+
+.updates-page > .max-w-6xl > div:first-child a { color: var(--green) !important; }
+.updates-page__intro > p { color: var(--ink-soft) !important; }
+.updates-page__intro > div:first-child,
+.updates-page__intro > div:last-child { background: var(--white) !important; border-color: var(--line) !important; }
+.updates-page__intro > div:first-child { color: var(--green) !important; }
+.updates-page__intro > div:last-child p { color: var(--ink-soft) !important; }
+.updates-page__form { box-shadow: 0 18px 45px rgba(21, 33, 30, 0.12) !important; }
+
+.institutional-section--compact-top { padding-top: 42px !important; }
+.institutional-home .institutional-section { padding-block: 72px; }
+.institutional-home .institutional-section--compact-top { padding-top: 42px !important; }
+.institutional-home .institutional-section + .institutional-section { padding-top: 56px; }
+
+@media (max-width: 700px) {
+  main > div > div:first-child[class*="pt-28"],
+  main > div > div:first-child[class*="pt-32"] { padding-top: 32px !important; }
+  .document-page > div:first-child { padding-bottom: 42px !important; }
+  .document-page > div:nth-child(2) { padding-block: 42px 56px !important; }
+  .document-page h2 { margin-top: 38px; font-size: 30px; }
+  .document-page h3 { font-size: 17px; }
+  .horizon-page ul { padding: 14px 14px 14px 28px; }
+  .updates-page { padding-top: 24px !important; padding-bottom: 48px !important; }
+  .updates-page__intro, .updates-page__form { gap: 20px !important; }
+  .institutional-home .institutional-section { padding-block: 48px; }
+  .institutional-home .institutional-section--compact-top { padding-top: 32px !important; }
+  .institutional-home .institutional-section + .institutional-section { padding-top: 40px; }
+}

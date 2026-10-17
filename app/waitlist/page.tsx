@@ -94,7 +94,7 @@ export default function WaitlistPage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-20 relative overflow-hidden" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
+    <div className="updates-page min-h-screen pt-24 pb-20 relative overflow-hidden" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Breadcrumb / Back */}
         <div className="mb-8">
@@ -191,7 +191,7 @@ export default function WaitlistPage() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
             >
               {/* Left Column: Dramatic Waitlist Manifesto Hero */}
-              <div className="lg:col-span-5 space-y-6">
+              <div className="updates-page__intro lg:col-span-5 space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase" style={{ background: 'rgba(255, 254, 250, 0.1)', border: '1px solid rgba(255, 254, 250, 0.2)', color: 'rgba(255, 254, 250, 0.8)' }}>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--brass)' }} />
                   <span>OFFICIAL WAITLIST</span>
@@ -237,7 +237,7 @@ export default function WaitlistPage() {
               </div>
 
               {/* Right Column: Multi-Field Form */}
-              <div className="lg:col-span-7 p-6 sm:p-10 shadow-xl relative" style={{ background: 'var(--ink-soft)', border: '1px solid rgba(255, 254, 250, 0.15)' }}>
+              <div className="updates-page__form lg:col-span-7 p-6 sm:p-10 shadow-xl relative" style={{ background: 'var(--ink)', border: '1px solid rgba(21, 33, 30, 0.15)' }}>
                 <div className="pb-4 mb-6" style={{ borderBottom: '1px solid rgba(255, 254, 250, 0.1)' }}>
                   <h2 className="text-2xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
                     Request institutional updates

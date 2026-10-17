@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function Horizon2045Page() {
   return (
-    <div className="min-h-screen">
+    <div className="document-page horizon-page min-h-screen">
       {/* Header Banner */}
       <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ export default function Horizon2045Page() {
             FROM HORIZON 2045 DOCUMENT
           </span>
           <h1 className="text-4xl sm:text-6xl uppercase tracking-tight leading-[1.02] max-w-4xl" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-            THE COMPLETE 2045 HORIZON ARC
+              The complete 2045 horizon arc
           </h1>
           <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
             The Foundation&apos;s 20-year milestone arc &mdash; three phases from Bond-Funded Ecosystem Launch to a First-World Africa.
@@ -32,7 +32,7 @@ export default function Horizon2045Page() {
       <div className="py-16 pb-24" style={{ background: 'var(--paper)', color: 'var(--ink)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 leading-relaxed">
             <h2 id="phase-1" className="text-2xl sm:text-3xl uppercase tracking-tight mt-14 first:mt-0" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-              PHASE 1 (YEARS 1-5): THE BOND-FUNDEDEcosystem LAUNCH
+              Phase 1 (years 1–5): the bond-funded ecosystem launch
             </h2>
             <p className="leading-relaxed">What happens in parallel:</p>
             <ul className="list-disc list-inside space-y-1">

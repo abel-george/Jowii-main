@@ -826,7 +826,7 @@ export function InstitutionalHome() {
         </div>
       </section>
 
-      <section className="institutional-section institutional-section--paper" id="prelaunch">
+      <section className="institutional-section institutional-section--paper institutional-section--compact-top" id="prelaunch">
         <div className="institutional-container">
           <div className="institutional-section-heading">
             <p className="institutional-eyebrow">001 / PRE-LAUNCH PHASE</p>

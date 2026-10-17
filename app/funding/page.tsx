@@ -35,7 +35,7 @@ function GridBondTable({ headers, rows }: { headers: string[]; rows: string[][] 
 
 export default function FundingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="document-page funding-page min-h-screen">
       {/* Header Banner */}
       <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

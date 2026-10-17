@@ -5,7 +5,7 @@ import { CollapsibleAccordion, CollapsibleAccordionItem } from '@/components/ui/
 
 export default function GovernancePage() {
   return (
-    <div className="min-h-screen">
+    <div className="document-page governance-page min-h-screen">
       {/* Header Banner */}
       <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 border-b" style={{ background: 'var(--ink)', color: 'var(--white)', borderColor: 'var(--line-light)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +22,7 @@ export default function GovernancePage() {
             FROM GOVERNANCE DOCUMENT
           </span>
           <h1 className="text-4xl sm:text-6xl uppercase tracking-tight leading-[1.02] max-w-4xl">
-            Jowih Governance & Appointment Master Register
+            Jowih governance & appointment master register
           </h1>
           <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
             Consolidated Institutional Structure for the JOWIH Organization
