@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { SourceDocument } from '@/components/ui/SourceDocument';
+import { siteData } from '@/lib/site-data';
 
 const source = fs.readFileSync(path.join(process.cwd(), 'public/documents/gag-initiative.txt'), 'utf8');
 const ranges: Record<string, { title: string; start: string; end: string }> = {
@@ -25,11 +26,20 @@ const ranges: Record<string, { title: string; start: string; end: string }> = {
   'fw-16': { title: 'African Animation and Gaming', start: 'JOWIH AFRICAN ANIMATION & GAMING FRAMEWORK', end: 'NEW DAWN CITY:' },
 };
 
-export function generateStaticParams() { return Object.keys(ranges).map((framework) => ({ framework })); }
+const aliases: Record<string, string> = {
+  adfa: 'fw-01', 'au-parf': 'fw-02', 'new-dawn-city': 'fw-03', 'country-pots-cdes': 'fw-04', 'adn-assemblies': 'fw-04',
+  'education-framework': 'fw-10', 'health-ahf': 'fw-07', 'housing-urbanization': 'fw-06', 'environmental-cleanliness': 'fw-15',
+  'infrastructure-execution': 'fw-08', crt: 'fw-11', 'asta-connect': 'fw-14', 'animation-gaming': 'fw-16',
+  'air-jowih': 'fw-13', 'space-capability': 'fw-09', 'exchange-programs': 'fw-05',
+};
+
+export function generateStaticParams() { return [...Object.keys(ranges), ...Object.keys(aliases), ...siteData.gag.frameworks.map((framework) => framework.id)].map((framework) => ({ framework })); }
 
 export default function FrameworkSourcePage({ params }: { params: { framework: string } }) {
-  const range = ranges[params.framework];
-  if (!range) notFound();
+  const range = ranges[params.framework] || ranges[aliases[params.framework]];
+  const summary = siteData.gag.frameworks.find((framework) => framework.id === params.framework);
+  if (!range && !summary) notFound();
+  if (!range && summary) return <main className="document-page framework-source-page min-h-screen"><header className="document-page__hero"><div className="document-page__inner"><Link href="/framework" className="document-page__back"><ArrowLeft size={16} /> Back to frameworks</Link><p className="document-page__eyebrow">Jowih framework summary</p><h1>{summary.title}</h1><p>{summary.detail}</p></div></header><section className="document-page__body"><div className="document-page__inner framework-source-page__content"><p className="document-page__eyebrow">Source reading</p><h2>Read the related framework material</h2><p>This framework is indexed in the Jowih knowledge archive. Its source material is organized across the GAG initiative and related public documents.</p><Link href="/search" className="framework-source-link">SEARCH THE ARCHIVE <span aria-hidden="true">↗</span></Link></div></section></main>;
   const startIndex = source.indexOf(range.start);
   const endIndex = source.indexOf(range.end, startIndex + range.start.length);
   const lines = source.slice(startIndex, endIndex === -1 ? source.length : endIndex).split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
