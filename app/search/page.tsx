@@ -25,8 +25,12 @@ function sourceEntries(): SearchEntry[] {
   return getArchiveDocuments().flatMap((document) => {
     const lines = fs.readFileSync(path.join(process.cwd(), 'public', document.textFile), 'utf8').split(/\r?\n/);
     const href = `/documents/read/${document.slug}`;
-    const entries: SearchEntry[] = [{ title: document.title, type: 'Document', href, text: lines.slice(0, 12).join(' '), body: lines.slice(0, 80).join('\n'), source: document.source }];
     const headings = lines.map((line, index) => ({ line: line.trim(), index })).filter(({ line }) => isSourceHeading(line));
+    // Document preview: the intro before the first section (or the full text
+    // for documents without sections) — continuation into sections happens via
+    // the prev/next chain instead of cutting at an arbitrary line count.
+    const introLines = headings.length ? lines.slice(0, headings[0].index) : lines;
+    const entries: SearchEntry[] = [{ title: document.title, type: 'Document', href, text: lines.slice(0, 12).join(' '), body: introLines.join('\n'), source: document.source }];
     const majorHeadings = headings.filter(({ line }) => isMajorHeading(line));
     const sectionEntries = headings.map(({ line, index }, headingIndex) => {
       const nextHeading = headings[headingIndex + 1]?.index ?? lines.length;
@@ -38,6 +42,16 @@ function sourceEntries(): SearchEntry[] {
       return entry;
     });
     entries.push(...sectionEntries);
+    // Continuation chain: the document preview flows into its sections in
+    // order, so readers can step prev/next instead of being cut off mid-way.
+    const keyOf = (entry: SearchEntry) => `${entry.type}-${entry.href}-${entry.title}`;
+    if (sectionEntries.length) {
+      entries[0].nextKey = keyOf(sectionEntries[0]);
+      sectionEntries.forEach((entry, index) => {
+        entry.prevKey = index === 0 ? keyOf(entries[0]) : keyOf(sectionEntries[index - 1]);
+        if (index < sectionEntries.length - 1) entry.nextKey = keyOf(sectionEntries[index + 1]);
+      });
+    }
     const entryByIndex = new Map(sectionEntries.map((entry, index) => [headings[index].index, entry]));
     sectionEntries.forEach((entry, index) => {
       const major = [...majorHeadings].reverse().find((candidate) => candidate.index <= headings[index].index);

@@ -13,6 +13,8 @@ export interface SearchEntry {
   body?: string;
   source?: string;
   parentKey?: string;
+  prevKey?: string;
+  nextKey?: string;
 }
 
 function entryKey(entry: SearchEntry) { return `${entry.type}-${entry.href}-${entry.title}`; }
@@ -38,6 +40,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const [showTypeahead, setShowTypeahead] = useState(false);
   const [mobileResultsOpen, setMobileResultsOpen] = useState(false);
   const [mobileContextOpen, setMobileContextOpen] = useState(false);
+  const navigatedRef = useRef(false);
   const articleRef = useRef<HTMLElement>(null);
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
@@ -61,7 +64,11 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     });
     return expanded.slice(0, 40);
   }, [entries, normalized]);
-  const selected = matches.find((entry) => entryKey(entry) === selectedKey) || matches[0];
+  const selected = matches.find((entry) => entryKey(entry) === selectedKey)
+    || (selectedKey ? entries.find((entry) => entryKey(entry) === selectedKey) : undefined)
+    || matches[0];
+  const previousEntry = selected?.prevKey ? entries.find((entry) => entryKey(entry) === selected.prevKey) : undefined;
+  const nextEntry = selected?.nextKey ? entries.find((entry) => entryKey(entry) === selected.nextKey) : undefined;
   const suggestions = useMemo(() => {
     if (!selected) return [];
     const words = `${selected.title} ${selected.text}`.toLowerCase().match(/[a-z]{5,}/g) || [];
@@ -85,10 +92,13 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   }, []);
 
   useEffect(() => {
-    if (matches.length && !matches.some((entry) => entryKey(entry) === selectedKey)) {
+    if (!matches.length) { setSelectedKey(''); return; }
+    // Prev/next continuation may select an entry outside the current result
+    // list — keep that selection instead of snapping back to the first match.
+    if (navigatedRef.current) { navigatedRef.current = false; return; }
+    if (!matches.some((entry) => entryKey(entry) === selectedKey)) {
       setSelectedKey(entryKey(matches[0]));
     }
-    if (!matches.length) setSelectedKey('');
   }, [matches, selectedKey]);
 
   const choose = (entry: SearchEntry) => {
@@ -101,6 +111,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     window.history.replaceState(null, '', `/search?q=${encodeURIComponent(query)}&entry=${encodeURIComponent(key)}`);
   };
   const searchFor = (entry: SearchEntry) => { setQuery(entry.title); setSelectedKey(''); window.history.replaceState(null, '', `/search?q=${encodeURIComponent(entry.title)}`); };
+  const navigateTo = (entry: SearchEntry) => { navigatedRef.current = true; choose(entry); };
 
   return <main className="search-portal">
     <header className="search-portal__hero">
@@ -122,7 +133,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     </section> : <section className="search-portal__workspace">
       <div className="search-portal__mobile-toolbar"><button type="button" onClick={() => { setMobileResultsOpen((open) => !open); setMobileContextOpen(false); }} aria-expanded={mobileResultsOpen}><span>{mobileResultsOpen ? <X size={17} /> : <Menu size={17} />}</span>{mobileResultsOpen ? 'Close results' : 'Browse results'}<strong>{matches.length}</strong></button><button type="button" onClick={() => { setMobileContextOpen((open) => !open); setMobileResultsOpen(false); }} aria-expanded={mobileContextOpen}><span>{mobileContextOpen ? <X size={17} /> : <Info size={17} />}</span>{mobileContextOpen ? 'Close details' : 'Details'}</button></div>{mobileResultsOpen || mobileContextOpen ? <button type="button" className="reader-scrim" aria-label="Close panels" onClick={() => { setMobileResultsOpen(false); setMobileContextOpen(false); }} /> : null}
       <aside className={`search-portal__results-list${mobileResultsOpen ? ' is-open' : ''}`}><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <div className="search-portal__empty"><p>No exact result found.</p>{closeMatches.length ? <><strong>Did you mean:</strong>{closeMatches.map((entry) => <button type="button" className="search-portal__did-you-mean" onClick={() => searchFor(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}>{entry.title}</button>)}</> : <p>Try a broader keyword or a document name.</p>}</div>}</aside>
-      <article ref={articleRef} className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <SourceDocument lines={selected.body.split(/\r?\n/).filter(Boolean)} /> : null}</> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
+      <article ref={articleRef} className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <SourceDocument lines={selected.body.split(/\r?\n/).filter(Boolean)} /> : null}{previousEntry || nextEntry ? <nav className="search-portal__continuation" aria-label="Continue reading">{previousEntry ? <button type="button" onClick={() => navigateTo(previousEntry)}><span>← Previous</span><strong>{previousEntry.title}</strong></button> : <span aria-hidden="true" />}{nextEntry ? <button type="button" onClick={() => navigateTo(nextEntry)}><span>Next →</span><strong>{nextEntry.title}</strong></button> : <span aria-hidden="true" />}</nav> : null}</> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
       <aside className={`search-portal__context${mobileContextOpen ? ' is-open' : ''}`}><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
     </section>}
   </main>;
