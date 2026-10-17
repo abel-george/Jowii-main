@@ -3,6 +3,7 @@ import path from 'node:path';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { InstitutionalExpandable } from '@/components/ui/InstitutionalExpandable';
+import { SourceDocument } from '@/components/ui/SourceDocument';
 
 const source = fs.readFileSync(path.join(process.cwd(), 'public/documents/foundation.txt'), 'utf8');
 
@@ -13,15 +14,7 @@ function extractSection(start: string, end: string) {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean)
-    .map((line) => line
-      .replace(/^\d+(?:\.\d+)*\s+/, '')
-      .replace(/^\([a-zivx]+\)\s*/i, '')
-      .replace(/^ARTICLE\s+[A-Z0-9]+\s*[-–—:]?\s*/i, '')
-    );
-}
-
-function SourceText({ lines }: { lines: string[] }) {
-  return <div className="source-text">{lines.map((line, index) => <p key={`${index}-${line}`}>{line}</p>)}</div>;
+    .filter((line) => !/^ARTICLE\s+/i.test(line));
 }
 
 export default function ComradesPage() {
@@ -42,9 +35,9 @@ export default function ComradesPage() {
       <section className="document-page__body">
         <div className="document-page__inner">
           <InstitutionalExpandable items={[
-            { id: 'network', number: '01', title: 'Africa Development Network', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceText lines={network} /> },
-            { id: 'funding', number: '02', title: 'Phased funding and distribution model', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceText lines={funding} /> },
-            { id: 'community', number: '03', title: 'Community participation and workforce', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceText lines={community} /> },
+            { id: 'network', number: '01', title: 'Africa Development Network', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={network} /> },
+            { id: 'funding', number: '02', title: 'Phased funding and distribution model', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={funding} /> },
+            { id: 'community', number: '03', title: 'Community participation and workforce', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={community} /> },
           ]} />
         </div>
       </section>

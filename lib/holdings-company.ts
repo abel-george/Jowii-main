@@ -182,8 +182,4 @@ b) The Foundation's Board shall oversee compliance with this ownership structure
 c) The Independent Auditor General shall audit adherence to this ownership structure annually and report to the Oversight Panel;
 d) Any breach shall trigger immediate remedial action under Article XLVIII procedures.`;
 
-export const holdingsCompanyLines = holdingsCompanySource.split(/\r?\n/).filter(Boolean).map((line) => line
-  .replace(/^\d+(?:\.\d+)*\s+/, '')
-  .replace(/^[a-z]\)\s*/i, '')
-  .replace(/^[ivx]+\.\s*/i, '')
-);
+export const holdingsCompanyLines = holdingsCompanySource.split(/\r?\n/).filter(Boolean);

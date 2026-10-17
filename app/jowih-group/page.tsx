@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { InstitutionalExpandable } from '@/components/ui/InstitutionalExpandable';
 import { holdingsCompanyLines } from '@/lib/holdings-company';
+import { SourceDocument } from '@/components/ui/SourceDocument';
 
 const list = (items: string[]) => <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>;
 
 function HoldingsText() {
-  return <div className="source-text">{holdingsCompanyLines.map((line, index) => <p key={`${index}-${line}`}>{line}</p>)}</div>;
+  return <SourceDocument lines={holdingsCompanyLines} />;
 }
 
 export default function JowihGroupPage() {
