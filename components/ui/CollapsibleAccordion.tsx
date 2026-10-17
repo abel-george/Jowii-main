@@ -22,9 +22,11 @@ const AccordionContext = createContext<AccordionContextValue>({
  */
 export function CollapsibleAccordion({
   defaultOpenId,
+  navigation,
   children,
 }: {
   defaultOpenId?: string;
+  navigation?: { id: string; number: string; title: string }[];
   children: React.ReactNode;
 }) {
   const [openId, setOpenId] = useState<string | null>(defaultOpenId ?? null);
@@ -35,7 +37,7 @@ export function CollapsibleAccordion({
 
   return (
     <AccordionContext.Provider value={{ openId, requestOpen }}>
-      <div className="institutional-expandable">{children}</div>
+      <div className={navigation ? 'section-switcher' : undefined}>{navigation ? <aside className="section-switcher__sidebar" aria-label="Sections"><p>Sections</p>{navigation.map((item) => <a href={`#${item.id}`} className={openId === item.id ? 'is-active' : undefined} key={item.id}><span>{item.number}</span>{item.title}</a>)}</aside> : null}<div className={navigation ? 'section-switcher__content' : undefined}><div className="institutional-expandable">{children}</div></div></div>
     </AccordionContext.Provider>
   );
 }

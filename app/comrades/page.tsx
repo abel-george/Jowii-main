@@ -34,7 +34,7 @@ export default function ComradesPage() {
       </header>
       <section className="document-page__body">
         <div className="document-page__inner">
-          <InstitutionalExpandable items={[
+          <InstitutionalExpandable showSidebar items={[
             { id: 'network', number: '01', title: 'Africa Development Network', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={network} /> },
             { id: 'funding', number: '02', title: 'Phased funding and distribution model', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={funding} /> },
             { id: 'community', number: '03', title: 'Community participation and workforce', summary: 'The complete source section, presented without constitutional numbering.', body: <SourceDocument lines={community} /> },

@@ -16,7 +16,7 @@ export interface ExpandableItem {
  * areas" pattern: a numbered column of headings; clicking one opens its detail
  * in place while the others stay collapsed. Purely presentational and client-side.
  */
-export function InstitutionalExpandable({ items, allowMultiple = false }: { items: ExpandableItem[]; allowMultiple?: boolean }) {
+export function InstitutionalExpandable({ items, allowMultiple = false, showSidebar = false }: { items: ExpandableItem[]; allowMultiple?: boolean; showSidebar?: boolean }) {
   const [open, setOpen] = useState<number[]>([]);
 
   const toggle = (index: number) => {
@@ -27,7 +27,7 @@ export function InstitutionalExpandable({ items, allowMultiple = false }: { item
     });
   };
 
-  return (
+  const expandableList = (
     <div className="institutional-expandable">
       {items.map((item, index) => {
         const isOpen = open.includes(index);
@@ -54,4 +54,7 @@ export function InstitutionalExpandable({ items, allowMultiple = false }: { item
       })}
     </div>
   );
+
+  if (!showSidebar) return expandableList;
+  return <div className="section-switcher"><aside className="section-switcher__sidebar" aria-label="Sections"><p>Sections</p>{items.map((item, index) => <button type="button" className={open.includes(index) ? 'is-active' : undefined} onClick={() => setOpen([index])} key={item.number}><span>{item.number}</span>{item.title}</button>)}</aside><div className="section-switcher__content">{expandableList}</div></div>;
 }

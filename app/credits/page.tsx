@@ -50,7 +50,22 @@ export default function JowihCreditsPage() {
           </section>
 
           {/* Credits Accordion */}
-          <CollapsibleAccordion defaultOpenId="cb-01">
+          <CollapsibleAccordion defaultOpenId="cb-01" navigation={[
+            { id: 'cb-01', number: '01', title: 'Constitution - Article LIX' },
+            { id: 'cb-02', number: '02', title: 'Core principle and positioning' },
+            { id: 'cb-03', number: '03', title: 'Three wallets' },
+            { id: 'cb-04', number: '04', title: 'Transaction modes' },
+            { id: 'cb-05', number: '05', title: 'Partner-only execution' },
+            { id: 'cb-06', number: '06', title: 'Fee schedule' },
+            { id: 'cb-07', number: '07', title: 'Partner margins' },
+            { id: 'cb-08', number: '08', title: 'Domestic spending and holding' },
+            { id: 'cb-09', number: '09', title: 'Reserves and liquidity' },
+            { id: 'cb-10', number: '10', title: 'Government tax remittance' },
+            { id: 'cb-11', number: '11', title: 'Partner integration standards' },
+            { id: 'cb-12', number: '12', title: 'User procedures' },
+            { id: 'cb-13', number: '13', title: 'AML, privacy and neutrality' },
+            { id: 'cb-14', number: '14', title: 'Disputes, reporting and amendments' },
+          ]}>
             <CollapsibleAccordionItem
               id="cb-01"
               number="01"
