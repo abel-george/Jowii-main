@@ -60,6 +60,14 @@ button, input, select, textarea { font: inherit; }
 
 .institutional-container { width: min(var(--site-max), calc(100% - 64px)); margin-inline: auto; }
 
+@media (max-width: 700px) {
+  .institutional-container { width: calc(100% - 32px); }
+  .institutional-section { padding-block: 56px; }
+  .institutional-news { padding: 56px 0 64px; }
+  .institutional-section-heading { margin-bottom: 24px; }
+  .institutional-hero__content { padding-block: 116px 88px; }
+}
+
 .institutional-hero {
   position: relative;
   display: flex;
@@ -955,6 +963,7 @@ h2[id] { scroll-margin-top: 110px; }
 
 .institutional-news__featured h3 { margin: 10px 0 8px; font-family: var(--font-serif); font-size: 26px; font-weight: 400; line-height: 1.18; }
 .institutional-news__featured-img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--line); }
+.institutional-news__featured video { background: #dfe5df; }
 .institutional-news__featured-placeholder { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; background: linear-gradient(135deg, #123c24 0%, #1a4d2e 60%, #215c39 100%); border: 1px solid var(--line); }
 .institutional-news__featured-placeholder span { color: rgba(255, 254, 250, 0.85); font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.32em; }
 
@@ -977,3 +986,24 @@ h2[id] { scroll-margin-top: 110px; }
   .institutional-news__grid { grid-template-columns: 1fr; gap: 36px; }
   .institutional-news__tabs { justify-self: start; }
 }
+
+@media (max-width: 700px) {
+  .institutional-news { padding: 56px 0 64px; }
+  .institutional-news__grid { gap: 28px; margin-top: 28px; }
+  .institutional-news__featured h3 { font-size: 23px; }
+  .institutional-news__item { grid-template-columns: 76px 1fr; gap: 12px; padding: 13px 0; }
+  .institutional-news__thumb { width: 76px; height: 54px; }
+  .institutional-news__item h3 { font-size: 13px; }
+  .institutional-news__excerpt { font-size: 12px; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .institutional-button:hover { transform: translateY(-2px); }
+}
+
+button:active, [role="button"]:active, .institutional-button:active { transform: scale(0.98); }
+
+/* Keep the legacy accent classes on the same restrained brass palette. */
+[class*="text-[#FF5000]"] { color: var(--brass) !important; }
+[class*="bg-[#FF5000]"] { background-color: var(--brass) !important; }
+[class*="border-[#FF5000]"] { border-color: var(--brass) !important; }

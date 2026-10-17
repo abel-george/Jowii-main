@@ -49,7 +49,8 @@ export default function NewsStoryPage({ params }: { params: { slug: string } }) 
           <span className="inline-flex items-center gap-1"><Tag className="h-4 w-4" /> {story.category}</span>
         </div>
         <h1 className="text-4xl font-bold leading-tight sm:text-6xl">{story.title}</h1>
-        {story.image ? (
+        {story.video ? <video src={story.video} controls preload="metadata" className="mt-10 max-h-[32rem] w-full object-cover" /> : null}
+        {!story.video && story.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={story.image} alt="" className="mt-10 max-h-[32rem] w-full object-cover" />
         ) : null}

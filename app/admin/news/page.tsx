@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ImagePlus, Loader2, Pencil, Trash2 } from 'lucide-react';
+import { ArrowLeft, ImagePlus, Loader2, Pencil, Trash2, Video } from 'lucide-react';
 
 const TOKEN_KEY = 'jowih_admin_upload_token';
 
@@ -14,10 +14,11 @@ interface NewsPost {
   excerpt: string;
   body?: string;
   image?: string;
+  video?: string;
   createdAt: string;
 }
 
-const EMPTY_FORM = { title: '', date: '', category: 'Announcement', excerpt: '', body: '', image: '' };
+const EMPTY_FORM = { title: '', date: '', category: 'Announcement', excerpt: '', body: '', image: '', video: '' };
 
 export default function AdminNewsPage() {
   const [token, setToken] = useState('');
@@ -29,6 +30,7 @@ export default function AdminNewsPage() {
   const [form, setForm] = useState({ ...EMPTY_FORM });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -37,8 +39,15 @@ export default function AdminNewsPage() {
     try {
       const saved = sessionStorage.getItem(TOKEN_KEY);
       if (saved) {
-        setToken(saved);
-        setIsAuthed(true);
+        void fetch('/api/admin/auth', { method: 'POST', headers: { Authorization: `Bearer ${saved}` }, cache: 'no-store' })
+          .then((response) => {
+            if (response.ok) {
+              setToken(saved);
+              setIsAuthed(true);
+            } else {
+              sessionStorage.removeItem(TOKEN_KEY);
+            }
+          });
       }
     } catch {
       // sessionStorage unavailable — ignore
@@ -47,11 +56,20 @@ export default function AdminNewsPage() {
 
   const authHeaders = useCallback(() => ({ Authorization: `Bearer ${token}` }), [token]);
 
+  const verifyToken = useCallback(async (value: string) => {
+    const response = await fetch('/api/admin/auth', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${value}` },
+      cache: 'no-store',
+    });
+    return response.ok;
+  }, []);
+
   const refreshList = useCallback(async () => {
     setLoadingList(true);
     setError('');
     try {
-      const res = await fetch('/api/news');
+      const res = await fetch('/api/news', { headers: authHeaders(), cache: 'no-store' });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Failed to load news.');
       setPosts(data.posts || []);
@@ -60,23 +78,32 @@ export default function AdminNewsPage() {
     } finally {
       setLoadingList(false);
     }
-  }, []);
+  }, [authHeaders]);
 
   useEffect(() => {
     if (isAuthed) void refreshList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthed]);
 
-  const handleAuth = (e: React.FormEvent) => {
+  const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     const value = tokenInput.trim();
     if (!value) return;
-    setToken(value);
-    setIsAuthed(true);
+    setError('');
+    setMessage('Checking token…');
     try {
+      if (!await verifyToken(value)) {
+        setMessage('');
+        setError('That admin token is not valid.');
+        return;
+      }
       sessionStorage.setItem(TOKEN_KEY, value);
+      setToken(value);
+      setIsAuthed(true);
+      setMessage('');
     } catch {
-      // ignore
+      setMessage('');
+      setError('Unable to verify the token. Please try again.');
     }
   };
 
@@ -94,11 +121,12 @@ export default function AdminNewsPage() {
     }
   };
 
-  const onImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onMediaChange = async (e: React.ChangeEvent<HTMLInputElement>, mediaType: 'image' | 'video') => {
     const file = e.target.files?.[0] || null;
     e.target.value = '';
     if (!file) return;
-    setUploadingImage(true);
+    if (mediaType === 'image') setUploadingImage(true);
+    else setUploadingVideo(true);
     setError('');
     try {
       const formData = new FormData();
@@ -109,11 +137,12 @@ export default function AdminNewsPage() {
         if (data.code === 'token_not_set') setSetupNotice(true);
         throw new Error(data.message || 'Image upload failed.');
       }
-      setForm((f) => ({ ...f, image: data.url }));
+      setForm((f) => ({ ...f, [mediaType]: data.url }));
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Image upload failed.');
+      setError(err instanceof Error ? err.message : 'Media upload failed.');
     } finally {
       setUploadingImage(false);
+      setUploadingVideo(false);
     }
   };
 
@@ -158,6 +187,7 @@ export default function AdminNewsPage() {
       excerpt: post.excerpt || '',
       body: post.body || '',
       image: post.image || '',
+      video: post.video || '',
     });
     setMessage('');
     setError('');
@@ -270,16 +300,25 @@ export default function AdminNewsPage() {
               <label className="inline-flex items-center gap-2 px-4 py-2 border text-sm cursor-pointer" style={{ borderColor: 'var(--line)', background: 'var(--paper)' }}>
                 <ImagePlus className="w-4 h-4" />
                 {uploadingImage ? 'Uploading…' : form.image ? 'Replace image' : 'Choose image'}
-                <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" onChange={onImageChange} className="hidden" disabled={uploadingImage} />
+                <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" onChange={(event) => onMediaChange(event, 'image')} className="hidden" disabled={uploadingImage || uploadingVideo} />
               </label>
               {form.image ? (
-                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="text-xs underline" style={{ color: '#b91c1c' }}>Remove</button>
+                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="text-xs underline" style={{ color: 'var(--muted)' }}>Remove</button>
               ) : null}
             </div>
             {form.image ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={form.image} alt="Post preview" className="mt-3 max-h-40 border" style={{ borderColor: 'var(--line)' }} />
             ) : null}
+            <div className="mt-3 flex items-center gap-3">
+              <label className="inline-flex items-center gap-2 px-4 py-2 border text-sm cursor-pointer" style={{ borderColor: 'var(--line)', background: 'var(--paper)' }}>
+                <Video className="w-4 h-4" />
+                {uploadingVideo ? 'Uploading…' : form.video ? 'Replace video' : 'Add video'}
+                <input type="file" accept="video/mp4,video/webm,video/ogg" onChange={(event) => onMediaChange(event, 'video')} className="hidden" disabled={uploadingImage || uploadingVideo} />
+              </label>
+              {form.video ? <button type="button" onClick={() => setForm({ ...form, video: '' })} className="text-xs underline" style={{ color: 'var(--muted)' }}>Remove</button> : null}
+            </div>
+            {form.video ? <video src={form.video} controls preload="metadata" className="mt-3 max-h-48 w-full border object-contain" /> : null}
           </div>
           <div className="flex items-center gap-3">
             <button type="submit" disabled={saving} className="inline-flex items-center gap-2 px-6 py-3 text-xs font-mono font-bold uppercase tracking-widest disabled:opacity-50" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
@@ -293,7 +332,7 @@ export default function AdminNewsPage() {
             ) : null}
           </div>
           {message ? <p className="mt-4 text-sm" style={{ color: 'var(--green)' }}>{message}</p> : null}
-          {error ? <p className="mt-4 text-sm" style={{ color: '#b91c1c' }}>{error}</p> : null}
+          {error ? <p className="mt-4 text-sm" style={{ color: 'var(--ink-soft)' }}>{error}</p> : null}
         </form>
 
         <div className="p-6 border" style={{ background: 'var(--white)', borderColor: 'var(--line)' }}>
@@ -311,12 +350,12 @@ export default function AdminNewsPage() {
                 <li key={post.id} className="flex items-start gap-3 py-3">
                   <div className="flex-1">
                     <p className="text-sm font-bold">{post.title}</p>
-                    <p className="text-xs" style={{ color: 'var(--muted)' }}>{post.date} · {post.category}{post.image ? ' · image' : ''}</p>
+                    <p className="text-xs" style={{ color: 'var(--muted)' }}>{post.date} · {post.category}{post.image ? ' · image' : ''}{post.video ? ' · video' : ''}</p>
                   </div>
                   <button type="button" onClick={() => startEdit(post)} className="p-1 border" style={{ borderColor: 'var(--line)' }} aria-label="Edit">
                     <Pencil className="w-3.5 h-3.5" />
                   </button>
-                  <button type="button" onClick={() => handleDelete(post.id)} className="p-1 border" style={{ borderColor: 'var(--line)', color: '#b91c1c' }} aria-label="Delete">
+                  <button type="button" onClick={() => handleDelete(post.id)} className="p-1 border" style={{ borderColor: 'var(--line)', color: 'var(--muted)' }} aria-label="Delete">
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 </li>
@@ -328,7 +367,3 @@ export default function AdminNewsPage() {
     </div>
   );
 }
-
-
-
-

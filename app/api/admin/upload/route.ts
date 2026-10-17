@@ -9,13 +9,16 @@ import { adminTokenConfigured, isAuthorized } from '@/lib/admin-auth';
 // the admin identity is NOT hardcoded in source and can be rotated without a deploy.
 // See .env.example for the required variable.
 
-const MAX_BYTES = 15 * 1024 * 1024; // 15MB
+const MAX_BYTES = 100 * 1024 * 1024; // 100MB
 const ALLOWED_TYPES = new Set([
   'image/png',
   'image/jpeg',
   'image/webp',
   'image/avif',
   'image/gif',
+  'video/mp4',
+  'video/webm',
+  'video/ogg',
 ]);
 
 function denyNotConfigured() {
@@ -66,13 +69,13 @@ export async function POST(request: Request) {
   }
   if (!ALLOWED_TYPES.has(file.type)) {
     return Response.json(
-      { success: false, message: 'Only PNG, JPEG, WebP, AVIF or GIF images are allowed.', code: 'invalid_type' },
+      { success: false, message: 'Upload a PNG, JPEG, WebP, AVIF, GIF, MP4, WebM or OGG file.', code: 'invalid_type' },
       { status: 415, headers: { 'cache-control': 'no-store' } },
     );
   }
   if (file.size > MAX_BYTES) {
     return Response.json(
-      { success: false, message: 'File exceeds the 15MB limit.', code: 'too_large' },
+      { success: false, message: 'File exceeds the 100MB limit.', code: 'too_large' },
       { status: 413, headers: { 'cache-control': 'no-store' } },
     );
   }

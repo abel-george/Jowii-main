@@ -19,6 +19,7 @@ interface NewsPost {
   excerpt: string;
   body?: string;
   image?: string;
+  video?: string;
 }
 
 interface FeedItem {
@@ -28,6 +29,7 @@ interface FeedItem {
   category: string;
   excerpt: string;
   image?: string;
+  video?: string;
   href?: string;
   body?: string;
 }
@@ -86,6 +88,7 @@ export function InstitutionalNews() {
       category: post.category || 'Announcement',
       excerpt: post.excerpt || '',
       image: post.image,
+      video: post.video,
       body: post.body,
       href: newsHref(post),
     }));
@@ -139,8 +142,12 @@ export function InstitutionalNews() {
         ) : (
           <div className="institutional-news__grid">
             <article className="institutional-news__featured">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="institutional-news__featured-img" src={featured.image || FALLBACK_IMAGES[0]} alt="" />
+              {featured.video ? (
+                <video className="institutional-news__featured-img" src={featured.video} controls preload="metadata" />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="institutional-news__featured-img" src={featured.image || FALLBACK_IMAGES[0]} alt="" />
+              )}
               <p className="institutional-news__meta">
                 <span>{featured.category}</span> · <time dateTime={featured.date}>{formatDate(featured.date)}</time>
               </p>

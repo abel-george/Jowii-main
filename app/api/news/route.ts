@@ -17,6 +17,7 @@ export interface NewsPost {
   excerpt: string;
   body?: string;
   image?: string;
+  video?: string;
   createdAt: string;
 }
 
@@ -114,9 +115,16 @@ export async function POST(request: Request) {
   const excerpt = String(payload.excerpt || '').trim().slice(0, 2000);
   const body = String(payload.body || '').trim().slice(0, 20000) || undefined;
   const image = String(payload.image || '').trim().slice(0, 2000) || undefined;
+  const video = String(payload.video || '').trim().slice(0, 2000) || undefined;
   if (image && !/^https?:\/\//.test(image)) {
     return Response.json(
       { success: false, message: 'Image must be an http(s) URL.', code: 'invalid_fields' },
+      { status: 400, headers: noStore },
+    );
+  }
+  if (video && !/^https?:\/\//.test(video)) {
+    return Response.json(
+      { success: false, message: 'Video must be an http(s) URL.', code: 'invalid_fields' },
       { status: 400, headers: noStore },
     );
   }
@@ -129,6 +137,7 @@ export async function POST(request: Request) {
     excerpt,
     body,
     image,
+    video,
     createdAt: new Date().toISOString(),
   };
 
@@ -190,6 +199,7 @@ export async function PUT(request: Request) {
       excerpt: String(payload.excerpt ?? existing.excerpt).trim().slice(0, 2000),
       body: String(payload.body ?? existing.body ?? '').trim().slice(0, 20000) || undefined,
       image: String(payload.image ?? existing.image ?? '').trim().slice(0, 2000) || undefined,
+      video: String(payload.video ?? existing.video ?? '').trim().slice(0, 2000) || undefined,
     };
     await writePosts(posts);
     return Response.json({ success: true, post: posts[index] }, { headers: noStore });
@@ -227,4 +237,3 @@ export async function DELETE(request: Request) {
     return Response.json({ success: false, message, code: 'delete_failed' }, { status: 500, headers: noStore });
   }
 }
-

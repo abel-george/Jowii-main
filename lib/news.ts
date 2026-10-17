@@ -6,6 +6,7 @@ export interface NewsStory {
   excerpt: string;
   body?: string;
   image?: string;
+  video?: string;
   href?: string;
 }
 

@@ -33,8 +33,15 @@ export default function AdminUploadPage() {
     try {
       const saved = sessionStorage.getItem(TOKEN_KEY);
       if (saved) {
-        setToken(saved);
-        setIsAuthed(true);
+        void fetch('/api/admin/auth', { method: 'POST', headers: { Authorization: `Bearer ${saved}` }, cache: 'no-store' })
+          .then((response) => {
+            if (response.ok) {
+              setToken(saved);
+              setIsAuthed(true);
+            } else {
+              sessionStorage.removeItem(TOKEN_KEY);
+            }
+          });
       }
     } catch {
       // sessionStorage unavailable — ignore
@@ -67,16 +74,21 @@ export default function AdminUploadPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthed]);
 
-  const handleAuth = (e: React.FormEvent) => {
+  const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     const value = tokenInput.trim();
     if (!value) return;
-    setToken(value);
-    setIsAuthed(true);
     try {
+      const response = await fetch('/api/admin/auth', { method: 'POST', headers: { Authorization: `Bearer ${value}` }, cache: 'no-store' });
+      if (!response.ok) {
+        setError('That admin token is not valid.');
+        return;
+      }
       sessionStorage.setItem(TOKEN_KEY, value);
+      setToken(value);
+      setIsAuthed(true);
     } catch {
-      // ignore
+      setError('Unable to verify the token. Please try again.');
     }
   };
 

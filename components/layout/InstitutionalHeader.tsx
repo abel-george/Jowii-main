@@ -23,7 +23,7 @@ export function InstitutionalHeader() {
     <>
       {/* Top Announcement Strip - Separate */}
       <div className="bg-black text-white py-3 text-center">
-        <div className="w-full px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-10">
           <p className="text-xs font-mono font-bold uppercase tracking-wider">
             Discuss · Improve · Pre-Launch the Initiative Together
           </p>
@@ -32,7 +32,7 @@ export function InstitutionalHeader() {
 
       {/* Logo and Brand Area - Separate Section with Breathing Room */}
       <div className="bg-white border-b border-neutral-200 py-6">
-        <div className="w-full px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-10">
           <div className="flex items-center justify-between gap-4 sm:gap-8">
             <Link href="/" className="flex items-center gap-3 sm:gap-4" aria-label="Jowih Foundation home">
               <Image
@@ -44,7 +44,7 @@ export function InstitutionalHeader() {
                 className="h-12 w-12 sm:h-[76px] sm:w-[76px] object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#6e0b23' }}>
+                <span className="text-2xl sm:text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, color: 'var(--green-deep)' }}>
                   Jowih Foundation
                 </span>
                 <span className="text-sm font-semibold text-neutral-600 tracking-wider uppercase">
@@ -91,9 +91,9 @@ export function InstitutionalHeader() {
 
       {/* Navigation Bar - Separate Dark Green Bar */}
       <nav className="bg-[#1a4d2e] sticky top-0 z-40">
-        <div className="w-full px-6 sm:px-8 lg:px-10">
-          <div className="flex items-center h-16">
-            <div className="hidden md:flex items-center gap-5 xl:gap-6 whitespace-nowrap pl-2">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-10">
+          <div className="relative flex h-16 items-center justify-center">
+            <div className="hidden md:flex w-full items-center justify-center gap-5 xl:gap-6 whitespace-nowrap">
               {siteData.nav.map((item) => (
                 <div
                   key={item.href}
@@ -104,7 +104,7 @@ export function InstitutionalHeader() {
                   <Link
                     href={item.href}
                     aria-current={pathname === item.href ? 'page' : undefined}
-                    className={`text-sm font-bold uppercase tracking-wider text-white hover:text-[#2dd4bf] transition-colors py-5 ${pathname === item.href ? 'text-[#2dd4bf]' : ''}`}
+                    className={`text-sm font-bold tracking-wide text-white hover:text-[#2dd4bf] transition-colors py-5 ${pathname === item.href ? 'text-[#2dd4bf]' : ''}`}
                   >
                     {item.label}
                     {item.children && <ChevronDown className="w-3 h-3 ml-1 inline" />}
