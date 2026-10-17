@@ -29,13 +29,27 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   }, [entries, selected]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setQuery(params.get('q') || '');
+    setSelectedKey(params.get('entry') || '');
+  }, []);
+
+  useEffect(() => {
     if (matches.length && !matches.some((entry) => `${entry.type}-${entry.href}-${entry.title}` === selectedKey)) {
       setSelectedKey(`${matches[0].type}-${matches[0].href}-${matches[0].title}`);
     }
     if (!matches.length) setSelectedKey('');
   }, [matches, selectedKey]);
 
-  const choose = (entry: SearchEntry) => setSelectedKey(`${entry.type}-${entry.href}-${entry.title}`);
+  const choose = (entry: SearchEntry) => {
+    const key = `${entry.type}-${entry.href}-${entry.title}`;
+    setSelectedKey(key);
+    window.history.replaceState(null, '', `/search?q=${encodeURIComponent(query)}&entry=${encodeURIComponent(key)}`);
+  };
+  const sourceHref = (href: string) => {
+    const [path, hash] = href.split('#');
+    return `${path}?from=search&q=${encodeURIComponent(query)}&entry=${encodeURIComponent(selectedKey)}${hash ? `#${hash}` : ''}`;
+  };
 
   return <main className="search-portal">
     <header className="search-portal__hero">
@@ -55,8 +69,8 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       <div className="search-portal__browse">{entries.filter((entry) => entry.type !== 'Source section').slice(0, 12).map((entry) => <Link className="search-browse-card" href={entry.href} key={`${entry.type}-${entry.href}`}><span>{entry.type}</span><strong>{entry.title}</strong><ArrowUpRight size={15} /></Link>)}</div>
     </section> : <section className="search-portal__workspace">
       <aside className="search-portal__results-list"><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <p className="search-portal__empty">No matching pages or source sections found.</p>}</aside>
-      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p><div className="search-portal__article-rule" /><p>This entry is part of the Jowih public knowledge archive. Use the source link to continue reading the complete page in context.</p><Link className="search-portal__read" href={selected.href}>Read this entry <ArrowUpRight size={16} /></Link></> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
-      <aside className="search-portal__context"><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><Link href={selected.href}><ArrowLeft size={15} /> Open source page</Link><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
+      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p><div className="search-portal__article-rule" /><Link className="search-portal__read" href={sourceHref(selected.href)}>Read this entry <ArrowUpRight size={16} /></Link></> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
+      <aside className="search-portal__context"><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><Link href={sourceHref(selected.href)}><ArrowLeft size={15} /> Open source page</Link><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
     </section>}
   </main>;
 }
