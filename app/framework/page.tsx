@@ -238,6 +238,7 @@ export default function FrameworkPage() {
                 title="Jowih Creative, African Animation &amp; Gaming Framework"
                 summary="African stories, games, and IP - a continental creative economy engine"
               >
+                <Link href="/gag/creative" className="inline-flex items-center gap-2 mb-5 text-xs font-mono font-bold uppercase tracking-wider" style={{ color: 'var(--green)' }}>Read the full Creative Hub source <ArrowLeft className="w-4 h-4 rotate-180" /></Link>
                 <p className="leading-relaxed">This Framework establishes the Foundation approach to developing, financing, producing, distributing, and supporting African animation, gaming, and related creative industries - a continental creative economy capable of producing high-quality African stories, characters, intellectual property, games, and interactive experiences for African and international audiences.</p>
                 <p className="leading-relaxed">Foundation-owned anchor capabilities and independent African creator and studio participation combine into one ecosystem. Core principles include African Creative Ownership, Build the Core Enable the Ecosystem, Creation Not Displacement, Cultural Authenticity, and Commercial Sustainability.</p>
               </CollapsibleAccordionItem>

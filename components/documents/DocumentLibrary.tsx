@@ -1,11 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, Download, FileText, ShieldAlert } from 'lucide-react';
+import { ArrowUpRight, Download, FileText, ShieldAlert, BookOpen } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { visualAssets } from '@/lib/visual-assets';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 export function DocumentLibrary() {
+  const onlineDocuments: Record<string, string> = {
+    'Jowih Foundation · Draft Constitution': 'foundation',
+    'Governance & Appointment Register': 'governance',
+    'ASTA OS · System Architecture': 'asta-os',
+    'Jowih Credits · Operational Framework': 'credits',
+    'Ecosystem Investment Architecture': 'investment',
+    'The GAG Initiative · Continental Framework': 'gag',
+  };
   return (
     <main className="document-library">
       <section className="document-library__hero">
@@ -54,6 +62,7 @@ export function DocumentLibrary() {
                 <a href={doc.file} target="_blank" rel="noreferrer">
                   Open PDF <ArrowUpRight aria-hidden="true" size={15} />
                 </a>
+                {onlineDocuments[doc.title] ? <Link href={`/documents/read/${onlineDocuments[doc.title]}`}><BookOpen aria-hidden="true" size={15} /> Read online</Link> : null}
                 <a href={doc.file} download>
                   Download <Download aria-hidden="true" size={15} />
                 </a>

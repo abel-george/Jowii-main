@@ -211,7 +211,7 @@ export const siteData = {
         { label: 'Air Jowih & Airport SEZs', href: '/framework#fw-13' },
         { label: 'Africa Connect Alliance', href: '/framework#fw-14' },
         { label: 'Environmental Cleanliness', href: '/framework#fw-15' },
-        { label: 'Creative, Animation & Gaming', href: '/framework#fw-16' },
+        { label: 'Creative, Animation & Gaming', href: '/gag/creative' },
       ]
     },
     {
