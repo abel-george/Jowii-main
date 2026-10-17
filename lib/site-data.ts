@@ -192,6 +192,15 @@ export const siteData = {
       ]
     },
     {
+      label: 'Search',
+      href: '/search',
+      description: 'Search the Jowih website and source document archive',
+      children: [
+        { label: 'Search archive', href: '/search' },
+        { label: 'Read online', href: '/documents/read' },
+      ]
+    },
+    {
       label: 'Framework',
       href: '/framework',
       description: '16 implementation frameworks from The GAG Initiative',

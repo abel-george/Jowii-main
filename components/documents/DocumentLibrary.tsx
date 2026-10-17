@@ -18,6 +18,7 @@ export function DocumentLibrary() {
     <main className="document-library">
       <section className="document-library__hero">
         <div className="document-container">
+          <nav className="document-library__tabs" aria-label="Document views"><Link className="is-active" href="/documents">Document library</Link><Link href="/documents/read">Read online</Link></nav>
           <p className="institutional-eyebrow institutional-eyebrow--gold">DOCUMENTS · PUBLIC ARCHIVE</p>
           <h1>Read the proposals at their source.</h1>
           <p>

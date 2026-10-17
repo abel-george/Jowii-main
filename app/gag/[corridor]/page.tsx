@@ -23,7 +23,7 @@ export function generateStaticParams() {
 }
 
 function getSection(start: string, end: string) {
-  const startIndex = source.indexOf(start);
+  const startIndex = source.indexOf(start, 20000);
   const endIndex = source.indexOf(end, startIndex + start.length);
   if (startIndex === -1) return [];
   return source.slice(startIndex, endIndex === -1 ? source.length : endIndex)
