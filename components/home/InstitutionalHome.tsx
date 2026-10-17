@@ -774,11 +774,6 @@ export function InstitutionalHome() {
 
       <section className="institutional-hero-content" aria-labelledby="institutional-title">
         <div className="institutional-container">
-          <div className="institutional-eyebrow institutional-eyebrow--light">
-            <span className="institutional-status-dot" />
-            A continental development framework
-          </div>
-          <p className="institutional-hero__overline">JOWIH FOUNDATION · GREAT AFRICAN GRID · ASTA OS</p>
           <h1 id="institutional-title">A connected foundation for Africa&apos;s next era of development.</h1>
           <p className="institutional-hero__intro">
             Jowih is designed to connect infrastructure, services, capital and technology through a mission-led,
@@ -1394,10 +1389,6 @@ export function InstitutionalHome() {
           </div>
         </div>
 
-        <div className="institutional-container institutional-finance-note">
-          <CircleDollarSign aria-hidden="true" />
-          <p><strong>Jowih Credits are not being offered here.</strong> The documents describe a proposed non-speculative bridge model requiring licensed partners and regulatory approvals. No wallet, conversion service or credit issuance is represented as currently available.</p>
-        </div>
       </section>
 
       <section className="institutional-section institutional-section--gallery">

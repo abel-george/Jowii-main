@@ -239,6 +239,26 @@ export const siteData = {
         { label: 'Compliance & Reporting', href: '/credits#cb-13' },
       ]
     },
+    {
+      label: 'Comrades',
+      href: '/comrades',
+      description: 'Community participation, workforce development, and continental coordination.',
+      children: [
+        { label: 'Comrades Hub', href: '/comrades#community' },
+        { label: 'Workforce pathway', href: '/comrades#workforce' },
+        { label: 'Africa Development Network', href: '/comrades#network' },
+        { label: 'Phased funding model', href: '/comrades#funding' },
+      ]
+    },
+    {
+      label: 'Group',
+      href: '/jowih-group',
+      description: 'Jowih Group execution structure and operating companies.',
+      children: [
+        { label: 'Group structure', href: '/jowih-group#structure' },
+        { label: 'Operating companies', href: '/jowih-group#companies' },
+      ]
+    },
     { 
       label: 'Updates', 
       href: '/waitlist',

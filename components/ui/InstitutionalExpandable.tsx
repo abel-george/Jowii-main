@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 
 export interface ExpandableItem {
+  id?: string;
   number: string;
   title: string;
   summary: string;
@@ -31,7 +32,7 @@ export function InstitutionalExpandable({ items, allowMultiple = false }: { item
       {items.map((item, index) => {
         const isOpen = open.includes(index);
         return (
-          <div className={`institutional-expandable__item${isOpen ? ' is-open' : ''}`} key={item.number}>
+          <div id={item.id} className={`institutional-expandable__item${isOpen ? ' is-open' : ''}`} key={item.number}>
             <button
               type="button"
               className="institutional-expandable__trigger"
