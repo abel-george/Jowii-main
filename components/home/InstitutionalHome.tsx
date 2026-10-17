@@ -59,13 +59,13 @@ const pillars = [
 ];
 
 const corridors = [
-  { number: '01', name: 'Transport', detail: 'Connect people, freight and logistics through interoperable transport systems.' },
-  { number: '02', name: 'Industry & manufacturing', detail: 'Grow production capability, industrial partnerships and technology transfer.' },
-  { number: '03', name: 'Energy', detail: 'Coordinate generation, storage, transmission and resilient local power.' },
-  { number: '04', name: 'Digital', detail: 'Connect services and infrastructure through shared digital rails.' },
-  { number: '05', name: 'Payments', detail: 'Support cross-border value movement through licensed payment partners.' },
-  { number: '06', name: 'Human services', detail: 'Strengthen health, education, skills and community development.' },
-  { number: '07', name: 'Space capability', detail: 'Build African participation in communications, observation and space industry.' },
+  { number: '01', name: 'Transport', slug: 'transport', detail: 'Connect people, freight and logistics through interoperable transport systems.' },
+  { number: '02', name: 'Industry & manufacturing', slug: 'industrial', detail: 'Grow production capability, industrial partnerships and technology transfer.' },
+  { number: '03', name: 'Energy', slug: 'energy', detail: 'Coordinate generation, storage, transmission and resilient local power.' },
+  { number: '04', name: 'Digital', slug: 'digital', detail: 'Connect services and infrastructure through shared digital rails.' },
+  { number: '05', name: 'Payments', slug: 'payments', detail: 'Support cross-border value movement through licensed payment partners.' },
+  { number: '06', name: 'Human services', slug: 'services', detail: 'Strengthen health, education, skills and community development.' },
+  { number: '07', name: 'Space capability', slug: 'space', detail: 'Build African participation in communications, observation and space industry.' },
 ];
 
 const layers = [
@@ -1064,11 +1064,11 @@ export function InstitutionalHome() {
           <div className="institutional-corridor-layout">
             <div className="institutional-corridor-list">
               {corridors.map((corridor) => (
-                <article className="institutional-corridor" key={corridor.number}>
+                <Link href={`/gag/${corridor.slug}`} className="institutional-corridor" key={corridor.number}>
                   <span>{corridor.number}</span>
                   <div><h3>{corridor.name}</h3><p>{corridor.detail}</p></div>
                   <ArrowUpRight aria-hidden="true" size={17} />
-                </article>
+                </Link>
               ))}
             </div>
             <figure className="institutional-corridor-figure">

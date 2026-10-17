@@ -42,13 +42,13 @@ function formatDate(value: string): string {
 
 // The seven Great African Grid corridors, listed in the section sidebar.
 const CORRIDORS: { name: string; href: string }[] = [
-  { name: '01 · Transport Corridor', href: '/gag#transport' },
-  { name: '02 · Industrial Corridor', href: '/gag#industrial' },
-  { name: '03 · Energy Corridor', href: '/gag#energy' },
-  { name: '04 · Digital Corridor', href: '/gag#digital' },
-  { name: '05 · Payments Corridor', href: '/gag#payments' },
-  { name: '06 · Services Corridor', href: '/gag#services' },
-  { name: '07 · Space Capability Corridor', href: '/gag#space' },
+  { name: '01 · Transport Corridor', href: '/gag/transport' },
+  { name: '02 · Industrial Corridor', href: '/gag/industrial' },
+  { name: '03 · Energy Corridor', href: '/gag/energy' },
+  { name: '04 · Digital Corridor', href: '/gag/digital' },
+  { name: '05 · Payments Corridor', href: '/gag/payments' },
+  { name: '06 · Services Corridor', href: '/gag/services' },
+  { name: '07 · Space Capability Corridor', href: '/gag/space' },
 ];
 
 // Framed fallback artwork shown when a post has no uploaded image, so the

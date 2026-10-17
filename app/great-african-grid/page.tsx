@@ -109,8 +109,9 @@ export default function GreatAfricanGridPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {gag.corridors.map((c) => (
-              <div
+              <Link
                 key={c.id}
+                href={`/gag/${c.slug}`}
                 className="p-8 border transition-all flex flex-col justify-between group"
                 style={{ background: 'var(--white)', borderColor: 'var(--line)' }}
               >
@@ -137,7 +138,7 @@ export default function GreatAfricanGridPage() {
                   <span>Pan-African Standard</span>
                   <span className="font-bold" style={{ color: 'var(--ink-soft)' }}>Corridor {c.id}</span>
                 </div>
-              </div>
+              </Link>
             ))}
 
             {/* Special Callout: ADFA */}

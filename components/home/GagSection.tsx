@@ -40,8 +40,9 @@ export function GagSection() {
         {/* 7 Corridors Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
           {siteData.gag.corridors.map((corridor) => (
-            <div
+            <Link
               key={corridor.id}
+              href={`/gag/${corridor.slug}`}
               className="p-6 bg-neutral-950 border border-white/15 hover:border-[#FF5000] hover:bg-neutral-900 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
@@ -67,7 +68,7 @@ export function GagSection() {
                 <span>GAG Protocol Rail</span>
                 <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#FF5000]" />
               </div>
-            </div>
+            </Link>
           ))}
 
           {/* 8th Special Card: Framework Overview */}

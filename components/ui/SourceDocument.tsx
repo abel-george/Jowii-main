@@ -1,18 +1,22 @@
 import React from 'react';
 
 function isBullet(line: string) {
-  return /^(?:[a-z]\)|[ivx]+\.)\s*/i.test(line.trim());
+  return /^(?:\(?[a-z]\)|\(?[ivx]+\.|-)\s*/i.test(line.trim());
 }
 
 function formatLine(line: string) {
   const trimmedLine = line.trim();
   const numberedHeading = trimmedLine.match(/^\d+(?:\.\d+)*\s+(.+)$/);
-  const letterBullet = trimmedLine.match(/^[a-z]\)\s*(.*)$/i);
-  const romanBullet = trimmedLine.match(/^[ivx]+\.\s*(.*)$/i);
+  const letterBullet = trimmedLine.match(/^\(?[a-z]\)\s*(.*)$/i);
+  const romanBullet = trimmedLine.match(/^\(?[ivx]+\.\s*(.*)$/i);
+  const dashBullet = trimmedLine.match(/^-\s*(.*)$/);
+  const uppercaseHeading = /^[A-Z0-9 &—–-]+$/.test(trimmedLine) && trimmedLine.length > 8;
 
   if (numberedHeading) return { type: 'heading', text: numberedHeading[1] } as const;
+  if (uppercaseHeading) return { type: 'heading', text: trimmedLine } as const;
   if (letterBullet) return { type: 'bullet', text: letterBullet[1], nested: false } as const;
   if (romanBullet) return { type: 'bullet', text: romanBullet[1], nested: true } as const;
+  if (dashBullet) return { type: 'bullet', text: dashBullet[1], nested: false } as const;
   return { type: 'paragraph', text: trimmedLine } as const;
 }
 
