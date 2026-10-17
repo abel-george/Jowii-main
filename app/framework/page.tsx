@@ -25,7 +25,7 @@ export default function FrameworkPage() {
             Jowih Frameworks
           </h1>
           <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
-            Sixteen continental implementation frameworks &mdash; from the ADFA to Air Jowih &mdash; as set out in The GAG Initiative document.
+            Sixteen frameworks from the Great African Grid initiative.
           </p>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function FrameworkPage() {
               Implementation Frameworks
             </h2>
             <p className="leading-relaxed">
-              Each framework below is a pillar of the Great African Grid &mdash; the agreements, systems, and programs through which the Foundation executes on the ground. Expand any framework for its brief introduction; the full concept of every framework is set out in The GAG Initiative document.
+              Select a framework to view its overview or open the complete source section.
             </p>
             <a
               href="/documents/The%20GAG%20initiative%20.pdf"

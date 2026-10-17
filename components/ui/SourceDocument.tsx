@@ -17,9 +17,11 @@ function formatLine(line: string) {
   const dashBullet = trimmedLine.match(/^-\s*(.*)$/);
   const namedBullet = trimmedLine.match(/^(.+?)\s+-\s+(.*)$/);
   const uppercaseHeading = /^[A-Z0-9 &—–-]+$/.test(trimmedLine) && trimmedLine.length > 8;
+  const shortHeading = trimmedLine.length <= 72 && trimmedLine.split(/\s+/).length <= 8 && /^[A-Z][^.!?:]+$/.test(trimmedLine);
 
-  if (numberedHeading) return { type: 'heading', text: numberedHeading[1] } as const;
+  if (numberedHeading) return { type: 'heading', text: trimmedLine } as const;
   if (uppercaseHeading) return { type: 'heading', text: trimmedLine } as const;
+  if (shortHeading) return { type: 'heading', text: trimmedLine } as const;
   if (letterBullet) return { type: 'bullet', text: letterBullet[1], nested: false } as const;
   if (romanBullet) return { type: 'bullet', text: romanBullet[1], nested: true } as const;
   if (numberedBullet) return { type: 'bullet', text: numberedBullet[1], nested: false } as const;
