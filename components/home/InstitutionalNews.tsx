@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
+import { newsHref } from '@/lib/news';
 
 // AU.int-style "Latest" section: featured story + headline list + institutional
 // sidebar (Departments, Flagship Projects). Live posts come from /api/news
@@ -86,6 +87,7 @@ export function InstitutionalNews() {
       excerpt: post.excerpt || '',
       image: post.image,
       body: post.body,
+      href: newsHref(post),
     }));
     const seed: FeedItem[] = siteData.news.map((item) => ({
       key: `seed-${item.id}`,
@@ -203,4 +205,3 @@ export function InstitutionalNews() {
     </section>
   );
 }
-

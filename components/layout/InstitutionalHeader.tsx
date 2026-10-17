@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -14,11 +14,16 @@ export function InstitutionalHeader() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const pathname = usePathname();
 
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', mobileMenuOpen);
+    return () => document.body.classList.remove('menu-open');
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* Top Announcement Strip - Separate */}
       <div className="bg-black text-white py-3 text-center">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-6 sm:px-8 lg:px-10">
           <p className="text-xs font-mono font-bold uppercase tracking-wider">
             Discuss · Improve · Pre-Launch the Initiative Together
           </p>
@@ -27,7 +32,7 @@ export function InstitutionalHeader() {
 
       {/* Logo and Brand Area - Separate Section with Breathing Room */}
       <div className="bg-white border-b border-neutral-200 py-6">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-6 sm:px-8 lg:px-10">
           <div className="flex items-center justify-between gap-4 sm:gap-8">
             <Link href="/" className="flex items-center gap-3 sm:gap-4" aria-label="Jowih Foundation home">
               <Image
@@ -86,9 +91,9 @@ export function InstitutionalHeader() {
 
       {/* Navigation Bar - Separate Dark Green Bar */}
       <nav className="bg-[#1a4d2e] sticky top-0 z-40">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-6 sm:px-8 lg:px-10">
           <div className="flex items-center h-16">
-            <div className="hidden md:flex items-center gap-5 xl:gap-6 whitespace-nowrap">
+            <div className="hidden md:flex items-center gap-5 xl:gap-6 whitespace-nowrap pl-2">
               {siteData.nav.map((item) => (
                 <div
                   key={item.href}
@@ -106,15 +111,15 @@ export function InstitutionalHeader() {
                   </Link>
                   
                   {item.children && hoveredItem === item.href && (
-                    <div className="absolute top-full left-0 mt-0 w-80 bg-white border-2 border-neutral-300 shadow-xl z-50">
+                    <div className="absolute top-full left-0 mt-0 min-w-[20rem] max-w-[min(30rem,calc(100vw-2rem))] bg-[#292929] border border-[#4a4a4a] shadow-xl z-50 text-white">
                       <div className="p-4">
-                        <p className="text-sm text-black mb-3 font-semibold">{item.description}</p>
+                        <p className="text-sm text-white/75 mb-3 font-semibold leading-relaxed">{item.description}</p>
                         <div className="space-y-1">
                           {item.children.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
-                              className="block px-3 py-2 text-sm text-black font-medium hover:bg-neutral-100 transition-colors"
+                              className="block px-3 py-2 text-sm text-white font-medium leading-snug whitespace-normal hover:bg-white/10 transition-colors"
                               onClick={() => setHoveredItem(null)}
                             >
                               {child.label}
@@ -144,8 +149,19 @@ export function InstitutionalHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-neutral-200 fixed top-[184px] left-0 right-0 z-30 overflow-y-auto max-h-[calc(100vh-184px)]">
-          <nav className="w-full px-4 sm:px-6 lg:px-8 py-4">
+        <div className="md:hidden fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-white pb-[env(safe-area-inset-bottom)]">
+          <div className="sticky top-0 z-10 flex items-center justify-between bg-[#1a4d2e] px-6 py-4 text-white">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest">Navigation</span>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex h-10 w-10 items-center justify-center border border-white/30"
+              aria-label="Close navigation menu"
+            >
+              <X aria-hidden="true" />
+            </button>
+          </div>
+          <nav className="w-full px-6 sm:px-8 py-4">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>

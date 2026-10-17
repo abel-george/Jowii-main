@@ -1,9 +1,26 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
+import { newsHref, NewsStory } from '@/lib/news';
 
 export default function NewsPage() {
+  const [livePosts, setLivePosts] = useState<NewsStory[]>([]);
+
+  useEffect(() => {
+    fetch('/api/news', { cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : Promise.reject(new Error('Unable to load news'))))
+      .then((data) => setLivePosts(Array.isArray(data.posts) ? data.posts : []))
+      .catch(() => setLivePosts([]));
+  }, []);
+
+  const stories = useMemo<NewsStory[]>(() => [
+    ...livePosts,
+    ...siteData.news,
+  ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)), [livePosts]);
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Header */}
@@ -34,7 +51,7 @@ export default function NewsPage() {
       {/* News Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {siteData.news.map((item) => (
+          {stories.map((item) => (
             <article
               key={item.id}
               className="flex flex-col bg-neutral-50 border border-neutral-200 hover:border-neutral-400 transition-all hover:shadow-lg overflow-hidden"
@@ -58,7 +75,7 @@ export default function NewsPage() {
 
                 <div className="mt-auto">
                   <Link
-                    href={item.href}
+                    href={newsHref(item)}
                     className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#FF5000] hover:text-black transition-colors"
                   >
                     Read More <ArrowRight className="w-4 h-4" />

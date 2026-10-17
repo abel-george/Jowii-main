@@ -34,6 +34,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html, body { overscroll-behavior: none; }
+body.menu-open { overflow: hidden; }
+button, [role="button"], a { touch-action: manipulation; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+input, textarea, select { font-size: 16px; }
+
 button, [role="button"], a { -webkit-tap-highlight-color: transparent; }
 button, input, select, textarea { font: inherit; }
 ::selection { background: var(--brass); color: var(--white); }
@@ -972,4 +977,3 @@ h2[id] { scroll-margin-top: 110px; }
   .institutional-news__grid { grid-template-columns: 1fr; gap: 36px; }
   .institutional-news__tabs { justify-self: start; }
 }
-
