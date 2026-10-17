@@ -43,7 +43,8 @@ function corridorBody(slug: string) {
 
 export default function SearchPage() {
   const pages: SearchEntry[] = siteData.nav.map((item) => ({ title: item.label, type: 'Website page', href: item.href, text: item.description || '', source: 'Jowih website' }));
+  const archiveDocuments: SearchEntry[] = siteData.documents.map((document) => ({ title: document.title, type: 'Archive document', href: `/documents${document.anchor ? `#${document.anchor}` : ''}`, text: `${document.description} ${document.highlights.join(' ')}`, body: document.highlights.join('\n'), source: document.file }));
   const corridors: SearchEntry[] = siteData.gag.corridors.map((corridor) => ({ title: `${corridor.title} Corridor`, type: 'GAG corridor', href: `/gag/${corridor.slug}`, text: corridor.body, body: corridorBody(corridor.slug), source: 'The GAG initiative .docx' }));
   const frameworks: SearchEntry[] = siteData.gag.frameworks.map((framework) => ({ title: framework.title, type: 'Framework', href: `/framework/${framework.id}`, text: framework.detail, source: 'The GAG initiative .docx' }));
-  return <SearchPortal entries={[...pages, ...corridors, ...frameworks, ...sourceEntries()]} />;
+  return <SearchPortal entries={[...pages, ...archiveDocuments, ...corridors, ...frameworks, ...sourceEntries()]} />;
 }
