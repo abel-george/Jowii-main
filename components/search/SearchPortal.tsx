@@ -42,7 +42,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     const ranked = entries.map((entry) => {
       const title = entry.title.toLowerCase();
       const haystack = `${title} ${entry.type} ${entry.text} ${entry.body || ''}`.toLowerCase();
-      const score = (title === normalized ? 2000 : 0) + (title.includes(normalized) ? 900 : 0) + (haystack.includes(normalized) ? 250 : 0) + terms.reduce((total, term) => total + (title.includes(term) ? 120 : haystack.includes(term) ? 20 : 0), 0);
+      const score = (title === normalized ? 2000 : 0) + (title.includes(normalized) ? 900 : 0) + (haystack.includes(normalized) ? 250 : 0) + (entry.type === 'Document' ? 700 : 0) + terms.reduce((total, term) => total + (title.includes(term) ? 120 : haystack.includes(term) ? 20 : 0), 0);
       return { entry, score, matchesAll: terms.every((term) => haystack.includes(term)) };
     }).filter((result) => result.score > 0 && result.matchesAll).sort((left, right) => right.score - left.score);
     const titleResults = ranked.filter((result) => terms.every((term) => result.entry.title.toLowerCase().includes(term)));

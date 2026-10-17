@@ -4,7 +4,7 @@ import { SearchPortal, type SearchEntry } from '@/components/search/SearchPortal
 import { siteData } from '@/lib/site-data';
 
 const sources = [
-  ['Foundation Constitution', 'foundation.txt', '/documents/read/foundation', 'foundation'],
+  ['Jowih Foundation Constitution', 'foundation.txt', '/documents/read/foundation', 'foundation'],
   ['Governance Register', 'governance.txt', '/documents/read/governance', 'governance'],
   ['ASTA OS Architecture', 'asta-os.txt', '/documents/read/asta-os', 'asta-os'],
   ['Jowih Credits', 'credits.txt', '/documents/read/credits', 'credits'],
