@@ -17,7 +17,9 @@ function parseSections(text: string, documentKey: string): OnlineDocumentSection
   let current: OnlineDocumentSection | null = null;
   text.split(/\r?\n/).forEach((line, index) => {
     const trimmedLine = line.trim();
-    const heading = trimmedLine.match(/^ARTICLE\s+(.+)$/i) || (documentKey !== 'foundation' && trimmedLine.match(/^(?:SECTION|CHAPTER)\s+(.+)$/i));
+    const heading = trimmedLine.match(/^ARTICLE\s+(.+)$/i)
+      || (documentKey !== 'foundation' && trimmedLine.match(/^(?:SECTION|CHAPTER)\s+(.+)$/i))
+      || (documentKey === 'foundation' && trimmedLine.match(/^19\.\d+(?:\.\d+)?\s+(.+)$/));
     if (heading) {
       current = { id: `${documentKey}-${index}`, heading: heading[1], lines: [] };
       sections.push(current);

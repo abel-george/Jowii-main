@@ -2,6 +2,7 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
+import Link from 'next/link';
 
 interface AccordionContextValue {
   openId: string | null;
@@ -81,7 +82,7 @@ export function CollapsibleAccordionItem({
         <Plus aria-hidden="true" className="institutional-expandable__icon" />
       </button>
       <div className="institutional-expandable__panel" hidden={!isOpen}>
-        <div className="institutional-expandable__content">{children}</div>
+        <div className="institutional-expandable__content">{id.startsWith('fw-') ? <Link href={`/framework/${id}`} className="framework-source-link">Open full source page <span aria-hidden="true">↗</span></Link> : null}{children}</div>
       </div>
     </div>
   );

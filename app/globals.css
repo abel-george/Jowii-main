@@ -312,6 +312,8 @@ button, input, select, textarea { font: inherit; }
 .online-reader__section h2 { margin: 0 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: var(--ink); font-family: var(--font-serif); font-size: clamp(25px, 3vw, 36px); font-weight: 400; line-height: 1.15; }
 .online-reader__section p { margin: 0 0 13px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
 .online-reader__empty { padding: 24px; border: 1px solid var(--line); color: var(--muted); }
+.framework-source-link { display: inline-flex; gap: 7px; margin-bottom: 18px; color: var(--green); font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.framework-source-page__content { max-width: 900px; }
 @media (max-width: 760px) { .online-reader__hero { padding: 38px 0 44px; } .online-reader__layout { grid-template-columns: 1fr; gap: 30px; padding-block: 28px 52px; } .online-reader__sidebar { position: static; max-height: none; } .online-reader__sidebar nav { display: none; } }
 .group-structure-map { margin-bottom: 18px; padding: 18px 20px; border: 1px solid var(--line); background: rgba(255, 254, 250, 0.5); }
 .group-structure-map strong { display: block; margin-bottom: 10px; color: var(--green); font-family: var(--font-serif); font-size: 22px; font-weight: 400; }
