@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUpRight, Menu, Search as SearchIcon, X } from 'lucide-react';
+import { ArrowUpRight, Info, Menu, Search as SearchIcon, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { SourceDocument } from '@/components/ui/SourceDocument';
 
@@ -37,6 +37,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const [selectedKey, setSelectedKey] = useState('');
   const [showTypeahead, setShowTypeahead] = useState(false);
   const [mobileResultsOpen, setMobileResultsOpen] = useState(false);
+  const [mobileContextOpen, setMobileContextOpen] = useState(false);
   const articleRef = useRef<HTMLElement>(null);
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
@@ -95,6 +96,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
     setSelectedKey(key);
     setShowTypeahead(false);
     setMobileResultsOpen(false);
+    setMobileContextOpen(false);
     requestAnimationFrame(() => articleRef.current?.scrollTo({ top: 0, behavior: 'smooth' }));
     window.history.replaceState(null, '', `/search?q=${encodeURIComponent(query)}&entry=${encodeURIComponent(key)}`);
   };
@@ -118,10 +120,10 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       <div className="search-portal__landing-heading"><div><p className="document-page__eyebrow">Explore the archive</p><h2>Start with a subject</h2></div><span>{entries.length} indexed pages and source sections</span></div>
       <div className="search-portal__browse">{entries.filter((entry) => entry.type !== 'Source section').slice(0, 12).map((entry) => <Link className="search-browse-card" href={entry.href} key={`${entry.type}-${entry.href}`}><span>{entry.type}</span><strong>{entry.title}</strong><ArrowUpRight size={15} /></Link>)}</div>
     </section> : <section className="search-portal__workspace">
-      <div className="search-portal__mobile-toolbar"><button type="button" onClick={() => setMobileResultsOpen((open) => !open)} aria-expanded={mobileResultsOpen}><span>{mobileResultsOpen ? <X size={17} /> : <Menu size={17} />}</span>{mobileResultsOpen ? 'Close results' : 'Browse results'}<strong>{matches.length}</strong></button></div>
+      <div className="search-portal__mobile-toolbar"><button type="button" onClick={() => { setMobileResultsOpen((open) => !open); setMobileContextOpen(false); }} aria-expanded={mobileResultsOpen}><span>{mobileResultsOpen ? <X size={17} /> : <Menu size={17} />}</span>{mobileResultsOpen ? 'Close results' : 'Browse results'}<strong>{matches.length}</strong></button><button type="button" onClick={() => { setMobileContextOpen((open) => !open); setMobileResultsOpen(false); }} aria-expanded={mobileContextOpen}><span>{mobileContextOpen ? <X size={17} /> : <Info size={17} />}</span>{mobileContextOpen ? 'Close details' : 'Details'}</button></div>{mobileResultsOpen || mobileContextOpen ? <button type="button" className="reader-scrim" aria-label="Close panels" onClick={() => { setMobileResultsOpen(false); setMobileContextOpen(false); }} /> : null}
       <aside className={`search-portal__results-list${mobileResultsOpen ? ' is-open' : ''}`}><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <div className="search-portal__empty"><p>No exact result found.</p>{closeMatches.length ? <><strong>Did you mean:</strong>{closeMatches.map((entry) => <button type="button" className="search-portal__did-you-mean" onClick={() => searchFor(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}>{entry.title}</button>)}</> : <p>Try a broader keyword or a document name.</p>}</div>}</aside>
       <article ref={articleRef} className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <SourceDocument lines={selected.body.split(/\r?\n/).filter(Boolean)} /> : null}</> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
-      <aside className="search-portal__context"><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
+      <aside className={`search-portal__context${mobileContextOpen ? ' is-open' : ''}`}><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
     </section>}
   </main>;
 }

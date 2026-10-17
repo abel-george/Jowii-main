@@ -102,16 +102,6 @@
     "lines": 55
   },
   {
-    "slug": "speech-2",
-    "title": "Speech 2",
-    "source": "speech 2.docx",
-    "sourceType": "DOCX",
-    "textFile": "/documents/archive/speech-2.txt",
-    "media": [],
-    "characters": 24098,
-    "lines": 643
-  },
-  {
     "slug": "the-gag-initiative",
     "title": "The Gag Initiative",
     "source": "The GAG initiative .docx",

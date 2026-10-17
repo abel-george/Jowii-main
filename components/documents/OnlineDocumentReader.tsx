@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, Menu, Search, X } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Info, Menu, Search, X } from 'lucide-react';
 import { SourceDocument } from '@/components/ui/SourceDocument';
 
 export interface OnlineDocumentSection { id: string; heading: string; lines: string[]; }
@@ -13,6 +13,7 @@ export function OnlineDocumentReader({ title, sourceLabel, sections }: { title: 
   const [backHref, setBackHref] = useState('/documents');
   const [backLabel, setBackLabel] = useState('Back to document library');
   const [mobileContentsOpen, setMobileContentsOpen] = useState(false);
+  const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => normalized ? sections.filter((section) => `${section.heading} ${section.lines.join(' ')}`.toLowerCase().includes(normalized)) : sections, [normalized, sections]);
@@ -36,6 +37,7 @@ export function OnlineDocumentReader({ title, sourceLabel, sections }: { title: 
   const select = (id: string) => {
     setSelectedId(id);
     setMobileContentsOpen(false);
+    setMobileDetailsOpen(false);
     window.history.replaceState(null, '', `#${id}`);
     requestAnimationFrame(() => contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' }));
   };
@@ -43,10 +45,10 @@ export function OnlineDocumentReader({ title, sourceLabel, sections }: { title: 
   return <main className="online-reader">
     <header className="online-reader__hero"><div className="document-page__inner"><Link href={backHref} className="document-page__back"><ArrowLeft size={16} /> {backLabel}</Link><p className="document-page__eyebrow">Jowih online archive</p><h1>{title}</h1><p>{sourceLabel} · Select a section to read it in context.</p></div></header>
     <div className="online-reader__layout document-page__inner">
-      <button className="online-reader__mobile-toggle" type="button" onClick={() => setMobileContentsOpen((open) => !open)} aria-expanded={mobileContentsOpen}><span>{mobileContentsOpen ? <X size={17} /> : <Menu size={17} />}</span>{mobileContentsOpen ? 'Close contents' : 'Browse contents'}<strong>{matches.length}</strong></button>
+      <div className="online-reader__mobile-bar"><button className="online-reader__mobile-toggle" type="button" onClick={() => { setMobileContentsOpen((open) => !open); setMobileDetailsOpen(false); }} aria-expanded={mobileContentsOpen}><span>{mobileContentsOpen ? <X size={17} /> : <Menu size={17} />}</span>{mobileContentsOpen ? 'Close contents' : 'Contents'}<strong>{matches.length}</strong></button><button className="online-reader__details-toggle" type="button" onClick={() => { setMobileDetailsOpen((open) => !open); setMobileContentsOpen(false); }} aria-expanded={mobileDetailsOpen}><span>{mobileDetailsOpen ? <X size={17} /> : <Info size={17} />}</span>{mobileDetailsOpen ? 'Close details' : 'Details'}</button></div>{mobileContentsOpen || mobileDetailsOpen ? <button type="button" className="reader-scrim" aria-label="Close panels" onClick={() => { setMobileContentsOpen(false); setMobileDetailsOpen(false); }} /> : null}
       <aside className={`online-reader__sidebar${mobileContentsOpen ? ' is-open' : ''}`}><label className="online-reader__search"><Search size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search this document" aria-label="Search this document" /></label><p className="online-reader__count">{matches.length} of {sections.length} sections</p><nav className={mobileContentsOpen ? 'is-open' : ''} aria-label="Document contents">{matches.map((section, index) => <button className={selected?.id === section.id ? 'is-active' : ''} type="button" onClick={() => select(section.id)} key={section.id}><span>{String(index + 1).padStart(2, '0')}</span>{section.heading}</button>)}</nav></aside>
       <article ref={contentRef} className="online-reader__content">{selected ? <section className="online-reader__section"><p className="online-reader__section-label">{selected.heading}</p><h2>{selected.heading}</h2><SourceDocument lines={selected.lines} /></section> : <p className="online-reader__empty">No matching sections found.</p>}</article>
-      <aside className="online-reader__context"><p className="document-page__eyebrow">Article details</p><h2>{selected?.heading || 'No selection'}</h2><dl><div><dt>Document</dt><dd>{title}</dd></div><div><dt>Sections</dt><dd>{sections.length}</dd></div><div><dt>View</dt><dd>Source text</dd></div></dl>{selected ? <a href={`#${selected.id}`}><ArrowUpRight size={15} /> Copy section link</a> : null}</aside>
+      <aside className={`online-reader__context${mobileDetailsOpen ? ' is-open' : ''}`}><p className="document-page__eyebrow">Article details</p><h2>{selected?.heading || 'No selection'}</h2><dl><div><dt>Document</dt><dd>{title}</dd></div><div><dt>Sections</dt><dd>{sections.length}</dd></div><div><dt>View</dt><dd>Source text</dd></div></dl>{selected ? <a href={`#${selected.id}`}><ArrowUpRight size={15} /> Copy section link</a> : null}</aside>
     </div>
   </main>;
 }
