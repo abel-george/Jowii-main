@@ -12,7 +12,10 @@ export interface SearchEntry {
   text: string;
   body?: string;
   source?: string;
+  parentKey?: string;
 }
+
+function entryKey(entry: SearchEntry) { return `${entry.type}-${entry.href}-${entry.title}`; }
 
 function tokenize(value: string) { return value.toLowerCase().match(/[a-z0-9]{2,}/g) || []; }
 
@@ -46,9 +49,18 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       return { entry, score, matchesAll: terms.every((term) => haystack.includes(term)) };
     }).filter((result) => result.score > 0 && result.matchesAll).sort((left, right) => right.score - left.score);
     const titleResults = ranked.filter((result) => terms.every((term) => result.entry.title.toLowerCase().includes(term)));
-    return (titleResults.length ? titleResults : ranked).map((result) => result.entry).slice(0, 40);
+    const candidates = titleResults.length ? titleResults : ranked;
+    const expanded: SearchEntry[] = [];
+    const seen = new Set<string>();
+    candidates.forEach((result) => {
+      const parent = result.entry.parentKey ? entries.find((entry) => entryKey(entry) === result.entry.parentKey) : undefined;
+      [parent, result.entry].forEach((entry) => {
+        if (entry && !seen.has(entryKey(entry))) { seen.add(entryKey(entry)); expanded.push(entry); }
+      });
+    });
+    return expanded.slice(0, 40);
   }, [entries, normalized]);
-  const selected = matches.find((entry) => `${entry.type}-${entry.href}-${entry.title}` === selectedKey) || matches[0];
+  const selected = matches.find((entry) => entryKey(entry) === selectedKey) || matches[0];
   const suggestions = useMemo(() => {
     if (!selected) return [];
     const words = `${selected.title} ${selected.text}`.toLowerCase().match(/[a-z]{5,}/g) || [];
@@ -72,14 +84,14 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   }, []);
 
   useEffect(() => {
-    if (matches.length && !matches.some((entry) => `${entry.type}-${entry.href}-${entry.title}` === selectedKey)) {
-      setSelectedKey(`${matches[0].type}-${matches[0].href}-${matches[0].title}`);
+    if (matches.length && !matches.some((entry) => entryKey(entry) === selectedKey)) {
+      setSelectedKey(entryKey(matches[0]));
     }
     if (!matches.length) setSelectedKey('');
   }, [matches, selectedKey]);
 
   const choose = (entry: SearchEntry) => {
-    const key = `${entry.type}-${entry.href}-${entry.title}`;
+    const key = entryKey(entry);
     setSelectedKey(key);
     setShowTypeahead(false);
     setMobileResultsOpen(false);
