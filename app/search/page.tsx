@@ -15,18 +15,18 @@ const sources = [
 function sourceEntries(): SearchEntry[] {
   return sources.flatMap(([title, file, href]) => {
     const lines = fs.readFileSync(path.join(process.cwd(), 'public/documents', file), 'utf8').split(/\r?\n/);
-    const entries: SearchEntry[] = [{ title, type: 'Document', href, text: lines.slice(0, 12).join(' ') }];
+    const entries: SearchEntry[] = [{ title, type: 'Document', href, text: lines.slice(0, 12).join(' '), source: file }];
     lines.forEach((line, index) => {
       const trimmed = line.trim();
-      if (/^(ARTICLE|SECTION|CHAPTER)\s+/i.test(trimmed) || (file === 'foundation.txt' && /^19\.\d+\s+/.test(trimmed))) entries.push({ title: trimmed, type: 'Source section', href: `${href}#${file}-${index}`, text: lines.slice(index + 1, index + 5).join(' ') });
+      if (/^(ARTICLE|SECTION|CHAPTER)\s+/i.test(trimmed) || (file === 'foundation.txt' && /^19\.\d+\s+/.test(trimmed))) entries.push({ title: trimmed, type: 'Source section', href: `${href}#${file}-${index}`, text: lines.slice(index + 1, index + 6).join(' '), source: file });
     });
     return entries;
   });
 }
 
 export default function SearchPage() {
-  const pages: SearchEntry[] = siteData.nav.map((item) => ({ title: item.label, type: 'Website page', href: item.href, text: item.description || '' }));
-  const corridors: SearchEntry[] = siteData.gag.corridors.map((corridor) => ({ title: `${corridor.title} Corridor`, type: 'GAG corridor', href: `/gag/${corridor.slug}`, text: corridor.body }));
-  const frameworks: SearchEntry[] = siteData.gag.frameworks.map((framework) => ({ title: framework.title, type: 'Framework', href: `/framework/${framework.id}`, text: framework.detail }));
+  const pages: SearchEntry[] = siteData.nav.map((item) => ({ title: item.label, type: 'Website page', href: item.href, text: item.description || '', source: 'Jowih website' }));
+  const corridors: SearchEntry[] = siteData.gag.corridors.map((corridor) => ({ title: `${corridor.title} Corridor`, type: 'GAG corridor', href: `/gag/${corridor.slug}`, text: corridor.body, source: 'The GAG initiative .docx' }));
+  const frameworks: SearchEntry[] = siteData.gag.frameworks.map((framework) => ({ title: framework.title, type: 'Framework', href: `/framework/${framework.id}`, text: framework.detail, source: 'The GAG initiative .docx' }));
   return <SearchPortal entries={[...pages, ...corridors, ...frameworks, ...sourceEntries()]} />;
 }
