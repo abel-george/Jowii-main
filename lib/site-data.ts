@@ -251,7 +251,7 @@ export const siteData = {
       ]
     },
     {
-      label: 'Group',
+      label: 'Commerce',
       href: '/jowih-group',
       description: 'Jowih Group execution structure and operating companies.',
       children: [
