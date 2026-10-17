@@ -23,8 +23,16 @@ function parseSections(text: string, documentKey: string): OnlineDocumentSection
       || headingText.match(/^\d+(?:\.\d+)+\s+\S.+$/)
       || (headingText.length <= 110 && /^[A-Z0-9][A-Z0-9 &()'./–—-]{8,}$/.test(headingText));
     if (heading) {
-      current = { id: `${documentKey}-${index}`, heading: Array.isArray(heading) ? heading[1] || headingText : headingText, lines: [] };
-      sections.push(current);
+      const value = Array.isArray(heading) ? heading[1] || headingText : headingText;
+      if (current && current.lines.length === 0) {
+        // Consecutive heading lines (a parent heading immediately followed by a
+        // subheading with no body between) merge into one heading, so readers
+        // never land on an empty section.
+        current.heading = `${current.heading} · ${value}`;
+      } else {
+        current = { id: `${documentKey}-${index}`, heading: value, lines: [] };
+        sections.push(current);
+      }
     } else if (trimmedLine && current) {
       current.lines.push(trimmedLine);
     } else if (trimmedLine) {
@@ -32,6 +40,7 @@ function parseSections(text: string, documentKey: string): OnlineDocumentSection
     }
   });
   if (intro.length && sections.length) sections.unshift({ id: `${documentKey}-intro`, heading: 'Introduction', lines: intro });
+  while (sections.length > 1 && !sections[sections.length - 1].lines.length) sections.pop();
   if (!sections.length) return [{ id: `${documentKey}-document`, heading: 'Document', lines: text.split(/\r?\n/).filter(Boolean) }];
   return sections;
 }
