@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, Search as SearchIcon } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import { SourceDocument } from '@/components/ui/SourceDocument';
 
 export interface SearchEntry {
   title: string;
@@ -31,6 +32,7 @@ function editDistance(left: string, right: string) {
 export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const [query, setQuery] = useState('');
   const [selectedKey, setSelectedKey] = useState('');
+  const [showTypeahead, setShowTypeahead] = useState(false);
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
     if (!normalized) return [];
@@ -75,6 +77,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const choose = (entry: SearchEntry) => {
     const key = `${entry.type}-${entry.href}-${entry.title}`;
     setSelectedKey(key);
+    setShowTypeahead(false);
     window.history.replaceState(null, '', `/search?q=${encodeURIComponent(query)}&entry=${encodeURIComponent(key)}`);
   };
   const searchFor = (entry: SearchEntry) => { setQuery(entry.title); setSelectedKey(''); window.history.replaceState(null, '', `/search?q=${encodeURIComponent(entry.title)}`); };
@@ -87,10 +90,10 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       <p>Find a page, framework, corridor, or source section. Select a result to read its focused entry.</p>
       <form className="search-portal__form" onSubmit={(event) => event.preventDefault()}>
         <SearchIcon size={20} aria-hidden="true" />
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Jowih documents and pages" aria-label="Search Jowih documents and pages" />
-        <button type="submit">Search</button>
+        <input value={query} onFocus={() => setShowTypeahead(true)} onChange={(event) => { setQuery(event.target.value); setShowTypeahead(true); }} placeholder="Search Jowih documents and pages" aria-label="Search Jowih documents and pages" />
+        <button type="submit" onClick={() => setShowTypeahead(false)}>Search</button>
       </form>
-      {normalized && matches.length ? <div className="search-portal__typeahead" role="listbox" aria-label="Matching archive entries">{matches.slice(0, 8).map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>)}</div> : null}
+      {showTypeahead && normalized && matches.length ? <div className="search-portal__typeahead" role="listbox" aria-label="Matching archive entries">{matches.slice(0, 8).map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>)}</div> : null}
     </header>
 
     {!normalized ? <section className="search-portal__landing">
@@ -98,7 +101,7 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
       <div className="search-portal__browse">{entries.filter((entry) => entry.type !== 'Source section').slice(0, 12).map((entry) => <Link className="search-browse-card" href={entry.href} key={`${entry.type}-${entry.href}`}><span>{entry.type}</span><strong>{entry.title}</strong><ArrowUpRight size={15} /></Link>)}</div>
     </section> : <section className="search-portal__workspace">
       <aside className="search-portal__results-list"><div className="search-portal__results-heading"><h2>{matches.length} results</h2><span>Choose an entry</span></div>{matches.length ? matches.map((entry) => { const key = `${entry.type}-${entry.href}-${entry.title}`; return <button type="button" className={`search-result${selected && key === selectedKey ? ' is-active' : ''}`} onClick={() => choose(entry)} key={key}><span>{entry.type}</span><strong>{entry.title}</strong><small>{entry.text}</small></button>; }) : <div className="search-portal__empty"><p>No exact result found.</p>{closeMatches.length ? <><strong>Did you mean:</strong>{closeMatches.map((entry) => <button type="button" className="search-portal__did-you-mean" onClick={() => searchFor(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}>{entry.title}</button>)}</> : <p>Try a broader keyword or a document name.</p>}</div>}</aside>
-      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <div className="search-portal__article-body">{selected.body.split(/\r?\n/).filter(Boolean).map((line, index) => <p key={`${index}-${line}`}>{line}</p>)}</div> : null}</> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
+      <article className="search-portal__article">{selected ? <><p className="document-page__eyebrow">{selected.type}</p><h2>{selected.title}</h2><p className="search-portal__lead">{selected.text}</p>{selected.body ? <SourceDocument lines={selected.body.split(/\r?\n/).filter(Boolean)} /> : null}</> : <p className="search-portal__empty">Select a result to read it here.</p>}</article>
       <aside className="search-portal__context"><p className="document-page__eyebrow">About this result</p>{selected ? <><h3>{selected.title}</h3><dl><div><dt>Category</dt><dd>{selected.type}</dd></div><div><dt>Archive</dt><dd>{selected.source || 'Jowih public pages'}</dd></div></dl><div className="search-portal__suggestions"><p className="document-page__eyebrow">Related entries</p>{suggestions.length ? suggestions.map((entry) => <button type="button" onClick={() => choose(entry)} key={`${entry.type}-${entry.href}-${entry.title}`}><span>{entry.type}</span><strong>{entry.title}</strong></button>) : <p>No close matches.</p>}</div></> : <p>Search results will appear here with their source and category.</p>}</aside>
     </section>}
   </main>;
