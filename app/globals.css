@@ -322,7 +322,7 @@ button, input, select, textarea { font: inherit; }
 .online-reader__context dd, .search-portal__context dd { margin: 4px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.45; }
 .online-reader__context a, .search-portal__context a, .search-portal__read { display: inline-flex; align-items: center; gap: 7px; color: var(--green); font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .framework-source-link { display: flex; align-items: center; justify-content: space-between; gap: 7px; width: min(100%, 520px); margin: 0 0 26px; padding: 14px 16px; border: 1px solid var(--green); background: rgba(230, 236, 228, .46); color: var(--green); font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.framework-source-page__content { max-width: 900px; }
+.framework-source-page__content { max-width: 1200px; }.framework-source-page__grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 52px; align-items: start; }.framework-source-page__media { position: sticky; top: 24px; border: 1px solid var(--line); background: var(--white); }.framework-source-page__media img { display: block; width: 100%; height: auto; }.framework-source-page__media p { margin: 0; padding: 12px 14px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .document-library__tabs { display: flex; gap: 8px; margin-bottom: 30px; }
 .document-library__tabs a { padding: 9px 13px; border: 1px solid rgba(255,255,255,.28); color: rgba(255,255,255,.72); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; }
 .document-library__tabs a.is-active, .document-library__tabs a:hover { border-color: var(--brass); color: var(--white); }
@@ -1140,6 +1140,8 @@ main > div > div:first-child[class*="pt-32"] {
   .document-page__hero > .document-page__inner > p:last-child { font-size: 15px; }
   .corridor-page__layout { grid-template-columns: 1fr; gap: 30px; }
   .corridor-page__aside { position: static; order: -1; }
+  .framework-source-page__grid { grid-template-columns: 1fr; gap: 30px; }
+  .framework-source-page__media { position: static; order: -1; }
 }
 
 .document-page h1 {

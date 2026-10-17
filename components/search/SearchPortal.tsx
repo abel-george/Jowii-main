@@ -37,12 +37,14 @@ export function SearchPortal({ entries }: { entries: SearchEntry[] }) {
   const matches = useMemo(() => {
     if (!normalized) return [];
     const terms = tokenize(normalized);
-    return entries.map((entry) => {
+    const ranked = entries.map((entry) => {
       const title = entry.title.toLowerCase();
       const haystack = `${title} ${entry.type} ${entry.text} ${entry.body || ''}`.toLowerCase();
       const score = (title === normalized ? 2000 : 0) + (title.includes(normalized) ? 900 : 0) + (haystack.includes(normalized) ? 250 : 0) + terms.reduce((total, term) => total + (title.includes(term) ? 120 : haystack.includes(term) ? 20 : 0), 0);
       return { entry, score, matchesAll: terms.every((term) => haystack.includes(term)) };
-    }).filter((result) => result.score > 0 && result.matchesAll).sort((left, right) => right.score - left.score).map((result) => result.entry).slice(0, 40);
+    }).filter((result) => result.score > 0 && result.matchesAll).sort((left, right) => right.score - left.score);
+    const titleResults = ranked.filter((result) => terms.every((term) => result.entry.title.toLowerCase().includes(term)));
+    return (titleResults.length ? titleResults : ranked).map((result) => result.entry).slice(0, 40);
   }, [entries, normalized]);
   const selected = matches.find((entry) => `${entry.type}-${entry.href}-${entry.title}` === selectedKey) || matches[0];
   const suggestions = useMemo(() => {

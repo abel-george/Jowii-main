@@ -14,19 +14,25 @@ const sources: Record<string, { title: string; file: string }> = {
 
 function parseSections(text: string, documentKey: string): OnlineDocumentSection[] {
   const sections: OnlineDocumentSection[] = [];
+  const intro: string[] = [];
   let current: OnlineDocumentSection | null = null;
   text.split(/\r?\n/).forEach((line, index) => {
     const trimmedLine = line.trim();
     const heading = trimmedLine.match(/^ARTICLE\s+(.+)$/i)
       || (documentKey !== 'foundation' && trimmedLine.match(/^(?:SECTION|CHAPTER)\s+(.+)$/i))
-      || (documentKey === 'foundation' && trimmedLine.match(/^19\.\d+(?:\.\d+)?\s+(.+)$/));
+      || (documentKey === 'foundation' && trimmedLine.match(/^19\.\d+(?:\.\d+)?\s+(.+)$/))
+      || trimmedLine.match(/^\d+(?:\.\d+)+\s+\S.+$/)
+      || (trimmedLine.length <= 110 && /^[A-Z0-9][A-Z0-9 &()'./–—-]{8,}$/.test(trimmedLine));
     if (heading) {
-      current = { id: `${documentKey}-${index}`, heading: heading[1], lines: [] };
+      current = { id: `${documentKey}-${index}`, heading: Array.isArray(heading) ? heading[1] || trimmedLine : trimmedLine, lines: [] };
       sections.push(current);
     } else if (trimmedLine && current) {
       current.lines.push(trimmedLine);
+    } else if (trimmedLine) {
+      intro.push(trimmedLine);
     }
   });
+  if (intro.length && sections.length) sections.unshift({ id: `${documentKey}-intro`, heading: 'Introduction', lines: intro });
   if (!sections.length) return [{ id: `${documentKey}-document`, heading: 'Document', lines: text.split(/\r?\n/).filter(Boolean) }];
   return sections;
 }

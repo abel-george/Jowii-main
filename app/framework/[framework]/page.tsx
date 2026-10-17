@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { SourceDocument } from '@/components/ui/SourceDocument';
@@ -33,15 +34,36 @@ const aliases: Record<string, string> = {
   'air-jowih': 'fw-13', 'space-capability': 'fw-09', 'exchange-programs': 'fw-05',
 };
 
+const frameworkImages: Record<string, { src: string; alt: string }> = {
+  'fw-01': { src: '/documents/sample%20images/Jowih%20Ecossytem.png', alt: 'Great African Grid ecosystem concept from the source materials' },
+  'fw-02': { src: '/documents/sample%20images/africa.png', alt: 'African continental coordination concept from the source materials' },
+  'fw-03': { src: '/documents/sample%20images/The%20Great%20African%20Grid.png', alt: 'New Dawn City and Great African Grid concept image' },
+  'fw-04': { src: '/documents/sample%20images/jowihCDEs.png', alt: 'Community Development Enterprises concept image' },
+  'fw-05': { src: '/documents/sample%20images/edujowih.png', alt: 'Education and exchange pathway concept image' },
+  'fw-06': { src: '/documents/sample%20images/jowihCDEs.png', alt: 'Community-led development concept image' },
+  'fw-07': { src: '/documents/sample%20images/jowih%20africa%20health%20fund.png', alt: 'Africa Health Fund concept image' },
+  'fw-08': { src: '/documents/sample%20images/corridor%202.png', alt: 'Infrastructure execution corridor concept image' },
+  'fw-09': { src: '/documents/sample%20images/picture5.png', alt: 'African Sovereign Space Capability concept image' },
+  'fw-10': { src: '/documents/sample%20images/jowih%20education%20framework.png', alt: 'Jowih education framework concept image' },
+  'fw-11': { src: '/documents/sample%20images/jowihcrtprogram.png', alt: 'Capsule Rapid Transit concept image' },
+  'fw-12': { src: '/documents/sample%20images/jowih%20healthcare.png', alt: 'Jowih mobile health concept image' },
+  'fw-13': { src: '/documents/sample%20images/airjowih1.png', alt: 'Air Jowih and Airport SEZ concept image' },
+  'fw-14': { src: '/documents/sample%20images/digital%20corridor.png', alt: 'Africa Connect Alliance digital infrastructure concept image' },
+  'fw-15': { src: '/documents/sample%20images/environmental%20framework.png', alt: 'Environmental cleanliness framework concept image' },
+  'fw-16': { src: '/documents/sample%20images/gaminghub.png', alt: 'African animation and gaming hub concept image' },
+};
+
 export function generateStaticParams() { return [...Object.keys(ranges), ...Object.keys(aliases), ...siteData.gag.frameworks.map((framework) => framework.id)].map((framework) => ({ framework })); }
 
 export default function FrameworkSourcePage({ params }: { params: { framework: string } }) {
   const range = ranges[params.framework] || ranges[aliases[params.framework]];
+  const rangeKey = ranges[params.framework] ? params.framework : aliases[params.framework];
   const summary = siteData.gag.frameworks.find((framework) => framework.id === params.framework);
   if (!range && !summary) notFound();
   if (!range && summary) return <main className="document-page framework-source-page min-h-screen"><header className="document-page__hero"><div className="document-page__inner"><Link href="/framework" className="document-page__back"><ArrowLeft size={16} /> Back to frameworks</Link><p className="document-page__eyebrow">Jowih framework</p><h1>{summary.title}</h1><p>{summary.detail}</p></div></header><section className="document-page__body"><div className="document-page__inner framework-source-page__content"><Link href="/search" className="framework-source-link">SEARCH THE ARCHIVE <span aria-hidden="true">↗</span></Link></div></section></main>;
   const startIndex = source.indexOf(range.start);
   const endIndex = source.indexOf(range.end, startIndex + range.start.length);
   const lines = source.slice(startIndex, endIndex === -1 ? source.length : endIndex).split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
-  return <main className="document-page framework-source-page min-h-screen"><header className="document-page__hero"><div className="document-page__inner"><Link href="/framework" className="document-page__back"><ArrowLeft size={16} /> Back to frameworks</Link><p className="document-page__eyebrow">Great African Grid initiative</p><h1>{range.title}</h1></div></header><section className="document-page__body"><div className="document-page__inner framework-source-page__content"><SourceDocument lines={lines} /></div></section></main>;
+  const image = frameworkImages[rangeKey];
+  return <main className="document-page framework-source-page min-h-screen"><header className="document-page__hero"><div className="document-page__inner"><Link href="/framework" className="document-page__back"><ArrowLeft size={16} /> Back to frameworks</Link><p className="document-page__eyebrow">Great African Grid initiative</p><h1>{range.title}</h1></div></header><section className="document-page__body"><div className="document-page__inner framework-source-page__content"><div className="framework-source-page__grid"><div><SourceDocument lines={lines} /></div>{image ? <aside className="framework-source-page__media"><Image src={image.src} alt={image.alt} width={900} height={600} sizes="(max-width: 900px) 100vw, 30vw" /><p>Illustrative source-document media. The framework text remains the authoritative content.</p></aside> : null}</div></div></section></main>;
 }
