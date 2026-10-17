@@ -2,35 +2,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { SearchPortal, type SearchEntry } from '@/components/search/SearchPortal';
 import { siteData } from '@/lib/site-data';
+import { getArchiveDocuments } from '@/lib/archive';
 
-const sources = [
-  ['Jowih Foundation Constitution', 'foundation.txt', '/documents/read/foundation', 'foundation'],
-  ['Governance Register', 'governance.txt', '/documents/read/governance', 'governance'],
-  ['ASTA OS Architecture', 'asta-os.txt', '/documents/read/asta-os', 'asta-os'],
-  ['Jowih Credits', 'credits.txt', '/documents/read/credits', 'credits'],
-  ['Investment Architecture', 'investment-architecture.txt', '/documents/read/investment', 'investment'],
-  ['GAG Initiative', 'gag-initiative.txt', '/documents/read/gag', 'gag'],
-] as const;
-
-function isSourceHeading(line: string, file: string) {
-  const value = line.trim();
+function isSourceHeading(line: string) {
+  const value = line.trim().replace(/^#\s+/, '');
   return /^(ARTICLE|SECTION|CHAPTER)\s+/i.test(value)
     || /^\d+(?:\.\d+)+\s+\S/.test(value)
-    || (file === 'foundation.txt' && /^19\.\d+\s+/.test(value))
     || (/^[A-Z0-9][A-Z0-9 &()'./–—-]{8,}$/.test(value) && value.length <= 110);
 }
 
 function sourceEntries(): SearchEntry[] {
-  return sources.flatMap(([title, file, href, documentKey]) => {
-    const lines = fs.readFileSync(path.join(process.cwd(), 'public/documents', file), 'utf8').split(/\r?\n/);
-    const entries: SearchEntry[] = [{ title, type: 'Document', href, text: lines.slice(0, 12).join(' '), body: lines.slice(0, 60).join('\n'), source: file }];
+  return getArchiveDocuments().flatMap((document) => {
+    const lines = fs.readFileSync(path.join(process.cwd(), 'public', document.textFile), 'utf8').split(/\r?\n/);
+    const href = `/documents/read/${document.slug}`;
+    const entries: SearchEntry[] = [{ title: document.title, type: 'Document', href, text: lines.slice(0, 12).join(' '), body: lines.slice(0, 80).join('\n'), source: document.source }];
     lines.forEach((line, index) => {
       const trimmed = line.trim();
-      const isHeading = isSourceHeading(trimmed, file);
+      const isHeading = isSourceHeading(trimmed);
       if (isHeading) {
-        const nextHeading = lines.slice(index + 1).findIndex((candidate) => isSourceHeading(candidate, file));
+        const nextHeading = lines.slice(index + 1).findIndex((candidate) => isSourceHeading(candidate));
         const end = nextHeading === -1 ? lines.length : index + 1 + nextHeading;
-        entries.push({ title: trimmed, type: 'Source section', href: `${href}#${documentKey}-${index}`, text: lines.slice(index + 1, index + 6).join(' '), body: lines.slice(index + 1, end).join('\n'), source: file });
+        entries.push({ title: `${document.title} · ${trimmed}`, type: 'Source section', href: `${href}#${document.slug}-${index}`, text: lines.slice(index + 1, index + 6).join(' '), body: lines.slice(index + 1, end).join('\n'), source: document.source });
       }
     });
     return entries;

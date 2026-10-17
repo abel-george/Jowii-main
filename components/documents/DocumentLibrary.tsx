@@ -2,10 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Download, FileText, ShieldAlert, BookOpen } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
+import { getArchiveDocuments } from '@/lib/archive';
 import { visualAssets } from '@/lib/visual-assets';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
 
 export function DocumentLibrary() {
+  const archiveDocuments = getArchiveDocuments();
   const onlineDocuments: Record<string, string> = {
     'Jowih Foundation · Draft Constitution': 'foundation',
     'Governance & Appointment Register': 'governance',
@@ -22,7 +24,7 @@ export function DocumentLibrary() {
           <p className="institutional-eyebrow institutional-eyebrow--gold">DOCUMENTS · PUBLIC ARCHIVE</p>
           <h1>Read the proposals at their source.</h1>
           <p>
-            Nine PDFs set out the proposed Foundation, governance, infrastructure, technology and financial architecture.
+            The public archive includes the source papers, complete extracted text, tables, and document media.
             Each summary below identifies what the document covers and what remains prospective.
           </p>
           <div className="document-library__count"><FileText aria-hidden="true" size={17} /> {siteData.documents.length} source documents <span>·</span> Original PDFs</div>
@@ -70,6 +72,21 @@ export function DocumentLibrary() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="document-library__list document-library__archive-list" aria-labelledby="complete-archive-title">
+        <div className="document-container">
+          <div className="institutional-section-heading institutional-section-heading--split">
+            <div>
+              <p className="institutional-eyebrow">COMPLETE TEXT ARCHIVE</p>
+              <h2 id="complete-archive-title">Every indexed source, in full.</h2>
+            </div>
+            <p>{archiveDocuments.length} source documents are available as searchable online text. Tables and embedded source images are retained where present.</p>
+          </div>
+          <div className="online-index__grid">
+            {archiveDocuments.map((document) => <Link className="online-index__card" href={`/documents/read/${document.slug}`} key={document.slug}><BookOpen aria-hidden="true" size={20} /><strong>{document.title}</strong><span>{document.sourceType} · {document.lines.toLocaleString()} lines <ArrowUpRight aria-hidden="true" size={14} /></span></Link>)}
+          </div>
         </div>
       </section>
 
