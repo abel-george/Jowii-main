@@ -1,9 +1,14 @@
 import { deliverToIntegration, getIntegrationError, isValidEmail, readText } from '@/lib/server-integrations';
+import { contentLengthWithin, rateLimit, sameOrigin, securityDenied } from '@/lib/request-security';
 
 const allowedAmounts = new Set([10, 25, 50, 100, 250, 500, 1000]);
 const allowedCurrencies = new Set(['USD', 'KES', 'GBP', 'EUR', 'CAD', 'AUD']);
 
 export async function POST(request: Request) {
+  const limited = rateLimit(request, 'donations', 5, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
+  if (!contentLengthWithin(request, 16 * 1024)) return Response.json({ success: false, message: 'Request is too large.', code: 'too_large' }, { status: 413 });
   let body: Record<string, unknown>;
   try {
     body = await request.json();

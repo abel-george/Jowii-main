@@ -1,6 +1,7 @@
 import { list, put } from '@vercel/blob';
 import { randomUUID } from 'crypto';
 import { adminTokenConfigured, isAuthorized } from '@/lib/admin-auth';
+import { contentLengthWithin, rateLimit, sameOrigin, securityDenied } from '@/lib/request-security';
 
 // News/announcements store backed by a single JSON document in Vercel Blob.
 // GET is public (used by the homepage Latest section); POST/PUT/DELETE require
@@ -84,6 +85,10 @@ export async function GET() {
 
 // Admin: create a post.
 export async function POST(request: Request) {
+  const limited = rateLimit(request, 'admin-news-write', 30, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
+  if (!contentLengthWithin(request, 128 * 1024)) return Response.json({ success: false, message: 'Request is too large.', code: 'too_large' }, { status: 413, headers: noStore });
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -154,6 +159,10 @@ export async function POST(request: Request) {
 
 // Admin: update an existing post.
 export async function PUT(request: Request) {
+  const limited = rateLimit(request, 'admin-news-write', 30, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
+  if (!contentLengthWithin(request, 128 * 1024)) return Response.json({ success: false, message: 'Request is too large.', code: 'too_large' }, { status: 413, headers: noStore });
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
 
@@ -211,6 +220,9 @@ export async function PUT(request: Request) {
 
 // Admin: delete a post.
 export async function DELETE(request: Request) {
+  const limited = rateLimit(request, 'admin-news-write', 30, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
   const { searchParams } = new URL(request.url);

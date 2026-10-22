@@ -5,7 +5,7 @@
 // There is no server-generated token: you invent a long random string, store it
 // as the env var, and enter the same string on the admin pages.
 export function adminTokenConfigured(): boolean {
-  return Boolean(process.env.ADMIN_UPLOAD_TOKEN);
+  return Boolean(process.env.ADMIN_UPLOAD_TOKEN && process.env.ADMIN_UPLOAD_TOKEN.length >= 32);
 }
 
 export function isAuthorized(request: Request): boolean {
@@ -18,5 +18,6 @@ export function isAuthorized(request: Request): boolean {
   const expected = Buffer.from(adminToken);
   const provided = Buffer.from(token || '');
   if (expected.length !== provided.length) return false;
-  return Buffer.compare(expected, provided) === 0;
+  return timingSafeEqual(expected, provided);
 }
+import { timingSafeEqual } from 'node:crypto';

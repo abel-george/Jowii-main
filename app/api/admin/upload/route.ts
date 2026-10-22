@@ -1,6 +1,7 @@
 import { put, del, list } from '@vercel/blob';
 import { randomUUID } from 'crypto';
 import { adminTokenConfigured, isAuthorized } from '@/lib/admin-auth';
+import { contentLengthWithin, rateLimit, sameOrigin, securityDenied } from '@/lib/request-security';
 
 // Admin-only media upload endpoint, backed by Vercel Blob.
 //
@@ -20,6 +21,19 @@ const ALLOWED_TYPES = new Set([
   'video/webm',
   'video/ogg',
 ]);
+
+function matchesDeclaredType(type: string, bytes: Uint8Array): boolean {
+  const startsWith = (...values: number[]) => values.every((value, index) => bytes[index] === value);
+  if (type === 'image/png') return startsWith(0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a);
+  if (type === 'image/jpeg') return startsWith(0xff, 0xd8, 0xff);
+  if (type === 'image/gif') return new TextDecoder().decode(bytes.slice(0, 6)) === 'GIF8';
+  if (type === 'image/webp') return new TextDecoder().decode(bytes.slice(0, 4)) === 'RIFF' && new TextDecoder().decode(bytes.slice(8, 12)) === 'WEBP';
+  if (type === 'image/avif') return new TextDecoder().decode(bytes.slice(4, 8)) === 'ftyp';
+  if (type === 'video/mp4') return new TextDecoder().decode(bytes.slice(4, 8)) === 'ftyp';
+  if (type === 'video/webm') return startsWith(0x1a, 0x45, 0xdf, 0xa3);
+  if (type === 'video/ogg') return new TextDecoder().decode(bytes.slice(0, 4)) === 'OggS';
+  return false;
+}
 
 function denyNotConfigured() {
   return Response.json(
@@ -41,6 +55,10 @@ function denyUnauthorized() {
 }
 
 export async function POST(request: Request) {
+  const limited = rateLimit(request, 'admin-upload', 20, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
+  if (!contentLengthWithin(request, MAX_BYTES + 1024 * 1024)) return Response.json({ success: false, message: 'Request is too large.', code: 'too_large' }, { status: 413, headers: { 'cache-control': 'no-store' } });
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -80,6 +98,14 @@ export async function POST(request: Request) {
     );
   }
 
+  const fileBytes = new Uint8Array(await file.slice(0, 16).arrayBuffer());
+  if (!matchesDeclaredType(file.type, fileBytes)) {
+    return Response.json(
+      { success: false, message: 'The file content does not match its declared media type.', code: 'invalid_content' },
+      { status: 415, headers: { 'cache-control': 'no-store' } },
+    );
+  }
+
   const ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '');
   const pathname = `uploads/${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
 
@@ -105,6 +131,9 @@ export async function POST(request: Request) {
 
 // List uploaded blobs (admin only) — used by the admin gallery.
 export async function GET(request: Request) {
+  const limited = rateLimit(request, 'admin-upload-list', 30, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -130,6 +159,9 @@ export async function GET(request: Request) {
 
 // Delete an uploaded blob (admin only).
 export async function DELETE(request: Request) {
+  const limited = rateLimit(request, 'admin-upload-delete', 20, 10 * 60 * 1000);
+  if (limited) return limited;
+  if (!sameOrigin(request)) return securityDenied();
   if (!adminTokenConfigured()) return denyNotConfigured();
   if (!isAuthorized(request)) return denyUnauthorized();
   const { searchParams } = new URL(request.url);
