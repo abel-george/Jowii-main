@@ -813,7 +813,7 @@ export const siteData = {
   socialMedia: [
     { platform: 'X', label: 'X (Twitter)', href: 'https://x.com/jowihafrica', icon: 'twitter' },
     { platform: 'Facebook', label: 'Facebook', href: 'https://facebook.com/jowihafrica', icon: 'facebook' },
-    { platform: 'LinkedIn', label: 'LinkedIn', href: 'https://linkedin.com/company/jowihafrica', icon: 'linkedin' },
+    { platform: 'LinkedIn', label: 'LinkedIn', href: 'https://www.linkedin.com/in/jowihafrica', icon: 'linkedin' },
     { platform: 'YouTube', label: 'YouTube', href: 'https://youtube.com/@jowihafrica', icon: 'youtube' },
     { platform: 'Instagram', label: 'Instagram', href: 'https://instagram.com/jowihafrica', icon: 'instagram' },
   ],
