@@ -13,7 +13,9 @@ The app runs at `http://localhost:3000` by default.
 
 ## Form Providers
 
-Server-side Route Handlers send waitlist, newsletter and contact submissions to configured endpoints. Copy `.env.example` to `.env.local` and configure the relevant provider URL and optional API key. Provider endpoints receive a JSON `POST` with a `formType` field and should return JSON such as `{"success":true,"referenceId":"..."}`. Google Apps Script web apps can be used through `GOOGLE_APPS_SCRIPT_URL` when they accept JSON and return JSON.
+Server-side Route Handlers send newsletter and contact submissions to configured endpoints. Create `.env.local` and configure the relevant provider URL and optional API key. Provider endpoints receive a JSON `POST` with a `formType` field and should return JSON such as `{"success":true,"referenceId":"..."}`. Google Apps Script web apps can be used through `GOOGLE_APPS_SCRIPT_URL` when they accept JSON and return JSON.
+
+Ticket booking and waitlist pages and their submission endpoints have been removed. Partnership and developer community pages link directly to the ASTA OS Discord; those pages do not collect personal details or submit applications to Google Sheets.
 
 With no provider configured, the APIs return an explicit unavailable response. They do not store submissions in browser storage or report fabricated success.
 

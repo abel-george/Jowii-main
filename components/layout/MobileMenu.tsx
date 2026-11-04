@@ -22,8 +22,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { label: 'Frameworks', href: '/framework' },
     { label: 'Horizon 2045', href: '/horizon-2045' },
     { label: 'Jowih Credits', href: '/credits' },
-    { label: 'Join the Waitlist', href: '/waitlist', highlight: true },
-    { label: 'Launch Tickets', href: '/ticket' },
     { label: 'Become a Partner', href: '/partner' },
     { label: 'Investor Briefing', href: '/investor' },
     { label: 'Support / Donate', href: '/donate' },
@@ -86,9 +84,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <Link
                     href={route.href}
                     onClick={onClose}
-                    className={`group flex items-center justify-between py-2 text-xl sm:text-2xl font-bold tracking-tight hover:text-[#FF5000] transition-colors border-b border-white/5 ${
-                      route.highlight ? 'text-[#FF5000]' : 'text-neutral-200'
-                    }`}
+                    className="group flex items-center justify-between py-2 text-xl sm:text-2xl font-bold tracking-tight text-neutral-200 hover:text-[#FF5000] transition-colors border-b border-white/5"
                   >
                     <span>{route.label}</span>
                     <ArrowUpRight className="w-5 h-5 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />

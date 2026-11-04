@@ -1318,10 +1318,10 @@ export default function GovernancePage() {
                     Become Partner
                   </Link>
                   <Link
-                    href="/waitlist"
+                    href="/comrades"
                     className="block w-full py-2 px-4 text-center text-sm font-mono font-bold uppercase tracking-wider border border-white hover:bg-white hover:text-black transition-colors"
                   >
-                    Join Waitlist
+                    Join the Community
                   </Link>
                   <Link
                     href="/donate"

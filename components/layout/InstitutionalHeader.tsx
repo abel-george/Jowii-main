@@ -70,12 +70,6 @@ export function InstitutionalHeader() {
               <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/donate">
                 Support
               </Link>
-              <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/ticket">
-                Book Ticket
-              </Link>
-              <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/waitlist">
-                Join Waitlist
-              </Link>
               <Link
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-black text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#1eb257] transition-colors"
                 href={siteData.config.whatsappCommunity}
@@ -178,12 +172,6 @@ export function InstitutionalHeader() {
             <div className="mt-4 space-y-2">
               <Link href="/donate" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
                 Support
-              </Link>
-              <Link href="/ticket" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
-                Book Ticket
-              </Link>
-              <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)} className="block w-full py-2 text-center bg-black text-white text-xs font-mono font-bold uppercase">
-                Join Waitlist
               </Link>
               <Link
                 href={siteData.config.whatsappCommunity}

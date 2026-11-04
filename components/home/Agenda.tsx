@@ -92,7 +92,7 @@ export function Agenda() {
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-[#FF5000] shrink-0" />
             <span>
-              All registered ticket holders & livestream viewers receive full session recordings post-event.
+              Registered participants and livestream viewers can access session recordings after the event.
             </span>
           </div>
           <span className="font-bold uppercase tracking-wider text-black">

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
-import { subscribeToNewsletter } from '@/lib/waitlist';
+import { subscribeToNewsletter } from '@/lib/form-submissions';
 
 export function Newsletter() {
   const [formData, setFormData] = useState({

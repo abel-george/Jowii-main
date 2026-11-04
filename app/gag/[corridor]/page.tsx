@@ -19,12 +19,13 @@ export function generateStaticParams() {
   return Object.keys(corridorRanges).map((corridor) => ({ corridor }));
 }
 
-export default async function CorridorPage({ params }: { params: { corridor: string } }) {
-  const corridor = corridorRanges[params.corridor];
+export default async function CorridorPage({ params }: { params: Promise<{ corridor: string }> }) {
+  const { corridor: corridorSlug } = await params;
+  const corridor = corridorRanges[corridorSlug];
   if (!corridor) notFound();
 
   const lines = getGagSection(corridor.start, corridor.end);
-  const image = corridorImages[params.corridor];
+  const image = corridorImages[corridorSlug];
 
   return (
     <main className="document-page corridor-page min-h-screen">

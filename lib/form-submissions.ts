@@ -1,35 +1,9 @@
-export interface WaitlistFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  organisation: string;
-  role: string;
-  country: string;
-  interestCategory: string;
-  notes?: string;
-}
-
-export interface WaitlistResponse {
+export interface FormResponse {
   success: boolean;
   message: string;
   referenceId?: string;
   timestamp?: string;
 }
-
-export const INTEREST_OPTIONS = [
-  'Founder / Builder',
-  'Future capital architecture inquiry',
-  'Startup Team',
-  'Corporate Enterprise',
-  'Government & Policy Maker',
-  'Student / Academic Researcher',
-  'Developer / Engineer',
-  'Delivery & Infrastructure Partner',
-  'Media & Storyteller',
-  'Diaspora Member',
-  'Other',
-];
 
 async function postForm<T>(endpoint: string, data: unknown): Promise<T> {
   const response = await fetch(endpoint, {
@@ -45,28 +19,15 @@ async function postForm<T>(endpoint: string, data: unknown): Promise<T> {
   return result as T;
 }
 
-export async function submitWaitlist(data: WaitlistFormData): Promise<WaitlistResponse> {
-  if (!data.email || !data.firstName || !data.lastName || !data.organisation) {
-    throw new Error('Please fill out all required fields.');
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(data.email)) {
-    throw new Error('Please provide a valid email address.');
-  }
-
-  return postForm<WaitlistResponse>('/api/waitlist', data);
-}
-
 export async function subscribeToNewsletter(data: {
   firstName: string;
   lastName: string;
   email: string;
-}): Promise<WaitlistResponse> {
+}): Promise<FormResponse> {
   if (!data.firstName.trim() || !data.lastName.trim() || !data.email.trim()) {
     throw new Error('Please fill out all required fields.');
   }
-  return postForm<WaitlistResponse>('/api/newsletter', data);
+  return postForm<FormResponse>('/api/newsletter', data);
 }
 
 export interface ContactFormData {
@@ -76,12 +37,12 @@ export interface ContactFormData {
   message: string;
 }
 
-export async function submitContactRequest(data: ContactFormData): Promise<WaitlistResponse> {
+export async function submitContactRequest(data: ContactFormData): Promise<FormResponse> {
   if (!data.name || !data.email || !data.message) {
     throw new Error('Please fill out all fields.');
   }
 
-  return postForm<WaitlistResponse>('/api/contact', data);
+  return postForm<FormResponse>('/api/contact', data);
 }
 
 export interface DonationIntentData {

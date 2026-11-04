@@ -50,8 +50,9 @@ export function generateStaticParams() {
   return [...new Set(slugs)].map((document) => ({ document }));
 }
 
-export default function OnlineDocumentPage({ params }: { params: { document: string } }) {
-  const document = getArchiveDocument(aliases[params.document] || params.document);
+export default async function OnlineDocumentPage({ params }: { params: Promise<{ document: string }> }) {
+  const { document: documentSlug } = await params;
+  const document = getArchiveDocument(aliases[documentSlug] || documentSlug);
   if (!document) notFound();
   const text = readArchiveDocument(document);
   return <OnlineDocumentReader title={document.title} sourceLabel={`${document.sourceType} source: ${document.source}`} sections={parseSections(text, document.slug)} />;

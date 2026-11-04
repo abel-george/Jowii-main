@@ -132,11 +132,11 @@ export default function WorkWithUsPage() {
               Become Partner <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/waitlist"
+              href="/partner/community"
               className="inline-flex items-center gap-2 px-8 py-3 text-sm font-mono font-bold uppercase tracking-wider border transition-colors"
               style={{ borderColor: 'var(--ink)', color: 'var(--ink)' }}
             >
-              Join Waitlist <ArrowRight className="w-4 h-4" />
+              Join the Community <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

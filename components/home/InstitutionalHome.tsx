@@ -30,6 +30,7 @@ import { InstitutionalNews } from '@/components/home/InstitutionalNews';
 import { InstitutionalExpandable, type ExpandableItem } from '@/components/ui/InstitutionalExpandable';
 import { InstitutionalHeroSlideshow } from '@/components/home/InstitutionalHeroSlideshow';
 import { LightboxImage } from '@/components/ui/ImageLightbox';
+import { siteData } from '@/lib/site-data';
 
 const pillars = [
   {
@@ -329,13 +330,13 @@ const priorityAreas: ExpandableItem[] = [
     body: (
       <>
         <p>
-          ASTA OS is the shared technical infrastructure on which the first-party services operate — Dotkom
-          Messenger, Dotkom Marketplace, Asta Wallet, Dotkom Social, Asta Store and Asta Search — and the same
-          infrastructure made available to authorised external developers.
+          ASTA OS is being researched as shared technical infrastructure for future first-party services and
+          authorised external applications. The Super App is a first-party showcase of what ASTA could enable,
+          not the foundation of ASTA OS.
         </p>
         <p>
-          The Super App is one expression of ASTA OS, not the whole of it. It functions alongside a wider digital and
-          physical ecosystem, and remains optional rather than the only entry point.
+          ASTA OS is architected independently. The ASTA Super App itself is intended to be engineered as an
+          application operating on ASTA OS, alongside other possible applications and interfaces.
         </p>
       </>
     ),
@@ -1269,7 +1270,7 @@ export function InstitutionalHome() {
         <div className="institutional-container institutional-digital">
           <div className="institutional-digital__copy">
             <p className="institutional-eyebrow institutional-eyebrow--gold">07 / DIGITAL INFRASTRUCTURE</p>
-            <h2>ASTA OS is the infrastructure beneath the applications.</h2>
+            <h2>ASTA OS is being researched as infrastructure beneath applications.</h2>
             <p>
               ASTA is designed as an interoperability layer for identity, trust, communication, commerce, payments, mobility,
               logistics, data and developer services. The super app is one proposed interface, not the whole system.
@@ -1311,7 +1312,7 @@ export function InstitutionalHome() {
                 }}
               />
               <p className="absolute bottom-2.5 sm:bottom-3 right-4 sm:right-6 text-[9px] sm:text-[10px] font-mono tracking-wider uppercase text-white/70 z-10 pointer-events-none block">
-                ASTA SUPER APP EXISTING MINIMUM VIABLE PRODUCT
+                ILLUSTRATIVE SUPER APP CONCEPT · NOT ASTA OS
               </p>
             </div>
 
@@ -1323,63 +1324,31 @@ export function InstitutionalHome() {
                     BRAND · DOTKOM
                   </span>
                   <span className="text-xs font-mono font-bold tracking-widest uppercase text-white/60">
-                    CONSUMER INTERFACE · FIRST-PARTY ENTRY POINT
+                    VISION SHOWCASE · FIRST-PARTY APPLICATION CONCEPT
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-4xl uppercase tracking-tight" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-                  Asta Super App
+                  ASTA Super App Vision Showcase
                 </h3>
               </div>
 
               <div className="p-5 sm:p-6 border border-emerald-500/20 bg-emerald-950/20 space-y-3">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Status: Minimum Viable Product (MVP) Already Exists
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  First-party vision showcase
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
-                  The Asta Super App is the flagship consumer interface to Asta OS. It is an optional unified entry point, not the only entry point. The Super App Minimum Viable Product (MVP) already exists. Through the Super App, users access the principal first-party services: Dotkom Messenger for communication and business interaction, Dotkom Marketplace for commerce and logistics, Asta Wallet for partnered financial access and payments, Dotkom Social Media for content and community, Asta Store for application and service distribution, and Asta Search for information and service discovery. These services operate on Asta OS infrastructure, the same infrastructure made available to authorized external applications. The Super App is one expression of Asta OS, not the whole of it, because Asta OS also functions through wider digital and physical ecosystem . Within the Super App&apos;s internal ecosystem, the consumer-facing brand is Dotkom from back golden days .
+                  The ASTA Super App is a first-party showcase of what ASTA could enable, not the foundation of ASTA OS. Its product logic and lessons may inform future first-party applications where useful, but ASTA OS is architected independently. The ASTA Super App itself is intended to be engineered as an application operating on ASTA OS.
                 </p>
                 <p className="text-xs sm:text-sm font-mono text-emerald-300/90 pt-2 border-t border-emerald-500/20">
-                  The Super App MVP already exists as an operational build of the Dotkom interface.
-                </p>
-              </div>
-
-              <div className="p-5 sm:p-6 border border-amber-500/20 bg-amber-950/20 space-y-3">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-amber-500/20 text-amber-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                  Live Demonstration · Availability Notice
-                </div>
-                <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
-                  Because the Super App MVP is built on a large containerised architecture — dozens of independent
-                  services including the API gateway, authentication, messaging, marketplace, wallet, feeds, media
-                  processing, search, moderation and the supporting data layer — it is too resource-intensive to run
-                  continuously on free-tier hosting. It is therefore demonstrated through a live link generated on an
-                  occasional, on-demand basis rather than hosted as a permanent public deployment.
-                </p>
-                <p className="text-sm sm:text-base leading-relaxed text-white/90 font-sans">
-                  This is a working MVP shown to evidence that the architecture is achievable. It is not the finished
-                  product. Certain areas remain incomplete or under active development, and full production hardening,
-                  security review, load testing and completion of the wider feature set are reserved for the engineering
-                  team to be appointed at full launch. Viewing is by demonstration link; refresh access is provided
-                  while a session is live.
-                </p>
-                <p className="text-xs sm:text-sm font-mono text-amber-300/90 pt-2 border-t border-amber-500/20">
-                  Demonstration link (valid while the session is hosted):{" "}
-                  <a
-                    href="https://craig-raised-potatoes-favorite.trycloudflare.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-amber-200 break-all"
-                  >
-                    craig-raised-potatoes-favorite.trycloudflare.com
-                  </a>
+                  These images illustrate a product vision; they do not represent ASTA OS or prove deployed interoperability.
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
                 <div className="flex items-center gap-2 text-xs font-mono text-white/60">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>One expression of ASTA OS · Wider digital and physical ecosystem</span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  <span>Concept showcase · independently architected from ASTA OS</span>
                 </div>
                 <Link href="/ecosystem#super-app" className="institutional-text-link">
                   View Super App Architecture <ArrowRight aria-hidden="true" size={15} />
@@ -1434,7 +1403,7 @@ export function InstitutionalHome() {
           <div><p className="institutional-eyebrow">READ THE SOURCE MATERIAL</p><h2>Review the proposals in their original form.</h2></div>
           <div className="institutional-cta-row__actions">
             <Link className="institutional-button institutional-button--dark" href="/documents">Institutional archive <ArrowUpRight aria-hidden="true" size={17} /></Link>
-            <Link className="institutional-button institutional-button--light" href="/waitlist">Receive updates <ArrowRight aria-hidden="true" size={17} /></Link>
+            <Link className="institutional-button institutional-button--light" href={siteData.config.discordCommunity} target="_blank" rel="noopener noreferrer">Join ASTA OS on Discord <ArrowRight aria-hidden="true" size={17} /></Link>
           </div>
         </div>
       </section>

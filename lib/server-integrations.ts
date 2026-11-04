@@ -1,4 +1,4 @@
-export type IntegrationName = 'waitlist' | 'newsletter' | 'contact' | 'donations' | 'partners';
+export type IntegrationName = 'newsletter' | 'contact' | 'donations';
 
 export interface IntegrationReceipt {
   referenceId?: string;
@@ -17,10 +17,6 @@ export class IntegrationError extends Error {
 }
 
 const integrationConfig: Record<IntegrationName, { url: string | undefined; key: string | undefined }> = {
-  waitlist: {
-    url: process.env.WAITLIST_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
-    key: process.env.WAITLIST_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
-  },
   newsletter: {
     url: process.env.NEWSLETTER_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
     key: process.env.NEWSLETTER_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
@@ -28,10 +24,6 @@ const integrationConfig: Record<IntegrationName, { url: string | undefined; key:
   contact: {
     url: process.env.CONTACT_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
     key: process.env.CONTACT_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
-  },
-  partners: {
-    url: process.env.PARTNERS_API_URL || process.env.GOOGLE_APPS_SCRIPT_URL,
-    key: process.env.PARTNERS_API_KEY || process.env.GOOGLE_APPS_SCRIPT_API_KEY,
   },
   donations: {
     url: process.env.DONATION_API_URL,
