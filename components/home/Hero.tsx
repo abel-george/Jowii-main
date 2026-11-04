@@ -69,22 +69,13 @@ export function Hero() {
           {/* Action CTAs */}
           <div className="flex flex-wrap gap-3 sm:gap-4 mb-10">
             <Button
-              href="/waitlist"
+              href={siteData.config.discordCommunity}
               variant="primary"
               size="lg"
               icon="arrow"
               className="text-xs tracking-widest font-black"
             >
-              Join the Waitlist
-            </Button>
-            <Button
-              href="/ticket"
-              variant="light"
-              size="lg"
-              icon="ticket"
-              className="text-xs tracking-widest font-black"
-            >
-              Book a Ticket
+              Join ASTA OS on Discord
             </Button>
             <Button
               href="/partner"

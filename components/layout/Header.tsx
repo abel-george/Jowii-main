@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
 import { MobileMenu } from './MobileMenu';
-import { Button } from '@/components/ui/Button';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -89,37 +88,10 @@ export function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-2.5 pl-2 border-l border-white/10 shrink-0">
-              <Button
-                href="/waitlist"
-                variant="primary"
-                size="sm"
-                icon="arrow"
-                className="hidden xl:inline-flex"
-              >
-                Join Waitlist
-              </Button>
-              <Button
-                href="/ticket"
-                variant="light"
-                size="sm"
-                icon="ticket"
-              >
-                Get Ticket
-              </Button>
-            </div>
           </div>
 
           {/* Mobile Right Controls */}
           <div className="flex items-center gap-2.5 md:hidden">
-            <Button
-              href="/waitlist"
-              variant="primary"
-              size="sm"
-              className="text-[10px] px-3 py-2 min-h-0"
-            >
-              Waitlist
-            </Button>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}

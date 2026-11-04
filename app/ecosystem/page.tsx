@@ -30,7 +30,7 @@ export default function EcosystemPage() {
             {ecosystem.title}
           </h1>
           <p className="text-base sm:text-xl max-w-3xl mt-6 leading-relaxed" style={{ color: 'rgba(255, 254, 250, 0.75)' }}>
-            {ecosystem.lead} These services and interfaces describe the technical architecture and operating rails.
+            {ecosystem.lead} The architecture and experiences described here are proposals and vision concepts, not claims of deployed capability.
           </p>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function EcosystemPage() {
           </div>
         </section>
 
-        {/* Asta Super App Hero Section (Dotkom Interface) */}
+        {/* First-party Super App vision showcase */}
         <section id="super-app" className="space-y-8">
           {/* Hero Image Banner - Full Width */}
           <div
@@ -72,7 +72,7 @@ export default function EcosystemPage() {
           >
             <Image
               src={ecosystem.asta.superApp.image}
-              alt="Dotkom — Flagship Consumer Interface for Asta OS"
+              alt="Illustrative Dotkom Super App concept for a possible first-party application"
               fill
               priority
               sizes="100vw"
@@ -99,17 +99,17 @@ export default function EcosystemPage() {
                 {ecosystem.asta.superApp.title}
               </h2>
 
-              {/* MVP Status Box */}
+              {/* Charter-aligned distinction between the showcase and ASTA OS */}
               <div className="p-6 sm:p-8 border-2 border-black bg-neutral-50 space-y-3">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-white font-mono text-[11px] font-semibold uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                  Status: Minimum Viable Product (MVP) Already Exists
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  First-party vision showcase · not ASTA OS
                 </div>
                 <p className="text-base sm:text-lg leading-relaxed text-black font-sans">
                   {ecosystem.asta.superApp.message}
                 </p>
                 <p className="text-xs sm:text-sm font-mono text-neutral-700 pt-2 border-t border-neutral-300">
-                  The Super App MVP already exists as an operational build of the Dotkom interface.
+                  This showcase does not demonstrate deployed interoperability or a functioning ASTA OS.
                 </p>
               </div>
             </div>
@@ -118,10 +118,10 @@ export default function EcosystemPage() {
             <div className="space-y-4 pt-2">
               <div className="flex items-center justify-between">
                 <h3 className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-black">
-                  Principal First-Party Services on ASTA OS
+                  Illustrative First-Party Experience Concepts
                 </h3>
                 <span className="text-[11px] font-mono text-neutral-500">
-                  Operates on Shared ASTA Rails
+                  Vision concepts · not deployed services
                 </span>
               </div>
 
@@ -135,7 +135,7 @@ export default function EcosystemPage() {
                       <div className="flex items-center justify-between mb-1.5">
                         <h4 className="text-xs font-bold uppercase tracking-wide text-black">{svc.name}</h4>
                         <span className="text-[9px] font-mono px-2 py-0.5 bg-neutral-100 text-black font-semibold uppercase">
-                          First-Party
+                          Concept
                         </span>
                       </div>
                       <p className="text-xs font-semibold mb-2 text-black">{svc.role}</p>
@@ -150,7 +150,7 @@ export default function EcosystemPage() {
             <div className="pt-6 border-t border-neutral-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-neutral-600">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-black" />
-                <span>Super App is one expression of ASTA OS · Functions alongside wider physical & digital systems</span>
+                <span>ASTA OS is architected independently · the app is intended to operate on ASTA OS</span>
               </div>
               <div className="text-neutral-500">
                 Consumer-facing brand: <strong className="text-neutral-900">Dotkom from back golden days</strong>
@@ -159,17 +159,17 @@ export default function EcosystemPage() {
           </div>
         </section>
 
-        {/* Super App Sample Screenshots */}
+        {/* Super App vision concept images */}
         <section className="space-y-6">
           <div className="max-w-3xl space-y-3">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
-              VISUAL PROOF
+              CONCEPT IMAGES
             </span>
             <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-              Super App Sample Screenshots
+              Super App Vision Concepts
             </h2>
             <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
-              Live screenshots from the operational Dotkom interface demonstrating the Super App MVP functionality across all integrated services.
+              Illustrative screens and interface experiments that help communicate a possible first-party product vision. They are not evidence of ASTA OS or deployed interoperability.
             </p>
           </div>
 
@@ -216,14 +216,13 @@ export default function EcosystemPage() {
         <section id="super-app-mobile" className="space-y-6">
           <div className="max-w-3xl space-y-3">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-black">
-              MOBILE-FIRST INTERFACE
+              MOBILE CONCEPTS
             </span>
             <h2 className="text-3xl sm:text-4xl uppercase tracking-tight text-black" style={{ fontFamily: 'var(--font-serif)', fontWeight: 400 }}>
-              Super App on Mobile
+              Super App Mobile Concepts
             </h2>
             <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
-              Portrait captures from the mobile-first build of the Dotkom interface, showing the Super App MVP as it runs
-              on a phone across messaging, marketplace, wallet and social surfaces.
+              Portrait concept images exploring how a future first-party application might present messaging, commerce, financial access, and community experiences.
             </p>
           </div>
 

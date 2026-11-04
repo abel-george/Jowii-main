@@ -523,6 +523,17 @@ h2[id] { scroll-margin-top: 110px; }
 .institutional-header__actions { display: flex; align-items: center; gap: 8px; }
 .institutional-header__donate { display: inline-flex; min-height: 39px; align-items: center; justify-content: center; gap: 8px; padding: 0 13px; background: var(--white); color: var(--green); font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .institutional-header__donate:hover { background: #2dd4bf; color: var(--white); }
+.institutional-top-actions { display: none; }
+.institutional-primary-nav { display: none; }
+.institutional-menu-toggle { display: flex; border: 1px solid rgba(255, 255, 255, 0.3); background: transparent; cursor: pointer; }
+.institutional-menu-panel { display: flex; }
+
+@media (min-width: 1601px) {
+  .institutional-top-actions { display: flex; }
+  .institutional-primary-nav { display: flex; }
+  .institutional-menu-toggle, .institutional-menu-panel { display: none; }
+}
+
 @media (max-width: 1024px) {
   .institutional-header__donate:not([href="/donate"]) { display: none; }
 }
@@ -781,6 +792,11 @@ h2[id] { scroll-margin-top: 110px; }
   .institutional-footer__main { grid-template-columns: 1.2fr 0.8fr 0.8fr; gap: 36px; }
   .institutional-footer__notice { grid-column: 1 / -1; max-width: 750px; }
   .institutional-subscribe__inner { gap: 32px; }
+}
+
+@media (max-width: 1600px) {
+  .institutional-primary-nav { display: none; }
+  .institutional-top-actions { display: none; }
 }
 
 @media (max-width: 1000px) {

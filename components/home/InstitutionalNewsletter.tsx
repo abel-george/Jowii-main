@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowRight, CheckCircle2, LoaderCircle } from 'lucide-react';
-import { subscribeToNewsletter } from '@/lib/waitlist';
+import { subscribeToNewsletter } from '@/lib/form-submissions';
 
 export function InstitutionalNewsletter() {
   const [firstName, setFirstName] = useState('');

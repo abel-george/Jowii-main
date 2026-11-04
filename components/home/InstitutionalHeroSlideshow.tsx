@@ -32,23 +32,23 @@ const LANDSCAPE_IMAGES: GridImage[] = [
   { src: '/documents/sample%20images/africa.png', alt: 'Illustration of the African continent' },
   { src: '/documents/sample%20images/environmental%20framework.png', alt: 'Concept illustration of the environmental framework' },
   { src: '/documents/sample%20images/airjowih1.png', alt: 'Concept illustration of proposed African aviation infrastructure' },
-  { src: '/assets/asta-super-app.jpg', alt: 'Asta Super App interface concept' },
+  { src: '/assets/asta-super-app.jpg', alt: 'Illustrative ASTA Super App vision concept' },
 ];
 
-/** Portrait pool — exact mobile screenshots of the Asta Super App. */
+/** Portrait concept screens used to illustrate a possible first-party application. */
 const PORTRAIT_IMAGES: GridImage[] = [
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2009-57-08.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-34-29.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-35-05.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-36-23.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-38-40.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-40-29.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-41-26.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-31-54.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-33-26.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-35-04.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-37-38.png', alt: 'Asta Super App mobile screen' },
-  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-39-09.png', alt: 'Asta Super App mobile screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2009-57-08.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-34-29.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-35-05.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-36-23.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-38-40.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-40-29.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/screenshots/Screenshot%20from%202026-10-12%2010-41-26.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-31-54.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-33-26.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-35-04.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-37-38.png', alt: 'ASTA Super App vision concept screen' },
+  { src: '/assets/super%20app/Screenshot%20from%202026-10-09%2018-39-09.png', alt: 'ASTA Super App vision concept screen' },
 ];
 
 const COVER_MS = 3000; // single hero image shown before the grid appears
@@ -67,7 +67,7 @@ function sliceCircular<T>(list: T[], start: number, count: number): T[] {
  * AU.int-style rotating hero: the cover image shows first; after three seconds
  * it crossfades into a five-image grid hero — one large landscape spanning to
  * mid-screen, a middle column stacked with three landscapes, and a portrait
- * column showing the Super App mobile screenshots. Each time the grid appears
+ * column showing Super App vision concept images. Each time the grid appears
  * it carries the next set of images from the site's image library, so nothing
  * loops in place.
  */
@@ -144,4 +144,3 @@ export function InstitutionalHeroSlideshow() {
     </>
   );
 }
-

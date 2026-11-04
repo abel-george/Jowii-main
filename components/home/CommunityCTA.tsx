@@ -3,9 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Shield, Users } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 
-export function WaitlistCTA() {
+export function CommunityCTA() {
   return (
     <section className="bg-black text-white py-24 sm:py-32 relative overflow-hidden border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -20,33 +19,26 @@ export function WaitlistCTA() {
             <span className="block text-neutral-400">Ready to be part</span>
             <span className="block text-white">of what&apos;s next?</span>
             <span className="block text-[#FF5000] mt-2">
-              Join the Jowih Waitlist.
+              Join the community.
             </span>
           </h2>
 
           <p className="text-base sm:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed font-sans">
-            Be among the first founders, investors, engineers, and citizens to access ASTA OS, corridor integration frameworks, and the Kisii launch room.
+            Join the ASTA OS open community to discuss the vision, share expertise, and find ways to contribute.
           </p>
 
           {/* Action CTA */}
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/waitlist"
+              href="https://discord.gg/E6VpXqV2W"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-12 py-5 bg-[#FF5000] hover:bg-[#E04600] active:scale-[0.97] text-white text-sm sm:text-base font-black tracking-widest uppercase transition-[transform,background-color] duration-150 [transition-timing-function:var(--ease-out)] shadow-lg group border border-transparent select-none"
             >
-              <span>Join the Waitlist</span>
+              <span>Join ASTA OS on Discord</span>
               <ArrowUpRight className="w-5 h-5 transition-transform duration-150 [transition-timing-function:var(--ease-out)] group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
 
-            <Button
-              href="/ticket"
-              variant="outlined"
-              size="lg"
-              icon="ticket"
-              className="w-full sm:w-auto text-sm sm:text-base py-5"
-            >
-              Book Citizen Ticket
-            </Button>
           </div>
 
           {/* Assurances */}
@@ -58,10 +50,10 @@ export function WaitlistCTA() {
             <span>·</span>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-[#FF5000]" />
-              <span>Priority Auditorium & Livestream Queue</span>
+              <span>Contribute across disciplines</span>
             </div>
             <span>·</span>
-            <span className="text-neutral-500">No spam. Mission only.</span>
+            <span className="text-neutral-500">Open discussion. Shared mission.</span>
           </div>
         </div>
       </div>

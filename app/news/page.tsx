@@ -90,13 +90,15 @@ export default function NewsPage() {
         <div className="mt-16 p-8 text-center bg-neutral-100 border-2 border-neutral-300">
           <h2 className="text-2xl uppercase tracking-tight mb-4 text-black">Stay Updated</h2>
           <p className="text-sm mb-6 text-neutral-700">
-            Join our waitlist to receive the latest news, updates, and launch announcements.
+            Join the ASTA OS Discord to discuss news, updates, and community announcements.
           </p>
           <Link
-            href="/waitlist"
+            href="https://discord.gg/E6VpXqV2W"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 text-sm font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-neutral-800 transition-colors"
           >
-            Join Waitlist <ArrowRight className="w-4 h-4" />
+            Join ASTA OS on Discord <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

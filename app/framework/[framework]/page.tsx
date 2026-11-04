@@ -7,9 +7,10 @@ import { frameworkRanges, frameworkAliases, getGagSection } from '@/lib/gag-sect
 
 export function generateStaticParams() { return [...Object.keys(frameworkRanges), ...Object.keys(frameworkAliases), ...siteData.gag.frameworks.map((framework) => framework.id)].map((framework) => ({ framework })); }
 
-export default function FrameworkSourcePage({ params }: { params: { framework: string } }) {
-  const range = frameworkRanges[params.framework] || frameworkRanges[frameworkAliases[params.framework]];
-  const summary = siteData.gag.frameworks.find((framework) => framework.id === params.framework);
+export default async function FrameworkSourcePage({ params }: { params: Promise<{ framework: string }> }) {
+  const { framework } = await params;
+  const range = frameworkRanges[framework] || frameworkRanges[frameworkAliases[framework]];
+  const summary = siteData.gag.frameworks.find((item) => item.id === framework);
   if (!range && !summary) notFound();
   if (!range && summary) return <main className="document-page framework-source-page min-h-screen"><header className="document-page__hero"><div className="document-page__inner"><Link href="/framework" className="document-page__back"><ArrowLeft size={16} /> Back to frameworks</Link><p className="document-page__eyebrow">Jowih framework</p><h1>{summary.title}</h1><p>{summary.detail}</p></div></header><section className="document-page__body"><div className="document-page__inner framework-source-page__content"><Link href="/search" className="framework-source-link">SEARCH THE ARCHIVE <span aria-hidden="true">↗</span></Link></div></section></main>;
   const lines = getGagSection(range.start, range.end);

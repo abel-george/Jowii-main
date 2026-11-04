@@ -1,24 +1,18 @@
 /**
  * Jowih Foundation - Form Integration Script
  * 
- * This script receives form submissions from the Next.js website and stores them in Google Sheets.
+ * This script receives newsletter and contact form submissions from the Next.js website and stores them in Google Sheets.
  * 
  * SETUP INSTRUCTIONS:
  * 1. Create a new Google Sheet
- * 2. Create these sheets/tabs: "Waitlist", "Newsletter", "Contact", "Partners"
+ * 2. Create these sheets/tabs: "Newsletter", "Contact"
  * 3. Add these column headers to each sheet:
- * 
- * WAITLIST SHEET:
- * Timestamp | First Name | Last Name | Email | Phone | Organisation | Role | Country | Interest Category | Notes | Reference ID
  * 
  * NEWSLETTER SHEET:
  * Timestamp | First Name | Last Name | Email | Reference ID
  * 
  * CONTACT SHEET:
  * Timestamp | Name | Email | Interest | Message | Reference ID
- * 
- * PARTNERS SHEET:
- * Timestamp | Partner Type | Name | Email | Country | Phone | Website | Partnership Areas | Contribution Type | Message | Additional Info | Reference ID
  * 
  * 4. Go to Extensions > Apps Script
  * 5. Paste this code
@@ -34,10 +28,8 @@ const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE'; // Replace with your Google S
 
 // Sheet names
 const SHEETS = {
-  waitlist: 'Waitlist',
   newsletter: 'Newsletter',
-  contact: 'Contact',
-  partners: 'Partners'
+  contact: 'Contact'
 };
 
 function doPost(e) {
@@ -99,19 +91,6 @@ function doPost(e) {
 
 function getHeaders(formType) {
   const headers = {
-    waitlist: [
-      'Timestamp',
-      'First Name',
-      'Last Name',
-      'Email',
-      'Phone',
-      'Organisation',
-      'Role',
-      'Country',
-      'Interest Category',
-      'Notes',
-      'Reference ID'
-    ],
     newsletter: [
       'Timestamp',
       'First Name',
@@ -126,20 +105,6 @@ function getHeaders(formType) {
       'Interest',
       'Message',
       'Reference ID'
-    ],
-    partners: [
-      'Timestamp',
-      'Partner Type',
-      'Name',
-      'Email',
-      'Country',
-      'Phone',
-      'Website',
-      'Partnership Areas',
-      'Contribution Type',
-      'Message',
-      'Additional Info',
-      'Reference ID'
     ]
   };
   
@@ -150,19 +115,6 @@ function prepareRowData(formType, data, referenceId) {
   const timestamp = new Date().toISOString();
   
   const rows = {
-    waitlist: [
-      timestamp,
-      data.firstName || '',
-      data.lastName || '',
-      data.email || '',
-      data.phone || '',
-      data.organisation || '',
-      data.role || '',
-      data.country || '',
-      data.interestCategory || '',
-      data.notes || '',
-      referenceId
-    ],
     newsletter: [
       timestamp,
       data.firstName || '',
@@ -176,20 +128,6 @@ function prepareRowData(formType, data, referenceId) {
       data.email || '',
       data.interest || '',
       data.message || '',
-      referenceId
-    ],
-    partners: [
-      timestamp,
-      data.partnerType || '',
-      data.name || '',
-      data.email || '',
-      data.country || '',
-      data.phone || '',
-      data.website || '',
-      data.partnershipAreas || '',
-      data.contributionType || '',
-      data.message || '',
-      data.additionalInfo || '',
       referenceId
     ]
   };
@@ -219,16 +157,10 @@ function sendNotification(formType, data) {
 // Test function - run this to test the script
 function testPost() {
   const testData = {
-    formType: 'waitlist',
+    formType: 'newsletter',
     firstName: 'Test',
     lastName: 'User',
     email: 'test@example.com',
-    phone: '+1234567890',
-    organisation: 'Test Org',
-    role: 'Developer',
-    country: 'Test Country',
-    interestCategory: 'Technology',
-    notes: 'Test submission'
   };
   
   const mockEvent = {

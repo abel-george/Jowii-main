@@ -92,12 +92,6 @@ export function Footer() {
             </p>
             <ul className="space-y-2 text-sm text-neutral-400">
               <li>
-                <Link href="/waitlist" className="hover:text-white text-white font-semibold flex items-center gap-1">
-                  <span>Join Waitlist</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#FF5000]" />
-                </Link>
-              </li>
-              <li>
                 <Link
                   href={siteData.config.whatsappCommunity}
                   target="_blank"
@@ -109,8 +103,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/ticket" className="hover:text-white transition-colors">
-                  Launch Tickets
+                <Link href={siteData.config.discordCommunity} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  Join ASTA OS on Discord
                 </Link>
               </li>
               <li>

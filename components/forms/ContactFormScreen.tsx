@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, AlertCircle, Loader2, Send } from 'lucide-react';
 import { siteData } from '@/lib/site-data';
-import { submitContactRequest } from '@/lib/waitlist';
+import { submitContactRequest } from '@/lib/form-submissions';
 
 export interface FormScreenProps {
   kicker: string;

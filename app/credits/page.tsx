@@ -795,7 +795,7 @@ export default function JowihCreditsPage() {
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">User</td>
                         <td className="p-3 align-top">✅ Yes</td>
-                        <td className="p-3 align-top">In their Jowih wallet (integrated into partner app or Super App PSPs)</td>
+                        <td className="p-3 align-top">In a proposed Jowih wallet experience through partner apps or a future Super App</td>
                       </tr>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">Partner (as Rail)</td>
@@ -1090,7 +1090,7 @@ export default function JowihCreditsPage() {
                     </thead>
                     <tbody>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
-                        <td className="p-3 align-top font-bold">Super App Native</td>
+                        <td className="p-3 align-top font-bold">Future Super App concept</td>
                         <td className="p-3 align-top">0% – 1%</td>
                         <td className="p-3 align-top">0%</td>
                         <td className="p-3 align-top">0% – 1%</td>
@@ -2187,8 +2187,8 @@ export default function JowihCreditsPage() {
                     <tbody>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">1</td>
-                        <td className="p-3 align-top">Download Super App</td>
-                        <td className="p-3 align-top">Available on iOS and Android</td>
+                        <td className="p-3 align-top">Future Super App concept</td>
+                        <td className="p-3 align-top">Illustrative vision only; no app availability is implied</td>
                       </tr>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">2</td>
@@ -2322,7 +2322,7 @@ export default function JowihCreditsPage() {
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">1</td>
                         <td className="p-3 align-top">Initiate conversion</td>
-                        <td className="p-3 align-top">Select &quot;Buy Credits&quot; in Super App PSP or external partner app</td>
+                        <td className="p-3 align-top">A future, approved partner or first-party application could offer this proposed option</td>
                       </tr>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">2</td>
@@ -2361,7 +2361,7 @@ export default function JowihCreditsPage() {
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">1</td>
                         <td className="p-3 align-top">Initiate conversion</td>
-                        <td className="p-3 align-top">Select &quot;Sell Credits&quot; in Super App PSP or external partner app</td>
+                        <td className="p-3 align-top">A future, approved partner or first-party application could offer this proposed option</td>
                       </tr>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
                         <td className="p-3 align-top font-bold">2</td>
@@ -2514,7 +2514,7 @@ export default function JowihCreditsPage() {
                     </thead>
                     <tbody>
                       <tr style={{ borderBottom: '1px solid var(--line-light)' }}>
-                        <td className="p-3 align-top font-bold">Individual (Super App Native)</td>
+                        <td className="p-3 align-top font-bold">Individual (future Super App concept)</td>
                         <td className="p-3 align-top">Level 1</td>
                         <td className="p-3 align-top">Name, phone number, ID verification</td>
                       </tr>

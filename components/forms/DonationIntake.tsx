@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, CircleDollarSign, ExternalLink, Landmark, LockKeyhole, ShieldCheck } from 'lucide-react';
-import { createDonationIntent } from '@/lib/waitlist';
+import { createDonationIntent } from '@/lib/form-submissions';
 
 type Availability = 'checking' | 'closed' | 'open';
 
@@ -116,7 +116,7 @@ export function DonationIntake() {
                   The contribution trust and payment-provider endpoint have not been configured for this website. Contribution
                   instructions will be published only after the receiving structure and account are independently verified.
                 </p>
-                <Link href="/waitlist" className="institutional-text-link">Request a launch update <ArrowRight aria-hidden="true" size={17} /></Link>
+                <Link href="/documents#contact" className="institutional-text-link">Contact the Foundation <ArrowRight aria-hidden="true" size={17} /></Link>
               </div>
             )}
 
