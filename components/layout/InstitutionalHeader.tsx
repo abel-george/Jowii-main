@@ -54,7 +54,7 @@ export function InstitutionalHeader() {
             </Link>
 
             {/* Second identity mark — sits between the name and the language switcher */}
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex flex-1 items-center justify-center gap-3 sm:gap-5">
               <Image
                 src="/assets/buffalo.png"
                 alt="Jowih buffalo mark"
@@ -62,10 +62,26 @@ export function InstitutionalHeader() {
                 height={112}
                 className="h-12 w-12 sm:h-20 sm:w-20 md:h-28 md:w-28 object-contain"
               />
+              <a
+                href="https://asta.jowihafrica.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ASTA OS website"
+                className="flex h-12 w-12 items-center justify-center sm:h-20 sm:w-20 md:h-24 md:w-24"
+              >
+                <Image
+                  src="/assets/asta-os-logo.png"
+                  alt="ASTA OS"
+                  width={256}
+                  height={256}
+                  priority
+                  className="h-full w-full object-contain transition-transform duration-150 hover:scale-105"
+                />
+              </a>
             </div>
 
             {/* Language Switcher and Actions - Hidden on Mobile */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="institutional-top-actions items-center gap-4">
               <LanguageSwitcher />
               <Link className="px-4 py-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors" href="/donate">
                 Support
@@ -87,7 +103,7 @@ export function InstitutionalHeader() {
       <nav className="bg-[#1a4d2e] sticky top-0 z-40">
         <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-10">
           <div className="relative flex h-16 items-center justify-center">
-            <div className="hidden md:flex w-full items-center justify-center gap-5 xl:gap-6 whitespace-nowrap">
+            <div className="institutional-primary-nav flex w-full items-center justify-center gap-3 xl:gap-5 whitespace-nowrap">
               {siteData.nav.map((item) => (
                 <div
                   key={item.href}
@@ -98,7 +114,7 @@ export function InstitutionalHeader() {
                   <Link
                     href={item.href}
                     aria-current={pathname === item.href ? 'page' : undefined}
-                    className={`text-sm font-bold tracking-wide text-white hover:text-[#2dd4bf] transition-colors py-5 ${pathname === item.href ? 'text-[#2dd4bf]' : ''}`}
+                    className={`text-xs xl:text-[13px] font-bold tracking-normal xl:tracking-wide text-white hover:text-[#2dd4bf] transition-colors py-5 ${pathname === item.href ? 'text-[#2dd4bf]' : ''}`}
                   >
                     {item.label}
                     {item.children && <ChevronDown className="w-3 h-3 ml-1 inline" />}
@@ -129,7 +145,7 @@ export function InstitutionalHeader() {
 
             {/* Mobile Menu Toggle */}
             <button
-              className="ml-auto md:hidden w-10 h-10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              className="institutional-menu-toggle ml-auto w-10 h-10 items-center justify-center text-white hover:bg-white/10 transition-colors"
               type="button"
               onClick={() => setMobileMenuOpen((open) => !open)}
               aria-expanded={mobileMenuOpen}
@@ -143,7 +159,7 @@ export function InstitutionalHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-white pb-[env(safe-area-inset-bottom)]">
+        <div className="institutional-menu-panel fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-white pb-[env(safe-area-inset-bottom)]">
           <div className="sticky top-0 z-10 flex items-center justify-between bg-[#1a4d2e] px-6 py-4 text-white">
             <span className="text-xs font-mono font-bold uppercase tracking-widest">Navigation</span>
             <button
